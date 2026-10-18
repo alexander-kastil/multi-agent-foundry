@@ -1,0 +1,7 @@
+RESOURCE_GROUP="${RESOURCE_GROUP:-rg-pro-code-agents}"
+ACCOUNT_NAME="${ACCOUNT_NAME:-pro-code-agents-foundry}"
+
+for name in m1-router-balanced m1-router-quality m1-router-cost m1-router-subset; do
+  az cognitiveservices account deployment delete \
+    --resource-group "$RESOURCE_GROUP" --name "$ACCOUNT_NAME" --deployment-name "$name"
+done

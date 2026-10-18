@@ -1,0 +1,29 @@
+export MSYS_NO_PATHCONV=1
+
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+RESOURCE_GROUP=rg-pro-code-agents
+FOUNDRY_ACCOUNT=pro-code-agents-foundry
+FOUNDRY_PROJECT=pro-code-agents
+SEARCH_NAME=m3-procode-search
+SEARCH_LOCATION=westeurope
+
+ACCOUNT_ID=/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT
+SEARCH_ID=/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.Search/searchServices/$SEARCH_NAME
+
+az search service create --name $SEARCH_NAME --resource-group $RESOURCE_GROUP --location $SEARCH_LOCATION --sku basic --identity-type SystemAssigned --auth-options aadOrApiKey --aad-auth-failure-mode http401WithBearerChallenge
+
+ME=$(az ad signed-in-user show --query id -o tsv)
+SEARCH_PRINCIPAL=$(az search service show --name $SEARCH_NAME --resource-group $RESOURCE_GROUP --query identity.principalId -o tsv)
+PROJECT_PRINCIPAL=$(az rest --method get --url "https://management.azure.com$ACCOUNT_ID/projects/$FOUNDRY_PROJECT?api-version=2025-06-01" --query identity.principalId -o tsv)
+
+az role assignment create --assignee-object-id $ME --assignee-principal-type User --role "Search Service Contributor" --scope $SEARCH_ID
+az role assignment create --assignee-object-id $ME --assignee-principal-type User --role "Search Index Data Contributor" --scope $SEARCH_ID
+az role assignment create --assignee-object-id $SEARCH_PRINCIPAL --assignee-principal-type ServicePrincipal --role "Cognitive Services User" --scope $ACCOUNT_ID
+az role assignment create --assignee-object-id $SEARCH_PRINCIPAL --assignee-principal-type ServicePrincipal --role "Cognitive Services OpenAI User" --scope $ACCOUNT_ID
+az role assignment create --assignee-object-id $PROJECT_PRINCIPAL --assignee-principal-type ServicePrincipal --role "Search Index Data Reader" --scope $SEARCH_ID
+az role assignment create --assignee-object-id $PROJECT_PRINCIPAL --assignee-principal-type ServicePrincipal --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --scope $ACCOUNT_ID
+
+echo "SEARCH_ENDPOINT=https://$SEARCH_NAME.search.windows.net"
+echo "PROJECT_ENDPOINT=https://$FOUNDRY_ACCOUNT.services.ai.azure.com/api/projects/$FOUNDRY_PROJECT"
+echo "PROJECT_RESOURCE_ID=$ACCOUNT_ID/projects/$FOUNDRY_PROJECT"
+echo "FOUNDRY_ENDPOINT=https://$FOUNDRY_ACCOUNT.cognitiveservices.azure.com"

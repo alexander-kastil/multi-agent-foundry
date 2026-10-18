@@ -1,0 +1,6 @@
+RESOURCE_GROUP="rg-pro-code-agents"
+RESOURCE_NAME="pro-code-agents-foundry"
+
+for name in balanced quality cost subset; do
+  az cognitiveservices account deployment delete --resource-group $RESOURCE_GROUP --name $RESOURCE_NAME --deployment-name m1-router-$name
+done

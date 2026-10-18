@@ -1,0 +1,20 @@
+{
+  "style-checker": {
+    "tool": "check_style",
+    "required_params": ["code_file"],
+    "optional_params": ["style_guide"],
+    "response_fields": ["violations"]
+  },
+  "security-scanner": {
+    "tool": "scan_security",
+    "required_params": ["code_file"],
+    "optional_params": [],
+    "response_fields": ["findings", "risk_score"]
+  },
+  "syntax-analyzer": {
+    "tool": "analyze_syntax",
+    "required_params": ["code_file"],
+    "optional_params": [],
+    "response_fields": ["errors"]
+  }
+}

@@ -1,0 +1,12 @@
+export MSYS_NO_PATHCONV=1
+
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+RESOURCE_GROUP=rg-pro-code-agents
+FOUNDRY_ACCOUNT=pro-code-agents-foundry
+FOUNDRY_PROJECT=pro-code-agents
+PROJECT_ENDPOINT=https://$FOUNDRY_ACCOUNT.services.ai.azure.com/api/projects/$FOUNDRY_PROJECT
+
+azd ai connection delete m3-browser-mcp --force -p $PROJECT_ENDPOINT --no-prompt
+azd ai connection delete m3-playwright-mcp --force -p $PROJECT_ENDPOINT --no-prompt
+
+az resource delete --ids /subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.LoadTestService/playwrightWorkspaces/m3-playwright --api-version 2025-09-01

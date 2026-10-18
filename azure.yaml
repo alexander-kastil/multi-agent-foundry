@@ -1,10 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
 name: pro-code-agents
 metadata:
-  template: pro-code-agents
+    template: pro-code-agents
+services:
+    m6-azd-agent:
+        project: src/m6-azd-agent
+        host: azure.ai.agent
+        language: python
+        codeConfiguration:
+            dependencyResolution: remote_build
+            entryPoint: main.py
+            runtime: python_3_13
+        container:
+            resources:
+                cpu: "0.5"
+                memory: 1Gi
+        kind: hosted
+        name: m6-azd-agent
+        protocols:
+            - protocol: responses
+              version: 2.0.0
 infra:
-  provider: bicep
-  path: ./infra
-  template: main.bicep
-  parameters:
-    location: ${AZURE_LOCATION}
-    servicePrincipalObjectId: ${SERVICE_PRINCIPAL_OBJECT_ID:-''}
+    provider: bicep
+    path: ./infra

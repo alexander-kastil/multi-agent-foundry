@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "basePolicyName": "Microsoft.DefaultV2",
+    "mode": "Blocking",
+    "contentFilters": [
+      { "name": "Violence", "source": "Prompt", "enabled": true, "blocking": true, "severityThreshold": "Low" },
+      { "name": "Violence", "source": "Completion", "enabled": true, "blocking": true, "severityThreshold": "Low" },
+      { "name": "Jailbreak", "source": "Prompt", "enabled": true, "blocking": true },
+      { "name": "Indirect Attack", "source": "Prompt", "enabled": true, "blocking": true },
+      { "name": "Indirect Attack", "source": "PostToolCall", "enabled": true, "blocking": true }
+    ]
+  }
+}

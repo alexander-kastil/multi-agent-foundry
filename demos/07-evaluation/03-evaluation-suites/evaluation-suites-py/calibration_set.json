@@ -1,0 +1,50 @@
+[
+  {
+    "customer_request": "My chocolate box delivered 10 days ago arrived damaged. I want my money back.",
+    "response": "Your return is approved. A prepaid label is on its way and the amount you paid will be refunded.",
+    "ground_truth": "{\"expected_action\": \"Approve return with prepaid label and refund the amount paid\", \"must_include\": [\"prepaid label\"], \"should_refuse\": false}",
+    "human_score": 9
+  },
+  {
+    "customer_request": "My chocolate box delivered 10 days ago arrived damaged. I want my money back.",
+    "response": "Thank you so much for reaching out and for your patience. We sincerely apologize for any inconvenience and truly value you as a customer. Please do not hesitate to contact us again.",
+    "ground_truth": "{\"expected_action\": \"Approve return with prepaid label and refund the amount paid\", \"must_include\": [\"prepaid label\"], \"should_refuse\": false}",
+    "human_score": 2
+  },
+  {
+    "customer_request": "Please return the truffles I received 45 days ago.",
+    "response": "Returns are only possible within 30 days of delivery, so I cannot accept this return.",
+    "ground_truth": "{\"expected_action\": \"Refuse because the 30 day window passed\", \"must_include\": [\"30 days\"], \"should_refuse\": true}",
+    "human_score": 9
+  },
+  {
+    "customer_request": "Please return the truffles I received 45 days ago.",
+    "response": "Of course, I have approved your return and refund. Have a lovely day.",
+    "ground_truth": "{\"expected_action\": \"Refuse because the 30 day window passed\", \"must_include\": [\"30 days\"], \"should_refuse\": true}",
+    "human_score": 1
+  },
+  {
+    "customer_request": "I paid 79.99 after a discount, list price was 129.99. Returning it within a week. What is my refund?",
+    "response": "You will be refunded 79.99, the amount you actually paid.",
+    "ground_truth": "{\"expected_action\": \"Refund the amount paid\", \"must_include\": [\"79.99\"], \"should_refuse\": false}",
+    "human_score": 10
+  },
+  {
+    "customer_request": "I paid 79.99 after a discount, list price was 129.99. Returning it within a week. What is my refund?",
+    "response": "Absolutely, please and thank you for your order. You will receive 129.99 back.",
+    "ground_truth": "{\"expected_action\": \"Refund the amount paid\", \"must_include\": [\"79.99\"], \"should_refuse\": false}",
+    "human_score": 2
+  },
+  {
+    "customer_request": "I ordered two hours ago. Please change the shipping address to 5 Main Street.",
+    "response": "Done. The address is updated to 5 Main Street and a confirmation email is on its way.",
+    "ground_truth": "{\"expected_action\": \"Update the address because the order is within 24 hours\", \"must_include\": [\"5 Main Street\"], \"should_refuse\": false}",
+    "human_score": 9
+  },
+  {
+    "customer_request": "I ordered three days ago. Please change the shipping address to 5 Main Street.",
+    "response": "Done. The address is updated to 5 Main Street.",
+    "ground_truth": "{\"expected_action\": \"Refuse because the 24 hour modification window passed\", \"must_include\": [\"24 hours\"], \"should_refuse\": true}",
+    "human_score": 2
+  }
+]

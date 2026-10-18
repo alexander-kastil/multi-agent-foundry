@@ -1,0 +1,15 @@
+agents:
+  - name: ingestion
+    depends_on: []
+  - name: syntax-analyzer
+    depends_on: [ingestion]
+  - name: style-checker
+    depends_on: [ingestion]
+  - name: security-scanner
+    depends_on: [ingestion]
+  - name: performance-profiler
+    depends_on: [syntax-analyzer]
+  - name: orchestrator
+    depends_on: [syntax-analyzer, style-checker, security-scanner, performance-profiler]
+  - name: reporting
+    depends_on: [orchestrator]

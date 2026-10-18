@@ -1,0 +1,39 @@
+RG=rg-pro-code-agents
+LOC=swedencentral
+SUFFIX=7k2
+STORAGE=m6h3dur$SUFFIX
+SCHEDULER=m6h3-dts-$SUFFIX
+LANGUAGE=py
+PROJECT_ENDPOINT=$(grep ^PROJECT_ENDPOINT durable-agents-py/.env | cut -d= -f2-)
+SUB=$(az account show --query id -o tsv)
+PROJECT_ID=/subscriptions/$SUB/resourceGroups/$RG/providers/Microsoft.CognitiveServices/accounts/pro-code-agents-foundry/projects/pro-code-agents
+
+if [ "$LANGUAGE" = "py" ]; then
+  FUNCAPP=m6h3-durable-agents-$SUFFIX
+  TASKHUB=m6h3-hub
+  RUNTIME=python
+  RUNTIME_VERSION=3.12
+else
+  FUNCAPP=m6h3-durable-agents-cs-$SUFFIX
+  TASKHUB=m6h3-hub-cs
+  RUNTIME=dotnet-isolated
+  RUNTIME_VERSION=10
+fi
+
+az extension add --name durabletask --yes
+
+az storage account create -g $RG -n $STORAGE -l $LOC --sku Standard_LRS --allow-blob-public-access false
+
+az durabletask scheduler create -g $RG -n $SCHEDULER -l $LOC --sku-name Consumption --ip-allowlist "[0.0.0.0/0]"
+az durabletask taskhub create -g $RG -s $SCHEDULER -n $TASKHUB
+
+az functionapp create -g $RG -n $FUNCAPP --flexconsumption-location $LOC --runtime $RUNTIME --runtime-version $RUNTIME_VERSION --storage-account $STORAGE --instance-memory 2048
+PRINCIPAL=$(az functionapp identity assign -g $RG -n $FUNCAPP --query principalId -o tsv)
+
+SCHEDULER_ID=$(az durabletask scheduler show -g $RG -n $SCHEDULER --query id -o tsv)
+SCHEDULER_URL=$(az durabletask scheduler show -g $RG -n $SCHEDULER --query properties.endpoint -o tsv)
+
+MSYS_NO_PATHCONV=1 az role assignment create --assignee-object-id $PRINCIPAL --assignee-principal-type ServicePrincipal --role "Durable Task Data Contributor" --scope $SCHEDULER_ID
+MSYS_NO_PATHCONV=1 az role assignment create --assignee-object-id $PRINCIPAL --assignee-principal-type ServicePrincipal --role "Foundry User" --scope $PROJECT_ID
+
+az functionapp config appsettings set -g $RG -n $FUNCAPP --settings "PROJECT_ENDPOINT=$PROJECT_ENDPOINT" "MODEL_DEPLOYMENT_NAME=gpt-5.4" "TASKHUB_NAME=$TASKHUB" "DURABLE_TASK_SCHEDULER_CONNECTION_STRING=Endpoint=$SCHEDULER_URL;TaskHub=$TASKHUB;Authentication=ManagedIdentity"

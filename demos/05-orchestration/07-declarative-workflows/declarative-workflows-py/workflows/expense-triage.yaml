@@ -1,0 +1,74 @@
+name: expense-triage
+description: Routes an expense by amount and category without calling a model
+
+inputs:
+  amount:
+    type: number
+    description: Expense amount in EUR
+  category:
+    type: string
+    description: Expense category
+
+actions:
+  - kind: SetVariable
+    id: set_limit
+    displayName: Set the auto approval limit
+    variable: Local.limit
+    value: 1000
+
+  - kind: If
+    id: check_limit
+    displayName: Compare amount with the limit
+    condition: =Workflow.Inputs.amount > Local.limit
+    then:
+      - kind: SetVariable
+        id: route_director
+        variable: Local.route
+        value: director
+    else:
+      - kind: SetVariable
+        id: route_auto
+        variable: Local.route
+        value: auto
+
+  - kind: ConditionGroup
+    id: pick_team
+    displayName: Pick the team by category
+    conditions:
+      - condition: =Workflow.Inputs.category = "travel"
+        id: travel_team
+        actions:
+          - kind: SetVariable
+            variable: Local.team
+            value: Travel desk
+      - condition: =Workflow.Inputs.category = "meals"
+        id: meals_team
+        actions:
+          - kind: SetVariable
+            variable: Local.team
+            value: Hospitality desk
+    elseActions:
+      - kind: SetVariable
+        variable: Local.team
+        value: General finance
+
+  - kind: SetVariable
+    id: set_checks
+    variable: Local.checks
+    value: '=["duplicate","vendor","budget"]'
+
+  - kind: Foreach
+    id: run_checks
+    displayName: Run each check
+    source: =Local.checks
+    itemName: check
+    actions:
+      - kind: SendActivity
+        activity:
+          text: '=Concat("check ", Local.check, " passed")'
+
+  - kind: SendActivity
+    id: summary
+    displayName: Send the routing result
+    activity:
+      text: '=Concat("Route ", Local.route, " handled by ", Local.team)'

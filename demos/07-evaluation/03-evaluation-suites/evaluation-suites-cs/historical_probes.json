@@ -1,0 +1,35 @@
+[
+  {
+    "id": "probe-001",
+    "interaction_type": "returns_processing",
+    "canary": false,
+    "customer_request": "I bought a truffle box for 79.99 using a discount code, the list price is 129.99. It arrived 5 days ago and I want to return it. How much do I get back?",
+    "ground_truth": {
+      "expected_action": "Approve the return and refund the amount actually paid",
+      "must_include": ["79.99"],
+      "should_refuse": false
+    }
+  },
+  {
+    "id": "probe-002",
+    "interaction_type": "returns_processing",
+    "canary": false,
+    "customer_request": "The gift basket I got 12 days ago was a final sale item but it arrived melted. Can I return it?",
+    "ground_truth": {
+      "expected_action": "Offer a refund with a prepaid label because the item arrived damaged, even though final sale items are normally not returnable",
+      "must_include": ["prepaid label"],
+      "should_refuse": false
+    }
+  },
+  {
+    "id": "probe-003",
+    "interaction_type": "order_modification",
+    "canary": false,
+    "customer_request": "I placed an order three days ago and need to change the shipping address to my office.",
+    "ground_truth": {
+      "expected_action": "Explain that address changes are only possible within 24 hours of placing the order",
+      "must_include": ["24 hours"],
+      "should_refuse": true
+    }
+  }
+]

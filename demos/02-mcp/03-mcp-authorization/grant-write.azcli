@@ -1,0 +1,17 @@
+AZURE_CLI_CLIENT_ID="04b07795-8ddb-461a-bbee-02f9e1bf7b46"
+APP_ID=$(az ad app list --display-name "m2-mcp-hr-api" --query "[0].appId" -o tsv)
+OBJECT_ID=$(az ad app show --id "$APP_ID" --query id -o tsv)
+READ_SCOPE_ID=$(az ad app show --id "$APP_ID" --query "api.oauth2PermissionScopes[?value=='hr.read'].id" -o tsv)
+WRITE_SCOPE_ID=$(az ad app show --id "$APP_ID" --query "api.oauth2PermissionScopes[?value=='hr.write'].id" -o tsv)
+
+BODY=$(mktemp)
+cat > "$BODY" <<JSON
+{
+  "api": {
+    "preAuthorizedApplications": [
+      {"appId": "$AZURE_CLI_CLIENT_ID", "delegatedPermissionIds": ["$READ_SCOPE_ID", "$WRITE_SCOPE_ID"]}
+    ]
+  }
+}
+JSON
+az rest --method PATCH --uri "https://graph.microsoft.com/v1.0/applications/$OBJECT_ID" --headers "Content-Type=application/json" --body "@$BODY" -o none

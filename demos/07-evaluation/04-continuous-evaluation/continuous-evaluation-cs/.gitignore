@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+*.user
+.env
+response_ids.json
+red_team_items.json

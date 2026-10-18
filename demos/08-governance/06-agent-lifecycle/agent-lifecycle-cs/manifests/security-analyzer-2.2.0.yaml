@@ -1,0 +1,40 @@
+agent_version_manifest:
+  agent_id: security-analyzer
+  version: 2.2.0
+  created_date: 2026-02-01
+  status: approved
+  model:
+    deployment_name: gpt-5.4
+    temperature: 0.3
+    max_tokens: 2000
+  system_prompt:
+    version: security-prompt-v5.1
+    hash: 176f4ed8e52c2f45f09ab0f486676d3dc473033817cfafbc91d3825a2968636b
+    file: prompts/security-analyzer-v5.1.txt
+  tools:
+    - name: cve-database-lookup
+      version: "3.1"
+      authentication: managed-identity
+  evaluation_baseline:
+    precision: 0.92
+    recall: 0.88
+  approval:
+    status: approved
+    approver: security-lead@fabrikam.com
+    approval_date: 2026-02-01
+  pinning_policy:
+    pin_allowed: true
+    max_pin_duration_days: 90
+    security_exception: force-upgrade-on-critical-cve
+  eu_ai_act_risk_classification: limited
+  material_change_assessment: false
+  technical_file_reference: techfile/security-analyzer-2.2.0.pdf
+  retirement:
+    status: deprecated
+    deprecated_date: 2026-09-01
+    deletion_date: 2026-12-01
+    replacement_agent: security-analyzer 2.3.0
+    justification: "Superseded by 2.3.0 with confirmed-vulnerability prompt and higher precision."
+    approval:
+      approver: governance-committee@fabrikam.com
+      approval_date: 2026-08-15

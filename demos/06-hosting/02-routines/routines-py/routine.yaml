@@ -1,0 +1,12 @@
+name: m6-azd-digest
+description: Weekday morning support digest created from a manifest.
+enabled: false
+triggers:
+  weekday-morning:
+    type: schedule
+    cronExpression: "0 7 * * 1-5"
+    timeZone: Europe/Vienna
+action:
+  type: invoke_agent_responses_api
+  agentName: m6-digest-agent
+  input: Write the support digest for the last 24 hours.

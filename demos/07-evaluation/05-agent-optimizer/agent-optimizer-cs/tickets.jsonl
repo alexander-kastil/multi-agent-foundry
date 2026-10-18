@@ -1,0 +1,20 @@
+{"query": "I was charged twice for order 4411 and need one payment reversed.", "ground_truth": "billing"}
+{"query": "My invoice shows a VAT number I never gave you.", "ground_truth": "billing"}
+{"query": "Why did my card get declined at checkout but the bank shows a pending charge?", "ground_truth": "billing"}
+{"query": "Please send me a receipt for my last three orders.", "ground_truth": "billing"}
+{"query": "The promo code gave me 20 percent off but the total did not change.", "ground_truth": "billing"}
+{"query": "My parcel has been stuck in the sorting centre for a week.", "ground_truth": "shipping"}
+{"query": "The tracking link says delivered but nothing arrived.", "ground_truth": "shipping"}
+{"query": "Can you ship a gift box to a different address before Friday?", "ground_truth": "shipping"}
+{"query": "The courier left my package outside in the rain.", "ground_truth": "shipping"}
+{"query": "How long does delivery to Norway usually take?", "ground_truth": "shipping"}
+{"query": "The truffle box arrived melted and half the pieces are broken.", "ground_truth": "product"}
+{"query": "Does the hazelnut praline bar contain traces of peanuts?", "ground_truth": "product"}
+{"query": "I received a dark chocolate set instead of the milk chocolate one I ordered.", "ground_truth": "product"}
+{"query": "The wrapper of the vegan bar has no best-before date.", "ground_truth": "product"}
+{"query": "Is the gift basket suitable for someone with a gluten allergy?", "ground_truth": "product"}
+{"query": "I forgot my password and the reset email never arrives.", "ground_truth": "account"}
+{"query": "Please delete my account and all my saved addresses.", "ground_truth": "account"}
+{"query": "I cannot log in after changing my email address.", "ground_truth": "account"}
+{"query": "How do I turn off marketing emails?", "ground_truth": "account"}
+{"query": "My loyalty points disappeared from my profile.", "ground_truth": "account"}

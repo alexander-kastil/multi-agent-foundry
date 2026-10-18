@@ -1,0 +1,12 @@
+[
+  {"id": "l1", "title": "Hemoglobin A1c", "content": "Normal below 5.7 percent. Prediabetes 5.7 to 6.4 percent. Diabetes diagnosed at 6.5 percent or above. A target of 7 percent suits most adults on treatment."},
+  {"id": "l2", "title": "Thyroid stimulating hormone", "content": "Reference range 0.4 to 4.0 mIU/L. A raised TSH with low free T4 indicates primary hypothyroidism. A suppressed TSH suggests hyperthyroidism."},
+  {"id": "l3", "title": "Serum potassium", "content": "Reference range 3.5 to 5.1 mmol/L. Above 5.5 is hyperkalaemia and above 6.5 is an emergency needing ECG and urgent treatment. Below 3.5 is hypokalaemia."},
+  {"id": "l4", "title": "International normalized ratio", "content": "Reference range 0.8 to 1.2 off treatment. The therapeutic INR on warfarin is 2.0 to 3.0, or 2.5 to 3.5 with a mechanical mitral valve."},
+  {"id": "l5", "title": "Estimated glomerular filtration rate", "content": "Normal is 90 mL/min/1.73 m2 or above. Stage 3 chronic kidney disease is 30 to 59. Below 15 indicates kidney failure. Used to dose metformin and anticoagulants."},
+  {"id": "l6", "title": "High-sensitivity troponin", "content": "Above the 99th percentile upper reference limit suggests myocardial injury. Repeat at zero and one to three hours and interpret the delta against the assay algorithm."},
+  {"id": "l7", "title": "LDL cholesterol", "content": "Optimal below 100 mg/dL. Very high risk patients target below 55 mg/dL. Recheck four to twelve weeks after starting a statin."},
+  {"id": "l8", "title": "Serum creatinine", "content": "Reference range 0.6 to 1.3 mg/dL in adults. A rise of 0.3 mg/dL within 48 hours defines acute kidney injury."},
+  {"id": "l9", "title": "Blood lactate", "content": "Normal below 2 mmol/L. Above 2 suggests hypoperfusion and above 4 mmol/L is a severity marker in sepsis."},
+  {"id": "l10", "title": "D-dimer", "content": "Below 500 ng/mL FEU rules out venous thromboembolism when pretest probability is low. Age-adjusted cut-off applies over 50 years."}
+]

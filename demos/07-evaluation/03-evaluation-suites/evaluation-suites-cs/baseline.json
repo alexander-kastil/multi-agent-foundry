@@ -1,0 +1,10 @@
+{
+  "task_completion_rate": 0.8571428571428571,
+  "avg_goal_achievement": 8.476190476190476,
+  "by_interaction_type": {
+    "refund_calculation": 0.8333333333333334,
+    "returns_processing": 0.875,
+    "order_modification": 0.8571428571428571
+  },
+  "case_count": 21
+}

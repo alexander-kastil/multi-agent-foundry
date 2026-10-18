@@ -1,0 +1,32 @@
+agent_version_manifest:
+  agent_id: security-analyzer
+  version: 2.3.0
+  created_date: 2026-08-20
+  status: approved
+  model:
+    deployment_name: gpt-5.4
+    temperature: 0.3
+    max_tokens: 2000
+  system_prompt:
+    version: security-prompt-v5.2
+    hash: 86c1dac928c61c2f0ac94f3140b1971235a40b424712cf8a00e348882dcd2ec0
+    file: prompts/security-analyzer-v5.2.txt
+  tools:
+    - name: cve-database-lookup
+      version: "3.1"
+      authentication: managed-identity
+  evaluation_baseline:
+    precision: 0.95
+    recall: 0.88
+  approval:
+    status: approved
+    approver: security-lead@fabrikam.com
+    approval_date: 2026-08-25
+    approval_reason: "Prompt rewrite improves precision by 3 points with no recall degradation"
+  pinning_policy:
+    pin_allowed: true
+    max_pin_duration_days: 90
+    security_exception: force-upgrade-on-critical-cve
+  eu_ai_act_risk_classification: limited
+  material_change_assessment: true
+  technical_file_reference: techfile/security-analyzer-2.3.0.pdf

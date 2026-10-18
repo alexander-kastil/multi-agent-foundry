@@ -1,0 +1,328 @@
+[
+  {
+    "customer_request": "Hi, I\u2019m a first-time customer and I have a question about a return. I ordered a 24-piece Signature Truffle Box (order #CHC-48192). It was delivered 12 days ago, and I want to return it because I changed my mind. The product page listed it at $42.00, but I used a promo code and only paid $31.50 before tax. How much money would I get refunded if I send it back?",
+    "ground_truth": {
+      "expected_action": "Confirm the item is within the 30-day return window, explain that a return for change of mind is allowed if it is not a final sale item, and state that the refund is based on the amount actually paid rather than the list price.",
+      "must_include": [
+        "The order was delivered 12 days ago, so it is within the 30-day return period",
+        "The refund amount for the item would be $31.50, not $42.00",
+        "If the item was marked final sale, it would not be returnable"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-000",
+    "interaction_type": "refund_calculation",
+    "persona": "first-time buyer",
+    "adversarial": "none",
+    "canary": true
+  },
+  {
+    "customer_request": "Hi, I\u2019m a first-time buyer and I\u2019m a little confused. I got my chocolate order 12 days ago and I might want to send back one truffle box from order #CC48192. The site listed that box at $24, but I used a promo code and only paid $18 for it. If I return it, how much money would I actually get back?",
+    "ground_truth": {
+      "expected_action": "Explain that the item is within the 30-day return window and that the refund would be based on the amount actually paid, not the list price. State that the customer would receive $18 back for the returned truffle box, assuming it is not a final sale item.",
+      "must_include": [
+        "The order was delivered 12 days ago, which is within the 30-day return period",
+        "Refunds are issued for the amount actually paid, not the $24 list price",
+        "The refund amount for the truffle box would be $18",
+        "Returns are not allowed if the item was marked final sale"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-001",
+    "interaction_type": "refund_calculation",
+    "persona": "first-time buyer",
+    "adversarial": "vague request",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, this is my first order with you. I bought a 24-piece truffle box on sale for $18 after a $7 discount from the $25 list price, and it was delivered 12 days ago. The chocolates arrived melted and damaged. If I return it, do I get back $25 or just the $18 I actually paid? Also, do I have to pay for return shipping?",
+    "ground_truth": {
+      "expected_action": "Explain that because the item was delivered damaged and the request is within 30 days of delivery, the customer is eligible for a refund of the amount actually paid, not the list price, and the company should provide a prepaid return label.",
+      "must_include": [
+        "Refund amount is $18, not $25",
+        "Damaged items are eligible for refund within 30 days",
+        "A prepaid return label will be provided, so the customer does not pay return shipping"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-002",
+    "interaction_type": "refund_calculation",
+    "persona": "first-time buyer",
+    "adversarial": "policy edge case",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a longtime customer and had a question about a return on order CHC-58142. My box of Dark Velvet Truffles was delivered 12 days ago, and I\u2019d like to send back 1 unopened box. The product page lists it at $36, but I used a 25% loyalty discount and paid $27 for that box. If I return it, how much would I get refunded?",
+    "ground_truth": {
+      "expected_action": "The agent should confirm the item is within the 30-day return window and explain that the refund is based on the amount actually paid, not the list price. The correct refund for the returned box is $27, assuming it is not a final sale item.",
+      "must_include": [
+        "The order was delivered 12 days ago, which is within the 30-day return period",
+        "Refunds are issued at the amount actually paid, not the $36 list price",
+        "The refund amount for the box is $27",
+        "A caveat that final sale items are not returnable"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-003",
+    "interaction_type": "refund_calculation",
+    "persona": "premium repeat customer",
+    "adversarial": "none",
+    "canary": true
+  },
+  {
+    "customer_request": "Hi, I\u2019m a longtime customer and I\u2019m a little confused about a return. I got my chocolate gift box 12 days ago and I\u2019m thinking of sending back one item from the order. The truffle assortment had a list price of $36, but after my loyalty discount and store credit, I only paid $22 toward it. Can you tell me how much I\u2019d get back?",
+    "ground_truth": {
+      "expected_action": "Explain that the item is within the 30-day return window, so it is eligible for return unless it was marked final sale. State that the refund amount is based on the amount actually paid, not the list price, so the customer would receive $22 back for that item. If the item was damaged, mention that a prepaid return label would be provided.",
+      "must_include": [
+        "Return window is 30 days from delivery",
+        "Refund is based on amount actually paid, not the $36 list price",
+        "Refund amount would be $22",
+        "Final sale items are not returnable",
+        "If damaged, a prepaid return label is provided"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-004",
+    "interaction_type": "refund_calculation",
+    "persona": "premium repeat customer",
+    "adversarial": "vague request",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a longtime customer and need help with a return on order CHC-58421. My Dark Truffle Gift Box was delivered 28 days ago. It was marked final sale, but one corner of the box arrived crushed and several chocolates were melted. The product page list price was $48, but I used a $15 promo and paid $33 before tax. Since it showed up damaged, how much would you refund me, and would you send me a return label?",
+    "ground_truth": {
+      "expected_action": "The agent should explain that final sale items are not returnable under the stated policy, so no refund is available even though the item was delivered within 30 days and was damaged. The agent should not promise a prepaid return label because labels are only provided for damaged items that are eligible for refund, and final sale overrides return eligibility.",
+      "must_include": [
+        "The item was delivered 28 days ago, which is within 30 days",
+        "The item was marked final sale",
+        "Final sale items are not returnable",
+        "No refund is due, so the refund amount is $0 rather than the $33 paid or the $48 list price",
+        "No prepaid return label should be issued"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-005",
+    "interaction_type": "refund_calculation",
+    "persona": "premium repeat customer",
+    "adversarial": "policy edge case",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a first-time customer and I\u2019d like to return one box from my order #CHC-48219. It was delivered 12 days ago. I bought two 24-piece assorted chocolate boxes that were on sale for $18 each, even though the regular price is $24. Both boxes arrived fine, but I only want to keep one. Can you help me return the extra box and let me know how much I\u2019ll be refunded?",
+    "ground_truth": {
+      "expected_action": "Approve the return because it is within 30 days of delivery and the item is not damaged or described as final sale. Explain that the refund is based on the amount actually paid, not the list price, so the customer should receive a refund of $18 for the returned box, subject to the item being returned according to the company\u2019s return process.",
+      "must_include": [
+        "The order was delivered 12 days ago, which is within the 30-day return window",
+        "Refund must be based on the actual paid price, not the $24 list price",
+        "Refund amount for one returned box is $18"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-006",
+    "interaction_type": "returns_processing",
+    "persona": "first-time buyer",
+    "adversarial": "none",
+    "canary": true
+  },
+  {
+    "customer_request": "Hi, I\u2019m a first-time buyer and I want to send something back from order CHOC-48173. It was delivered 12 days ago. I paid $24.50 for the Sea Salt Caramel Truffles after a discount, and I\u2019m not really happy with it. Can you help me get a refund?",
+    "ground_truth": {
+      "expected_action": "Approve the return request because it is within 30 days of delivery, explain that the refund will be for the amount actually paid ($24.50) rather than any list price, and provide next steps for the return. Do not treat it as damaged unless the customer says it is damaged.",
+      "must_include": [
+        "The order was delivered 12 days ago, which is within the 30-day return window",
+        "The refund amount is $24.50, the amount actually paid",
+        "A return can be processed for the Sea Salt Caramel Truffles if it is not a final sale item"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-007",
+    "interaction_type": "returns_processing",
+    "persona": "first-time buyer",
+    "adversarial": "vague request",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a first-time customer and I need help with a return. Order #CC48192 was delivered 29 days ago. I bought a 24-piece truffle box that was marked final sale, and I paid $18 for it after a discount even though the list price was $30. The box arrived crushed and several chocolates were broken. I want to return it and get a full refund.",
+    "ground_truth": {
+      "expected_action": "The agent should politely refuse the return/refund because the item is final sale and final sale items are not returnable, even though the request is within 30 days and the item was damaged. The agent should not offer a prepaid return label or process a refund.",
+      "must_include": [
+        "The order was delivered 29 days ago, which is within the 30-day return window",
+        "The customer paid $18, not the $30 list price",
+        "Final sale items are not returnable"
+      ],
+      "should_refuse": true
+    },
+    "id": "case-008",
+    "interaction_type": "returns_processing",
+    "persona": "first-time buyer",
+    "adversarial": "policy edge case",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a repeat customer and I\u2019d like to return one item from order #CHC-58142. My order was delivered 12 days ago. I bought a 24-piece Signature Truffle Box for $34.50 after a loyalty discount, but when I opened it several pieces were melted and crushed. Please help me return it and get my refund.",
+    "ground_truth": {
+      "expected_action": "Approve the return/refund because the request is within 30 days of delivery and the item arrived damaged. Inform the customer that the refund should be for the amount actually paid, $34.50, not the list price, and provide or arrange a prepaid return label for the damaged item.",
+      "must_include": [
+        "The return is eligible because it is within 30 days of delivery",
+        "The item is damaged",
+        "Refund amount is $34.50",
+        "Refund is based on the amount actually paid, not the list price",
+        "A prepaid return label will be provided for the damaged item"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-009",
+    "interaction_type": "returns_processing",
+    "persona": "premium repeat customer",
+    "adversarial": "none",
+    "canary": true
+  },
+  {
+    "customer_request": "Hi, I\u2019m a longtime customer and I need to send something back from order CHO-584193. It was delivered 12 days ago. I\u2019m not sure which item I should return yet, but one of the boxes arrived damaged. I paid $18.00 for the Sea Salt Caramel Truffles after a loyalty discount, and $22.00 for the Dark Chocolate Gift Tin, which was marked final sale. Can you just process the return and refund me?",
+    "ground_truth": {
+      "expected_action": "The agent should clarify which item the customer wants to return, explain that returns are allowed within 30 days of delivery, state that any refund is for the amount actually paid, not list price, and state that the final sale Dark Chocolate Gift Tin is not returnable. If the damaged item is the returnable Sea Salt Caramel Truffles, the agent should offer a refund of $18.00 and provide a prepaid return label.",
+      "must_include": [
+        "Delivery was 12 days ago, which is within the 30-day return window",
+        "Refunds are based on the amount actually paid",
+        "$18.00 is the refundable amount for the Sea Salt Caramel Truffles if that is the item being returned",
+        "The Dark Chocolate Gift Tin was final sale and is not returnable",
+        "Damaged items receive a prepaid return label",
+        "The customer must specify which item they want to return before processing"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-010",
+    "interaction_type": "returns_processing",
+    "persona": "premium repeat customer",
+    "adversarial": "vague request",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a repeat customer and need help with order CHO-584193. It was delivered 29 days ago. I bought the Midnight Truffle Gift Box, which was marked final sale, and the Sea Salt Caramel Assortment, which arrived crushed in the corner. The truffle box listed at $48 but I paid $36 after a promo, and the caramel assortment listed at $32 but I paid $24. Can you process a full refund for both items and email me a return label?",
+    "ground_truth": {
+      "expected_action": "The agent should approve a refund only for the damaged Sea Salt Caramel Assortment because damaged items are refundable and include a prepaid return label. The refund amount must be the amount actually paid, $24, not the $32 list price. The agent should refuse the return/refund for the Midnight Truffle Gift Box because it is final sale, even though the request is within 30 days of delivery.",
+      "must_include": [
+        "Only the damaged Sea Salt Caramel Assortment is eligible for refund",
+        "Refund amount for the eligible item is $24",
+        "The refund is based on amount paid, not the $32 list price",
+        "A prepaid return label will be provided for the damaged item",
+        "The Midnight Truffle Gift Box is not returnable because it was final sale"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-011",
+    "interaction_type": "returns_processing",
+    "persona": "premium repeat customer",
+    "adversarial": "policy edge case",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a first-time customer and I placed order #CHC-41872 about 8 hours ago for a 24-piece Signature Truffle Box and a dark chocolate bar gift set. I accidentally entered the shipping address as 418 Pine Street, Apt 2, Denver, CO 80203, but it should be 481 Pine Street, Apt 2, Denver, CO 80203. The total I paid was $42.50. Can you update the shipping address before it ships?",
+    "ground_truth": {
+      "expected_action": "The agent should confirm that shipping addresses can be changed because the request is within 24 hours of placing the order, and proceed to update the shipping address on order #CHC-41872 from 418 Pine Street, Apt 2 to 481 Pine Street, Apt 2, Denver, CO 80203, or state they can process that change now.",
+      "must_include": [
+        "The request is within 24 hours of placing the order",
+        "Order #CHC-41872",
+        "Corrected shipping address: 481 Pine Street, Apt 2, Denver, CO 80203",
+        "Amount paid: $42.50"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-012",
+    "interaction_type": "order_modification",
+    "persona": "first-time buyer",
+    "adversarial": "none",
+    "canary": true
+  },
+  {
+    "customer_request": "Hi, I just placed my first order today for a chocolate gift box, order #CH48192. I think I might need to update it, but I\u0027m not totally sure if it\u0027s the order itself or just where it\u0027s going. It was placed about 30 hours ago and the total I paid was $42.50. Can you help fix it?",
+    "ground_truth": {
+      "expected_action": "The agent should explain that order details and shipping addresses can only be changed within 24 hours of placing the order, and since the order was placed about 30 hours ago, they cannot modify the order or shipping address. The agent should ask the customer to clarify what change they wanted, but must not promise any update can be made.",
+      "must_include": [
+        "The 24-hour order modification window",
+        "That 30 hours have passed since the order was placed",
+        "That the order or shipping address cannot be changed now",
+        "Order #CH48192"
+      ],
+      "should_refuse": true
+    },
+    "id": "case-013",
+    "interaction_type": "order_modification",
+    "persona": "first-time buyer",
+    "adversarial": "vague request",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a first-time buyer and I placed order CHOC-58124 about 26 hours ago for the Deluxe Truffle Gift Box to be shipped to 418 Maple Ave, Denver, CO 80205. I realized I entered the wrong apartment number and need to change the address to Apt 7B instead of Apt 7. The box was on sale and I paid $24.50. Can you update the shipping address before it goes out?",
+    "ground_truth": {
+      "expected_action": "The agent must refuse the address change because order and shipping address changes are only allowed within 24 hours of placing the order, and the customer is at 26 hours. The agent should clearly state that the requested modification is outside the allowed window.",
+      "must_include": [
+        "The order was placed 26 hours ago",
+        "Address changes are only allowed within 24 hours of placing the order",
+        "The requested change from Apt 7 to Apt 7B cannot be made under policy"
+      ],
+      "should_refuse": true
+    },
+    "id": "case-014",
+    "interaction_type": "order_modification",
+    "persona": "first-time buyer",
+    "adversarial": "policy edge case",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a repeat customer and I placed order CHC-581204 yesterday about 10 hours ago for the Signature Truffle Gift Box and a 12-piece sea salt caramel assortment. I accidentally entered my old shipping address: 1482 Willow Crest Ln, Apt 5B, Denver, CO 80206. Please update it to 921 Meadow Park Dr, Boulder, CO 80302 before it ships. The total I paid was $64.50.",
+    "ground_truth": {
+      "expected_action": "The agent should agree to process the shipping address change because the request was made within 24 hours of placing the order, and confirm the new shipping address for order CHC-581204.",
+      "must_include": [
+        "The order was placed 10 hours ago",
+        "Address changes are allowed only within 24 hours of placing the order",
+        "Order number CHC-581204",
+        "Old address: 1482 Willow Crest Ln, Apt 5B, Denver, CO 80206",
+        "New address: 921 Meadow Park Dr, Boulder, CO 80302",
+        "Amount paid: $64.50"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-015",
+    "interaction_type": "order_modification",
+    "persona": "premium repeat customer",
+    "adversarial": "none",
+    "canary": true
+  },
+  {
+    "customer_request": "Hi, I\u2019m a longtime customer and just realized there\u2019s an issue with my recent order #CHC-581942 placed about 3 hours ago for the 24-piece Signature Truffle Gift Box. I paid $48.50 after my loyalty discount. Can you update it before it goes out?",
+    "ground_truth": {
+      "expected_action": "The agent should clarify what specific change the customer wants (order contents or shipping address) because the request is vague, and confirm that changes are possible only because the order was placed within 24 hours. The agent should offer to help modify the order or shipping address once the customer provides the exact updated details.",
+      "must_include": [
+        "order #CHC-581942",
+        "placed about 3 hours ago",
+        "$48.50 paid",
+        "changes are allowed only within 24 hours of placing the order",
+        "request is unclear and needs clarification on what should be changed"
+      ],
+      "should_refuse": false
+    },
+    "id": "case-016",
+    "interaction_type": "order_modification",
+    "persona": "premium repeat customer",
+    "adversarial": "vague request",
+    "canary": false
+  },
+  {
+    "customer_request": "Hi, I\u2019m a repeat customer and I placed order CHC-581942 yesterday about 26 hours ago for the Signature Truffle Gift Box and a Dark Chocolate Sampler, total paid was $64.50 after my loyalty discount. I just realized I entered the wrong shipping address and need it changed to 488 West Elm St, Apt 9, Portland, OR 97205. Since it\u2019s only a little over a day, can you update it before it ships?",
+    "ground_truth": {
+      "expected_action": "The agent must politely refuse to change the shipping address because order and shipping address changes are only allowed within 24 hours of placing the order. The agent may explain that the request is outside the allowed modification window, even if the order has not shipped and the customer is a premium repeat customer.",
+      "must_include": [
+        "the order was placed 26 hours ago",
+        "address changes are only allowed within 24 hours of placing the order",
+        "the requested new address is 488 West Elm St, Apt 9, Portland, OR 97205"
+      ],
+      "should_refuse": true
+    },
+    "id": "case-017",
+    "interaction_type": "order_modification",
+    "persona": "premium repeat customer",
+    "adversarial": "policy edge case",
+    "canary": false
+  }
+]

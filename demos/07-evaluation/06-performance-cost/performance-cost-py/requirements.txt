@@ -1,0 +1,8 @@
+azure-ai-projects==2.9.0
+azure-identity==1.26.0
+fakeredis==2.40.0
+numpy==2.5.4
+openai==3.35.1
+python-dotenv==1.2.4
+redis==8.1.0
+tiktoken==0.14.0

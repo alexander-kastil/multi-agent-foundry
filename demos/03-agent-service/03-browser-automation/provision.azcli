@@ -1,0 +1,30 @@
+export MSYS_NO_PATHCONV=1
+
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+RESOURCE_GROUP=rg-pro-code-agents
+FOUNDRY_ACCOUNT=pro-code-agents-foundry
+FOUNDRY_PROJECT=pro-code-agents
+PLAYWRIGHT_NAME=m3-playwright
+PLAYWRIGHT_LOCATION=westeurope
+CONNECTION_NAME=m3-browser-mcp
+PROJECT_ENDPOINT=https://$FOUNDRY_ACCOUNT.services.ai.azure.com/api/projects/$FOUNDRY_PROJECT
+
+az provider register --namespace Microsoft.LoadTestService --wait
+
+WORKSPACE_ID=/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.LoadTestService/playwrightWorkspaces/$PLAYWRIGHT_NAME
+
+az resource create --id $WORKSPACE_ID --api-version 2025-09-01 --location $PLAYWRIGHT_LOCATION --properties '{"regionalAffinity":"Enabled","localAuth":"Enabled"}'
+
+PLAYWRIGHT_GUID=$(az resource show --id $WORKSPACE_ID --api-version 2025-09-01 --query properties.workspaceId -o tsv)
+
+PROJECT_PRINCIPAL=$(az rest --method get --url "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT/projects/$FOUNDRY_PROJECT?api-version=2025-06-01" --query identity.principalId -o tsv)
+
+az role assignment create --assignee-object-id $PROJECT_PRINCIPAL --assignee-principal-type ServicePrincipal --role "Playwright Workspace Contributor" --scope $WORKSPACE_ID
+
+azd ai connection create $CONNECTION_NAME --kind PlaywrightWorkspace --target https://$PLAYWRIGHT_LOCATION.mcp.playwright.microsoft.com/playwrightworkspaces/$PLAYWRIGHT_GUID/mcp --auth-type project-managed-identity --audience https://mcp.playwright.microsoft.com --force -p $PROJECT_ENDPOINT --no-prompt
+
+azd ai connection create m3-playwright-mcp --kind remote-tool --target https://$PLAYWRIGHT_LOCATION.mcp.playwright.microsoft.com/playwrightworkspaces/$PLAYWRIGHT_GUID/mcp --auth-type project-managed-identity --audience https://mcp.playwright.microsoft.com --force -p $PROJECT_ENDPOINT --no-prompt
+
+echo "PLAYWRIGHT_MCP_URL=https://$PLAYWRIGHT_LOCATION.mcp.playwright.microsoft.com/playwrightworkspaces/$PLAYWRIGHT_GUID/mcp"
+echo "PLAYWRIGHT_MCP_CONNECTION=m3-playwright-mcp"
+echo "BROWSER_CONNECTION_ID=/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT/projects/$FOUNDRY_PROJECT/connections/$CONNECTION_NAME"

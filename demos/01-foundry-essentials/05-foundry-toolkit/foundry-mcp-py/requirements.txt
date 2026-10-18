@@ -1,0 +1,4 @@
+azure-identity==1.26.0
+httpx2==2.13.1
+mcp==2.3.0
+python-dotenv==1.2.4

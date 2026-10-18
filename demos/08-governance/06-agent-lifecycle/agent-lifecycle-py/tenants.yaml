@@ -1,0 +1,23 @@
+tenants:
+  - id: premium-fabrikam-internal
+    rollout_tier: 1
+    quota_tier: premium
+    pin: null
+  - id: standard-contoso
+    rollout_tier: 2
+    quota_tier: standard
+    pin: null
+  - id: premium-regulated-bank
+    rollout_tier: 3
+    quota_tier: premium
+    pin: null
+  - id: standard-northwind
+    rollout_tier: 2
+    quota_tier: standard
+    pin:
+      agent_version: 2.2.0
+      expires: 2026-10-30
+  - id: developer-startup
+    rollout_tier: 1
+    quota_tier: developer
+    pin: null
