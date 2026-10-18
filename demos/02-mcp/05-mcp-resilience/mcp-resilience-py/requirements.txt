@@ -1,0 +1,9 @@
+agent-framework-core==1.22.0
+agent-framework-foundry==1.15.0
+mcp==1.30.0
+azure-identity==1.26.0
+python-dotenv==1.2.4
+httpx==0.28.1
+tenacity==9.2.1
+uvicorn==0.54.0
+starlette==1.8.0

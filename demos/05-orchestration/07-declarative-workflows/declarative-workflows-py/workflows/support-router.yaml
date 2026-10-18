@@ -1,0 +1,57 @@
+name: support-router
+description: Classifies a support message and routes it to a specialist agent
+
+inputs:
+  message:
+    type: string
+    description: The customer message
+
+actions:
+  - kind: SetVariable
+    id: remember_message
+    variable: Local.customerMessage
+    value: =Workflow.Inputs.message
+
+  - kind: InvokeAzureAgent
+    id: classify
+    displayName: Classify the message
+    agent:
+      name: ClassifierAgent
+    input:
+      messages: =Local.customerMessage
+    output:
+      responseObject: Local.Classification
+      autoSend: false
+
+  - kind: SendActivity
+    id: announce
+    activity:
+      text: '=Concat("Category: ", Local.Classification.category)'
+
+  - kind: ConditionGroup
+    id: route
+    displayName: Route by category
+    conditions:
+      - condition: =Local.Classification.category = "billing"
+        id: billing_route
+        actions:
+          - kind: InvokeAzureAgent
+            id: billing
+            agent:
+              name: BillingAgent
+            input:
+              messages: =Local.customerMessage
+      - condition: =Local.Classification.category = "technical"
+        id: technical_route
+        actions:
+          - kind: InvokeAzureAgent
+            id: technical
+            agent:
+              name: TechnicalAgent
+            input:
+              messages: =Local.customerMessage
+    elseActions:
+      - kind: SendActivity
+        id: fallback
+        activity:
+          text: No specialist matched, routing to a human.

@@ -1,0 +1,35 @@
+name: Prompt Regression Gate
+on:
+  pull_request:
+    paths:
+      - 'demos/08-governance/05-cicd-gates/cicd-gates-py/prompts/**'
+      - 'demos/08-governance/05-cicd-gates/cicd-gates-py/tests.json'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r demos/08-governance/05-cicd-gates/cicd-gates-py/requirements.txt
+
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Run prompt regression gate
+        working-directory: demos/08-governance/05-cicd-gates/cicd-gates-py
+        env:
+          PROJECT_ENDPOINT: ${{ vars.PROJECT_ENDPOINT }}
+          MODEL_DEPLOYMENT_NAME: ${{ vars.MODEL_DEPLOYMENT_NAME }}
+        run: python prompt_regression.py

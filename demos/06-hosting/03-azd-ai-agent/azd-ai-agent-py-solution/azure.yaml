@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: m6-azd
+services:
+    m6-azd-agent:
+        project: src/m6-azd-agent
+        host: azure.ai.agent
+        language: python
+        uses:
+            - pro-code-agents
+        env:
+            AZURE_AI_MODEL_DEPLOYMENT_NAME: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+        codeConfiguration:
+            dependencyResolution: remote_build
+            entryPoint: main.py
+            runtime: python_3_13
+        container:
+            resources:
+                cpu: "0.5"
+                memory: 1Gi
+        kind: hosted
+        name: m6-azd-agent
+        protocols:
+            - protocol: responses
+              version: 2.0.0
+    pro-code-agents:
+        host: azure.ai.project
+        endpoint: https://pro-code-agents-foundry.services.ai.azure.com/api/projects/pro-code-agents
+infra:
+    provider: microsoft.foundry

@@ -1,0 +1,92 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.1/schema.json",
+    "schema_version": "v2.1",
+    "name_for_human": "Food-Catalog-Api",
+    "description_for_human": "An Api that allows interaction with food items",
+    "description_for_model": "An Api that allows interaction with food items",
+    "contact_email": "publisher-email@example.com",
+    "namespace": "declarativeagentdemo",
+    "capabilities": {
+        "conversation_starters": [
+            {
+                "text": "Gets all food"
+            },
+            {
+                "text": "UpdateFood"
+            },
+            {
+                "text": "Add food"
+            },
+            {
+                "text": "GetFoodByID"
+            }
+        ]
+    },
+    "functions": [
+        {
+            "name": "AddFood",
+            "description": "Add food",
+            "capabilities": {
+                "response_semantics": {
+                    "data_path": "$",
+                    "static_template": {
+                        "file": "./adaptiveCards/AddFood.json"
+                    }
+                }
+            }
+        },
+        {
+            "name": "GetFood",
+            "description": "Gets all food",
+            "capabilities": {
+                "response_semantics": {
+                    "data_path": "$",
+                    "static_template": {
+                        "file": "./adaptiveCards/GetFood.json"
+                    }
+                }
+            }
+        },
+        {
+            "name": "GetFoodByID",
+            "description": "GetFoodByID",
+            "capabilities": {
+                "response_semantics": {
+                    "data_path": "$",
+                    "static_template": {
+                        "file": "./adaptiveCards/GetFoodByID.json"
+                    }
+                }
+            }
+        },
+        {
+            "name": "UpdateFood",
+            "description": "UpdateFood",
+            "capabilities": {
+                "response_semantics": {
+                    "data_path": "$",
+                    "static_template": {
+                        "file": "./adaptiveCards/UpdateFood.json"
+                    }
+                }
+            }
+        }
+    ],
+    "runtimes": [
+        {
+            "type": "OpenApi",
+            "auth": {
+                "type": "None"
+            },
+            "spec": {
+                "url": "apiSpecificationFile/openapi.yaml"
+            },
+            "run_for_functions": [
+                "GetFood",
+                "UpdateFood",
+                "AddFood",
+                "GetFoodByID"
+            ]
+        }
+    ]
+}

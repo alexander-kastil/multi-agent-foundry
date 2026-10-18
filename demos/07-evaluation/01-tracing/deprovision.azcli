@@ -1,0 +1,10 @@
+RESOURCE_GROUP="rg-pro-code-agents"
+FOUNDRY_ACCOUNT="pro-code-agents-foundry"
+FOUNDRY_PROJECT="pro-code-agents"
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+
+az rest --method delete \
+  --url "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT/projects/$FOUNDRY_PROJECT/connections/m7-appinsights?api-version=2025-06-01"
+
+az monitor app-insights component delete -a m7-appinsights -g $RESOURCE_GROUP -o none
+az monitor log-analytics workspace delete -g $RESOURCE_GROUP -n m7-logs --yes --force -o none

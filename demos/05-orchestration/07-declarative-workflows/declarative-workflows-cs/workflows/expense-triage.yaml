@@ -1,0 +1,81 @@
+kind: Workflow
+trigger:
+  kind: OnConversationStart
+  id: expense_triage
+  actions:
+    - kind: SetVariable
+      id: read_amount
+      variable: Local.amount
+      value: =Value(First(Split(System.LastMessage.Text, ",")).Value)
+
+    - kind: SetVariable
+      id: read_category
+      variable: Local.category
+      value: =Last(Split(System.LastMessage.Text, ",")).Value
+
+    - kind: SetVariable
+      id: set_limit
+      displayName: Set the auto approval limit
+      variable: Local.limit
+      value: 1000
+
+    - kind: ConditionGroup
+      id: check_limit
+      displayName: Compare amount with the limit
+      conditions:
+        - condition: =Local.amount > Local.limit
+          id: over_limit
+          actions:
+            - kind: SetVariable
+              id: route_director
+              variable: Local.route
+              value: director
+      elseActions:
+        - kind: SetVariable
+          id: route_auto
+          variable: Local.route
+          value: auto
+
+    - kind: ConditionGroup
+      id: pick_team
+      displayName: Pick the team by category
+      conditions:
+        - condition: =Local.category = "travel"
+          id: travel_team
+          actions:
+            - kind: SetVariable
+              id: set_travel
+              variable: Local.team
+              value: Travel desk
+        - condition: =Local.category = "meals"
+          id: meals_team
+          actions:
+            - kind: SetVariable
+              id: set_meals
+              variable: Local.team
+              value: Hospitality desk
+      elseActions:
+        - kind: SetVariable
+          id: set_general
+          variable: Local.team
+          value: General finance
+
+    - kind: SetVariable
+      id: set_checks
+      variable: Local.checks
+      value: '=["duplicate","vendor","budget"]'
+
+    - kind: Foreach
+      id: run_checks
+      displayName: Run each check
+      items: =Local.checks
+      value: Local.check
+      actions:
+        - kind: SendActivity
+          id: report_check
+          activity: 'check {Local.check} passed'
+
+    - kind: SendActivity
+      id: summary
+      displayName: Send the routing result
+      activity: 'Route {Local.route} handled by {Local.team}'

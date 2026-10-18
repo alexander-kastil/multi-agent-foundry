@@ -1,0 +1,12 @@
+export MSYS_NO_PATHCONV=1
+
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+RESOURCE_GROUP=rg-pro-code-agents
+FOUNDRY_ACCOUNT=pro-code-agents-foundry
+FOUNDRY_PROJECT=pro-code-agents
+
+ACCOUNT_ID=/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT
+
+PROJECT_PRINCIPAL=$(az rest --method get --url "https://management.azure.com$ACCOUNT_ID/projects/$FOUNDRY_PROJECT?api-version=2025-06-01" --query identity.principalId -o tsv)
+
+az role assignment create --assignee-object-id $PROJECT_PRINCIPAL --assignee-principal-type ServicePrincipal --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --scope $ACCOUNT_ID --query "{principal:principalId,scope:scope}"

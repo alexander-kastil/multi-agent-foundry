@@ -1,0 +1,42 @@
+[
+  {
+    "id": "p1",
+    "title": "Summit 4S Tent",
+    "content": "Four-season two-person mountaineering tent for winter camping. Price 389 USD. Weight 3.2 kg. Rated to minus 25 degrees Celsius and wind gusts up to 90 km/h. Double-wall design with snow skirt and reinforced pole sleeves."
+  },
+  {
+    "id": "p2",
+    "title": "Trailhead 2 Tent",
+    "content": "Three-season two-person backpacking tent for spring, summer and early autumn. Price 229 USD. Weight 1.9 kg. Not rated for snow load. Ventilated mesh canopy and a single vestibule."
+  },
+  {
+    "id": "p3",
+    "title": "Ridge Family 4 Tent",
+    "content": "Three-season four-person family tent with two doors and a stand-up porch. Price 299 USD. Weight 5.4 kg. Suitable for car camping in mild weather."
+  },
+  {
+    "id": "p4",
+    "title": "Glacier -15 Sleeping Bag",
+    "content": "Down sleeping bag comfort rated to minus 15 degrees Celsius. Price 199 USD. Weight 1.6 kg. Water-resistant shell and a draft collar for winter trips."
+  },
+  {
+    "id": "p5",
+    "title": "Meadow 5 Sleeping Bag",
+    "content": "Synthetic sleeping bag comfort rated to plus 5 degrees Celsius. Price 89 USD. Weight 1.2 kg. Machine washable and quick drying."
+  },
+  {
+    "id": "p6",
+    "title": "Pathfinder 45L Backpack",
+    "content": "Forty-five litre trekking backpack with adjustable torso length and a rain cover. Price 159 USD. Weight 1.4 kg."
+  },
+  {
+    "id": "p7",
+    "title": "Ember Compact Stove",
+    "content": "Compact canister stove that boils one litre of water in three and a half minutes. Price 59 USD. Weight 85 grams. Works down to minus 10 degrees Celsius with a winter canister."
+  },
+  {
+    "id": "p8",
+    "title": "Nomad Trekking Poles",
+    "content": "Pair of carbon trekking poles with cork grips and quick-lock adjustment. Price 79 USD. Weight 440 grams per pair."
+  }
+]

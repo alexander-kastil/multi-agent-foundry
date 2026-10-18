@@ -1,0 +1,3 @@
+agent-framework>=1.0.0b260210
+agent-framework-github-copilot>=1.0.0b260210
+azure-identity>=1.14.0

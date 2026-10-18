@@ -1,0 +1,7 @@
+RG=rg-pro-code-agents
+SUFFIX=7k2
+
+az functionapp delete -g $RG -n m6h3-durable-agents-$SUFFIX
+az functionapp delete -g $RG -n m6h3-durable-agents-cs-$SUFFIX
+az durabletask scheduler delete -g $RG -n m6h3-dts-$SUFFIX --yes
+az storage account delete -g $RG -n m6h3dur$SUFFIX --yes

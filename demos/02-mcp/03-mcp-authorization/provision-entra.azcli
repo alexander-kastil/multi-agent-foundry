@@ -1,0 +1,43 @@
+APP_NAME="m2-mcp-hr-api"
+AZURE_CLI_CLIENT_ID="04b07795-8ddb-461a-bbee-02f9e1bf7b46"
+
+TENANT_ID=$(az account show --query tenantId -o tsv)
+APP_ID=$(az ad app create --display-name "$APP_NAME" --sign-in-audience AzureADMyOrg --query appId -o tsv)
+OBJECT_ID=$(az ad app show --id "$APP_ID" --query id -o tsv)
+READ_SCOPE_ID=$(python -c "import uuid; print(uuid.uuid4())")
+WRITE_SCOPE_ID=$(python -c "import uuid; print(uuid.uuid4())")
+
+BODY=$(mktemp)
+cat > "$BODY" <<JSON
+{
+  "identifierUris": ["api://$APP_ID"],
+  "api": {
+    "requestedAccessTokenVersion": 2,
+    "oauth2PermissionScopes": [
+      {"id": "$READ_SCOPE_ID", "value": "hr.read", "type": "User", "isEnabled": true,
+       "adminConsentDisplayName": "Read HR data", "adminConsentDescription": "Read employees through the HR MCP server",
+       "userConsentDisplayName": "Read HR data", "userConsentDescription": "Read employees through the HR MCP server"},
+      {"id": "$WRITE_SCOPE_ID", "value": "hr.write", "type": "User", "isEnabled": true,
+       "adminConsentDisplayName": "Change HR data", "adminConsentDescription": "Add and remove employees through the HR MCP server",
+       "userConsentDisplayName": "Change HR data", "userConsentDescription": "Add and remove employees through the HR MCP server"}
+    ]
+  }
+}
+JSON
+az rest --method PATCH --uri "https://graph.microsoft.com/v1.0/applications/$OBJECT_ID" --headers "Content-Type=application/json" --body "@$BODY" -o none
+
+cat > "$BODY" <<JSON
+{
+  "api": {
+    "preAuthorizedApplications": [
+      {"appId": "$AZURE_CLI_CLIENT_ID", "delegatedPermissionIds": ["$READ_SCOPE_ID"]}
+    ]
+  }
+}
+JSON
+az rest --method PATCH --uri "https://graph.microsoft.com/v1.0/applications/$OBJECT_ID" --headers "Content-Type=application/json" --body "@$BODY" -o none
+
+az ad sp create --id "$APP_ID" -o none
+
+echo "TENANT_ID=$TENANT_ID"
+echo "API_CLIENT_ID=$APP_ID"

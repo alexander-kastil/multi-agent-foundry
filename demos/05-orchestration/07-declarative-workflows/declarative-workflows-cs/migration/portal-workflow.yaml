@@ -1,0 +1,56 @@
+kind: workflow
+trigger:
+  kind: OnConversationStart
+  id: trigger_wf
+  actions:
+    - kind: SetVariable
+      id: remember_message
+      variable: Local.CustomerMessage
+      value: =System.LastMessage.Text
+    - kind: InvokeAzureAgent
+      id: classify
+      agent:
+        name: m35h-classifier
+      conversationId: =System.ConversationId
+      input:
+        messages: =Local.CustomerMessage
+      output:
+        autoSend: false
+        responseObject: Local.Classification
+    - kind: SendActivity
+      id: announce
+      activity: 'Category: {Local.Classification.category}'
+    - kind: ConditionGroup
+      id: route
+      conditions:
+        - condition: =Local.Classification.category = "billing"
+          id: billing_route
+          actions:
+            - kind: InvokeAzureAgent
+              id: billing
+              agent:
+                name: m35h-billing
+              conversationId: =System.ConversationId
+              input:
+                messages: =Local.CustomerMessage
+              output:
+                autoSend: true
+        - condition: =Local.Classification.category = "technical"
+          id: technical_route
+          actions:
+            - kind: InvokeAzureAgent
+              id: technical
+              agent:
+                name: m35h-technical
+              conversationId: =System.ConversationId
+              input:
+                messages: =Local.CustomerMessage
+              output:
+                autoSend: true
+      elseActions:
+        - kind: SendActivity
+          id: fallback
+          activity: No specialist matched, routing to a human.
+id: ""
+name: m35h-support-router
+description: ""

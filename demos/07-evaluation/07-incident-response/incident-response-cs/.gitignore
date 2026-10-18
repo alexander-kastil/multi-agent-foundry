@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+*.user
+.env
+replay-snapshots/
+postmortem-output.md

@@ -1,0 +1,6 @@
+{
+  "task_completion_drop": 0.1,
+  "goal_achievement_drop": 0.5,
+  "per_type_drop": 0.25,
+  "canary_min_rate": 0.8
+}

@@ -1,0 +1,54 @@
+name: Automated Agent Rollback
+on:
+  repository_dispatch:
+    types: [quality-regression-detected]
+
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+
+jobs:
+  rollback-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Identify current and previous revisions
+        id: versions
+        env:
+          AGENT_NAME: ${{ github.event.client_payload.agent_name }}
+          ENVIRONMENT: ${{ github.event.client_payload.environment }}
+        run: |
+          CURRENT=$(az containerapp revision list --name fabrikam-${AGENT_NAME}-${ENVIRONMENT} --resource-group fabrikam-agents-${ENVIRONMENT} --query "[?properties.active].name" -o tsv)
+          STABLE=$(az containerapp revision list --name fabrikam-${AGENT_NAME}-${ENVIRONMENT} --resource-group fabrikam-agents-${ENVIRONMENT} --query "[?properties.active==\`false\`]|[0].name" -o tsv)
+          echo "current=${CURRENT}" >> $GITHUB_OUTPUT
+          echo "stable=${STABLE}" >> $GITHUB_OUTPUT
+
+      - name: Execute rollback
+        env:
+          AGENT_NAME: ${{ github.event.client_payload.agent_name }}
+          ENVIRONMENT: ${{ github.event.client_payload.environment }}
+        run: |
+          az containerapp revision activate --name fabrikam-${AGENT_NAME}-${ENVIRONMENT} --resource-group fabrikam-agents-${ENVIRONMENT} --revision ${{ steps.versions.outputs.stable }}
+
+      - name: Create incident issue
+        uses: actions/github-script@v7
+        env:
+          AGENT: ${{ github.event.client_payload.agent_name }}
+          ENV: ${{ github.event.client_payload.environment }}
+          TRIGGER: ${{ github.event.client_payload.trigger_type }}
+          STABLE: ${{ steps.versions.outputs.stable }}
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Rollback: ${process.env.AGENT} in ${process.env.ENV}`,
+              body: `Automated rollback executed.\n\nAgent: ${process.env.AGENT}\nEnvironment: ${process.env.ENV}\nTrigger: ${process.env.TRIGGER}\nRolled back to: ${process.env.STABLE}`,
+              labels: ['incident', 'automated-rollback']
+            })

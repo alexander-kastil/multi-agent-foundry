@@ -1,0 +1,34 @@
+name: Canary Quality Gate Assessment
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  assess-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r demos/08-governance/05-cicd-gates/cicd-gates-py/requirements.txt
+
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Run canary quality gate
+        working-directory: demos/08-governance/05-cicd-gates/cicd-gates-py
+        env:
+          PROJECT_ENDPOINT: ${{ vars.PROJECT_ENDPOINT }}
+          MODEL_DEPLOYMENT_NAME: ${{ vars.MODEL_DEPLOYMENT_NAME }}
+        run: python canary_gate.py

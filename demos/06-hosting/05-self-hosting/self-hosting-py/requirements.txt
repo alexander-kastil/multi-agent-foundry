@@ -1,0 +1,8 @@
+agent-framework-foundry==1.15.0
+agent-framework-hosting==1.0.0a261015
+agent-framework-hosting-responses==1.0.0a261015
+fastapi==0.143.3
+hypercorn==0.18.0
+openai==3.35.1
+azure-identity==1.26.0
+python-dotenv==1.2.4

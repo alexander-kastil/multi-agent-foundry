@@ -1,0 +1,39 @@
+# Variables
+SUB_ID=cd091145-5ea2-4703-ba5d-41063b1d4308
+RG_NAME=rg-pro-code-agents
+AI_ACCOUNT=pro-code-agents-resource                   # Cognitive Services / AI Services account name
+PROJECT_NAME=pro-code-agents                          # Foundry project under the account (from defaultProject)
+ROLE_DEF_ID=$(az role definition list --name "Azure AI User" --query "[0].id" -o tsv)
+
+# Resolve the project managed identity principalId (the one Copilot expects)
+PROJECT_MI_OBJECT_ID=$(az resource show \
+  --ids /subscriptions/$SUB_ID/resourceGroups/$RG_NAME/providers/Microsoft.CognitiveServices/accounts/$AI_ACCOUNT/projects/$PROJECT_NAME \
+  --query "identity.principalId" -o tsv)
+
+# Scope: project under the cognitive account
+SCOPE_ID="/subscriptions/$SUB_ID/resourceGroups/$RG_NAME/providers/Microsoft.CognitiveServices/accounts/$AI_ACCOUNT/projects/$PROJECT_NAME"
+ACCOUNT_SCOPE_ID="/subscriptions/$SUB_ID/resourceGroups/$RG_NAME/providers/Microsoft.CognitiveServices/accounts/$AI_ACCOUNT"
+
+# Assign role at the project scope to the project managed identity
+az role assignment create \
+  --assignee-object-id $PROJECT_MI_OBJECT_ID \
+  --assignee-principal-type ServicePrincipal \
+  --role $ROLE_DEF_ID \
+  --scope $SCOPE_ID
+
+# Assign at account scope as well (some operations check parent scope)
+az role assignment create \
+  --assignee-object-id $PROJECT_MI_OBJECT_ID \
+  --assignee-principal-type ServicePrincipal \
+  --role $ROLE_DEF_ID \
+  --scope $ACCOUNT_SCOPE_ID
+
+az role assignment list \
+  --assignee $PROJECT_MI_OBJECT_ID \
+  --scope $SCOPE_ID \
+  -o table
+
+az role assignment list \
+  --assignee $PROJECT_MI_OBJECT_ID \
+  --scope $ACCOUNT_SCOPE_ID \
+  -o table

@@ -1,0 +1,12 @@
+RESOURCE_GROUP="rg-pro-code-agents"
+FOUNDRY_ACCOUNT="pro-code-agents-foundry"
+FOUNDRY_PROJECT="pro-code-agents"
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+
+PROJECT_ID="/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT/projects/$FOUNDRY_PROJECT"
+PROJECT_IDENTITY=$(az rest --method get --url "https://management.azure.com$PROJECT_ID?api-version=2025-06-01" --query identity.principalId -o tsv)
+APPINSIGHTS_ID=$(az monitor app-insights component show -a m7-appinsights -g $RESOURCE_GROUP --query id -o tsv)
+WORKSPACE_ID=$(az monitor log-analytics workspace show -g $RESOURCE_GROUP -n m7-logs --query id -o tsv)
+
+az role assignment delete --assignee $PROJECT_IDENTITY --role "Reader" --scope $APPINSIGHTS_ID
+az role assignment delete --assignee $PROJECT_IDENTITY --role "Log Analytics Reader" --scope $WORKSPACE_ID

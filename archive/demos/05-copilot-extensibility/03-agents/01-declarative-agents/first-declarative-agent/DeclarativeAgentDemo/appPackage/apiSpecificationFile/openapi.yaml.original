@@ -1,0 +1,220 @@
+{
+  "swagger": "2.0",
+  "host": "food-catalog-api-dev.azurewebsites.net",
+  "schemes": [
+    "https"
+  ],
+  "definitions": {
+    "FoodItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "inStock": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "minStock": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Minimum amount to keep in stock"
+        },
+        "pictureUrl": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-ms-openai-manifest": {
+    "humanName": "Food-Catalog-Api",
+    "modelDescription": "An Api that allows interaction with food items",
+    "contactEmail": "",
+    "legalUrl": ""
+  },
+  "info": {
+    "title": "Food-Catalog-Api",
+    "version": "v1",
+    "description": "An Api that allows interaction with food items"
+  },
+  "paths": {
+    "/Config": {},
+    "/Config/getAllEnv": {},
+    "/Food": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          }
+        },
+        "x-ms-openai-data": {
+          "openai-enabled": true,
+          "operations": [
+            {
+              "x-ms-require-user-confirmation": false
+            }
+          ]
+        },
+        "summary": "Add food",
+        "description": "Add food",
+        "operationId": "AddFood"
+      },
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FoodItem"
+              }
+            }
+          }
+        },
+        "x-ms-openai-data": {
+          "openai-enabled": true,
+          "operations": [
+            {
+              "x-ms-require-user-confirmation": false
+            }
+          ]
+        },
+        "summary": "Gets all food",
+        "description": "Gets all food",
+        "operationId": "GetFood"
+      },
+      "put": {
+        "tags": [
+          "Food"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          }
+        },
+        "x-ms-openai-data": {
+          "openai-enabled": true,
+          "operations": [
+            {
+              "x-ms-require-user-confirmation": false
+            }
+          ]
+        },
+        "summary": "UpdateFood",
+        "description": "UpdateFood",
+        "operationId": "UpdateFood"
+      }
+    },
+    "/Food/{id}": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          }
+        },
+        "x-ms-openai-data": {
+          "openai-enabled": true,
+          "operations": [
+            {
+              "x-ms-require-user-confirmation": false
+            }
+          ]
+        },
+        "summary": "GetFoodByID",
+        "description": "GetFoodByID",
+        "operationId": "GetFoodByID"
+      }
+    }
+  },
+  "securityDefinitions": {}
+}

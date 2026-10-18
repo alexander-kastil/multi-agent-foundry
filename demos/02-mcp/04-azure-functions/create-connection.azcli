@@ -1,0 +1,30 @@
+FUNCTION_APP="<function-app-name>"
+FUNCTION_RESOURCE_GROUP="rg-pro-code-agents"
+FOUNDRY_ACCOUNT="pro-code-agents-foundry"
+FOUNDRY_PROJECT="pro-code-agents"
+FOUNDRY_RESOURCE_GROUP="rg-pro-code-agents"
+CONNECTION_NAME="m2-func-mcp-key"
+
+SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+HOST=$(az webapp show --name "$FUNCTION_APP" --resource-group "$FUNCTION_RESOURCE_GROUP" --query defaultHostName -o tsv)
+KEY=$(az functionapp keys list --name "$FUNCTION_APP" --resource-group "$FUNCTION_RESOURCE_GROUP" --query systemKeys.mcp_extension -o tsv)
+
+BODY=$(mktemp)
+cat > "$BODY" <<JSON
+{
+  "properties": {
+    "category": "RemoteTool",
+    "target": "https://$HOST/runtime/webhooks/mcp",
+    "authType": "CustomKeys",
+    "credentials": {"keys": {"x-functions-key": "$KEY"}},
+    "isSharedToAll": false,
+    "metadata": {}
+  }
+}
+JSON
+
+az rest --method PUT \
+  --uri "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$FOUNDRY_RESOURCE_GROUP/providers/Microsoft.CognitiveServices/accounts/$FOUNDRY_ACCOUNT/projects/$FOUNDRY_PROJECT/connections/$CONNECTION_NAME?api-version=2025-06-01" \
+  --body "@$BODY" \
+  --query "{name:name,category:properties.category,authType:properties.authType,target:properties.target}" -o json
+rm "$BODY"

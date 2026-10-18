@@ -1,4 +1,7 @@
-# Script to create 8 student user accounts in Azure Entra, add them to a group, and assign Azure AI Developer role
+# Script to create student user accounts in Azure Entra, add them to a group, and assign Azure AI Developer role
+
+# Number of student accounts to create (default 10)
+$UserCount = 10
 
 # Hardcoded account resource ID (parent of project - needed for visibility in portal)
 $AccountResourceId = "/subscriptions/cd091145-5ea2-4703-ba5d-41063b1d4308/resourceGroups/rg-pro-code-agents/providers/Microsoft.CognitiveServices/accounts/pro-code-agents-resource"
@@ -56,8 +59,8 @@ do {
 
 $password = $passwordPlain
 
-# Create 8 users
-for ($i = 1; $i -le 8; $i++) {
+# Create users
+for ($i = 1; $i -le $UserCount; $i++) {
     $userPrincipal = "studentx{0:D2}@{1}" -f $i, $domain
     $displayName = "Student $i"
 

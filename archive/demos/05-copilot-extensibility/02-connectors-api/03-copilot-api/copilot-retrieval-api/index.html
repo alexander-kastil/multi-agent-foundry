@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copilot Retrieval Api</title>
+    <script
+      type="text/javascript"
+      src="/node_modules/@azure/msal-browser/lib/msal-browser.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
+    <script type="text/javascript" src="env.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Copilot Retrieval Api</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main container-fluid">
+      <div class="actions" role="group" aria-label="Retrieval API examples">
+        <button onclick="doAuth()" type="button" class="btn btn-primary">
+          Authenticate
+        </button>
+        <button
+          onclick="runExample1()"
+          type="button"
+          class="btn btn-outline-primary"
+        >
+          Example 1 &ndash; SharePoint
+        </button>
+        <button
+          onclick="runExample2()"
+          type="button"
+          class="btn btn-outline-primary"
+        >
+          Example 2 &ndash; Copilot connectors
+        </button>
+        <button
+          onclick="runExample4()"
+          type="button"
+          class="btn btn-outline-primary"
+        >
+          Example 4 &ndash; Site filter
+        </button>
+      </div>
+      <div class="card response-card">
+        <div class="card-body">
+          <h5 class="card-title">API response</h5>
+          <pre id="result" class="mb-0"></pre>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

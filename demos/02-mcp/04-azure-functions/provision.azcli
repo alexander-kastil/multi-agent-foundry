@@ -1,0 +1,12 @@
+RESOURCE_GROUP="rg-pro-code-agents"
+LOCATION="swedencentral"
+SUFFIX=$(python -c "import random,string; print(''.join(random.choices(string.ascii_lowercase + string.digits, k=5)))")
+STORAGE_ACCOUNT="m2mcpfunc$SUFFIX"
+FUNCTION_APP="m2-mcp-func-$SUFFIX"
+
+az group create --name "$RESOURCE_GROUP" --location "$LOCATION" -o none
+az storage account create --name "$STORAGE_ACCOUNT" --resource-group "$RESOURCE_GROUP" --location "$LOCATION" --sku Standard_LRS -o none
+az functionapp create --name "$FUNCTION_APP" --resource-group "$RESOURCE_GROUP" --storage-account "$STORAGE_ACCOUNT" \
+  --flexconsumption-location "$LOCATION" --runtime python --runtime-version 3.12 -o none
+
+echo "FUNCTION_APP=$FUNCTION_APP"

@@ -1,0 +1,21 @@
+name: Agent Compatibility Validation
+on:
+  pull_request:
+    paths:
+      - 'agents/**'
+
+jobs:
+  validate-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install PyYAML==6.0.3
+
+      - name: Validate dependency graph and contracts
+        working-directory: demos/08-governance/05-cicd-gates/cicd-gates-py
+        run: python validate_compatibility.py

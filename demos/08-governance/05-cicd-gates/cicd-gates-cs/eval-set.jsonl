@@ -1,0 +1,6 @@
+{"code": "query = \"SELECT * FROM users WHERE name = '\" + name + \"'\"\ncursor.execute(query)", "vulnerable": true}
+{"code": "password = 'admin123'\nconnect(host, user, password)", "vulnerable": true}
+{"code": "result = eval(input('expr: '))", "vulnerable": true}
+{"code": "cursor.execute('SELECT * FROM users WHERE name = %s', (name,))", "vulnerable": false}
+{"code": "hashed = bcrypt.hashpw(pw.encode(), bcrypt.gensalt())", "vulnerable": false}
+{"code": "total = sum(item.price for item in cart)", "vulnerable": false}

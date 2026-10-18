@@ -4,7 +4,7 @@ content-type: application/json
 
 {
     "from": "EUR",
-    "to": "THB",
+    "to": "USD",
     "amount": 100
 }
 

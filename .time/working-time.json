@@ -1,0 +1,59 @@
+{
+  "repo": "pro-code-agents",
+  "origin": "https://github.com/alexander-kastil/pro-code-agents",
+  "sessions": [
+    {
+      "date": "2026-10-18",
+      "from": "09:47",
+      "to": "10:56",
+      "sessionId": "0386aa9c-4e8e-43c7-a756-1c4b4620278f",
+      "branch": "foundry",
+      "commits": [],
+      "surfaces": [
+        "pro-code-agents"
+      ],
+      "files": [
+        "demos/readme.md",
+        "demos/01-foundry-essentials/06-context-engineering/readme.md",
+        "demos/01-foundry-essentials/06-context-engineering/demo-context-engineering.md",
+        "demos/01-foundry-essentials/readme.md"
+      ],
+      "mechanism": {
+        "takes": "a course of 56 demo topics plus market evidence from job postings, practitioner surveys and Google Trends",
+        "does": "rates the course against market demand inside its vendor stack, reshapes it into a sellable standard path of uniform demo-plus-lab units with every other topic kept as an optional catalogue, and adds a run-verified topic on token budgets, compaction and prompt caching",
+        "returns": "a four-day schedule of 20 units, 36 optional topics and a reusable search-interest script for any course"
+      },
+      "portsAsIs": [
+        "market-demand rating method with a Google Trends script",
+        "standard path plus optional catalogue course shape",
+        "context engineering demo in Python and C#"
+      ],
+      "perCustomer": [
+        "the vendor stack and exclusions",
+        "the day count and unit length",
+        "the cloud project the demos run on"
+      ],
+      "evidence": [
+        "context engineering demos run live in Python and C# against the class Foundry project",
+        "demos/readme.md: 77 links resolve, 0 untagged fences"
+      ],
+      "toolchain": {
+        "skills": [
+          "create-class",
+          "report"
+        ],
+        "mcpServers": [
+          "microsoft-learn"
+        ],
+        "agents": [
+          "ms-foundry-expert"
+        ]
+      },
+      "industry": "professional training and education",
+      "status": "Built and running in-house",
+      "catalogue": {
+        "action": "none"
+      }
+    }
+  ]
+}

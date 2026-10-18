@@ -1,136 +1,120 @@
-# Building Copilots and Agentic Apps with Microsoft Foundry & Microsoft Agent Framework
+# Implementing Multi-Agent Solutions using Microsoft Foundry & Microsoft Agent Framework
 
-This five-day class is crafted for software architects and engineers eager to master the end-to-end process of building, orchestrating, and integrating advanced copilots and agentic applications using Microsoft’s latest frameworks and services.
+This four-day class is for software architects and engineers who build, orchestrate and operate agentic applications with Microsoft Foundry and the Microsoft Agent Framework. Every topic is taught with a runnable demo in Python and C#.
 
-The class begins by establishing a strong foundation in Copilots, Agents, and the Microsoft Foundry platform. You’ll gain hands-on experience deploying large language models, working with the Foundry SDK, and developing robust agentic solutions through prompt-, context engineering, Agentic RAG and ReAct (Reasoning and Acting)
-
-As we dive deeper, you’ll explore the Foundry Agent Service—a fully managed, scalable environment for hosting agents—learning to connect knowledge sources, automate workflows, and leverage features like contextual knowledge graphs and Work IQ for enterprise-ready deployments.
-
-The journey continues with a focus on orchestration and workflow design, as you work extensively with the Microsoft Agent Framework. Here, you’ll configure agents for complex, multi-modal scenarios, implement persistent memory, and design sophisticated orchestration patterns with advanced observability and governance. Conversation management, middleware integration, and security are emphasized throughout, ensuring your solutions are both powerful and maintainable.
-
-As the class progresses, you’ll move into pro-code extensibility, building both declarative and custom agents, and preparing your solutions for seamless integration into Copilot Chat, Teams, or the channel of your choice. Everything comes together with the Microsoft Agents SDK, enabling you to connect Copilot Studio and Foundry agents, orchestrate multi-agent solutions, and publish intelligent agents across the Microsoft ecosystem.
-
-Throughout, hands-on labs and demos in Python and C# ensure practical experience at every step. By the end, you’ll be ready to implement, orchestrate, and integrate intelligent pro-code agents—empowering you to deliver scalable, enterprise-grade AI solutions with deep integration into the Microsoft Copilot ecosystem
+The class starts with the Foundry essentials and the MCP servers the agents call, covers server-side agents in the Foundry Agent Service and code-first agents in the Agent Framework, composes them into workflows and multi-agent orchestrations, hosts them, and makes them measurable and safe with evaluation, observability, guardrails and governance.
 
 ## Duration
 
-5 Days
+4 Days
 
 ## Audience
 
 - Software Architects & Engineers for Agentic AI Solutions
-- Microsoft 365 & AI Pro-Code Developers
+- AI Pro-Code Developers
 
 ## Prerequisites & Requirements
 
 - Python, C#, Typescript
 - GitHub Account
-- Microsoft 365 Development & Azure Development Skills helpful
+- Azure Subscription with access to Microsoft Foundry
+- Azure Development Skills helpful
 
 ## Modules
 
-## Module 1: Copilot & Agent Extensibility Fundamentals
+## Module 1: Foundry Essentials for Agent Developers
 
-### Microsoft Foundry Essentials
+- [Microsoft Foundry: Projects & Resources](./01-foundry-essentials/01-foundry-projects/)
+- [Model Deployments & Model Router](./01-foundry-essentials/02-model-router/)
+- [Foundry SDK & Microsoft.Extensions.AI](./01-foundry-essentials/03-foundry-sdk/)
+- [Responses API: Conversations & Streaming](./01-foundry-essentials/04-responses-api/)
+- [Foundry Toolkit & Foundry MCP Server](./01-foundry-essentials/05-foundry-toolkit/)
+- [Context Engineering: Budgets, Compaction & Caching](./01-foundry-essentials/06-context-engineering/)
 
-- Copilots & Agent Frameworks in the Microsoft Ecosystem
-- Deploying LLMs in Microsoft Foundry
-- Model Router: Smart Model Selection
-- Microsoft Foundry SDK & Microsoft.Extensions.AI
-- Infrastructure as Code (IaC) using Azure Developer CLI
+## Module 2: MCP Servers, Security & Hosting
 
-### Agentic AI Fundamentals
+- [MCP Servers: Tools, Resources & Prompts](./02-mcp/01-mcp-servers/)
+- [Transports & MCP Inspector Debugging](./02-mcp/02-transports/)
+- [MCP Authorization: OAuth 2.1 & PRM](./02-mcp/03-mcp-authorization/)
+- [Hosting MCP on Azure Functions](./02-mcp/04-azure-functions/)
+- [MCP Resilience: Retry & Circuit Breaker](./02-mcp/05-mcp-resilience/)
+- [Foundry Toolbox: Managed MCP Endpoints](./02-mcp/06-foundry-toolbox/)
 
-- What Are Agents & Agentic AI?
-- Prompt Engineering vs Context Engineering
-- Knowledge Integration & Agentic RAG
-- Deep Reasoning &  (Reasoning and Acting)
-- Function Calling, REST APIs & MCP Servers
-- Evaluating Generative AI Performance
-- Governance & Guardrails for Responsible Agents
+## Module 3: Foundry Agent Service: Tools, Knowledge & Memory
 
-### Implementing Model Context Protocol Servers (MCP)
+- [Prompt Agents: Versions & Conversations](./03-agent-service/01-prompt-agents/)
+- [Code Interpreter, File & Web Search](./03-agent-service/02-builtin-tools/)
+- [Browser Automation & Computer Use](./03-agent-service/03-browser-automation/)
+- [Foundry IQ: Knowledge Bases & Retrieval](./03-agent-service/04-foundry-iq/)
+- [Advanced RAG: Hybrid Search & Reranking](./03-agent-service/05-advanced-rag/)
+- [Agent Memory: User & Procedural Memory](./03-agent-service/06-agent-memory/)
+- [Stateful Agentic Loops: Plan & Resume](./03-agent-service/07-agentic-loops/)
+- [Voice Agents: Voice Live API](./03-agent-service/08-voice-agents/)
 
-- MCP Core Concepts & Architecture
-- Transports: STDIO vs HTTP Streaming
-- Debugging with MCP Inspector
-- Authentication & Security Best Practices
-- Hosting MCP's in Azure Functions
+## Module 4: Agent Framework: Agents, Tools & Skills
 
-## Module 2: Build Agents using Foundry Agent Service
+- [Chat Clients: Foundry, OpenAI & Claude](./04-agent-framework/01-chat-clients/)
+- [AgentSession: State & Persistence](./04-agent-framework/02-agent-session/)
+- [Context Providers & Long-Term Memory](./04-agent-framework/03-context-providers/)
+- [Middleware: Agent, Function & Chat](./04-agent-framework/04-middleware/)
+- [Function Tools, MCP & Approvals](./04-agent-framework/05-tools-approvals/)
+- [Agent Skills: SKILL.md & Progressive Disclosure](./04-agent-framework/06-agent-skills/)
+- [Harness Agent: Plan, Execute & Compaction](./04-agent-framework/07-harness-agent/)
 
-- Introduction to Foundry Agent Service
-- Threads, Runs, Messages: Managing Inputs & Outputs
-- Knowledge Integration: Foundry IQ, File Search, Azure AI Search, Bing Grounding ...
-- Executing Actions with Tools: Code Interpreter, Azure Functions, OpenAPI & MCP
-- Automating UI Tasks using Browser Automation and Computer Use
-- Tracing, Observability & Performance Evaluation
-- Implementing Autonomous Agents
-- Agent-to-Agent Protocol (A2A) & Connected Agents
+## Module 5: Workflows & Multi-Agent Orchestration
 
-## Module 3: Orchestrate Agents using Microsoft Agent Framework
+- [Workflows: Executors, Edges & Supersteps](./05-orchestration/01-workflows/)
+- [Checkpointing & Human-in-the-Loop Requests](./05-orchestration/02-checkpoints-hitl/)
+- [Sequential, Concurrent & Handoff Orchestration](./05-orchestration/03-orchestration-patterns/)
+- [Group Chat & Magentic Orchestration](./05-orchestration/04-magentic/)
+- [Task Decomposition: Planner & Waves](./05-orchestration/05-task-decomposition/)
+- [Resilient Orchestration: Quorum & Supervisors](./05-orchestration/06-resilient-orchestration/)
+- [Declarative YAML & Functional Workflows](./05-orchestration/07-declarative-workflows/)
 
-### Microsoft Agent Framework Basics & Concepts
+## Module 6: Hosting, Durable Agents & Protocols
 
-- Introduction to the Agent Framework
-- Chat Clients vs Agents: Key differences
-- Agent types and configuration essentials
-- Integrating Microsoft Foundry agents
-- Threads, Conversation management & persistence
-- Implementing long-term memory
-- Governance, Middleware & Observability
-- Multi-modal capabilities and structured outputs
+- [Hosted Agents: Containers & Agent Identity](./06-hosting/01-hosted-agents/)
+- [Foundry Routines: Schedules & Event Triggers](./06-hosting/02-routines/)
+- [azd AI Agent: Deploy & Monitor](./06-hosting/03-azd-ai-agent/)
+- [Durable Agents: Functions & Task Scheduler](./06-hosting/04-durable-agents/)
+- [Self-Hosting: ASP.NET Core & Responses](./06-hosting/05-self-hosting/)
+- [A2A Protocol: Agent Cards & Endpoints](./06-hosting/06-a2a-protocol/) (optional)
+- [Enterprise A2A: Registry & Shared State](./06-hosting/07-enterprise-a2a/) (optional)
+- [AG-UI & CopilotKit: Web Front Ends](./06-hosting/08-ag-ui/) (optional)
 
-### Mastering Tools & Knowledge
+## Module 7: Evaluation, Observability & Optimization
 
-- Built-in tools: Code Interpreter, File Search, Bing Grounding
-- Using vector stores for memory and retrieval
-- Adding custom tools and calling them from agents
-- Integrating OpenAPI and MCP tools
-- Function-calling middleware for advanced workflows
+- [Tracing: OpenTelemetry & Application Insights](./07-evaluation/01-tracing/)
+- [Agent Evaluators: Task Adherence & Tools](./07-evaluation/02-agent-evaluators/)
+- [Evaluation Suites: Judges & Baselines](./07-evaluation/03-evaluation-suites/)
+- [Continuous Evaluation & AI Red Teaming](./07-evaluation/04-continuous-evaluation/)
+- [Agent Optimizer: Instructions & Tool Tuning](./07-evaluation/05-agent-optimizer/)
+- [Performance & Cost: Routing & Caching](./07-evaluation/06-performance-cost/)
+- [Incident Response: Replay & Postmortem](./07-evaluation/07-incident-response/)
 
-### Orchestration & Workflows
+## Module 8: Security, Governance & Delivery
 
-- Introduction to Multi-Agent Orchestration
-- Orchestration Patterns (Sequential, Concurrent, ...)
-- Executor, Edges, Checkpoints
-- Branching & Human-in-the-loop
-- Observability & Workflow Visualization
-- Use Agents inside workflows
+- [Guardrails: Prompt Shields & Intervention Points](./08-governance/01-guardrails/)
+- [Prompt Injection: Layered Defenses](./08-governance/02-prompt-injection/)
+- [Entra Agent ID: On-Behalf-Of Flows](./08-governance/03-agent-identity/)
+- [Zero Trust: Tenant Isolation & Secrets](./08-governance/04-zero-trust/)
+- [CI/CD: GitHub Actions Quality Gates](./08-governance/05-cicd-gates/)
+- [Agent Lifecycle: Versions, Quotas & Retirement](./08-governance/06-agent-lifecycle/)
+- [Responsible AI: Fairness Probes & Audit](./08-governance/07-responsible-ai/)
 
-## Module 4: Microsoft Copilot Pro-Code Extensibility
+## Schedule
 
-### Pro-Code Extensibility Fundamentals
-
-- Declarative Agents vs Custom Engine Agents
-- Teams Developer Portal, Microsoft 365 Agent Toolkit & DevTunnel
-- Governance, Identity & Access Management
-
-### Copilot Connectors & APIs
-
-- Designing and Implementing Copilot Connectors
-- Copilot API Capabilities Overview
-- Microsoft 365 Copilot Retrieval API
-
-### Declarative Agents for Microsoft 365
-
-- Instructions & Conversation Starters
-- Knowledge Sources: Web Search, SharePoint, Teams & Copilot Connectors
-- Image Generation, Code Interpreter & API Plugins
-- Enhancing UI with Adaptive Cards
-
-### Introduction to Custom Engine Agents
-
-- Use Cases for Custom Engine Agents
-- Microsoft Agent SDK & Teams AI Library
-- Exploring Microsoft Agents Toolkit Playground
-- Tools, Knowledge Integration
-
-## Module 5: Agent Integration using Microsoft Agents SDK
-
-- Overview Microsoft Agents SDK
-- Connecting Copilot Studio- & Microsoft Foundry Agents
-- Orchestrate Multi-Agent-Solutions using Microsoft Agent Framework
-- Publishing Agentic AI Solutions to Copilot Chat and Teams
-- Front-End Integration using Agent–User Interaction (AG-UI) Protocol
-
+| Day | Clock          | Length | Deliverable                                                                    | Description                                                                                                                                                                                                                                          |
+| --- | -------------- | ------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | 09:00 to 10:05 | 1h 05m | [Foundry Essentials for Agent Developers](01-foundry-essentials/readme.md)     | Microsoft Foundry, Model Deployments & Model Router, Foundry SDK & Microsoft.Extensions.AI, Responses API, Foundry Toolkit & Foundry MCP Server, Context Engineering (6 topics, 6 demos)                                                             |
+| 1   | 10:05 to 10:15 | 10m    | Break                                                                          |                                                                                                                                                                                                                                                      |
+| 1   | 10:15 to 11:30 | 1h 15m | [MCP Servers, Security & Hosting](02-mcp/readme.md)                            | MCP Servers, Transports & MCP Inspector Debugging, MCP Authorization, Hosting MCP on Azure Functions, MCP Resilience, Foundry Toolbox (6 topics, 6 demos)                                                                                            |
+| 1   | 11:30 to 12:30 | 1h 00m | Lunch                                                                          |                                                                                                                                                                                                                                                      |
+| 1   | 12:30 to 13:55 | 1h 25m | [Foundry Agent Service: Tools, Knowledge & Memory](03-agent-service/readme.md) | Prompt Agents, Code Interpreter, File & Web Search, Browser Automation & Computer Use, Foundry IQ, Advanced RAG, Agent Memory, Stateful Agentic Loops, Voice Agents (8 topics, 8 demos)                                                              |
+| 1   | 13:55 to 14:55 | 1h 00m | [Agent Framework: Agents, Tools & Skills](04-agent-framework/readme.md)        | Chat Clients, AgentSession, Context Providers & Long-Term Memory, Middleware, Function Tools, MCP & Approvals, Agent Skills, Harness Agent (7 topics, 7 demos)                                                                                       |
+| 1   | 14:55 to 15:05 | 10m    | Break                                                                          |                                                                                                                                                                                                                                                      |
+| 1   | 15:05 to 16:10 | 1h 05m | [Workflows & Multi-Agent Orchestration](05-orchestration/readme.md)            | Workflows, Checkpointing & Human-in-the-Loop Requests, Sequential, Concurrent & Handoff Orchestration, Group Chat & Magentic Orchestration, Task Decomposition, Resilient Orchestration, Declarative YAML & Functional Workflows (7 topics, 7 demos) |
+| 2   | 09:00 to 09:50 | 50m    | [Hosting, Durable Agents & Protocols](06-hosting/readme.md)                    | Hosted Agents, Foundry Routines, azd AI Agent, Durable Agents, Self-Hosting, A2A Protocol, Enterprise A2A, AG-UI & CopilotKit (8 topics, 8 demos, 3 optional)                                                                                        |
+| 2   | 09:50 to 11:05 | 1h 15m | [Evaluation, Observability & Optimization](07-evaluation/readme.md)            | Tracing, Agent Evaluators, Evaluation Suites, Continuous Evaluation & AI Red Teaming, Agent Optimizer, Performance & Cost, Incident Response (7 topics, 7 demos)                                                                                     |
+| 2   | 11:05 to 11:15 | 10m    | Break                                                                          |                                                                                                                                                                                                                                                      |
+| 2   | 11:15 to 12:30 | 1h 15m | [Security, Governance & Delivery](08-governance/readme.md)                     | Guardrails, Prompt Injection, Entra Agent ID, Zero Trust, CI/CD, Agent Lifecycle, Responsible AI (7 topics, 7 demos)                                                                                                                                 |
