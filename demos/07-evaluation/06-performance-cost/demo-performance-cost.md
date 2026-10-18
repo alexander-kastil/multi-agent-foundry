@@ -46,6 +46,8 @@ ESCALATION_KEYWORDS = ["exception", "legal", "complaint", "lawsuit", "refund pol
 
 The section first runs all six requests on tier 2 without caches as the baseline. It then runs them through the result cache, the semantic cache and the router, in that order.
 
+![Six support requests passing the result cache, the semantic cache and the router to tier 1, 2 or 3, with one hit in each cache](../pptx/images/06-01-routing-cache.svg)
+
 ```python
 cached = result_cache.get(AGENT_ID, {"q": question})
 if cached:
@@ -152,6 +154,8 @@ call 2: input tokens 2069, cached 1920
 ## Step 3: Hold each agent to a token budget
 
 `context_assembler.py` builds a digest of facts, keeps the last three exchanges, keeps older turns that carry preferences or commitments, and compresses tool results to the fields the agent needs. It prunes in a fixed order only when the result is still over budget.
+
+![Context layers of a reasoning agent and a lookup agent, the lookup agent's three pruning steps in order and the token counts against the naive prompt](../pptx/images/06-02-token-budgets.svg)
 
 ```python
 AGENT_BUDGETS = {"lookup": 2000, "reasoning": 4000, "policy": 8000}

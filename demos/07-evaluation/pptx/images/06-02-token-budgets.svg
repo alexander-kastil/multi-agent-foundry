@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Context assembly under a token budget for two agent types</title>
+  <desc>The assembler builds the context in a fixed order: system prompt, digest of established facts, tool results compressed to the fields the agent needs, important older turns and the last three exchanges. The reasoning agent with a budget of 4000 keeps every layer and uses 185 tokens. The lookup agent with a budget of 120 prunes in a fixed order: first the window is summarized, then the important turns are dropped, then the tool results are dropped, leaving 94 tokens. The naive prompt is 1706 tokens. A highlight steps through the three pruning steps in order.</desc>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-size="28" font-weight="700" fill="#24292f">
+    <text x="120" y="122">reasoning agent, budget 4000</text>
+    <text x="1040" y="122">lookup agent, budget 120</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#eaf2ff">
+    <rect x="120" y="150" width="760" height="96" rx="18"/>
+    <rect x="120" y="260" width="760" height="96" rx="18"/>
+    <rect x="120" y="370" width="760" height="96" rx="18"/>
+    <rect x="120" y="480" width="760" height="96" rx="18"/>
+    <rect x="120" y="590" width="760" height="96" rx="18"/>
+    <rect x="1040" y="150" width="760" height="96" rx="18"/>
+    <rect x="1040" y="260" width="760" height="96" rx="18"/>
+    <rect x="1040" y="590" width="760" height="96" rx="18"/>
+  </g>
+  <g stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8" fill="#ffffff">
+    <rect x="1040" y="370" width="760" height="96" rx="18"/>
+    <rect x="1040" y="480" width="760" height="96" rx="18"/>
+  </g>
+
+  <g font-size="28" fill="#24292f">
+    <text x="150" y="208">System prompt</text>
+    <text x="150" y="318">Digest of established facts</text>
+    <text x="150" y="428">Tool results, compressed</text>
+    <text x="150" y="538">Important older turns</text>
+    <text x="150" y="648">Last three exchanges</text>
+    <text x="1070" y="208">System prompt</text>
+    <text x="1070" y="318">Digest of established facts</text>
+    <text x="1070" y="648">Last three exchanges</text>
+  </g>
+  <g font-size="28" fill="#57606a">
+    <text x="1070" y="428">Tool results, compressed</text>
+    <text x="1070" y="538">Important older turns</text>
+  </g>
+
+  <g fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <rect x="1480" y="394" width="300" height="48" rx="24"/>
+    <rect x="1430" y="504" width="350" height="48" rx="24"/>
+    <rect x="1476" y="614" width="304" height="48" rx="24"/>
+  </g>
+  <g font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="1630" y="427"><tspan font-weight="700">3</tspan> tool results dropped</text>
+    <text x="1605" y="537"><tspan font-weight="700">2</tspan> important turns dropped</text>
+    <text x="1628" y="647"><tspan font-weight="700">1</tspan> window summarized</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="400" y="760" width="1327" height="50" rx="4" fill="#f6f8fa"/>
+    <rect x="400" y="840" width="144" height="50" rx="4" fill="#e9f7ef"/>
+    <rect x="400" y="920" width="73" height="50" rx="4" fill="#e9f7ef"/>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="120" y="794">naive prompt</text>
+    <text x="120" y="874">reasoning</text>
+    <text x="120" y="954">lookup</text>
+    <text x="1710" y="794" text-anchor="end">1706 tokens</text>
+    <text x="560" y="874">185 tokens, nothing pruned</text>
+    <text x="489" y="954">94 tokens, three layers pruned</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="1032" y="582" width="776" height="112" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.25"/>
+    </rect>
+    <rect x="1032" y="472" width="776" height="112" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.5"/>
+    </rect>
+    <rect x="1032" y="362" width="776" height="112" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.75"/>
+    </rect>
+  </g>
+</svg>

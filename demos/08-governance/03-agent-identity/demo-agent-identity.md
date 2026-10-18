@@ -122,9 +122,13 @@ Run the first command again with the project principal id. Expected output:
 
 The agent is a `ServiceIdentity` named after the account, project and agent. The project is a `ManagedIdentity`. Tool roles belong to the first, platform roles to the second.
 
+![Four numbered stages: the project managed identity authenticates the blueprint, Agent Service gets a token for the agent identity, Entra issues an access token for the audience, and the MCP server or A2A endpoint receives it](../pptx/images/03-01-token-exchange.svg)
+
 ## Step 3: Let one agent call another with the narrowest role
 
 The orders agent must be able to call the HR agent over its endpoint and nothing else. Foundry Agent Consumer holds only the `interact` data action, and assigning it at the scope of the HR agent limits it to that one endpoint.
+
+![The orders agent identity holds the Foundry Agent Consumer role at the scope of the m8-idn-hr agent, which reaches only that endpoint, while the project scope would reach every agent endpoint](../pptx/images/03-03-agent-scope.svg)
 
 ```bash
 az role assignment create \
@@ -192,6 +196,8 @@ Scopes are separated by a single space. With a comma between them, the tool call
 ## Step 5: Trigger the OAuth consent request
 
 The agent gets an `mcp` tool that points at the OAuth connection. The first call by a user returns a consent request instead of a tool result.
+
+![Sequence between user, your application, Foundry Agent Service and MCP server: the first call returns an oauth_consent_request, the user consents, and a second call with previous_response_id reaches the tool with the user's token](../pptx/images/03-02-consent-round-trip.svg)
 
 ```python
 MCPTool(

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-size="28">
+  <title>Progressive disclosure of the hut-booking skill</title>
+  <desc>The four parts of the hut-booking skill folder each feed one loading stage. The SKILL.md frontmatter feeds stage 1, Advertise: name and description go into the prompt on every run without a tool, about 100 tokens per skill. The SKILL.md body feeds stage 2, Load, through load_skill: the full hut booking procedure, ideally under 5000 tokens. The references and assets folders feed stage 3, Read resources, through read_skill_resource: CANCELLATION_POLICY.md or confirmation-template.md, one file only when needed; the tool is listed when a skill has resources. The scripts folder feeds stage 4, Run scripts, through run_skill_script: price_quote.py runs with 3 4 winter and returns total=624 euro; the tool is listed when a skill has scripts. A bracket marks stage 1 as every run with no tool call, and stages 2 to 4 as only when the task needs it, where each skill tool call needs approval by default. A highlight steps through the four stages in order.</desc>
+  <style>
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="60" y="68" class="m b" font-size="30">hut-booking/</text>
+
+  <rect x="100" y="95" width="340" height="120" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="270" y="147" class="m c">SKILL.md</text>
+  <text x="270" y="189" class="s c" font-size="26">frontmatter</text>
+  <rect x="560" y="95" width="340" height="120" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="730" y="147" class="m c">SKILL.md</text>
+  <text x="730" y="189" class="s c" font-size="26">body</text>
+  <rect x="1020" y="95" width="340" height="120" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1190" y="147" class="m c">references/</text>
+  <text x="1190" y="189" class="m c">assets/</text>
+  <rect x="1480" y="95" width="340" height="120" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1650" y="147" class="m c">scripts/</text>
+  <text x="1650" y="189" class="m c">price_quote.py</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M270,215 V284"/>
+    <path d="M730,215 V284"/>
+    <path d="M1190,215 V284"/>
+    <path d="M1650,215 V284"/>
+  </g>
+
+  <g stroke="#e0a534" stroke-width="2" fill="#fff6e5">
+    <rect x="60" y="300" width="420" height="560" rx="22"/>
+    <rect x="520" y="300" width="420" height="560" rx="22"/>
+    <rect x="980" y="300" width="420" height="560" rx="22"/>
+    <rect x="1440" y="300" width="420" height="560" rx="22"/>
+  </g>
+  <g stroke="#e0a534" stroke-width="2" fill="#ffffff">
+    <circle cx="116" cy="362" r="30"/>
+    <circle cx="576" cy="362" r="30"/>
+    <circle cx="1036" cy="362" r="30"/>
+    <circle cx="1496" cy="362" r="30"/>
+  </g>
+  <g class="b c" font-size="30">
+    <text x="116" y="373" class="b c">1</text>
+    <text x="576" y="373" class="b c">2</text>
+    <text x="1036" y="373" class="b c">3</text>
+    <text x="1496" y="373" class="b c">4</text>
+  </g>
+  <text x="164" y="374" class="b" font-size="34">Advertise</text>
+  <text x="624" y="374" class="b" font-size="34">Load</text>
+  <text x="1084" y="374" class="b" font-size="34">Read resources</text>
+  <text x="1544" y="374" class="b" font-size="34">Run scripts</text>
+
+  <g fill="#ffffff" stroke="#8c959f" stroke-width="2">
+    <rect x="90" y="410" width="360" height="64" rx="10"/>
+    <rect x="550" y="410" width="360" height="64" rx="10"/>
+    <rect x="1010" y="410" width="360" height="64" rx="10"/>
+    <rect x="1470" y="410" width="360" height="64" rx="10"/>
+  </g>
+  <text x="270" y="452" class="s c">no tool</text>
+  <text x="730" y="452" class="m c">load_skill</text>
+  <text x="1190" y="452" class="m c">read_skill_resource</text>
+  <text x="1650" y="452" class="m c">run_skill_script</text>
+
+  <text x="90" y="530">Name and description</text>
+  <text x="90" y="570">go into the prompt</text>
+  <text x="90" y="610">on every run</text>
+
+  <text x="550" y="530">The full <tspan class="m">SKILL.md</tspan></text>
+  <text x="550" y="570">body with the hut</text>
+  <text x="550" y="610">booking procedure</text>
+
+  <text x="1010" y="530">A reference or asset</text>
+  <text x="1010" y="570">file, only when needed</text>
+  <text x="1010" y="614" class="m" font-size="26">CANCELLATION_POLICY.md</text>
+  <text x="1010" y="654" class="m" font-size="26">confirmation-template.md</text>
+
+  <text x="1470" y="530">Runs the script with</text>
+  <text x="1470" y="572" class="m" font-size="26">3 4 winter</text>
+  <text x="1470" y="612">and returns</text>
+  <text x="1470" y="654" class="m" font-size="26">total=624 euro</text>
+
+  <g stroke="#e0a534" stroke-width="2">
+    <line x1="90" y1="735" x2="450" y2="735"/>
+    <line x1="550" y1="735" x2="910" y2="735"/>
+    <line x1="1010" y1="735" x2="1370" y2="735"/>
+    <line x1="1470" y1="735" x2="1830" y2="735"/>
+  </g>
+  <g class="s" font-size="26">
+    <text x="90" y="782" class="s" font-size="26">about 100 tokens</text>
+    <text x="90" y="818" class="s" font-size="26">per skill</text>
+    <text x="550" y="782" class="s" font-size="26">ideally under</text>
+    <text x="550" y="818" class="s" font-size="26">5000 tokens</text>
+    <text x="1010" y="782" class="s" font-size="26">listed when a skill</text>
+    <text x="1010" y="818" class="s" font-size="26">has resources</text>
+    <text x="1470" y="782" class="s" font-size="26">listed when a skill</text>
+    <text x="1470" y="818" class="s" font-size="26">has scripts</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="2" fill="none">
+    <path d="M80,888 V908 H460 V888"/>
+    <path d="M540,888 V908 H1840 V888"/>
+  </g>
+  <text x="270" y="958" class="b c" font-size="30">every run</text>
+  <text x="270" y="998" class="s c" font-size="26">no tool call</text>
+  <text x="1190" y="958" class="b c" font-size="30">only when the task needs it</text>
+  <text x="1190" y="998" class="s c" font-size="26">each skill tool call needs approval by default</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="52" y="292" width="436" height="576" rx="28" stroke-opacity="1">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="1;0;0;0" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="94" y="89" width="352" height="132" rx="18" stroke-opacity="1">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="1;0;0;0" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="512" y="292" width="436" height="576" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;1;0;0" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="554" y="89" width="352" height="132" rx="18" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;1;0;0" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="972" y="292" width="436" height="576" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;1;0" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1014" y="89" width="352" height="132" rx="18" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;1;0" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1432" y="292" width="436" height="576" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;1" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1474" y="89" width="352" height="132" rx="18" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;1" keyTimes="0;0.25;0.5;0.75" dur="8s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

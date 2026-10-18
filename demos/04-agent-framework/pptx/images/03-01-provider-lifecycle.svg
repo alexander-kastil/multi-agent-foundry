@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The context provider lifecycle around one model call</title>
+  <desc>Each agent.run() calls before_run on every provider in list order. The providers add to the SessionContext with extend_instructions, extend_messages, extend_tools and extend_middleware. The model call knows only that request. after_run then stores what happened in session.state, one slice per source_id. With context_providers=[primary, audit] the slices are "memory" and "audit", 4 messages each after two runs, and the state survives to_dict() and from_dict(). The next run's before_run reads that state. A highlight steps through the stages in order.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="70" y="150" width="260" height="300" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="200" y="285" class="s b" font-size="30" text-anchor="middle">Each run</text>
+  <text x="200" y="330" class="m" font-size="26" text-anchor="middle">agent.run()</text>
+
+  <rect x="410" y="150" width="320" height="300" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="570" y="232" class="m b" font-size="30" text-anchor="middle">before_run</text>
+  <text x="570" y="295" class="s" font-size="26" text-anchor="middle">each provider,</text>
+  <text x="570" y="335" class="s" font-size="26" text-anchor="middle">in list order,</text>
+  <text x="570" y="375" class="s" font-size="26" text-anchor="middle">adds to the request</text>
+
+  <rect x="810" y="150" width="360" height="300" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="990" y="225" class="m b" font-size="30" text-anchor="middle">SessionContext</text>
+  <text x="845" y="285" class="m" font-size="26">extend_instructions</text>
+  <text x="845" y="330" class="m" font-size="26">extend_messages</text>
+  <text x="845" y="375" class="m" font-size="26">extend_tools</text>
+  <text x="845" y="420" class="m" font-size="26">extend_middleware</text>
+
+  <rect x="1250" y="150" width="260" height="300" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1380" y="270" class="s b" font-size="30" text-anchor="middle">Model call</text>
+  <text x="1380" y="320" class="s" font-size="26" text-anchor="middle">knows only</text>
+  <text x="1380" y="360" class="s" font-size="26" text-anchor="middle">the request</text>
+
+  <rect x="1590" y="150" width="260" height="300" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1720" y="270" class="m b" font-size="30" text-anchor="middle">after_run</text>
+  <text x="1720" y="320" class="s" font-size="26" text-anchor="middle">stores what</text>
+  <text x="1720" y="360" class="s" font-size="26" text-anchor="middle">happened</text>
+
+  <line x1="330" y1="300" x2="406" y2="300" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="730" y1="300" x2="806" y2="300" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="1170" y1="300" x2="1246" y2="300" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="1510" y1="300" x2="1586" y2="300" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="70" y="600" width="730" height="345" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="105" y="655" class="m b" font-size="28">context_providers=[primary, audit]</text>
+  <rect x="105" y="685" width="660" height="110" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="730" class="s" font-size="26"><tspan class="m b" font-size="28">primary</tspan><tspan dx="24">replays the transcript</tspan></text>
+  <text x="130" y="773" class="m sec" font-size="26">"memory", load_messages=True</text>
+  <rect x="105" y="810" width="660" height="110" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="855" class="s" font-size="26"><tspan class="m b" font-size="28">audit</tspan><tspan dx="24">only records, injected context too</tspan></text>
+  <text x="130" y="898" class="m sec" font-size="26">store_context_messages=True</text>
+
+  <line x1="570" y1="600" x2="570" y2="454" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="1000" y="600" width="850" height="345" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1035" y="655" class="s sec" font-size="26"><tspan class="m b" font-size="28" fill="#24292f">session.state</tspan><tspan dx="24">one slice per</tspan> <tspan class="m">source_id</tspan></text>
+  <rect x="1035" y="685" width="780" height="70" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1060" y="730" class="m" font-size="26">"memory"</text>
+  <text x="1300" y="730" class="s" font-size="26">4 messages</text>
+  <rect x="1035" y="775" width="780" height="70" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1060" y="820" class="m" font-size="26">"audit"</text>
+  <text x="1300" y="820" class="s" font-size="26">4 messages</text>
+  <text x="1035" y="905" class="s sec" font-size="26">Survives <tspan class="m">to_dict()</tspan> and <tspan class="m">from_dict()</tspan></text>
+
+  <line x1="1720" y1="450" x2="1720" y2="596" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M1100,600 L1100,530 L650,530 L650,454" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="680" y="512" class="s sec" font-size="26">The next run reads this state</text>
+
+  <rect x="410" y="150" width="320" height="300" rx="18" fill="none" stroke="#e0a534" stroke-width="7" opacity="1">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.2"/>
+  </rect>
+  <rect x="810" y="150" width="360" height="300" rx="18" fill="none" stroke="#e0a534" stroke-width="7" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2;0.4"/>
+  </rect>
+  <rect x="1250" y="150" width="260" height="300" rx="18" fill="none" stroke="#e0a534" stroke-width="7" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4;0.6"/>
+  </rect>
+  <rect x="1590" y="150" width="260" height="300" rx="18" fill="none" stroke="#e0a534" stroke-width="7" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6;0.8"/>
+  </rect>
+  <g opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.8"/>
+    <rect x="1000" y="600" width="850" height="345" rx="18" fill="none" stroke="#e0a534" stroke-width="7"/>
+    <path d="M1100,600 L1100,530 L650,530 L650,458" fill="none" stroke="#e0a534" stroke-width="5"/>
+  </g>
+</svg>

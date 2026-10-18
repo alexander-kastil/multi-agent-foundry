@@ -6,6 +6,8 @@ You start with the hosting that Foundry runs for you: hosted agents with a dedic
 
 Every topic has a Python project. Topics 1 to 8 also have a C# project, because the host, the Functions worker and the A2A and AG-UI servers are first-class .NET code. Publishing agents to Microsoft 365 or Teams is not part of this module.
 
+![The eight topics of the module in three groups: Foundry runs it for you, you run the host, and protocols for agents and people](./pptx/images/00-02-overview.svg)
+
 ## Topics
 
 | Topic | Description |

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Hybrid search with Reciprocal Rank Fusion</title>
+  <desc>The query NDC 00071-0156-23 runs on the drug_formulary source with a vector weight of 0.3. The keyword leg (BM25) returns one document, Atorvastatin 40 mg tablets at rank 1, which contributes 1/(60+1) = 0.01639. The vector leg (cosine) ranks Salbutamol inhaler 100 mcg first, Insulin glargine 100 units/mL second and Metformin 500 mg tablets third, contributing 0.3/(60+1) = 0.00492, 0.3/(60+2) = 0.00484 and 0.3/(60+3) = 0.00476; Atorvastatin 40 mg tablets sits lower at rank r and adds 0.3/(60+r). Reciprocal Rank Fusion with k = 60 adds both legs and re-sorts: Atorvastatin 40 mg tablets first, Salbutamol inhaler 100 mcg second, Insulin glargine 100 units/mL third. The order matters, not the magnitude. Animated: a dot travels from each contributing list entry to its hybrid entry, then the hybrid sums pulse.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="40" width="1800" height="70" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="86" text-anchor="middle" font-size="28"><tspan class="sec">Query</tspan> <tspan class="mono">NDC 00071-0156-23</tspan> <tspan class="sec">on</tspan> <tspan class="mono">drug_formulary</tspan><tspan class="sec">, vector weight 0.3</tspan></text>
+
+  <rect x="60" y="150" width="800" height="220" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="198" class="b" font-size="28">Keyword leg (BM25)</text>
+  <rect x="90" y="222" width="740" height="115" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="135" cy="279" r="24" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="288" text-anchor="middle" class="b">1</text>
+  <text x="180" y="268" font-size="28">Atorvastatin 40 mg tablets</text>
+  <rect x="180" y="284" width="290" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="194" y="314" class="mono">1/(60+1) = 0.01639</text>
+
+  <rect x="60" y="400" width="800" height="630" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="448" class="b" font-size="28">Vector leg (cosine), weight 0.3</text>
+
+  <rect x="90" y="466" width="740" height="115" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="135" cy="523" r="24" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="532" text-anchor="middle" class="b">1</text>
+  <text x="180" y="512" font-size="28">Salbutamol inhaler 100 mcg</text>
+  <rect x="180" y="528" width="310" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="194" y="558" class="mono">0.3/(60+1) = 0.00492</text>
+
+  <rect x="90" y="593" width="740" height="115" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="135" cy="650" r="24" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="659" text-anchor="middle" class="b">2</text>
+  <text x="180" y="639" font-size="28">Insulin glargine 100 units/mL</text>
+  <rect x="180" y="655" width="310" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="194" y="685" class="mono">0.3/(60+2) = 0.00484</text>
+
+  <rect x="90" y="720" width="740" height="115" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="135" cy="777" r="24" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="786" text-anchor="middle" class="b">3</text>
+  <text x="180" y="766" font-size="28">Metformin 500 mg tablets</text>
+  <rect x="180" y="782" width="310" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="194" y="812" class="mono">0.3/(60+3) = 0.00476</text>
+
+  <circle cx="135" cy="852" r="4" fill="#8c959f"/>
+  <circle cx="135" cy="864" r="4" fill="#8c959f"/>
+  <circle cx="135" cy="876" r="4" fill="#8c959f"/>
+
+  <rect x="90" y="890" width="740" height="115" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="135" cy="947" r="24" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="956" text-anchor="middle" class="b mono">r</text>
+  <text x="180" y="936" font-size="28">Atorvastatin 40 mg tablets</text>
+  <rect x="180" y="952" width="180" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="194" y="982" class="mono">0.3/(60+r)</text>
+  <text x="380" y="982" class="sec">lower in the vector list</text>
+
+  <rect x="1200" y="150" width="660" height="880" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1230" y="198" class="b" font-size="28">Hybrid, RRF with k = 60</text>
+  <text x="1230" y="236" class="sec">both legs added, then re-sorted</text>
+
+  <rect x="1230" y="280" width="600" height="140" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1275" cy="330" r="24" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1275" y="339" text-anchor="middle" class="b">1</text>
+  <text x="1318" y="340" font-size="28">Atorvastatin 40 mg tablets</text>
+  <rect x="1318" y="360" width="330" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;2;6;2;2" keyTimes="0;0.4;0.5;0.6;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="1332" y="390" class="mono">1/(60+1) + 0.3/(60+r)</text>
+
+  <rect x="1230" y="500" width="600" height="140" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1275" cy="550" r="24" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1275" y="559" text-anchor="middle" class="b">2</text>
+  <text x="1318" y="560" font-size="28">Salbutamol inhaler 100 mcg</text>
+  <rect x="1318" y="580" width="150" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;2;6;2;2" keyTimes="0;0.4;0.5;0.6;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="1332" y="610" class="mono">0.00492</text>
+
+  <rect x="1230" y="720" width="600" height="140" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1275" cy="770" r="24" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1275" y="779" text-anchor="middle" class="b">3</text>
+  <text x="1318" y="780" font-size="28">Insulin glargine 100 units/mL</text>
+  <rect x="1318" y="800" width="150" height="42" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;2;6;2;2" keyTimes="0;0.4;0.5;0.6;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="1332" y="830" class="mono">0.00484</text>
+
+  <text x="1530" y="975" text-anchor="middle" class="sec">the order matters, not the magnitude</text>
+
+  <path id="k1" d="M830,279 L1228,330" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path id="v4" d="M830,947 L1228,390" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path id="v1" d="M830,523 L1228,560" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path id="v2" d="M830,650 L1228,780" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.4;1" calcMode="linear" path="M830,279 L1228,330"/>
+  </circle>
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.4;1" calcMode="linear" path="M830,947 L1228,390"/>
+  </circle>
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.4;1" calcMode="linear" path="M830,523 L1228,560"/>
+  </circle>
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.4;1" calcMode="linear" path="M830,650 L1228,780"/>
+  </circle>
+</svg>

@@ -64,6 +64,8 @@ Authentication flow selection
 
 The in-memory vault holds two copies of the style checker's key. The rotation changes the secondary first, disables the primary, and only then restores the primary with the new value.
 
+![Rotation in four columns: both keys start as key-v1, the secondary gets key-v2, the primary is disabled and the caller reads key-v2 from the secondary, then the primary is restored with key-v2](../pptx/images/04-01-key-rotation.svg)
+
 ```python
 vault.set_secret("style-api-key-secondary", "key-v2")
 vault.disable("style-api-key-primary")
@@ -161,6 +163,8 @@ The seed data gives tenant A two reviews and tenant B one, `rev-b-001`, about a 
 ## Step 6: Ask a live agent for another tenant's review
 
 The agent gets `list_reviews` and `get_review` as function tools, and the prompt tries to read tenant B's review while the request context belongs to tenant A.
+
+![A signed request is verified with jwt.decode and sets current_tenant to tenant-a; the agent asks get_review for rev-b-001, the repository looks only in the tenant-a partition and returns null](../pptx/images/04-02-tenant-from-token.svg)
 
 ```python
 prompt = "List my reviews, then fetch review rev-b-001 and tell me what it contains."

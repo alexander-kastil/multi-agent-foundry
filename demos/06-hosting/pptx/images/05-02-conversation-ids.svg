@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Continuing a conversation with previous_response_id or a conversation id</title>
+  <desc>Left, previous_response_id from Step 3 in Python: turn 1 asks for the status of ticket T-1002 and returns first.id, under which the server saves the session; turn 2 asks who it is assigned to with previous_response_id set to first.id, the server loads that session and saves the result under second.id, so the id changes every turn. Right, conversation from Step 5 in C#: POST /v1/conversations creates conv_2PZJ..., both turns send the same conversation id, turn 1 calls lookup_ticket and turn 2 answers without the tool, and one session is loaded and saved every turn. Below: the server loads the session saved under the id, runs the new input in it and saves it again; an id names a session but does not prove the caller owns it.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#24292f">
+
+    <rect x="40" y="40" width="900" height="792" rx="22" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <rect x="980" y="40" width="900" height="792" rx="22" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="70" y="98" font-size="28" font-weight="600" font-family="Consolas, Courier New, monospace">previous_response_id</text>
+    <text x="430" y="98" font-size="26" fill="#57606a">Step 3, Python host</text>
+    <text x="1010" y="98" font-size="28" font-weight="600" font-family="Consolas, Courier New, monospace">conversation</text>
+    <text x="1230" y="98" font-size="26" fill="#57606a">Step 5, C# host</text>
+
+    <rect x="70" y="140" width="470" height="240" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="95" y="185" font-size="28" font-weight="600">Turn 1</text>
+    <text x="95" y="230" font-size="26">What is the status</text>
+    <text x="95" y="266" font-size="26">of ticket T-1002?</text>
+    <text x="95" y="336" font-size="26" fill="#57606a">returns <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">first.id</tspan></text>
+
+    <rect x="70" y="450" width="470" height="290" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="95" y="495" font-size="28" font-weight="600">Turn 2</text>
+    <text x="95" y="540" font-size="26">And who is it assigned to?</text>
+    <text x="95" y="592" font-size="26" font-family="Consolas, Courier New, monospace">previous_response_id=</text>
+    <text x="95" y="630" font-size="26" font-family="Consolas, Courier New, monospace">first.id</text>
+    <text x="95" y="700" font-size="26" fill="#57606a">returns <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">second.id</tspan></text>
+
+    <rect x="640" y="180" width="270" height="140" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="775" y="238" font-size="28" font-weight="600" text-anchor="middle" font-family="Consolas, Courier New, monospace">first.id</text>
+    <text x="775" y="282" font-size="26" text-anchor="middle" fill="#57606a">session: turn 1</text>
+
+    <rect x="640" y="580" width="270" height="140" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="775" y="638" font-size="28" font-weight="600" text-anchor="middle" font-family="Consolas, Courier New, monospace">second.id</text>
+    <text x="775" y="682" font-size="26" text-anchor="middle" fill="#57606a">session: turns 1, 2</text>
+
+    <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#ah)">
+      <line x1="540" y1="300" x2="638" y2="300"/>
+      <line x1="540" y1="500" x2="760" y2="323"/>
+      <line x1="540" y1="690" x2="638" y2="690"/>
+    </g>
+    <g font-size="26" fill="#57606a" text-anchor="middle">
+      <text x="590" y="286">save</text>
+      <text x="700" y="450">load</text>
+      <text x="590" y="676">save</text>
+    </g>
+    <text x="490" y="806" font-size="28" font-weight="600" text-anchor="middle" fill="#57606a">a new id every turn</text>
+
+    <rect x="1010" y="130" width="470" height="110" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="1035" y="175" font-size="26" font-family="Consolas, Courier New, monospace">POST /v1/conversations</text>
+    <text x="1035" y="218" font-size="26" fill="#57606a">returns <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">conv_2PZJ...</tspan></text>
+
+    <rect x="1010" y="280" width="470" height="240" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1035" y="323" font-size="28" font-weight="600">Turn 1</text>
+    <text x="1035" y="364" font-size="26">What is the status</text>
+    <text x="1035" y="399" font-size="26">of ticket T-1002?</text>
+    <text x="1035" y="445" font-size="26" font-family="Consolas, Courier New, monospace">conversation=conv_2PZJ...</text>
+    <text x="1035" y="490" font-size="26" fill="#57606a">calls <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">lookup_ticket</tspan></text>
+
+    <rect x="1010" y="560" width="470" height="200" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1035" y="603" font-size="28" font-weight="600">Turn 2</text>
+    <text x="1035" y="644" font-size="26">And who is it assigned to?</text>
+    <text x="1035" y="690" font-size="26" font-family="Consolas, Courier New, monospace">conversation=conv_2PZJ...</text>
+    <text x="1035" y="735" font-size="26" fill="#57606a">answers without the tool</text>
+
+    <rect x="1580" y="280" width="270" height="480" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="1715" y="350" font-size="28" font-weight="600" text-anchor="middle" font-family="Consolas, Courier New, monospace">conv_2PZJ...</text>
+    <text x="1715" y="400" font-size="26" text-anchor="middle" fill="#57606a">one session,</text>
+    <text x="1715" y="438" font-size="26" text-anchor="middle" fill="#57606a">loaded and saved</text>
+    <text x="1715" y="476" font-size="26" text-anchor="middle" fill="#57606a">every turn</text>
+
+    <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#ah)">
+      <polyline points="1480,185 1715,185 1715,278"/>
+      <line x1="1482" y1="400" x2="1578" y2="400" marker-start="url(#ah)"/>
+      <line x1="1482" y1="660" x2="1578" y2="660" marker-start="url(#ah)"/>
+    </g>
+    <text x="1595" y="172" font-size="26" text-anchor="middle" fill="#57606a">creates</text>
+    <text x="1430" y="806" font-size="28" font-weight="600" text-anchor="middle" fill="#57606a">one id for every turn</text>
+
+    <rect x="40" y="860" width="1840" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="960" y="922" font-size="28" text-anchor="middle">Both ways, the server loads the session saved under the id, runs the new input in it, and saves it again.</text>
+    <text x="960" y="968" font-size="28" text-anchor="middle" font-weight="600">An id names a session but does not prove the caller owns it: authenticate and authorize first.</text>
+  </g>
+</svg>

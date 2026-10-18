@@ -6,6 +6,8 @@ A model only knows what is in the request. Context providers are the hooks that 
 
 You attach providers with `context_providers=[...]` when you create the agent. Each provider has a unique `source_id`, a `before_run` hook and an `after_run` hook, and the agent runs them in list order.
 
+![Each agent.run() calls before_run on every provider in list order, which fills the SessionContext, then the model call, then after_run, which stores one slice per source_id in session.state for the next run](../pptx/images/03-01-provider-lifecycle.svg)
+
 ```python
 from agent_framework import Agent, InMemoryHistoryProvider
 
@@ -85,6 +87,8 @@ The Redis and Cosmos packages are published as pre-releases (`1.0.0b261015` at t
 ## Long-term memory with Foundry
 
 History replays a transcript. Memory extracts durable facts from conversations and recalls only the relevant ones later, across sessions. `FoundryMemoryProvider` connects an agent to a Foundry memory store, a project-scoped item that Learn documents as a preview feature.
+
+![History: FileHistoryProvider saves and replays the four lines of alex-trip.jsonl for one session ID. Memory: the Foundry memory store extracts facts about Bruno the dog from session 1 and recalls them in session 2](../pptx/images/03-02-history-and-memory.svg)
 
 ```python
 from agent_framework.foundry import FoundryChatClient, FoundryMemoryProvider

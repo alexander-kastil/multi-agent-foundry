@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The seven topics of module 7 in order</title>
+  <desc>Top row, trace and score: 01 Tracing, OpenTelemetry and Application Insights; 02 Agent Evaluators, Task Adherence and Tools; 03 Evaluation Suites, Judges and Baselines; 04 Continuous Evaluation and AI Red Teaming. Bottom row, improve and respond: 05 Agent Optimizer, Instructions and Tool Tuning; 06 Performance and Cost, Routing and Caching; 07 Incident Response, Replay and Postmortem. A highlight steps through the topics in order.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-size="34" font-weight="600" fill="#57606a">
+    <text x="60" y="118">Trace and score</text>
+    <text x="60" y="598">Improve and respond</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="60" y="145" width="410" height="340" rx="24" fill="#eaf2ff"/>
+    <rect x="520" y="145" width="410" height="340" rx="24" fill="#eaf2ff"/>
+    <rect x="980" y="145" width="410" height="340" rx="24" fill="#eaf2ff"/>
+    <rect x="1440" y="145" width="410" height="340" rx="24" fill="#eaf2ff"/>
+    <rect x="60" y="625" width="410" height="340" rx="24" fill="#e9f7ef"/>
+    <rect x="520" y="625" width="410" height="340" rx="24" fill="#e9f7ef"/>
+    <rect x="980" y="625" width="410" height="340" rx="24" fill="#e9f7ef"/>
+  </g>
+
+  <g font-size="40" font-weight="700" fill="#57606a">
+    <text x="95" y="207">01</text>
+    <text x="555" y="207">02</text>
+    <text x="1015" y="207">03</text>
+    <text x="1475" y="207">04</text>
+    <text x="95" y="687">05</text>
+    <text x="555" y="687">06</text>
+    <text x="1015" y="687">07</text>
+  </g>
+  <g font-size="32" font-weight="700" fill="#24292f">
+    <text x="95" y="263">Tracing</text>
+    <text x="555" y="263">Agent Evaluators</text>
+    <text x="1015" y="263">Evaluation Suites</text>
+    <text x="1475" y="263">Continuous Evaluation</text>
+    <text x="95" y="743">Agent Optimizer</text>
+    <text x="555" y="743">Performance &amp; Cost</text>
+    <text x="1015" y="743">Incident Response</text>
+  </g>
+  <g font-size="28" fill="#24292f">
+    <text x="95" y="308">OpenTelemetry &amp;</text>
+    <text x="95" y="346">Application Insights</text>
+    <text x="555" y="308">Task Adherence &amp; Tools</text>
+    <text x="1015" y="308">Judges &amp; Baselines</text>
+    <text x="1475" y="308">&amp; AI Red Teaming</text>
+    <text x="95" y="788">Instructions &amp;</text>
+    <text x="95" y="826">Tool Tuning</text>
+    <text x="555" y="788">Routing &amp; Caching</text>
+    <text x="1015" y="788">Replay &amp; Postmortem</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="95" y="407">Spans, Azure Monitor</text>
+    <text x="95" y="445">export and KQL</text>
+    <text x="555" y="407">Task and tool evaluators,</text>
+    <text x="555" y="445">local and in the cloud</text>
+    <text x="1015" y="407">Calibrated judges and</text>
+    <text x="1015" y="445">baseline gates</text>
+    <text x="1475" y="407">Live scoring and cloud</text>
+    <text x="1475" y="445">red teaming</text>
+    <text x="95" y="887">Dataset-driven instruction</text>
+    <text x="95" y="925">and tool tuning</text>
+    <text x="555" y="887">Tier routing, caches</text>
+    <text x="555" y="925">and token budgets</text>
+    <text x="1015" y="887">Severity, replay, bisection</text>
+    <text x="1015" y="925">and postmortem</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="474" y1="315" x2="514" y2="315"/>
+    <line x1="934" y1="315" x2="974" y2="315"/>
+    <line x1="1394" y1="315" x2="1434" y2="315"/>
+    <line x1="474" y1="795" x2="514" y2="795"/>
+    <line x1="934" y1="795" x2="974" y2="795"/>
+    <path d="M1645,489 L1645,545 L30,545 L30,795 L54,795"/>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="52" y="137" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.1429"/>
+    </rect>
+    <rect x="512" y="137" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1429;0.2857"/>
+    </rect>
+    <rect x="972" y="137" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2857;0.4286"/>
+    </rect>
+    <rect x="1432" y="137" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4286;0.5714"/>
+    </rect>
+    <rect x="52" y="617" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5714;0.7143"/>
+    </rect>
+    <rect x="512" y="617" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.7143;0.8571"/>
+    </rect>
+    <rect x="972" y="617" width="426" height="356" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.8571"/>
+    </rect>
+  </g>
+</svg>

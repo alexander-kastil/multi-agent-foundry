@@ -8,6 +8,8 @@ This topic builds four loop designs around one prompt agent: plan then act, act 
 
 A prompt agent can call a function tool, but your code runs the function. The service returns a `function_call` item, your code executes it and sends back a `function_call_output`, and the loop ends when a response contains no more function calls.
 
+![The run_turn loop: your code sends the request, Foundry Agent Service runs the agent, your code checks for a function_call item, runs get_market_data locally and sends back a function_call_output with the same call_id until no call remains](../pptx/images/07-01-inner-tool-loop.svg)
+
 ```python
 from azure.ai.projects.models import FunctionTool
 
@@ -80,6 +82,8 @@ Use two stopping conditions together: a confidence threshold and a cycle cap. In
 
 Because a response id names a finished state, several prompts can branch from the same id and run side by side. Background mode makes each branch a job that you poll.
 
+![One response chain: a JSON plan, a check in your code, the executed plan, three reflection cycles with confidence 6, 5 and 4 ended by the cycle cap, and bull and bear branches forked from the reflected response](../pptx/images/07-02-response-chain.svg)
+
 ```python
 job = openai.responses.create(
     input=prompt,
@@ -97,6 +101,8 @@ The branches do not see each other, and none of them repeats the tool calls that
 ## Persist and resume
 
 Only ids need to be stored to resume: the history lives in Foundry, and the application keeps the pointer and its own metadata. A small store maps a session name to the conversation id.
+
+![loops.py writes two ids and metadata to sessions.json and exits; resume.py reads the entry in a new process and continues the conversation that Foundry Agent Service stores, which answers GOOG with a P/E of 24.8](../pptx/images/07-03-persist-resume.svg)
 
 ```python
 save_session("analyst-session-1", conversation.id, first.id, {"ticker": "GOOG", "agent_version": agent.version})

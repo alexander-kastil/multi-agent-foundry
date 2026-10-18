@@ -35,6 +35,8 @@ flag = sim < 0.95 or gap > 5
 
 Cosine similarity compares the direction of the three-score vector. A vector of scores is dominated by its largest component, so two reviews can point the same way while one scores the code 6 points higher. That is why the probe also measures the absolute gap on `quality_score`: the run in the demo flags a sample with similarity 1.0000 and a gap of 6.
 
+![One code sample reviewed three times by the same agent version, with a junior header, a senior header and no header; each context review is compared with the anonymized baseline and flagged when similarity drops below 0.95 or the quality gap is above 5](../pptx/images/07-01-consistency-probe.svg)
+
 ## Distribution probe
 
 A single sample can differ by chance. A distribution test asks whether the junior and senior score sets look like draws from the same population. The probe uses the two-sample Kolmogorov-Smirnov test from SciPy.
@@ -80,6 +82,8 @@ reference = {"name": agent.name, "version": agent.version, "type": "agent_refere
 ```
 
 Metadata holds up to 16 key-value pairs, with keys up to 64 characters and values up to 512. Pinning `version` in the agent reference means every audit entry names the version that really answered, not whatever was latest at that moment.
+
+![The agent version m8-rai-reviewer v1 with its prompt_version metadata, the three audit entries of one correlation_id with different input hashes, and the three questions audit_report.py answers from the log](../pptx/images/07-02-audit-trail.svg)
 
 ## Reading the trail
 

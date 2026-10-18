@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Tool calls in the response output</title>
+  <desc>The output items of the four demo steps, in order. Step 1, m3-analyst with Code Interpreter: three code_interpreter_call items, then a message whose container_file_citation names transportation_operating_profit_bar_chart.png. Step 2, m3-product-agent with File Search: file_search_call, then a message with a file_citation for product-info.md. Step 3, m3-web-agent with Web Search: web_search_call, then a message with a url_citation for https://pypi.org/project/azure-ai-projects/. Step 4, m3-combined-agent: file_search_call, code_interpreter_call, then a message that answers 2 times 365 equals 730 days.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="490" y="92" class="sec">items in <tspan class="mono">response.output</tspan>, in order</text>
+  <text x="1400" y="92" class="sec">what the last message carries</text>
+
+  <rect x="80" y="130" width="360" height="170" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="175" class="b">Step 1</text>
+  <text x="110" y="220" class="mono b" font-size="28">m3-analyst</text>
+  <text x="110" y="262" class="sec">Code Interpreter</text>
+  <rect x="510" y="155" width="340" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="500" y="165" width="340" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="490" y="175" width="340" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="510" y="224" class="mono">code_interpreter_call</text>
+  <text x="880" y="224" class="b sec">3 calls</text>
+  <line x1="990" y1="215" x2="1198" y2="215" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1200" y="175" width="140" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="224" text-anchor="middle" class="mono">message</text>
+  <line x1="1340" y1="215" x2="1400" y2="215" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="1400" y="140" width="450" height="150" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1425" y="185" class="mono b">container_file_citation</text>
+  <text x="1425" y="228" class="mono sec">transportation_operating_</text>
+  <text x="1425" y="266" class="mono sec">profit_bar_chart.png</text>
+
+  <rect x="80" y="350" width="360" height="170" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="395" class="b">Step 2</text>
+  <text x="110" y="440" class="mono b" font-size="28">m3-product-agent</text>
+  <text x="110" y="482" class="sec">File Search</text>
+  <rect x="490" y="395" width="270" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="510" y="444" class="mono">file_search_call</text>
+  <line x1="760" y1="435" x2="1198" y2="435" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1200" y="395" width="140" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="444" text-anchor="middle" class="mono">message</text>
+  <line x1="1340" y1="435" x2="1400" y2="435" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="1400" y="360" width="450" height="150" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1425" y="420" class="mono b">file_citation</text>
+  <text x="1425" y="462" class="mono sec">product-info.md</text>
+
+  <rect x="80" y="570" width="360" height="170" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="615" class="b">Step 3</text>
+  <text x="110" y="660" class="mono b" font-size="28">m3-web-agent</text>
+  <text x="110" y="702" class="sec">Web Search</text>
+  <rect x="490" y="615" width="255" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="510" y="664" class="mono">web_search_call</text>
+  <line x1="745" y1="655" x2="1198" y2="655" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1200" y="615" width="140" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="664" text-anchor="middle" class="mono">message</text>
+  <line x1="1340" y1="655" x2="1400" y2="655" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="1400" y="580" width="450" height="150" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1425" y="625" class="mono b">url_citation</text>
+  <text x="1425" y="668" class="mono sec">https://pypi.org/project/</text>
+  <text x="1425" y="706" class="mono sec">azure-ai-projects/</text>
+
+  <rect x="80" y="790" width="360" height="180" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="832" class="b">Step 4</text>
+  <text x="110" y="874" class="mono b" font-size="28">m3-combined-agent</text>
+  <text x="110" y="914" class="sec">File Search and</text>
+  <text x="110" y="950" class="sec">Code Interpreter</text>
+  <rect x="490" y="835" width="270" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="510" y="884" class="mono">file_search_call</text>
+  <line x1="760" y1="875" x2="798" y2="875" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="800" y="835" width="340" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="820" y="884" class="mono">code_interpreter_call</text>
+  <line x1="1140" y1="875" x2="1198" y2="875" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1200" y="835" width="140" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="884" text-anchor="middle" class="mono">message</text>
+  <line x1="1340" y1="875" x2="1400" y2="875" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="1400" y="800" width="450" height="150" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1425" y="860" class="b">2 × 365 = 730</text>
+  <text x="1425" y="902" class="sec">the warranty lasts 730 days</text>
+</svg>

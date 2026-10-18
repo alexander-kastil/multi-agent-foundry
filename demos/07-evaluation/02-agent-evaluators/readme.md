@@ -46,6 +46,8 @@ Agent evaluators need the trajectory, not only the final text. Foundry reads it 
 
 A row can use `messages` instead of `query` and `response`. Each evaluator needs a different subset: Tool Call Success needs only `response`, Task Adherence needs `query` and `response`, and the tool evaluators add `tool_definitions`. The supported tool types are file search, function tools, MCP and knowledge-based MCP; for Azure AI Search, Bing grounding, SharePoint, code interpreter, Fabric and web search the docs advise against Tool Call Accuracy, Tool Input Accuracy, Tool Output Utilization and Tool Call Success.
 
+![A refund trajectory split into query, response and tool_definitions, with the system evaluators judging the whole run and the process evaluators checking the tool calls](../pptx/images/02-01-what-evaluators-read.svg)
+
 ## Running Evaluators in the Cloud
 
 A cloud evaluation has three parts: a data source schema, testing criteria that bind evaluators to fields with `data_mapping`, and a run that supplies the data. Results are stored in the project and open in the portal under Evaluations.

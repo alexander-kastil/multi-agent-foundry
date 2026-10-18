@@ -56,6 +56,8 @@ deploy_router m1-router-quality '{
 
 The other three deployments follow the same pattern: no `routing` block for `m1-router-balanced`, mode `cost` for `m1-router-cost`, and mode `balanced` with a two-model `models` array for `m1-router-subset`.
 
+![Four router deployments plotting the same pool by cost and quality: Balanced picks the cheapest model near the top, Quality the highest-rated, Cost the cheapest in a wider band, and the subset only gpt-5-mini or gpt-5.4](../pptx/images/02-02-routing-modes.svg)
+
 Expected output (trimmed):
 
 ```json
@@ -124,6 +126,8 @@ All four report the same model and version. The routing mode and subset are depl
 ## Step 3: Send one call and read the serving model
 
 The router is called exactly like a normal model: the deployment name goes into `model`. What differs is `response.model`, which names the model that did the work.
+
+![A call to the m1-router-balanced deployment passes through model router 2025-11-18, which picks a model from the OpenAI, Anthropic, xAI, DeepSeek, Meta and Fireworks pool and names it in response.model](../pptx/images/02-01-router-request-flow.svg)
 
 ```python
 response = openai.responses.create(

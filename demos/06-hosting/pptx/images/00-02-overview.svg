@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The eight topics of the hosting module in three groups</title>
+  <desc>Eight numbered topic cards in three columns. Hosting that Foundry runs for you: 01 Hosted Agents, 02 Foundry Routines, 03 azd AI Agent. Hosting you run yourself: 04 Durable Agents, 05 Self-Hosting. Protocols for agents and people: 06 A2A Protocol, 07 Enterprise A2A, 08 AG-UI and CopilotKit. Each card carries the topic title and one short line.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <g fill="#24292f" font-size="30" font-weight="700" text-anchor="middle">
+    <text x="350" y="118">Foundry runs it for you</text>
+    <text x="960" y="118">You run the host</text>
+    <text x="1570" y="118">Protocols for agents and people</text>
+  </g>
+  <g stroke="#57606a" stroke-width="4" marker-end="url(#a)">
+    <line x1="560" y1="108" x2="790" y2="108"/>
+    <line x1="1130" y1="108" x2="1300" y2="108"/>
+  </g>
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="80" y="170" width="540" height="250" rx="22" fill="#f3edff"/>
+    <rect x="80" y="450" width="540" height="250" rx="22" fill="#f3edff"/>
+    <rect x="80" y="730" width="540" height="250" rx="22" fill="#f3edff"/>
+    <rect x="690" y="310" width="540" height="250" rx="22" fill="#eaf2ff"/>
+    <rect x="690" y="590" width="540" height="250" rx="22" fill="#eaf2ff"/>
+    <rect x="1300" y="170" width="540" height="250" rx="22" fill="#e9f7ef"/>
+    <rect x="1300" y="450" width="540" height="250" rx="22" fill="#e9f7ef"/>
+    <rect x="1300" y="730" width="540" height="250" rx="22" fill="#e9f7ef"/>
+  </g>
+  <g fill="#57606a" font-size="44" font-weight="700">
+    <text x="116" y="248">01</text>
+    <text x="116" y="528">02</text>
+    <text x="116" y="808">03</text>
+    <text x="726" y="388">04</text>
+    <text x="726" y="668">05</text>
+    <text x="1336" y="248">06</text>
+    <text x="1336" y="528">07</text>
+    <text x="1336" y="808">08</text>
+  </g>
+  <g fill="#24292f" font-size="34" font-weight="700">
+    <text x="196" y="248">Hosted Agents</text>
+    <text x="196" y="528">Foundry Routines</text>
+    <text x="196" y="808">azd AI Agent</text>
+    <text x="806" y="388">Durable Agents</text>
+    <text x="806" y="668">Self-Hosting</text>
+    <text x="1416" y="248">A2A Protocol</text>
+    <text x="1416" y="528">Enterprise A2A</text>
+    <text x="1416" y="808">AG-UI &amp; CopilotKit</text>
+  </g>
+  <g fill="#24292f" font-size="28">
+    <text x="116" y="310">Containers &amp; Agent Identity</text>
+    <text x="116" y="590">Schedules &amp; Event Triggers</text>
+    <text x="116" y="870">Deploy &amp; Monitor</text>
+    <text x="726" y="450">Functions &amp; Task Scheduler</text>
+    <text x="726" y="730">ASP.NET Core &amp; Responses</text>
+    <text x="1336" y="310">Agent Cards &amp; Endpoints</text>
+    <text x="1336" y="590">Registry &amp; Shared State</text>
+    <text x="1336" y="870">Web Front Ends</text>
+  </g>
+  <g fill="#57606a" font-size="26">
+    <text x="116" y="372">Your code on Foundry-run compute</text>
+    <text x="116" y="652">One trigger, one action per routine</text>
+    <text x="116" y="932">Ship and monitor in one loop</text>
+    <text x="726" y="512">Approval waits that cost no compute</text>
+    <text x="726" y="792">An agent inside your web server</text>
+    <text x="1336" y="372">One wire format between agents</text>
+    <text x="1336" y="652">Routing, tenants and conflicts</text>
+    <text x="1336" y="932">Agent events streamed to a browser</text>
+  </g>
+</svg>

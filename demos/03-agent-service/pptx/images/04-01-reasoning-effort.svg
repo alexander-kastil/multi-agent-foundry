@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Reasoning effort levels of a Foundry IQ knowledge base</title>
+  <desc>Three rows compare minimal, low and medium reasoning effort on the same two-hop question. Minimal sends intents, makes no model call, searches every source with the question as written and returns extracted content (EXTRACTIVE_DATA). Low and medium send messages, let gpt-5.4 plan subqueries that run in parallel with hybrid search and semantic reranking, and return a synthesized answer with ref_id citations (ANSWER_SYNTHESIS); medium spends more reasoning on planning and iteration. One demo run: minimal 4.2 s, 2 index searches, 3 references, no tokens; low 7.3 s, 6 index searches, 8 references, 1465 planning and 2201 synthesis tokens; medium 12.9 s, 4 index searches, 6 references, 1462 planning and 2067 synthesis tokens.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="175" y="118" text-anchor="middle" class="b sec" font-size="28">Effort</text>
+  <text x="496" y="118" text-anchor="middle" class="b sec" font-size="28">Query planning</text>
+  <text x="872" y="118" text-anchor="middle" class="b sec" font-size="28">Search</text>
+  <text x="1248" y="118" text-anchor="middle" class="b sec" font-size="28">Output</text>
+  <text x="1657" y="118" text-anchor="middle" class="b sec" font-size="28">One demo run</text>
+
+  <rect x="60" y="160" width="230" height="270" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="175" y="265" text-anchor="middle" class="mono b" font-size="30">minimal</text>
+  <text x="175" y="303" text-anchor="middle" class="sec">request field</text>
+  <text x="175" y="341" text-anchor="middle" class="mono">intents</text>
+  <line x1="292" y1="295" x2="324" y2="295" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="326" y="160" width="340" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="496" y="284" text-anchor="middle" class="b" font-size="28">No model call</text>
+  <text x="496" y="322" text-anchor="middle" class="sec">question as written</text>
+  <line x1="668" y1="295" x2="700" y2="295" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="702" y="160" width="340" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="872" y="284" text-anchor="middle" class="b" font-size="28">Every source</text>
+  <text x="872" y="322" text-anchor="middle" class="sec">one search per source</text>
+  <line x1="1044" y1="295" x2="1076" y2="295" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1078" y="160" width="340" height="270" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1248" y="265" text-anchor="middle" class="b" font-size="28">Extracted content</text>
+  <text x="1248" y="303" text-anchor="middle" class="sec">raw passages</text>
+  <text x="1248" y="341" text-anchor="middle" class="mono">EXTRACTIVE_DATA</text>
+  <rect x="1454" y="160" width="406" height="270" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="222" class="b" font-size="40">4.2 s</text>
+  <text x="1490" y="264">2 index searches</text>
+  <text x="1490" y="302">3 references</text>
+  <text x="1490" y="340" class="sec">planning tokens 0</text>
+  <text x="1490" y="378" class="sec">synthesis tokens 0</text>
+
+  <rect x="60" y="460" width="230" height="270" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="175" y="565" text-anchor="middle" class="mono b" font-size="30">low</text>
+  <text x="175" y="603" text-anchor="middle" class="sec">request field</text>
+  <text x="175" y="641" text-anchor="middle" class="mono">messages</text>
+  <line x1="292" y1="595" x2="324" y2="595" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="326" y="460" width="340" height="270" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="496" y="546" text-anchor="middle" class="b" font-size="28"><tspan class="mono">gpt-5.4</tspan> plans</text>
+  <text x="496" y="584" text-anchor="middle" class="sec">decomposes the</text>
+  <text x="496" y="622" text-anchor="middle" class="sec">question into</text>
+  <text x="496" y="660" text-anchor="middle" class="sec">subqueries</text>
+  <line x1="668" y1="595" x2="700" y2="595" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="702" y="460" width="340" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="872" y="565" text-anchor="middle" class="b" font-size="28">Subqueries</text>
+  <text x="872" y="603" text-anchor="middle" class="sec">in parallel, hybrid</text>
+  <text x="872" y="641" text-anchor="middle" class="sec">semantic reranking</text>
+  <line x1="1044" y1="595" x2="1076" y2="595" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1078" y="460" width="340" height="270" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1248" y="565" text-anchor="middle" class="b" font-size="28">Synthesized answer</text>
+  <text x="1248" y="603" text-anchor="middle" class="sec"><tspan class="mono">ref_id</tspan> citations</text>
+  <text x="1248" y="641" text-anchor="middle" class="mono">ANSWER_SYNTHESIS</text>
+  <rect x="1454" y="460" width="406" height="270" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="522" class="b" font-size="40">7.3 s</text>
+  <text x="1490" y="564">6 index searches</text>
+  <text x="1490" y="602">8 references</text>
+  <text x="1490" y="640" class="sec">planning tokens 1465</text>
+  <text x="1490" y="678" class="sec">synthesis tokens 2201</text>
+
+  <rect x="60" y="760" width="230" height="270" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="175" y="865" text-anchor="middle" class="mono b" font-size="30">medium</text>
+  <text x="175" y="903" text-anchor="middle" class="sec">request field</text>
+  <text x="175" y="941" text-anchor="middle" class="mono">messages</text>
+  <line x1="292" y1="895" x2="324" y2="895" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="326" y="760" width="340" height="270" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="496" y="846" text-anchor="middle" class="b" font-size="28"><tspan class="mono">gpt-5.4</tspan> plans</text>
+  <text x="496" y="884" text-anchor="middle" class="sec">more reasoning on</text>
+  <text x="496" y="922" text-anchor="middle" class="sec">planning and</text>
+  <text x="496" y="960" text-anchor="middle" class="sec">iteration</text>
+  <line x1="668" y1="895" x2="700" y2="895" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="702" y="760" width="340" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="872" y="865" text-anchor="middle" class="b" font-size="28">Subqueries</text>
+  <text x="872" y="903" text-anchor="middle" class="sec">in parallel, hybrid</text>
+  <text x="872" y="941" text-anchor="middle" class="sec">semantic reranking</text>
+  <line x1="1044" y1="895" x2="1076" y2="895" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1078" y="760" width="340" height="270" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1248" y="865" text-anchor="middle" class="b" font-size="28">Synthesized answer</text>
+  <text x="1248" y="903" text-anchor="middle" class="sec"><tspan class="mono">ref_id</tspan> citations</text>
+  <text x="1248" y="941" text-anchor="middle" class="mono">ANSWER_SYNTHESIS</text>
+  <rect x="1454" y="760" width="406" height="270" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="822" class="b" font-size="40">12.9 s</text>
+  <text x="1490" y="864">4 index searches</text>
+  <text x="1490" y="902">6 references</text>
+  <text x="1490" y="940" class="sec">planning tokens 1462</text>
+  <text x="1490" y="978" class="sec">synthesis tokens 2067</text>
+</svg>

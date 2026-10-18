@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Hosted agent versions and the session sandbox lifecycle</title>
+  <desc>Once per version, Agent Service pulls the image or builds the ZIP, creates the agent's own Entra identity and publishes the dedicated endpoint; each version is immutable and the endpoint serves one version at a time. Per session, the first request provisions a VM-isolated sandbox and is slower, the sandbox then serves the session with a persistent $HOME and /files, and after an idle timeout of 2 to 60 minutes (15 by default) the platform deprovisions it. When the same session returns, the platform restores the sandbox. A sandbox is sized at 0.5 vCPU and 1 GiB, 1 vCPU and 2 GiB, or 2 vCPU and 4 GiB. An amber highlight steps through the session states and a dot follows the restore path.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 12 12" refX="11" refY="6" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8c959f"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="80" y="100" font-size="28" font-weight="600" fill="#57606a">Once per version</text>
+  <g stroke="#8c959f" stroke-width="2" fill="#f3edff">
+    <rect x="80" y="125" width="513" height="160" rx="18"/>
+    <rect x="703" y="125" width="513" height="160" rx="18"/>
+    <rect x="1326" y="125" width="513" height="160" rx="18"/>
+  </g>
+  <g fill="#24292f" font-size="30" font-weight="700">
+    <text x="110" y="192">Image pulled or ZIP built</text>
+    <text x="733" y="192">Agent identity created</text>
+    <text x="1356" y="192">Endpoint published</text>
+  </g>
+  <g fill="#57606a" font-size="26">
+    <text x="110" y="240">container image or ZIP of source</text>
+    <text x="733" y="240">its own Entra service principal</text>
+    <text x="1356" y="240" font-family="Consolas, 'Courier New', monospace">/agents/{name}/endpoint</text>
+  </g>
+  <g stroke="#8c959f" stroke-width="2" marker-end="url(#arr)">
+    <line x1="595" y1="205" x2="699" y2="205"/>
+    <line x1="1218" y1="205" x2="1322" y2="205"/>
+  </g>
+  <text x="80" y="335" font-size="26" fill="#57606a">Each version is immutable, and an endpoint serves one version at a time.</text>
+
+  <text x="80" y="410" font-size="28" font-weight="600" fill="#57606a">Per session</text>
+  <g stroke="#e0a534" stroke-width="2" fill="#fff6e5">
+    <rect x="80" y="435" width="480" height="280" rx="18"/>
+    <rect x="700" y="435" width="520" height="280" rx="18"/>
+    <rect x="1360" y="435" width="480" height="280" rx="18"/>
+  </g>
+  <g fill="#24292f" font-size="32" font-weight="700">
+    <text x="112" y="502">New session</text>
+    <text x="732" y="502">Sandbox running</text>
+    <text x="1392" y="502">Deprovisioned</text>
+  </g>
+  <g fill="#24292f" font-size="26">
+    <text x="112" y="560">The first request provisions</text>
+    <text x="112" y="600">a VM-isolated sandbox, so</text>
+    <text x="112" y="640">this call is slower.</text>
+    <text x="732" y="560">Your container serves the</text>
+    <text x="732" y="600">session, with a persistent</text>
+    <text x="732" y="640"><tspan font-family="Consolas, 'Courier New', monospace">$HOME</tspan> and <tspan font-family="Consolas, 'Courier New', monospace">/files</tspan>.</text>
+    <text x="1392" y="560">Idle for 2 to 60 minutes</text>
+    <text x="1392" y="600">(15 by default): no compute</text>
+    <text x="1392" y="640">is kept warm.</text>
+  </g>
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <line x1="576" y1="575" x2="684" y2="575"/>
+    <line x1="1236" y1="575" x2="1344" y2="575"/>
+    <path d="M1600 731 V815 H960 V731"/>
+  </g>
+  <text x="1280" y="862" font-size="26" fill="#24292f" text-anchor="middle">Same session returns: the platform restores the sandbox</text>
+
+  <text x="80" y="985" font-size="26" font-weight="600" fill="#57606a">Sized per session</text>
+  <g stroke="#8c959f" stroke-width="2" fill="#f6f8fa">
+    <rect x="320" y="940" width="250" height="66" rx="33"/>
+    <rect x="600" y="940" width="230" height="66" rx="33"/>
+    <rect x="860" y="940" width="230" height="66" rx="33"/>
+  </g>
+  <g fill="#24292f" font-size="26" text-anchor="middle">
+    <text x="445" y="983">0.5 vCPU, 1 GiB</text>
+    <text x="715" y="983">1 vCPU, 2 GiB</text>
+    <text x="975" y="983">2 vCPU, 4 GiB</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="70" y="425" width="500" height="300" rx="26" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.25" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="690" y="425" width="540" height="300" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.25;0.5" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1350" y="425" width="500" height="300" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.75" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <circle r="14" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1" keyTimes="0;0.75" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    <animateMotion path="M1600 731 V815 H960 V731" keyPoints="0;0;1;1" keyTimes="0;0.75;0.97;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+  </circle>
+</svg>

@@ -106,6 +106,8 @@ Stop the C# server with Ctrl+C before moving on.
 
 `client.py` resolves the card and wraps it as an `A2AAgent`. From here the remote agent is called like any local one.
 
+![client.py fetches the agent card from /.well-known/agent-card.json, reads the JSON-RPC interface URL, sends a message there, and A2AExecutor runs m6h2-title-agent while its instructions, tools and model stay on the server](../pptx/images/06-01-card-discovery.svg)
+
 ```python
 async with httpx.AsyncClient(timeout=60.0) as http_client:
     card = await A2ACardResolver(httpx_client=http_client, base_url=TITLE_URL).get_agent_card()
@@ -130,6 +132,8 @@ title: Hosted Agents Without the Plumbing: Build Smarter, Ship Faster
 ## Step 3: Route between two remote agents
 
 A router agent gets each remote agent as a tool through `as_tool`. It only knows names and descriptions from the cards, so adding a third specialist is a new URL in the list.
+
+![The router agent m6h2-routing-agent holds two A2AAgent tools, asks m6h2-title-agent for a title, passes it to m6h2-outline-agent and returns both in one answer](../pptx/images/06-02-router-remote-agents.svg)
 
 ```python
 router = Agent(
@@ -172,6 +176,8 @@ Stop both A2A servers with Ctrl+C.
 ## Step 4: Expose a Foundry prompt agent over A2A
 
 Foundry can host the A2A endpoint for you. `enable_incoming.py` creates a prompt agent, then patches it with an agent card and the A2A protocol next to the responses protocol.
+
+![Both directions in Foundry: in Step 4 call_foundry_a2a.py calls m6h2-a2a-agent with an Entra token, and in Step 5 m6h2-a2a-caller reaches it through the RemoteA2A connection m6h2-a2a-target with the A2A tool](../pptx/images/06-03-foundry-a2a.svg)
 
 ```python
 patched = project.agents.update_details(

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>One trace across the orchestrator, the agent service and Foundry</title>
+  <desc>The orchestrator opens customer_request, routes with chat gpt-5.4 and calls the downstream agent service inside its client span orchestrator_to_m7-product-search-agent. The HTTP POST carries the traceparent header, so the server span invoke_agent m7-product-search-agent continues the same trace. Its chat span calls the Responses API, which also sends traceparent, so the Foundry service spans with role responsesapi join it. Application Insights holds all ten rows under one operation_Id, cbec7d2813fb351f08a3042710462eea.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="60" width="1260" height="240" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="110" font-size="30" font-weight="700" fill="#24292f">Orchestrator</text>
+  <text x="310" y="110" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">tracing-demo</text>
+  <rect x="1120" y="78" width="176" height="44" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1208" y="109" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">cbec7d28</text>
+  <rect x="90" y="140" width="280" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="230" y="196" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">customer_request</text>
+  <text x="230" y="240" font-size="26" fill="#57606a" text-anchor="middle">root span</text>
+  <rect x="395" y="140" width="260" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="525" y="196" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">chat gpt-5.4</text>
+  <text x="525" y="240" font-size="26" fill="#57606a" text-anchor="middle">routing call</text>
+  <rect x="680" y="140" width="620" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="990" y="196" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">orchestrator_to_m7-product-search-agent</text>
+  <text x="990" y="240" font-size="26" fill="#57606a" text-anchor="middle">client span</text>
+
+  <rect x="60" y="400" width="1260" height="240" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="450" font-size="30" font-weight="700" fill="#24292f">Downstream agent service</text>
+  <text x="500" y="450" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">tracing-demo</text>
+  <rect x="1120" y="418" width="176" height="44" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1208" y="449" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">cbec7d28</text>
+  <rect x="90" y="480" width="250" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="215" y="536" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">chat</text>
+  <text x="215" y="580" font-size="26" fill="#57606a" text-anchor="middle">model call</text>
+  <rect x="680" y="480" width="620" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="990" y="536" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">invoke_agent m7-product-search-agent</text>
+  <text x="990" y="580" font-size="26" fill="#57606a" text-anchor="middle">server span</text>
+
+  <rect x="60" y="740" width="1260" height="240" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="250" y="790" font-size="30" font-weight="700" fill="#24292f">Foundry service</text>
+  <text x="510" y="790" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">responsesapi</text>
+  <rect x="1120" y="758" width="176" height="44" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1208" y="789" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">cbec7d28</text>
+  <rect x="90" y="820" width="630" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="405" y="876" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">invoke_agent m7-product-search-agent:1</text>
+  <text x="405" y="920" font-size="26" fill="#57606a" text-anchor="middle">agent span, written by Foundry</text>
+  <rect x="750" y="820" width="550" height="136" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1025" y="876" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">chat gpt-5.4-2026-03-05</text>
+  <text x="1025" y="920" font-size="26" fill="#57606a" text-anchor="middle">model span, written by Foundry</text>
+
+  <line x1="990" y1="276" x2="990" y2="474" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="966" y="360" font-size="26" fill="#57606a" text-anchor="end">HTTP POST</text>
+  <rect x="1012" y="328" width="190" height="44" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1107" y="359" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">traceparent</text>
+
+  <line x1="680" y1="548" x2="346" y2="548" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <line x1="215" y1="616" x2="215" y2="814" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="238" y="668" width="190" height="44" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="333" y="699" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">traceparent</text>
+  <text x="450" y="700" font-size="26" fill="#57606a">Responses API call</text>
+
+  <line x1="1320" y1="180" x2="1394" y2="180" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="520" x2="1394" y2="520" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="860" x2="1394" y2="860" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1400" y="60" width="460" height="920" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1630" y="112" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Application Insights</text>
+  <rect x="1430" y="150" width="400" height="170" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1630" y="196" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">operation_Id</text>
+  <text x="1630" y="244" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a" text-anchor="middle">cbec7d2813fb351f</text>
+  <text x="1630" y="284" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a" text-anchor="middle">08a3042710462eea</text>
+  <rect x="1430" y="370" width="400" height="250" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1630" y="422" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">tracing-demo</text>
+  <text x="1630" y="474" font-size="26" fill="#24292f" text-anchor="middle">8 rows from the</text>
+  <text x="1630" y="512" font-size="26" fill="#24292f" text-anchor="middle">orchestrator and the</text>
+  <text x="1630" y="550" font-size="26" fill="#24292f" text-anchor="middle">agent service</text>
+  <rect x="1430" y="670" width="400" height="200" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1630" y="722" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">responsesapi</text>
+  <text x="1630" y="774" font-size="26" fill="#24292f" text-anchor="middle">2 rows written by</text>
+  <text x="1630" y="812" font-size="26" fill="#24292f" text-anchor="middle">the Foundry service</text>
+  <text x="1630" y="932" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">one trace, 10 rows</text>
+
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M990,284 L990,464" keyPoints="0;0;1;1" keyTimes="0;0.0625;0.3125;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.0625;0.3125"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M672,548 L356,548" keyPoints="0;0;1;1" keyTimes="0;0.3125;0.4375;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3125;0.4375"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M215,624 L215,804" keyPoints="0;0;1;1" keyTimes="0;0.4375;0.6875;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4375;0.6875"/>
+  </circle>
+</svg>

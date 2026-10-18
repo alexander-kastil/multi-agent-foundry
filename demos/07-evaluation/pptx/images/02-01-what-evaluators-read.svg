@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>What agent evaluators read from a trajectory</title>
+  <desc>A recorded agent run as Foundry reads it. The query holds the system message, look up an order before you act on it, and the user message, order A100 arrived damaged, please refund it. The response holds the tool call lookup_order with order_id A100, the tool result with status delivered and total 24.0, and the final text, I issued a refund of 24.00 euro for order A100. The tool_definitions list the lookup_order schema. System evaluation, Task Completion, Task Adherence and Intent Resolution, judges the whole run. Process evaluation, Tool Call Accuracy, Tool Selection, Tool Input Accuracy, Tool Output Utilization and Tool Call Success, checks the steps, which for an agent are the tool calls.</desc>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="341" y="118" font-size="28" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">query</text>
+  <path d="M62,152 L62,136 L620,136 L620,152" fill="none" stroke="#8c959f" stroke-width="2"/>
+  <text x="1071" y="118" font-size="28" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">response</text>
+  <path d="M646,152 L646,136 L1496,136 L1496,152" fill="none" stroke="#8c959f" stroke-width="2"/>
+  <text x="1725" y="118" font-size="28" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">tool_definitions</text>
+  <path d="M1592,152 L1592,136 L1858,136 L1858,152" fill="none" stroke="#8c959f" stroke-width="2"/>
+
+  <rect x="60" y="170" width="270" height="310" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="84" y="218" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f">system</text>
+  <text x="84" y="280" font-size="26" fill="#24292f">Look up an order</text>
+  <text x="84" y="318" font-size="26" fill="#24292f">before you act</text>
+  <text x="84" y="356" font-size="26" fill="#24292f">on it.</text>
+
+  <rect x="352" y="170" width="270" height="310" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="376" y="218" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f">user</text>
+  <text x="376" y="280" font-size="26" fill="#24292f">Order A100</text>
+  <text x="376" y="318" font-size="26" fill="#24292f">arrived damaged.</text>
+  <text x="376" y="356" font-size="26" fill="#24292f">Please refund it.</text>
+
+  <rect x="644" y="170" width="270" height="310" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="668" y="218" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f">assistant</text>
+  <text x="668" y="258" font-size="26" fill="#57606a">tool call</text>
+  <text x="668" y="318" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">lookup_order</text>
+  <text x="668" y="358" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">order_id: A100</text>
+
+  <rect x="936" y="170" width="270" height="310" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="960" y="218" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f">tool</text>
+  <text x="960" y="258" font-size="26" fill="#57606a">tool result</text>
+  <text x="960" y="318" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">status:</text>
+  <text x="960" y="358" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">delivered</text>
+  <text x="960" y="398" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">total: 24.0</text>
+
+  <rect x="1228" y="170" width="270" height="310" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1252" y="218" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f">assistant</text>
+  <text x="1252" y="258" font-size="26" fill="#57606a">text</text>
+  <text x="1252" y="318" font-size="26" fill="#24292f">I issued a refund</text>
+  <text x="1252" y="356" font-size="26" fill="#24292f">of 24.00 euro for</text>
+  <text x="1252" y="394" font-size="26" fill="#24292f">order A100.</text>
+
+  <rect x="1590" y="170" width="270" height="310" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1614" y="218" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f">lookup_order</text>
+  <text x="1614" y="280" font-size="26" fill="#24292f">Look up an</text>
+  <text x="1614" y="318" font-size="26" fill="#24292f">order by id.</text>
+  <text x="1614" y="378" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">order_id</text>
+  <text x="1614" y="416" font-size="26" fill="#57606a">required string</text>
+
+  <path d="M62,500 L62,520 L1496,520 L1496,500" fill="none" stroke="#8c959f" stroke-width="2"/>
+
+  <text x="60" y="618" font-size="30" font-weight="700" fill="#24292f">System evaluation</text>
+  <text x="60" y="660" font-size="26" fill="#57606a">judges the outcome</text>
+  <text x="60" y="698" font-size="26" fill="#57606a">of the whole run</text>
+  <rect x="450" y="570" width="300" height="150" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="600" y="636" font-size="28" fill="#24292f" text-anchor="middle">Task</text>
+  <text x="600" y="674" font-size="28" fill="#24292f" text-anchor="middle">Completion</text>
+  <rect x="770" y="570" width="300" height="150" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="920" y="636" font-size="28" fill="#24292f" text-anchor="middle">Task</text>
+  <text x="920" y="674" font-size="28" fill="#24292f" text-anchor="middle">Adherence</text>
+  <rect x="1090" y="570" width="300" height="150" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1240" y="636" font-size="28" fill="#24292f" text-anchor="middle">Intent</text>
+  <text x="1240" y="674" font-size="28" fill="#24292f" text-anchor="middle">Resolution</text>
+
+  <text x="60" y="828" font-size="30" font-weight="700" fill="#24292f">Process evaluation</text>
+  <text x="60" y="870" font-size="26" fill="#57606a">checks the steps,</text>
+  <text x="60" y="908" font-size="26" fill="#57606a">mostly tool calls</text>
+  <rect x="450" y="790" width="270" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="856" font-size="28" fill="#24292f" text-anchor="middle">Tool Call</text>
+  <text x="585" y="894" font-size="28" fill="#24292f" text-anchor="middle">Accuracy</text>
+  <rect x="733" y="790" width="270" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="868" y="856" font-size="28" fill="#24292f" text-anchor="middle">Tool</text>
+  <text x="868" y="894" font-size="28" fill="#24292f" text-anchor="middle">Selection</text>
+  <rect x="1016" y="790" width="270" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1151" y="856" font-size="28" fill="#24292f" text-anchor="middle">Tool Input</text>
+  <text x="1151" y="894" font-size="28" fill="#24292f" text-anchor="middle">Accuracy</text>
+  <rect x="1299" y="790" width="270" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1434" y="856" font-size="28" fill="#24292f" text-anchor="middle">Tool Output</text>
+  <text x="1434" y="894" font-size="28" fill="#24292f" text-anchor="middle">Utilization</text>
+  <rect x="1582" y="790" width="270" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1717" y="856" font-size="28" fill="#24292f" text-anchor="middle">Tool Call</text>
+  <text x="1717" y="894" font-size="28" fill="#24292f" text-anchor="middle">Success</text>
+</svg>

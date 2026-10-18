@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>How an MCP client reaches a Foundry project through the Foundry MCP server</title>
+  <desc>On the left, three MCP clients from the demo: foundry_mcp.py in Python, FoundryMcp.cs in C# with ModelContextProtocol 2.2.0, and GitHub Copilot Agent Mode through the foundry-mcp-remote entry in .vscode/mcp.json. Every client sends a bearer token from DefaultAzureCredential with the scope https://mcp.ai.azure.com/.default. The requests travel over streamable HTTP to the Microsoft-hosted Foundry MCP server (preview) at mcp.ai.azure.com, which exposed 80 tools. The server calls the Foundry project with your own identity through the on-behalf-of flow: the Reader role is enough for model_deployment_get and agent_get, and Contributor is needed to create, invoke and delete m1-mcp-agent with agent_update, agent_invoke and agent_delete. Dots travel from the client to the server and on to each role.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="90" width="620" height="920" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="142" class="b" font-size="30">Your MCP client</text>
+
+  <rect x="90" y="170" width="560" height="150" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="214" class="b">Python</text>
+  <text x="114" y="256" class="m" font-size="26">foundry_mcp.py</text>
+  <text x="114" y="296" class="s" font-size="26">MCP <tspan class="m">Client</tspan>, streamable HTTP</text>
+
+  <rect x="90" y="345" width="560" height="150" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="389" class="b">C#</text>
+  <text x="114" y="431" class="m" font-size="26">FoundryMcp.cs</text>
+  <text x="114" y="471" class="s" font-size="26">ModelContextProtocol 2.2.0</text>
+
+  <rect x="90" y="520" width="560" height="150" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="564" class="b">GitHub Copilot Agent Mode</text>
+  <text x="114" y="606" class="m" font-size="26">.vscode/mcp.json</text>
+  <text x="114" y="646" class="s" font-size="26">server <tspan class="m">foundry-mcp-remote</tspan></text>
+
+  <rect x="90" y="700" width="560" height="280" rx="10" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="114" y="746" class="b">Bearer token on every request</text>
+  <text x="114" y="792" class="s" font-size="26">from</text>
+  <text x="114" y="832" class="m" font-size="26">DefaultAzureCredential</text>
+  <text x="114" y="880" class="s" font-size="26">scope</text>
+  <text x="114" y="920" class="m" font-size="26">https://mcp.ai.azure.com/.default</text>
+
+  <path d="M680,470 H892" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="790" y="418" text-anchor="middle" class="s" font-size="26">streamable</text>
+  <text x="790" y="452" text-anchor="middle" class="s" font-size="26">HTTP</text>
+
+  <rect x="900" y="280" width="360" height="380" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1080" y="338" text-anchor="middle" class="b" font-size="30">Foundry MCP server</text>
+  <text x="1080" y="378" text-anchor="middle" class="s" font-size="26">preview, Microsoft-hosted</text>
+  <text x="1080" y="440" text-anchor="middle" class="m" font-size="26">mcp.ai.azure.com</text>
+  <text x="1080" y="540" text-anchor="middle" class="b" font-size="64">80</text>
+  <text x="1080" y="586" text-anchor="middle" class="s" font-size="26">tools exposed</text>
+
+  <path d="M1260,330 H1432" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M1260,610 H1432" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="1350" y="458" text-anchor="middle" class="s" font-size="26">on-behalf-of</text>
+  <text x="1350" y="492" text-anchor="middle" class="s" font-size="26">your identity</text>
+
+  <text x="1440" y="142" class="b" font-size="30">Foundry project</text>
+
+  <rect x="1440" y="170" width="420" height="250" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1468" y="218" class="b">Reader</text>
+  <text x="1580" y="218" class="s" font-size="26">read tools</text>
+  <rect x="1468" y="244" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="281" class="m" font-size="26">model_deployment_get</text>
+  <rect x="1468" y="320" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="357" class="m" font-size="26">agent_get</text>
+
+  <rect x="1440" y="450" width="420" height="560" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1468" y="498" class="b">Contributor</text>
+  <text x="1468" y="538" class="s" font-size="26">create, invoke, delete</text>
+  <rect x="1468" y="566" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="603" class="m" font-size="26">agent_update</text>
+  <path d="M1650,622 V660" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="1468" y="666" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="703" class="m" font-size="26">agent_invoke</text>
+  <path d="M1650,722 V760" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="1468" y="766" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="803" class="m" font-size="26">agent_delete</text>
+  <text x="1468" y="880" class="m" font-size="26">m1-mcp-agent</text>
+  <text x="1468" y="922" class="s" font-size="26">exists only between</text>
+  <text x="1468" y="958" class="s" font-size="26">create and delete</text>
+
+  <rect x="1468" y="566" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.8;0.8625" calcMode="discrete"/>
+  </rect>
+  <rect x="1468" y="666" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.8625;0.925" calcMode="discrete"/>
+  </rect>
+  <rect x="1468" y="766" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.925;0.9875" calcMode="discrete"/>
+  </rect>
+  <rect x="1468" y="244" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.3;0.45" calcMode="discrete"/>
+  </rect>
+
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M680,470 H892" keyPoints="0;0;1;1" keyTimes="0;0.0125;0.15;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.0125;0.15" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M1260,330 H1432" keyPoints="0;0;1;1" keyTimes="0;0.15;0.3;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.15;0.3" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M680,470 H892" keyPoints="0;0;1;1" keyTimes="0;0.5;0.65;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5;0.65" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M1260,610 H1432" keyPoints="0;0;1;1" keyTimes="0;0.65;0.8;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.65;0.8" calcMode="discrete"/>
+  </circle>
+</svg>

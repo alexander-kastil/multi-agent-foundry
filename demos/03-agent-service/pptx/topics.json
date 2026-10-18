@@ -1,0 +1,12 @@
+{
+  "topics": [
+    {"title": "Prompt Agents: Versions & Conversations", "subtitle": "Versioned agents and conversations"},
+    {"title": "Code Interpreter, File & Web Search", "subtitle": "Run code, read files, cite the web"},
+    {"title": "Browser Automation & Computer Use", "subtitle": "Operate a UI with no API"},
+    {"title": "Foundry IQ: Knowledge Bases & Retrieval", "subtitle": "Cited answers from many sources"},
+    {"title": "Advanced RAG: Hybrid Search & Reranking", "subtitle": "Measured by mean reciprocal rank"},
+    {"title": "Agent Memory: User & Procedural Memory", "subtitle": "Remember users across sessions"},
+    {"title": "Stateful Agentic Loops: Plan & Resume", "subtitle": "Plan, reflect, fork and resume"},
+    {"title": "Voice Agents: Voice Live API", "subtitle": "Speech in, speech out"}
+  ]
+}

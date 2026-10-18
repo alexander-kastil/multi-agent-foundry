@@ -20,6 +20,8 @@ You own the code inside the sandbox. The platform owns the endpoint, identity, s
 
 A sandbox is sized per session with one of three combinations: 0.5 vCPU and 1 GiB, 1 vCPU and 2 GiB, or 2 vCPU and 4 GiB. Each version is immutable and an endpoint serves one version at a time.
 
+![Once per version the platform pulls the image or builds the ZIP, creates the agent identity and publishes the endpoint; per session it provisions a sandbox, deprovisions it after 2 to 60 idle minutes and restores it when the same session returns](../pptx/images/01-01-sandbox-lifecycle.svg)
+
 ## Protocols
 
 A container exposes one or more protocols through lightweight libraries that also provide `/readiness` and OpenTelemetry. Start with Responses; a single agent can add the others later.
@@ -140,6 +142,8 @@ Every hosted agent gets its own Microsoft Entra identity at deploy time. It is a
 
 To deploy you need the Foundry Project Manager role at the project scope. Callers of the endpoint need Foundry Agent Consumer or a role that includes endpoint access. These roles were renamed from the Azure AI roles with the same role ids, so older portals may still show the old names.
 
+![Foundry Project Manager deploys and Foundry Agent Consumer calls; the project managed identity pulls the image, and the agent identity reaches models without a role and your Storage account only with a role you assign](../pptx/images/01-03-agent-identity-roles.svg)
+
 ## Settings the platform injects
 
 The platform sets these variables in the sandbox, so the code above runs unchanged. Do not declare the `FOUNDRY_*` names yourself; declare your own, such as the model deployment name, in the `environment_variables` of the version or in the `env` of the `azure.ai.agent` service in `azure.yaml`.
@@ -151,6 +155,8 @@ The platform sets these variables in the sandbox, so the code above runs unchang
 | `FOUNDRY_AGENT_SESSION_ID` | Session id of the current request |
 | `APPLICATIONINSIGHTS_CONNECTION_STRING` | Telemetry target, so protocol libraries emit traces by default |
 | `AZURE_AI_MODEL_DEPLOYMENT_NAME` | Model deployment name; azd sets it from `azure.yaml`, with the SDK you set it yourself |
+
+![The same main.py runs on localhost:8088 with settings from .env, is packaged as a container image or a ZIP, and runs as hosted agent m6-support-desk with the FOUNDRY_* settings injected](../pptx/images/01-02-local-and-hosted.svg)
 
 ## The same host in C#
 

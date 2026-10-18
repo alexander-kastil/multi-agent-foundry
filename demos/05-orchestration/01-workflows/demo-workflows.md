@@ -140,9 +140,13 @@ total 1.0s for three one-second checks
 
 Three one-second checks finish in one second because they share superstep 2. `aggregate` only starts in superstep 3, after the barrier, and it is called once with all three results.
 
+![Supersteps 1 to 3 of the fan-out run: parse_invoice, then the three checks side by side, then aggregate after the barrier, 1.0s in total](../pptx/images/01-01-supersteps-fan-out.svg)
+
 ## Step 4: Put a Foundry agent inside the graph
 
 An agent is a node like any other. Pass it to `add_edge` and the framework wraps it in an agent executor. The upstream executor sends an `AgentExecutorRequest` so the agent sees a real user message, and the downstream executor reads the reply from `AgentExecutorResponse`.
+
+![The Step 1 pipeline and the Step 4 graph with the invoice_reviewer agent side by side, each edge labelled with the message type it carries](../pptx/images/01-02-executors-agent-nodes.svg)
 
 ```python
 @executor(id="parse_invoice")

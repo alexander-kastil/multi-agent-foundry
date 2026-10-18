@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Tool schemas generated from C# and Python</title>
+  <desc>The search_employees tool in the C# server (Tools/HrTools.cs) and the Python server (server.py). Each line of code maps to a field of the tools/list entry: the tool name, the readOnlyHint annotation, the description and the inputSchema. Both entries match except the argument name, searchTerm in C# and search_term in Python, so a client reads the schema instead of guessing.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="20" markerHeight="20" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="70" y="130" width="940" height="400" rx="14" fill="#f6f8fa"/>
+    <rect x="1150" y="130" width="700" height="400" rx="14" fill="#eaf2ff"/>
+    <rect x="70" y="600" width="940" height="340" rx="14" fill="#f6f8fa"/>
+    <rect x="1150" y="600" width="700" height="340" rx="14" fill="#eaf2ff"/>
+  </g>
+  <g fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <rect x="1166" y="443" width="668" height="50" rx="8"/>
+    <rect x="1166" y="797" width="668" height="50" rx="8"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a">
+    <text x="100" y="180">Tools/HrTools.cs</text>
+    <text x="100" y="650">server.py</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">
+    <text x="1180" y="180"><tspan font-family="Consolas, 'Courier New', monospace">tools/list</tspan> on the C# server</text>
+    <text x="1180" y="650"><tspan font-family="Consolas, 'Courier New', monospace">tools/list</tspan> on the Python server</text>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="100" y="245">[McpServerTool(Name = "search_employees",</text>
+    <text x="315" y="303">ReadOnly = true)]</text>
+    <text x="100" y="361">[Description("Finds employees whose ...")]</text>
+    <text x="100" y="419">public IReadOnlyList&lt;Employee&gt; SearchEmployees(</text>
+    <text x="157" y="477">[Description("...")] string searchTerm)</text>
+
+    <text x="100" y="715">@mcp.tool(name="search_employees",</text>
+    <text x="157" y="773">annotations=ToolAnnotations(read_only_hint=True))</text>
+    <text x="100" y="831">def search_employees(search_term: str) -&gt; list[dict]:</text>
+    <text x="157" y="889">"""Finds employees whose ..."""</text>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26">
+    <g fill="#57606a">
+      <text x="1180" y="245">name</text>
+      <text x="1180" y="303">annotations</text>
+      <text x="1180" y="361">description</text>
+      <text x="1180" y="477">inputSchema</text>
+      <text x="1180" y="715">name</text>
+      <text x="1180" y="773">annotations</text>
+      <text x="1180" y="831">inputSchema</text>
+      <text x="1180" y="889">description</text>
+    </g>
+    <g fill="#24292f">
+      <text x="1390" y="245">search_employees</text>
+      <text x="1390" y="303">readOnlyHint: true</text>
+      <text x="1390" y="361">Finds employees whose ...</text>
+      <text x="1390" y="477" font-weight="700">searchTerm: string</text>
+      <text x="1390" y="715">search_employees</text>
+      <text x="1390" y="773">readOnlyHint: true</text>
+      <text x="1390" y="831" font-weight="700">search_term: string</text>
+      <text x="1390" y="889">Finds employees whose ...</text>
+    </g>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="1022" y1="236" x2="1138" y2="236"/>
+    <line x1="1022" y1="294" x2="1138" y2="294"/>
+    <line x1="1022" y1="352" x2="1138" y2="352"/>
+    <line x1="1022" y1="468" x2="1138" y2="468"/>
+    <line x1="1022" y1="706" x2="1138" y2="706"/>
+    <line x1="1022" y1="764" x2="1138" y2="764"/>
+    <line x1="1022" y1="822" x2="1138" y2="822"/>
+    <line x1="1022" y1="880" x2="1138" y2="880"/>
+  </g>
+</svg>

@@ -59,6 +59,8 @@ AIAgent agent = chatClient.AsHarnessAgent(new HarnessAgentOptions
 
 The mode provider offers two modes. In `plan` the agent analyzes the request, writes todos, asks clarifying questions and presents a plan before it changes anything. In `execute` it works through the plan on its own and marks todos complete.
 
+![In plan mode the agent checks the stages, writes todos and stops; set_agent_mode switches to execute, where one always-approve answer covers all three reserve_hut calls, and one AgentSession holds history, todos, mode and standing approvals](../pptx/images/07-01-plan-execute-modes.svg)
+
 ```python
 from agent_framework import get_agent_mode, set_agent_mode
 
@@ -89,6 +91,8 @@ Scope sessions to a stable trust boundary and start a new session when approvals
 ## Todo-driven looping
 
 Recording progress does not re-invoke the agent. For tasks where the model stops after each step, the optional loop re-runs it while todos remain open.
+
+![The todo loop: the agent completes one todo and stops, loop_should_continue checks for open todos, and loop_next_message runs the agent again until no todos are left or loop_max_iterations is reached; without the loop 1 of 4 todos complete, with it 4 of 4](../pptx/images/07-02-todo-driven-looping.svg)
 
 ```python
 agent = create_harness_agent(

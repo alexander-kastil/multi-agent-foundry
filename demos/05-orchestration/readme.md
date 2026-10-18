@@ -6,6 +6,8 @@ You start with typed graphs and the superstep execution model, add checkpoints a
 
 Every topic has a Python project. Topics 1, 2 and 3 also have a C# project, because the .NET workflow API has its own idioms (`[MessageHandler]`, `RequestPort`, `AgentWorkflowBuilder`).
 
+![Seven numbered topic cards in reading order, from Workflows: Executors, Edges & Supersteps to Declarative YAML & Functional Workflows, joined by arrows](./pptx/images/00-02-overview.svg)
+
 ## Topics
 
 | Topic | Description |

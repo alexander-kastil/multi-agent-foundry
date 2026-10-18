@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Who owns the agent definition: FoundryChatClient or FoundryAgent</title>
+  <desc>Left: with Agent(client=FoundryChatClient(...)) the instructions, tools, middleware and session handling sit in your process, and Microsoft Foundry only hosts the gpt-5.4 model deployment behind the Responses endpoint. Right: with FoundryAgent the script only sends the question, local tools only implement functions the agent declares, and the Prompt Agent m4-support-agent version 1 in Microsoft Foundry holds the model, the instructions and the hosted tools.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="70" y="88" class="m b" font-size="30">Agent(client=FoundryChatClient(...))</text>
+  <text x="990" y="88" class="m b" font-size="30">FoundryAgent(agent_name="m4-support-agent")</text>
+
+  <rect x="70" y="120" width="860" height="350" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="175" class="s b" font-size="30">Your process</text>
+  <rect x="110" y="205" width="375" height="72" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="297" y="251" class="s" font-size="28" text-anchor="middle">instructions</text>
+  <rect x="515" y="205" width="375" height="72" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="702" y="251" class="s" font-size="28" text-anchor="middle">tools</text>
+  <rect x="110" y="295" width="375" height="72" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="297" y="341" class="s" font-size="28" text-anchor="middle">middleware</text>
+  <rect x="515" y="295" width="375" height="72" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="702" y="341" class="s" font-size="28" text-anchor="middle">session handling</text>
+  <text x="110" y="428" class="m sec" font-size="26">model="gpt-5.4"</text>
+
+  <rect x="990" y="120" width="860" height="350" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1025" y="175" class="s b" font-size="30">Your process</text>
+  <text x="1030" y="245" class="m" font-size="26">agent.run("How do I return a tent?")</text>
+  <rect x="1030" y="285" width="780" height="72" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1055" y="331" class="s" font-size="26"><tspan class="m">tools=</tspan> only implements functions the agent declares</text>
+  <text x="1030" y="428" class="s sec" font-size="26">No instructions in the script</text>
+
+  <line x1="500" y1="470" x2="500" y2="566" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="522" y="528" class="m sec" font-size="26">/openai/v1/responses</text>
+  <line x1="1420" y1="470" x2="1420" y2="566" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="1442" y="528" class="m sec" font-size="26">agent_version="1"</text>
+
+  <rect x="70" y="570" width="860" height="320" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="625" class="s b" font-size="30">Microsoft Foundry</text>
+  <rect x="110" y="660" width="780" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="710" class="s" font-size="28">Model deployment <tspan class="m" font-size="26">gpt-5.4</tspan></text>
+
+  <rect x="990" y="570" width="860" height="320" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1025" y="625" class="s b" font-size="30">Microsoft Foundry</text>
+  <rect x="1030" y="650" width="780" height="215" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1055" y="697" class="s" font-size="28">Prompt Agent <tspan class="m b" font-size="26">m4-support-agent</tspan>, version 1</text>
+  <rect x="1055" y="720" width="200" height="66" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1155" y="763" class="s" font-size="28" text-anchor="middle">model</text>
+  <rect x="1275" y="720" width="250" height="66" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1400" y="763" class="s" font-size="28" text-anchor="middle">instructions</text>
+  <rect x="1545" y="720" width="240" height="66" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1665" y="763" class="s" font-size="28" text-anchor="middle">hosted tools</text>
+  <text x="1055" y="837" class="s sec" font-size="26">Returns desk, quotes the 30 day return window</text>
+
+  <rect x="70" y="930" width="860" height="80" rx="40" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="500" y="980" class="s" font-size="28" text-anchor="middle">Per-run control over instructions and tools</text>
+  <rect x="990" y="930" width="860" height="80" rx="40" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1420" y="980" class="s" font-size="28" text-anchor="middle">Instructions come from the stored definition</text>
+</svg>

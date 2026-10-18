@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The support-desk agent run locally, packaged and running as a hosted agent</title>
+  <desc>Step 1: on your machine main.py runs under ResponsesHostServer on localhost:8088 with PROJECT_ENDPOINT and MODEL_DEPLOYMENT_NAME from .env, and runtime_info answers that no platform variables are injected. Step 3 packages the agent as a container image built for linux/amd64; the other route pushes it to Azure Container Registry and sets container_configuration.image. Step 4, used in this demo, zips main.py and requirements.txt and uploads them with create_version_from_code, and remote_build installs the packages. Step 5: the same main.py runs as m6-support-desk version 1, status active, in a session sandbox where the platform injects FOUNDRY_PROJECT_ENDPOINT, FOUNDRY_AGENT_NAME, FOUNDRY_AGENT_VERSION and APPLICATIONINSIGHTS_CONNECTION_STRING, and you declare AZURE_AI_MODEL_DEPLOYMENT_NAME in environment_variables; runtime_info now answers with agent name m6-support-desk and version 1.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 12 12" refX="11" refY="6" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8c959f"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="40" y="90" width="500" height="900" rx="20" fill="#eaf2ff"/>
+    <rect x="640" y="90" width="540" height="400" rx="20" fill="#f6f8fa"/>
+    <rect x="640" y="590" width="540" height="400" rx="20" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="1280" y="90" width="600" height="900" rx="20" fill="#f3edff"/>
+  </g>
+  <g stroke="#8c959f" stroke-width="2" marker-end="url(#arr)">
+    <line x1="542" y1="290" x2="636" y2="290"/>
+    <line x1="542" y1="790" x2="636" y2="790"/>
+    <line x1="1182" y1="290" x2="1276" y2="290"/>
+    <line x1="1182" y1="790" x2="1276" y2="790"/>
+  </g>
+
+  <g font-size="26" fill="#57606a" text-anchor="end">
+    <text x="510" y="150">Step 1</text>
+    <text x="1150" y="150">Step 3</text>
+    <text x="1150" y="650">Step 4</text>
+    <text x="1850" y="150">Step 5</text>
+  </g>
+  <g font-size="32" font-weight="700" fill="#24292f">
+    <text x="72" y="150">Your machine</text>
+    <text x="672" y="150">Container image</text>
+    <text x="672" y="650">ZIP of the source</text>
+    <text x="1312" y="150">Session sandbox</text>
+  </g>
+
+  <g font-size="26" fill="#24292f">
+    <text x="72" y="215" font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="700">main.py</text>
+    <text x="72" y="262" font-family="Consolas, 'Courier New', monospace">ResponsesHostServer</text>
+    <text x="72" y="302">on <tspan font-family="Consolas, 'Courier New', monospace">localhost:8088</tspan></text>
+    <text x="72" y="380" fill="#57606a">Settings from <tspan font-family="Consolas, 'Courier New', monospace">.env</tspan></text>
+    <text x="72" y="424" font-family="Consolas, 'Courier New', monospace">PROJECT_ENDPOINT</text>
+    <text x="72" y="464" font-family="Consolas, 'Courier New', monospace">MODEL_DEPLOYMENT_NAME</text>
+    <text x="72" y="560" fill="#57606a"><tspan font-family="Consolas, 'Courier New', monospace">runtime_info</tspan> answers</text>
+  </g>
+  <rect x="72" y="585" width="436" height="160" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <g font-size="26" fill="#24292f">
+    <text x="98" y="635">Injected platform</text>
+    <text x="98" y="675">variables: none. Agent:</text>
+    <text x="98" y="715">None, version: None.</text>
+  </g>
+
+  <g font-size="26" fill="#24292f">
+    <text x="672" y="215" font-family="Consolas, 'Courier New', monospace">docker build</text>
+    <text x="672" y="255" font-family="Consolas, 'Courier New', monospace">--platform linux/amd64</text>
+    <text x="672" y="330" fill="#57606a">The other route: push it to</text>
+    <text x="672" y="370" fill="#57606a">Azure Container Registry and set</text>
+    <text x="672" y="415" font-family="Consolas, 'Courier New', monospace">container_configuration.image</text>
+  </g>
+
+  <g font-size="26" fill="#24292f">
+    <text x="672" y="715">zips <tspan font-family="Consolas, 'Courier New', monospace">main.py</tspan> and <tspan font-family="Consolas, 'Courier New', monospace">requirements.txt</tspan></text>
+    <text x="672" y="765">uploads it with</text>
+    <text x="672" y="805" font-family="Consolas, 'Courier New', monospace">create_version_from_code</text>
+    <text x="672" y="855"><tspan font-family="Consolas, 'Courier New', monospace">remote_build</tspan> installs the packages</text>
+  </g>
+  <rect x="672" y="898" width="250" height="56" rx="28" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="797" y="935" font-size="26" fill="#24292f" text-anchor="middle">used in this demo</text>
+
+  <g font-size="26" fill="#24292f">
+    <text x="1312" y="212" font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="700">m6-support-desk</text>
+  </g>
+  <rect x="1312" y="236" width="300" height="56" rx="28" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1462" y="273" font-size="26" fill="#24292f" text-anchor="middle">version 1, active</text>
+  <g font-size="26" fill="#24292f">
+    <text x="1312" y="340">the same <tspan font-family="Consolas, 'Courier New', monospace">main.py</tspan>, unchanged</text>
+    <text x="1312" y="410" fill="#57606a">Injected by the platform</text>
+    <g font-family="Consolas, 'Courier New', monospace">
+      <text x="1312" y="452">FOUNDRY_PROJECT_ENDPOINT</text>
+      <text x="1312" y="492">FOUNDRY_AGENT_NAME</text>
+      <text x="1312" y="532">FOUNDRY_AGENT_VERSION</text>
+      <text x="1312" y="572">APPLICATIONINSIGHTS_CONNECTION_STRING</text>
+    </g>
+    <text x="1312" y="640" fill="#57606a">Declared by you in <tspan font-family="Consolas, 'Courier New', monospace">environment_variables</tspan></text>
+    <text x="1312" y="682" font-family="Consolas, 'Courier New', monospace">AZURE_AI_MODEL_DEPLOYMENT_NAME</text>
+    <text x="1312" y="760" fill="#57606a"><tspan font-family="Consolas, 'Courier New', monospace">runtime_info</tspan> answers</text>
+  </g>
+  <rect x="1312" y="785" width="536" height="120" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <g font-size="26" fill="#24292f">
+    <text x="1338" y="835">Agent name: <tspan font-family="Consolas, 'Courier New', monospace">m6-support-desk</tspan>;</text>
+    <text x="1338" y="875">version: <tspan font-family="Consolas, 'Courier New', monospace">1</tspan>.</text>
+  </g>
+</svg>

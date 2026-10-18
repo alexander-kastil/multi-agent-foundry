@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Supersteps in a fan-out run</title>
+  <desc>Three columns, one per superstep, separated by barriers. Superstep 1 runs parse_invoice. add_fan_out_edges sends the invoice to duplicate_check, vendor_check and budget_check, which all run in superstep 2 and each sleep one second. add_fan_in_edges collects one Check from each into a list, so aggregate runs once in superstep 3 and yields output: failed: budget. The run takes 1.0 seconds for three one-second checks.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#24292f}
+      .s{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a}
+      .m{font-family:Consolas,'Courier New',monospace;fill:#24292f}
+      .ms{font-family:Consolas,'Courier New',monospace;fill:#57606a}
+      .box{stroke:#8c959f;stroke-width:2}
+      .edge{fill:none;stroke:#8c959f;stroke-width:2}
+      .pulse{fill:none;stroke:#e0a534;stroke-width:6}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="80" y="50" width="460" height="700" rx="20" fill="#fff6e5" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.31;0.34;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="730" y="50" width="460" height="700" rx="20" fill="#fff6e5" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31;0.34;0.64;0.67;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="1380" y="50" width="460" height="700" rx="20" fill="#fff6e5" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.64;0.67;0.95;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <text class="t" x="310" y="112" font-size="34" font-weight="700" text-anchor="middle">superstep 1</text>
+  <text class="s" x="310" y="154" font-size="28" text-anchor="middle">started at 0.0s</text>
+  <text class="t" x="960" y="112" font-size="34" font-weight="700" text-anchor="middle">superstep 2</text>
+  <text class="s" x="960" y="154" font-size="28" text-anchor="middle">started at 0.0s</text>
+  <text class="t" x="1610" y="112" font-size="34" font-weight="700" text-anchor="middle">superstep 3</text>
+  <text class="s" x="1610" y="154" font-size="28" text-anchor="middle">started at 1.0s</text>
+
+  <line x1="635" y1="60" x2="635" y2="740" stroke="#e0a534" stroke-width="3" stroke-dasharray="14 10"/>
+  <line x1="1285" y1="60" x2="1285" y2="740" stroke="#e0a534" stroke-width="3" stroke-dasharray="14 10"/>
+  <rect x="555" y="758" width="160" height="48" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="635" y="791" font-size="26" text-anchor="middle">barrier</text>
+  <rect x="1205" y="758" width="160" height="48" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="1285" y="791" font-size="26" text-anchor="middle">barrier</text>
+
+  <path class="edge" d="M510 415 C640 415 630 255 758 255" marker-end="url(#arrow)"/>
+  <path class="edge" d="M510 445 L758 445" marker-end="url(#arrow)"/>
+  <path class="edge" d="M510 475 C640 475 630 635 758 635" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1160 255 C1290 255 1280 415 1408 415" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1160 445 L1408 445" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1160 635 C1290 635 1280 475 1408 475" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1610 500 L1610 608" marker-end="url(#arrow)"/>
+
+  <text class="m" x="310" y="370" font-size="26" text-anchor="middle">add_fan_out_edges</text>
+  <text class="m" x="1610" y="370" font-size="26" text-anchor="middle">add_fan_in_edges</text>
+  <text class="ms" x="1628" y="563" font-size="26">yield_output</text>
+
+  <rect class="box" x="110" y="390" width="400" height="110" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="310" y="437" font-size="30" font-weight="700" text-anchor="middle">parse_invoice</text>
+  <text class="ms" x="310" y="477" font-size="26" text-anchor="middle">WorkflowContext[Invoice]</text>
+  <rect class="pulse" x="110" y="390" width="400" height="110" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.06;0.08;0.29;0.31;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <rect class="box" x="760" y="200" width="400" height="110" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="960" y="247" font-size="30" font-weight="700" text-anchor="middle">duplicate_check</text>
+  <text class="ms" x="960" y="287" font-size="26" text-anchor="middle">asyncio.sleep(1)</text>
+  <rect class="box" x="760" y="390" width="400" height="110" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="960" y="437" font-size="30" font-weight="700" text-anchor="middle">vendor_check</text>
+  <text class="ms" x="960" y="477" font-size="26" text-anchor="middle">asyncio.sleep(1)</text>
+  <rect class="box" x="760" y="580" width="400" height="110" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="960" y="627" font-size="30" font-weight="700" text-anchor="middle">budget_check</text>
+  <text class="ms" x="960" y="667" font-size="26" text-anchor="middle">asyncio.sleep(1)</text>
+  <rect class="pulse" x="760" y="200" width="400" height="110" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.44;0.64;0.66;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="pulse" x="760" y="390" width="400" height="110" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.44;0.64;0.66;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="pulse" x="760" y="580" width="400" height="110" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.44;0.64;0.66;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <rect class="box" x="1410" y="390" width="400" height="110" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="1610" y="437" font-size="30" font-weight="700" text-anchor="middle">aggregate</text>
+  <text class="ms" x="1610" y="477" font-size="26" text-anchor="middle">checks: list[Check]</text>
+
+  <rect class="box" x="1410" y="610" width="400" height="90" rx="14" fill="#e9f7ef"/>
+  <text class="m" x="1610" y="665" font-size="28" text-anchor="middle">output: failed: budget</text>
+  <rect class="pulse" x="1410" y="610" width="400" height="90" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.86;0.88;0.95;0.97;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M510 415 C640 415 630 255 758 255" keyPoints="0;0;1;1" keyTimes="0;0.34;0.42;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.34;0.43" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M510 445 L758 445" keyPoints="0;0;1;1" keyTimes="0;0.34;0.42;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.34;0.43" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M510 475 C640 475 630 635 758 635" keyPoints="0;0;1;1" keyTimes="0;0.34;0.42;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.34;0.43" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1160 255 C1290 255 1280 415 1408 415" keyPoints="0;0;1;1" keyTimes="0;0.67;0.75;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.67;0.76" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1160 445 L1408 445" keyPoints="0;0;1;1" keyTimes="0;0.67;0.75;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.67;0.76" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1160 635 C1290 635 1280 475 1408 475" keyPoints="0;0;1;1" keyTimes="0;0.67;0.75;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.67;0.76" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1610 500 L1610 610" keyPoints="0;0;1;1" keyTimes="0;0.79;0.85;1" calcMode="linear" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.79;0.86" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+  </circle>
+
+  <rect class="box" x="60" y="850" width="1800" height="170" rx="18" fill="#e9f7ef"/>
+  <text class="m" x="960" y="918" font-size="34" text-anchor="middle">total 1.0s for three one-second checks</text>
+  <text class="s" x="960" y="972" font-size="28" text-anchor="middle">The three checks share superstep 2, and aggregate runs once, in the superstep after the barrier.</text>
+</svg>

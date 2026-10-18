@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Circuit breaker on the compliance spoke</title>
+  <desc>Four calls to the compliance_check spoke, each with timeout=0.01. Calls 1 to 3 find the breaker closed, go through to the spoke, time out after 10 ms and return the status timeout with failures=1, failures=2 and failures=3; at the third failure the circuit opens. Call 4 finds the breaker open and gets circuit_open back at once with failures=3: it never reaches the model. Below, three rules: the breaker opens at FAILURE_THRESHOLD = 3 consecutive failures per spoke, stays open for COOLDOWN_SECONDS = 60 and then lets the next call through, and a success, recorded with record_outcome(..., True), sets failures back to 0. A dot runs the four calls in order, and the fourth one is the fastest.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="195" y="62">call</text>
+    <text x="610" y="62">breaker</text>
+    <text x="1100" y="62">spoke</text>
+    <text x="1630" y="62">envelope returned</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f6f8fa">
+    <rect x="60" y="90" width="270" height="150" rx="20"/>
+    <rect x="60" y="265" width="270" height="150" rx="20"/>
+    <rect x="60" y="440" width="270" height="150" rx="20"/>
+    <rect x="60" y="615" width="270" height="150" rx="20"/>
+  </g>
+  <g font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="195" y="155">Call 1</text>
+    <text x="195" y="330">Call 2</text>
+    <text x="195" y="505">Call 3</text>
+    <text x="195" y="680">Call 4</text>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#57606a" text-anchor="middle">
+    <text x="195" y="197">timeout=0.01</text>
+    <text x="195" y="372">timeout=0.01</text>
+    <text x="195" y="547">timeout=0.01</text>
+    <text x="195" y="722">timeout=0.01</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#e9f7ef">
+    <rect x="420" y="90" width="380" height="150" rx="20"/>
+    <rect x="420" y="265" width="380" height="150" rx="20"/>
+    <rect x="420" y="440" width="380" height="150" rx="20"/>
+  </g>
+  <rect x="420" y="615" width="380" height="150" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="3"/>
+  <g font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="610" y="155">closed</text>
+    <text x="610" y="330">closed</text>
+    <text x="610" y="505">closed</text>
+    <text x="610" y="680">open</text>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="610" y="197">the call goes through</text>
+    <text x="610" y="372">the call goes through</text>
+    <text x="610" y="547">the call goes through</text>
+    <text x="610" y="722">answers at once</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f3edff">
+    <rect x="890" y="90" width="420" height="150" rx="20"/>
+    <rect x="890" y="265" width="420" height="150" rx="20"/>
+    <rect x="890" y="440" width="420" height="150" rx="20"/>
+  </g>
+  <g font-size="28" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="1100" y="155">compliance_check</text>
+    <text x="1100" y="330">compliance_check</text>
+    <text x="1100" y="505">compliance_check</text>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="1100" y="197">times out after 10 ms</text>
+    <text x="1100" y="372">times out after 10 ms</text>
+    <text x="1100" y="547">times out after 10 ms</text>
+    <text x="1100" y="668">never reaches the model</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#fff6e5">
+    <rect x="1400" y="90" width="460" height="150" rx="20"/>
+    <rect x="1400" y="265" width="460" height="150" rx="20"/>
+    <rect x="1400" y="440" width="460" height="150" rx="20"/>
+    <rect x="1400" y="615" width="460" height="150" rx="20"/>
+  </g>
+  <g font-size="30" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="1630" y="153">timeout</text>
+    <text x="1630" y="328">timeout</text>
+    <text x="1630" y="488">timeout</text>
+    <text x="1630" y="678">circuit_open</text>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="1630" y="197">failures=1</text>
+    <text x="1630" y="372">failures=2</text>
+    <text x="1630" y="528">failures=3</text>
+    <text x="1630" y="722">failures=3</text>
+  </g>
+  <text x="1630" y="568" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">the circuit opens</text>
+
+  <g fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="330" y1="165" x2="416" y2="165"/>
+    <line x1="800" y1="165" x2="886" y2="165"/>
+    <line x1="1310" y1="165" x2="1396" y2="165"/>
+    <line x1="330" y1="340" x2="416" y2="340"/>
+    <line x1="800" y1="340" x2="886" y2="340"/>
+    <line x1="1310" y1="340" x2="1396" y2="340"/>
+    <line x1="330" y1="515" x2="416" y2="515"/>
+    <line x1="800" y1="515" x2="886" y2="515"/>
+    <line x1="1310" y1="515" x2="1396" y2="515"/>
+    <line x1="330" y1="690" x2="416" y2="690"/>
+    <line x1="800" y1="690" x2="1396" y2="690"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f6f8fa">
+    <rect x="60" y="815" width="580" height="190" rx="20"/>
+    <rect x="670" y="815" width="580" height="190" rx="20"/>
+    <rect x="1280" y="815" width="580" height="190" rx="20"/>
+  </g>
+  <g font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="350" y="870">Opens</text>
+    <text x="960" y="870">Stays open</text>
+    <text x="1570" y="870">Resets</text>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="350" y="918">FAILURE_THRESHOLD = 3</text>
+    <text x="960" y="918">COOLDOWN_SECONDS = 60</text>
+    <text x="1570" y="918">record_outcome(..., True)</text>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="350" y="964">consecutive failures per spoke</text>
+    <text x="960" y="964">then the next call goes through</text>
+    <text x="1570" y="964">a success sets failures to 0</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="1392" y="82" width="476" height="166" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1667;0.3333" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1392" y="257" width="476" height="166" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.5" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1392" y="432" width="476" height="166" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.5833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1392" y="607" width="476" height="166" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.5833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <g fill="#24292f" stroke="#ffffff" stroke-width="3">
+    <circle cx="334" cy="165" r="14" opacity="0">
+      <animate attributeName="cx" values="334;1396;1396" keyTimes="0;0.1667;1" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.1667" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="334" cy="340" r="14" opacity="0">
+      <animate attributeName="cx" values="334;334;1396;1396" keyTimes="0;0.1667;0.3333;1" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1667;0.3333" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="334" cy="515" r="14" opacity="0">
+      <animate attributeName="cx" values="334;334;1396;1396" keyTimes="0;0.3333;0.5;1" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.5" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="334" cy="690" r="14" opacity="0">
+      <animate attributeName="cx" values="334;334;1396;1396" keyTimes="0;0.5;0.5833;1" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.5833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

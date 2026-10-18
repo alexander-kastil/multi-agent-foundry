@@ -158,6 +158,8 @@ execute_tool get_order_status                               1
 
 An HTTP hop starts a new trace unless the caller sends the W3C `traceparent` header and the callee reads it. `main.py` runs an orchestrator that routes three customer messages, calls a downstream agent service over HTTP and creates two prompt agents in your project for that service.
 
+![One trace crossing the orchestrator, the downstream agent service and the Foundry service: the traceparent header travels with each call and Application Insights holds all ten rows under one operation_Id](../pptx/images/01-01-trace-across-services.svg)
+
 ```python
 from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
 
@@ -302,6 +304,8 @@ The typed .NET client also sends `traceparent`, so the Foundry spans join the tr
 ## Step 5: Join logs to spans
 
 Each decision is also written as one JSON log line carrying the active `trace_id` and `span_id`, with the session id hashed and no prompt text. The Azure Monitor distro exports Python logs to the `traces` table with the same trace as `operation_Id`, so one key joins logs and spans.
+
+![Client and internal spans, server spans and structured log lines flow through the Azure Monitor distro into the dependencies, requests and traces tables, joined on operation_Id](../pptx/images/01-02-spans-logs-tables.svg)
 
 ```python
 span = trace.get_current_span()

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Persist a session in one process and resume it in another</title>
+  <desc>Process 1, loops.py, calls conversations.create, asks about GOOG and calls save_session with analyst-session-1, then exits. It writes sessions.json, which holds analyst-session-1 with conversation_id conv_0fc874cb..., last_response_id of the GOOG turn, metadata ticker GOOG, workflow research, agent_version 1, and updated_at. Process 2, resume.py, reads the entry with load_session and asks Which ticker did we just discuss, and what was its P/E ratio? It gets Resumed: GOOG, with a P/E ratio of 24.8. Below, Foundry Agent Service keeps the conversation with the user message, function_call, function_call_output and assistant answer. Process 1 stores its turns there and process 2 continues the same conversation. A highlight steps through process 1, the stored conversation, sessions.json, process 2, the conversation again and the answer.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; font-size: 26px; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+    .box { stroke: #8c959f; stroke-width: 2; }
+    .hl { fill: none; stroke: #e0a534; stroke-width: 8; }
+    .arrow { fill: none; stroke: #8c959f; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="box" x="80" y="80" width="540" height="580" rx="24" fill="#eaf2ff"/>
+  <text class="sec" x="115" y="135">Process 1</text>
+  <text class="mono b" x="115" y="190" font-size="34">loops.py</text>
+  <text class="mono" x="115" y="268" font-size="26">conversations.create()</text>
+  <text x="115" y="340">asks about GOOG</text>
+  <text class="mono" x="115" y="412" font-size="26">save_session(</text>
+  <text class="mono" x="145" y="448" font-size="26">"analyst-session-1", ...)</text>
+  <text class="sec" x="115" y="530">then the process exits</text>
+
+  <rect class="box" x="720" y="80" width="480" height="580" rx="24" fill="#f6f8fa"/>
+  <text class="mono b" x="750" y="140" font-size="30">sessions.json</text>
+  <text class="mono b" x="750" y="200" font-size="26">analyst-session-1</text>
+  <text class="mono sec" x="780" y="252">conversation_id</text>
+  <text class="mono" x="780" y="288" font-size="26">conv_0fc874cb...</text>
+  <text class="mono sec" x="780" y="342">last_response_id</text>
+  <text x="780" y="378" font-size="26">id of the GOOG turn</text>
+  <text class="mono sec" x="780" y="432">metadata</text>
+  <text x="780" y="468" font-size="26">ticker GOOG, workflow</text>
+  <text x="780" y="503" font-size="26">research, agent_version 1</text>
+  <text class="mono sec" x="780" y="557">updated_at</text>
+  <text x="780" y="593" font-size="26">UTC time of the save</text>
+
+  <rect class="box" x="1300" y="80" width="540" height="580" rx="24" fill="#eaf2ff"/>
+  <text class="sec" x="1335" y="135">Process 2</text>
+  <text class="mono b" x="1335" y="190" font-size="34">resume.py</text>
+  <text class="mono" x="1335" y="268" font-size="26">load_session(</text>
+  <text class="mono" x="1365" y="304" font-size="26">"analyst-session-1")</text>
+  <text x="1335" y="376" font-size="26">"Which ticker did we just discuss,</text>
+  <text x="1335" y="412" font-size="26">and what was its P/E ratio?"</text>
+  <rect class="box" x="1330" y="460" width="480" height="130" rx="18" fill="#e9f7ef"/>
+  <text x="1355" y="512">Resumed: GOOG, with a</text>
+  <text x="1355" y="555">P/E ratio of 24.8.</text>
+
+  <line class="arrow" x1="620" y1="430" x2="720" y2="430"/>
+  <text class="sec c" x="670" y="410">writes</text>
+  <line class="arrow" x1="1200" y1="286" x2="1300" y2="286"/>
+  <text class="sec c" x="1250" y="266">reads</text>
+
+  <rect class="box" x="80" y="780" width="1760" height="220" rx="24" fill="#f3edff"/>
+  <text class="sec" x="115" y="832">Foundry Agent Service</text>
+  <text x="115" y="878" class="b" font-size="30">conversation <tspan class="mono">conv_0fc874cb...</tspan> holds the history</text>
+  <rect class="box" x="115" y="905" width="330" height="70" rx="14" fill="#ffffff"/>
+  <text class="c" x="280" y="950" font-size="26">user message</text>
+  <rect class="box" x="475" y="905" width="330" height="70" rx="14" fill="#ffffff"/>
+  <text class="mono c" x="640" y="950" font-size="26">function_call</text>
+  <rect class="box" x="835" y="905" width="400" height="70" rx="14" fill="#ffffff"/>
+  <text class="mono c" x="1035" y="950" font-size="26">function_call_output</text>
+  <rect class="box" x="1265" y="905" width="330" height="70" rx="14" fill="#ffffff"/>
+  <text class="c" x="1430" y="950" font-size="26">assistant answer</text>
+
+  <line class="arrow" x1="350" y1="660" x2="350" y2="780"/>
+  <text class="sec" x="370" y="730">turns are stored</text>
+  <line x1="1570" y1="660" x2="1570" y2="780" stroke="#8c959f" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="sec" x="1550" y="730" text-anchor="end">continues the same conversation</text>
+
+  <g>
+    <rect class="hl" x="80" y="80" width="540" height="580" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.1667"/>
+    </rect>
+    <rect class="hl" x="80" y="780" width="1760" height="220" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;1;0" keyTimes="0;0.1667;0.3333;0.6667;0.8333"/>
+    </rect>
+    <rect class="hl" x="720" y="80" width="480" height="580" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3333;0.5"/>
+    </rect>
+    <rect class="hl" x="1300" y="80" width="540" height="580" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.6667"/>
+    </rect>
+    <rect class="hl" x="1330" y="460" width="480" height="130" rx="18" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.8333"/>
+    </rect>
+  </g>
+</svg>

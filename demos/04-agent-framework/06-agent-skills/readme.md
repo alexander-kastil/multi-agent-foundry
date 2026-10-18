@@ -50,6 +50,8 @@ The agent works through four stages, and each stage costs tokens only when the t
 
 `load_skill` is always advertised. `read_skill_resource` appears only when at least one skill has resources, and `run_skill_script` only when at least one skill has scripts. Write the `description` as a trigger: it is the only text the agent sees before it decides to load the skill.
 
+![The four parts of the hut-booking skill folder feed four loading stages: advertise on every run, then load_skill, read_skill_resource and run_skill_script only when the task needs them](../pptx/images/06-01-progressive-disclosure.svg)
+
 ## Provide skills to an agent
 
 `SkillsProvider` is a context provider, so it goes into `context_providers`. `from_paths` discovers every subfolder that contains a `SKILL.md`, up to two levels deep.
@@ -115,6 +117,8 @@ agent = Agent(
 ```
 
 `read_only_tools_auto_approval_rule` approves `load_skill` and `read_skill_resource` and still asks for `run_skill_script`; `all_tools_auto_approval_rule` approves everything. The `disable_load_skill_approval`, `disable_read_skill_resource_approval` and `disable_run_skill_script_approval` arguments opt single tools out entirely, so use them only for sources you trust.
+
+![A SkillsProvider combines a FileSkillsSource with hut-booking and trail-safety and an InMemorySkillsSource with altitude; ToolApprovalMiddleware approves load_skill and read_skill_resource automatically and asks before run_skill_script](../pptx/images/06-03-mixed-skill-sources.svg)
 
 ## Skills in C#
 

@@ -94,6 +94,8 @@ If the next step fails with an authentication error from the model resource, the
 
 The conversation holds a preference, an allergy and a correction. The assistant claims it published release notes, and the user replies with the real process. `begin_update_memories` extracts and consolidates memories for the scope `alice`, and `update_delay=0` runs it immediately.
 
+![A conversation with a preference, an allergy and a correction passes through extraction and consolidation in m3-memory-store, lands in scope alice as user_profile, chat_summary and procedural memories, and comes back through a static and a contextual search_memories call](../pptx/images/06-01-three-memory-phases.svg)
+
 ```python
 result = memory_stores.begin_update_memories(name=STORE, scope="alice", items=conversation_items, update_delay=0).result()
 for operation in result.memory_operations:
@@ -244,6 +246,8 @@ agent: I don't have any saved memory about your usual coffee.
 ```
 
 Carol's second conversation never contained the words oat milk. The memory came from the store, and Dave's request used a different scope.
+
+![carol and dave ask one agent version the same question with their own x-memory-user-id header; the scope {{$userId}} resolves to scope carol, which holds the oat milk preference, and to scope dave, which is empty, so only carol gets the remembered answer](../pptx/images/06-02-memory-scope.svg)
 
 ## Step 6: Remember and forget on command
 

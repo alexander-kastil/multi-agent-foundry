@@ -75,6 +75,8 @@ The Foundry resource is an `AIServices` account and the project is its child res
 
 The endpoint encodes both the resource and the project. `endpoint.py` splits it so you can see which part names which resource.
 
+![The project endpoint split into the Foundry resource name and the project name, with the base_url and Responses API URL derived from it and the Foundry tools that start from it](../pptx/images/01-01-project-endpoint.svg)
+
 ```python
 url = urlparse(os.environ["PROJECT_ENDPOINT"])
 resource = url.hostname.split(".")[0]
@@ -195,6 +197,8 @@ tenant   : d92b247e...
 
 Now list the Foundry roles by their definition IDs, then list what is assigned to you on the project. The IDs are the stable part of the rename from the Azure AI role names.
 
+![Foundry User, Foundry Project Manager, Foundry Account Owner, Foundry Owner and Foundry Agent Consumer with their role definition IDs, each shown against the control plane, the data plane or both](../pptx/images/01-02-planes-and-roles.svg)
+
 ```bash
 az role definition list --query "[?contains(roleName,'Foundry')].[roleName,name]" -o tsv
 
@@ -223,6 +227,8 @@ Foundry Project Manager  /subscriptions/cd091145-.../providers/Microsoft.Cogniti
 ```
 
 The assignments appear at the resource, resource group or subscription scope and flow down to the project. Any row for Foundry User, Foundry Project Manager or Foundry Owner lets your code call the project.
+
+![DefaultAzureCredential turns an az login session or a managed identity into a token for https://ai.azure.com, which reaches the project where a Foundry User assignment from an outer scope lets the first call return ready](../pptx/images/01-03-token-to-call.svg)
 
 ## Step 5: Prove the data plane works with a first call
 

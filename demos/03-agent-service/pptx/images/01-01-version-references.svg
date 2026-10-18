@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Agent versions and references</title>
+  <desc>Three callers reference m3-support-agent. The caller that pins version 1 reaches version 1, the caller that pins version 2 reaches version 2, and the caller that names no version reaches the latest version, which is version 2. Both versions run gpt-5.4 and are immutable; only their instructions differ.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="100" y="140" width="600" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="192" class="b" font-size="30">Pins version 1</text>
+  <text x="130" y="240" class="mono sec">agent_reference</text>
+  <text x="130" y="285" class="mono">"name": "m3-support-agent",</text>
+  <text x="130" y="325" class="mono">"version": "1"</text>
+
+  <rect x="100" y="430" width="600" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="482" class="b" font-size="30">Pins version 2</text>
+  <text x="130" y="530" class="mono sec">agent_reference</text>
+  <text x="130" y="575" class="mono">"name": "m3-support-agent",</text>
+  <text x="130" y="615" class="mono">"version": "2"</text>
+
+  <rect x="100" y="720" width="600" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="772" class="b" font-size="30">Names no version</text>
+  <text x="130" y="820" class="mono sec">agent_reference</text>
+  <text x="130" y="865" class="mono">"name": "m3-support-agent"</text>
+  <text x="130" y="905" class="sec">targets the latest version</text>
+
+  <rect x="960" y="100" width="860" height="880" rx="20" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1000" y="160" class="mono b" font-size="32">m3-support-agent</text>
+  <text x="1000" y="204" class="sec">every version is immutable</text>
+
+  <rect x="1000" y="240" width="780" height="320" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1040" y="295" class="b" font-size="30">version 1</text>
+  <text x="1040" y="345" class="mono sec">m3-support-agent:1 model=gpt-5.4</text>
+  <text x="1040" y="410" class="sec">instructions</text>
+  <text x="1040" y="455">You are a support agent for Contoso Outdoor.</text>
+  <text x="1040" y="495">Answer in one short sentence.</text>
+
+  <rect x="1000" y="600" width="780" height="340" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1040" y="655" class="b" font-size="30">version 2</text>
+  <rect x="1630" y="622" width="120" height="46" rx="23" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1690" y="654" text-anchor="middle" class="b">latest</text>
+  <text x="1040" y="705" class="mono sec">m3-support-agent:2 model=gpt-5.4</text>
+  <text x="1040" y="770" class="sec">instructions</text>
+  <text x="1040" y="815">You are a support agent for Contoso Outdoor.</text>
+  <text x="1040" y="855">Answer in two short sentences and end with</text>
+  <text x="1040" y="895">a follow-up question.</text>
+
+  <line x1="700" y1="250" x2="998" y2="390" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="540" x2="998" y2="740" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="830" x2="998" y2="860" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

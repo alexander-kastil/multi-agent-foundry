@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>One toolbox endpoint in front of two MCP servers</title>
+  <desc>Three consumers, agent_toolbox.py with FoundryToolbox, list_tools.py with ClientSession and toolbox-cs with AddFoundryToolboxes, call the consumer endpoint /toolboxes/m2-docs-and-snippets/mcp with an Entra token for https://ai.azure.com/.default. The toolbox m2-docs-and-snippets serves six tools from two servers, version 1 being the default: mslearn___microsoft_code_sample_search, mslearn___microsoft_docs_fetch, mslearn___microsoft_docs_search, snippets___get_snippet, snippets___hello_mcp and snippets___save_snippet. The mslearn tools go to the Microsoft Learn MCP server at https://learn.microsoft.com/api/mcp with no credentials. The snippets tools go through the project connection m2-func-mcp-key, which adds x-functions-key, to the snippets function app at /runtime/webhooks/mcp on Azure Functions. A call to snippets___hello_mcp travels from list_tools.py through the toolbox and the connection to the function app.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#eaf2ff">
+    <rect x="100" y="80" width="520" height="170" rx="18"/>
+    <rect x="700" y="80" width="520" height="170" rx="18"/>
+    <rect x="1300" y="80" width="520" height="170" rx="18"/>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="360" y="130">agent_toolbox.py</text>
+    <text x="960" y="130">list_tools.py</text>
+    <text x="1560" y="130">toolbox-cs</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="360" y="176">FoundryToolbox</text>
+    <text x="960" y="176">ClientSession</text>
+    <text x="1560" y="176">AddFoundryToolboxes</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="360" y="218">Python agent</text>
+    <text x="960" y="218">plain MCP client</text>
+    <text x="1560" y="218">.NET hosted agent</text>
+  </g>
+
+  <text x="400" y="300" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">Entra token for</text>
+  <text x="400" y="338" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">https://ai.azure.com/.default</text>
+
+  <rect x="100" y="370" width="1720" height="310" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="130" y="425" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#24292f">Toolbox</text>
+  <text x="270" y="425" font-family="Consolas, 'Courier New', monospace" font-size="28" fill="#24292f">m2-docs-and-snippets</text>
+  <text x="870" y="425" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">consumer endpoint</text>
+  <text x="1100" y="425" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">/toolboxes/m2-docs-and-snippets/mcp</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#ffffff">
+    <rect x="130" y="455" width="600" height="190" rx="14"/>
+    <rect x="780" y="455" width="480" height="190" rx="14"/>
+  </g>
+  <rect x="792" y="532" width="456" height="36" rx="6" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;0.3;0" keyTimes="0;0.1667;0.3333" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="150" y="505">mslearn___microsoft_code_sample_search</text>
+    <text x="150" y="555">mslearn___microsoft_docs_fetch</text>
+    <text x="150" y="605">mslearn___microsoft_docs_search</text>
+    <text x="800" y="505">snippets___get_snippet</text>
+    <text x="800" y="555">snippets___hello_mcp</text>
+    <text x="800" y="605">snippets___save_snippet</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">
+    <text x="1310" y="535">version 1 is the default</text>
+    <text x="1310" y="580">6 tools from 2 servers</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="130" y="800" width="600" height="180" rx="18" fill="#f6f8fa"/>
+    <rect x="780" y="800" width="480" height="180" rx="18" fill="#f3edff"/>
+    <rect x="1340" y="800" width="480" height="180" rx="18" fill="#f3edff"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="430" y="850">Microsoft Learn MCP server</text>
+    <text x="1020" y="850">Project connection</text>
+    <text x="1580" y="850">Snippets function app</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="430" y="896">https://learn.microsoft.com/api/mcp</text>
+    <text x="1020" y="896">m2-func-mcp-key</text>
+    <text x="1580" y="896">/runtime/webhooks/mcp</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="430" y="940">no credentials</text>
+    <text x="1020" y="940">adds <tspan font-family="Consolas, 'Courier New', monospace" fill="#24292f">x-functions-key</tspan></text>
+    <text x="1580" y="940">Azure Functions</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="360" y1="256" x2="360" y2="364"/>
+    <line x1="960" y1="256" x2="960" y2="364"/>
+    <line x1="1560" y1="256" x2="1560" y2="364"/>
+    <line x1="430" y1="686" x2="430" y2="794"/>
+    <line x1="1020" y1="686" x2="1020" y2="794"/>
+    <line x1="1266" y1="890" x2="1334" y2="890"/>
+  </g>
+
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;0.1667" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M960,258 L960,360" keyPoints="0;1;1" keyTimes="0;0.1667;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M1020,688 L1020,790" keyPoints="0;0;1;1" keyTimes="0;0.3333;0.5;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.6667" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M1268,890 L1330,890" keyPoints="0;0;1;1" keyTimes="0;0.5;0.6667;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <rect x="1330" y="790" width="500" height="200" rx="24" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6667;0.9167" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </rect>
+</svg>

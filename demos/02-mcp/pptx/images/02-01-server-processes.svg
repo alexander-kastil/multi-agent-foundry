@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Server processes over stdio and Streamable HTTP</title>
+  <desc>Left, stdio: each run of stdio_client.py launches its own server.py --transport stdio as a child process and talks to it over stdin and stdout, while the server writes log lines to stderr. Every run starts a new server, so the process id changes. Right, Streamable HTTP: two runs of http_client.py send POST /mcp to one server.py --transport http on 127.0.0.1:47004 and get JSON or SSE back. The server outlives its clients, so the process id stays the same. Dots show run 1 and then run 2 on both sides at the same time.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="20" markerHeight="20" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <line x1="960" y1="90" x2="960" y2="990" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="490" y="140">stdio</text>
+    <text x="1440" y="140">Streamable HTTP</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="80" y="200" width="330" height="170" rx="14" fill="#eaf2ff"/>
+    <rect x="80" y="520" width="330" height="170" rx="14" fill="#eaf2ff"/>
+    <rect x="600" y="200" width="320" height="170" rx="14" fill="#fff6e5"/>
+    <rect x="600" y="520" width="320" height="170" rx="14" fill="#fff6e5"/>
+    <rect x="1010" y="200" width="330" height="170" rx="14" fill="#eaf2ff"/>
+    <rect x="1010" y="520" width="330" height="170" rx="14" fill="#eaf2ff"/>
+    <rect x="1530" y="200" width="340" height="490" rx="14" fill="#fff6e5"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="245" y="275">stdio_client.py</text>
+    <text x="245" y="595">stdio_client.py</text>
+    <text x="760" y="262">server.py</text>
+    <text x="760" y="302">--transport stdio</text>
+    <text x="760" y="582">server.py</text>
+    <text x="760" y="622">--transport stdio</text>
+    <text x="1175" y="275">http_client.py</text>
+    <text x="1175" y="595">http_client.py</text>
+    <text x="1700" y="380">server.py</text>
+    <text x="1700" y="420">--transport http</text>
+    <text x="1700" y="460" fill="#57606a">127.0.0.1:47004</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="245" y="318">run 1</text>
+    <text x="245" y="638">run 2</text>
+    <text x="760" y="344">child process</text>
+    <text x="760" y="664">a new process</text>
+    <text x="1175" y="318">run 1</text>
+    <text x="1175" y="638">run 2</text>
+    <text x="1700" y="512">one process</text>
+    <text x="760" y="460">stderr: log lines</text>
+    <text x="760" y="780">stderr: log lines</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="416" y1="255" x2="592" y2="255"/>
+    <line x1="594" y1="320" x2="418" y2="320"/>
+    <line x1="416" y1="575" x2="592" y2="575"/>
+    <line x1="594" y1="640" x2="418" y2="640"/>
+    <line x1="760" y1="372" x2="760" y2="420"/>
+    <line x1="760" y1="692" x2="760" y2="740"/>
+    <line x1="1346" y1="255" x2="1522" y2="255"/>
+    <line x1="1524" y1="320" x2="1348" y2="320"/>
+    <line x1="1346" y1="575" x2="1522" y2="575"/>
+    <line x1="1524" y1="640" x2="1348" y2="640"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="505" y="240">stdin</text>
+    <text x="505" y="356">stdout</text>
+    <text x="505" y="560">stdin</text>
+    <text x="505" y="676">stdout</text>
+    <text x="1435" y="240">POST /mcp</text>
+    <text x="1435" y="560">POST /mcp</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="1435" y="356">JSON or SSE</text>
+    <text x="1435" y="676">JSON or SSE</text>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#24292f" text-anchor="middle">
+    <text x="490" y="880">Every run starts a new server,</text>
+    <text x="490" y="922">so the process id changes</text>
+    <text x="1440" y="880">The server outlives its clients,</text>
+    <text x="1440" y="922">so the process id stays the same</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="600" y="200" width="320" height="170" rx="14" opacity="0"><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.05;0.3"/></rect>
+    <rect x="600" y="520" width="320" height="170" rx="14" opacity="0"><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.425;0.675"/></rect>
+    <rect x="1530" y="200" width="340" height="490" rx="14" opacity="0"><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;1;0" keyTimes="0;0.05;0.3;0.425;0.675"/></rect>
+  </g>
+
+  <g fill="#e0a534">
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M416,255 L592,255" keyPoints="0;0;1;1" keyTimes="0;0.05;0.15;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.05;0.15"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M594,320 L418,320" keyPoints="0;0;1;1" keyTimes="0;0.175;0.275;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.175;0.275"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M416,575 L592,575" keyPoints="0;0;1;1" keyTimes="0;0.425;0.525;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.425;0.525"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M594,640 L418,640" keyPoints="0;0;1;1" keyTimes="0;0.55;0.65;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.55;0.65"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M1346,255 L1522,255" keyPoints="0;0;1;1" keyTimes="0;0.05;0.15;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.05;0.15"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M1524,320 L1348,320" keyPoints="0;0;1;1" keyTimes="0;0.175;0.275;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.175;0.275"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M1346,575 L1522,575" keyPoints="0;0;1;1" keyTimes="0;0.425;0.525;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.425;0.525"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M1524,640 L1348,640" keyPoints="0;0;1;1" keyTimes="0;0.55;0.65;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.55;0.65"/></circle>
+  </g>
+</svg>

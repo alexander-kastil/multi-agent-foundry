@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Three middleware layers in one agent run</title>
+  <desc>One agent run that calls one tool, drawn as three lanes. Agent middleware, with AgentContext and the demo's timing_middleware and GuardrailMiddleware, surrounds the whole agent.run call. Chat middleware, with ChatContext and model_meter_middleware, runs twice: model call 1 asks the model, model call 2 returns the tool result. Function middleware, with FunctionInvocationContext and tool_audit_middleware, runs once around the get_trail_status tool call. A dot follows the run from the agent lane down to model call 1, the tool call and model call 2, and back up, while the active lane lights up.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+      .ln { stroke: #8c959f; stroke-width: 2; fill: none; }
+      .hl { fill: none; stroke: #e0a534; stroke-width: 8; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="80" width="1800" height="240" rx="20" fill="#f6f8fa"/>
+  <rect x="60" y="380" width="1800" height="240" rx="20" fill="#f6f8fa"/>
+  <rect x="60" y="680" width="1800" height="240" rx="20" fill="#f6f8fa"/>
+
+  <line x1="760" y1="300" x2="760" y2="398" class="ln" marker-end="url(#ah)"/>
+  <polyline points="960,600 960,800 1098,800" class="ln" marker-end="url(#ah)"/>
+  <polyline points="1400,800 1540,800 1540,602" class="ln" marker-end="url(#ah)"/>
+  <line x1="1740" y1="400" x2="1740" y2="302" class="ln" marker-end="url(#ah)"/>
+
+  <circle r="13" fill="#24292f" cx="0" cy="0" transform="translate(760 200)">
+    <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.06;0.94;1" path="M0,0 V300 H200 V600 H490 H780 V300 H980 V0"/>
+  </circle>
+
+  <rect x="80" y="100" width="520" height="200" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="80" y="400" width="520" height="200" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="80" y="700" width="520" height="200" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+
+  <rect x="660" y="100" width="1180" height="200" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="660" y="400" width="400" height="200" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1440" y="400" width="400" height="200" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1100" y="700" width="300" height="200" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+
+  <rect x="80" y="100" width="520" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.06;0.94" values="0;1;0"/>
+  </rect>
+  <rect x="660" y="100" width="1180" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.06;0.94" values="0;1;0"/>
+  </rect>
+  <rect x="80" y="400" width="520" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1407;0.3022;0.6978;0.8593" values="0;1;0;1;0"/>
+  </rect>
+  <rect x="660" y="400" width="400" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1407;0.3022" values="0;1;0"/>
+  </rect>
+  <rect x="1440" y="400" width="400" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.6978;0.8593" values="0;1;0"/>
+  </rect>
+  <rect x="80" y="700" width="520" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4395;0.5605" values="0;1;0"/>
+  </rect>
+  <rect x="1100" y="700" width="300" height="200" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4395;0.5605" values="0;1;0"/>
+  </rect>
+
+  <text x="112" y="152" class="s b" font-size="32">Agent middleware</text>
+  <text x="112" y="196" class="m sec" font-size="26">AgentContext</text>
+  <text x="112" y="238" class="m" font-size="26">timing_middleware</text>
+  <text x="112" y="276" class="m" font-size="26">GuardrailMiddleware</text>
+
+  <text x="112" y="470" class="s b" font-size="32">Chat middleware</text>
+  <text x="112" y="514" class="m sec" font-size="26">ChatContext</text>
+  <text x="112" y="556" class="m" font-size="26">model_meter_middleware</text>
+
+  <text x="112" y="770" class="s b" font-size="32">Function middleware</text>
+  <text x="112" y="814" class="m sec" font-size="26">FunctionInvocationContext</text>
+  <text x="112" y="856" class="m" font-size="26">tool_audit_middleware</text>
+
+  <text x="1250" y="190" class="m b" font-size="32" text-anchor="middle">agent.run(...)</text>
+  <text x="1250" y="240" class="s sec" font-size="26" text-anchor="middle">surrounds the whole run, tool call and model calls included</text>
+
+  <text x="860" y="488" class="s b" font-size="30" text-anchor="middle">model call 1</text>
+  <text x="860" y="534" class="s sec" font-size="26" text-anchor="middle">asks the model</text>
+
+  <text x="1640" y="488" class="s b" font-size="30" text-anchor="middle">model call 2</text>
+  <text x="1640" y="534" class="s sec" font-size="26" text-anchor="middle">returns the tool result</text>
+
+  <text x="1250" y="788" class="s b" font-size="30" text-anchor="middle">tool call</text>
+  <text x="1250" y="834" class="m" font-size="26" text-anchor="middle">get_trail_status</text>
+</svg>

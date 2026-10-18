@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Where spans and logs land in Application Insights</title>
+  <desc>Inside your process, client and internal spans, server spans and structured log lines go through the Azure Monitor distro, configured with configure_azure_monitor and sampling_ratio=1.0 so a short run keeps every span. Application Insights stores client and internal spans in dependencies, server spans in requests and log records in traces. Every row carries operation_Id, which is the trace_id of your spans and logs, so one key joins all three tables.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="60" width="1120" height="820" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="112" font-size="30" font-weight="700" fill="#24292f">Your process</text>
+
+  <rect x="90" y="150" width="580" height="250" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="115" y="196" font-size="26" font-weight="700" fill="#24292f">Client and internal spans</text>
+  <text x="115" y="246" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">customer_request</text>
+  <text x="115" y="292" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">chat gpt-5.4</text>
+  <text x="115" y="338" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">execute_tool get_order_status</text>
+
+  <rect x="90" y="430" width="580" height="210" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="115" y="476" font-size="26" font-weight="700" fill="#24292f">Server spans</text>
+  <text x="115" y="526" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">invoke_agent</text>
+  <text x="115" y="570" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">m7-product-search-agent</text>
+  <text x="115" y="614" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">SpanKind.SERVER</text>
+
+  <rect x="90" y="670" width="580" height="180" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="115" y="716" font-size="26" font-weight="700" fill="#24292f">Structured log lines</text>
+  <text x="115" y="764" font-size="26" fill="#24292f">JSON with <tspan font-family="Consolas, Menlo, monospace">trace_id</tspan> and <tspan font-family="Consolas, Menlo, monospace">span_id</tspan></text>
+  <text x="115" y="810" font-size="26" fill="#57606a">hashed session id, no prompt</text>
+
+  <rect x="760" y="150" width="390" height="700" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="955" y="400" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Azure Monitor distro</text>
+  <text x="955" y="462" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">configure_azure_monitor(</text>
+  <text x="955" y="502" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">sampling_ratio=1.0)</text>
+  <text x="955" y="566" font-size="26" fill="#57606a" text-anchor="middle">keeps every span</text>
+  <text x="955" y="604" font-size="26" fill="#57606a" text-anchor="middle">of a short run</text>
+
+  <line x1="670" y1="275" x2="754" y2="275" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="670" y1="535" x2="754" y2="535" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="670" y1="760" x2="754" y2="760" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1260" y="60" width="600" height="820" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="112" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Application Insights</text>
+
+  <rect x="1290" y="150" width="540" height="250" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="218" font-size="28" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">dependencies</text>
+  <text x="1560" y="264" font-size="26" fill="#57606a" text-anchor="middle">client and internal spans</text>
+  <rect x="1450" y="306" width="220" height="48" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1560" y="339" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">operation_Id</text>
+
+  <rect x="1290" y="430" width="540" height="210" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="490" font-size="28" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">requests</text>
+  <text x="1560" y="534" font-size="26" fill="#57606a" text-anchor="middle">server spans</text>
+  <rect x="1450" y="562" width="220" height="48" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1560" y="595" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">operation_Id</text>
+
+  <rect x="1290" y="670" width="540" height="180" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="722" font-size="28" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">traces</text>
+  <text x="1560" y="764" font-size="26" fill="#57606a" text-anchor="middle">log records</text>
+  <rect x="1450" y="786" width="220" height="48" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1560" y="819" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">operation_Id</text>
+
+  <line x1="1150" y1="275" x2="1284" y2="275" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1150" y1="535" x2="1284" y2="535" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1150" y1="760" x2="1284" y2="760" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="920" width="1800" height="96" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="960" y="978" font-size="28" fill="#24292f" text-anchor="middle"><tspan font-family="Consolas, Menlo, monospace">trace_id</tspan> in your spans and logs is the <tspan font-family="Consolas, Menlo, monospace">operation_Id</tspan> of every row: one key joins all three tables</text>
+</svg>

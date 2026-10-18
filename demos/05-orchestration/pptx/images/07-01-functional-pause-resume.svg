@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Pause and resume in a functional workflow</title>
+  <desc>Two runs of the announcement_review workflow. First run, pipeline.run(topic): the step write_draft calls the writer agent, then ctx.request_info with request_id="review" pauses the workflow, and the run ends with state IDLE_WITH_PENDING_REQUESTS. The reviewer answers "Make it a single sentence and mention saving time." through responses={"review": ...}. Resume, pipeline.run(responses=...): write_draft reports executor_bypassed and takes the draft from the cache, ctx.request_info returns the feedback, revise_draft reports executor_invoked and calls the reviser agent, and the workflow returns the final revised announcement. A note at the bottom: @step caches a result by function name and bound arguments, so the resume replays finished steps instead of calling the model again. A dot runs the first run up to the pause while the request lights up, the reviewer box lights up next, then a second dot runs the resume and passes write_draft quickly.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f6f8fa">
+    <rect x="60" y="130" width="300" height="180" rx="20"/>
+    <rect x="60" y="600" width="300" height="180" rx="20"/>
+  </g>
+  <g font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="210" y="205">First run</text>
+    <text x="210" y="655">Resume</text>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#57606a" text-anchor="middle">
+    <text x="210" y="250">pipeline.run(topic)</text>
+    <text x="210" y="700">pipeline.run(</text>
+    <text x="210" y="740">responses=...)</text>
+  </g>
+
+  <rect x="420" y="130" width="340" height="180" rx="20" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="590" y="205" font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">write_draft</text>
+  <text x="590" y="250" font-size="26" fill="#57606a" text-anchor="middle">calls the writer agent</text>
+
+  <rect x="830" y="130" width="360" height="180" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1010" y="190" font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">ctx.request_info</text>
+  <text x="1010" y="235" font-size="26" fill="#57606a" text-anchor="middle">pauses the workflow</text>
+  <text x="1010" y="275" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">request_id="review"</text>
+
+  <rect x="1260" y="130" width="600" height="180" rx="20" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="200" font-size="26" fill="#57606a" text-anchor="middle">the first run ends with state</text>
+  <text x="1560" y="250" font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">IDLE_WITH_PENDING_REQUESTS</text>
+
+  <rect x="640" y="370" width="740" height="160" rx="20" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1010" y="415" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">The reviewer answers</text>
+  <text x="1010" y="458" font-size="26" fill="#57606a" text-anchor="middle">"Make it a single sentence and mention saving time."</text>
+  <text x="1010" y="502" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">responses={"review": ...}</text>
+
+  <rect x="420" y="600" width="340" height="180" rx="20" fill="#f6f8fa" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="590" y="655" font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">write_draft</text>
+  <text x="590" y="700" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">executor_bypassed</text>
+  <text x="590" y="742" font-size="26" fill="#57606a" text-anchor="middle">draft from the cache</text>
+
+  <rect x="830" y="600" width="360" height="180" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1010" y="670" font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">ctx.request_info</text>
+  <text x="1010" y="715" font-size="26" fill="#57606a" text-anchor="middle">returns the feedback</text>
+
+  <rect x="1260" y="600" width="300" height="180" rx="20" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1410" y="655" font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">revise_draft</text>
+  <text x="1410" y="700" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">executor_invoked</text>
+  <text x="1410" y="742" font-size="26" fill="#57606a" text-anchor="middle">calls the reviser</text>
+
+  <rect x="1620" y="600" width="240" height="180" rx="20" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1740" y="652" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">final</text>
+  <text x="1740" y="697" font-size="26" fill="#57606a" text-anchor="middle">revised</text>
+  <text x="1740" y="737" font-size="26" fill="#57606a" text-anchor="middle">announcement</text>
+
+  <rect x="60" y="850" width="1800" height="150" rx="20" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="912" font-size="30" fill="#24292f" text-anchor="middle"><tspan font-family="Consolas, Courier New, monospace" font-weight="700">@step</tspan> caches a result by function name and bound arguments</text>
+  <text x="960" y="958" font-size="28" fill="#57606a" text-anchor="middle">so the resume replays finished steps instead of calling the model again</text>
+
+  <g fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="360" y1="220" x2="416" y2="220"/>
+    <line x1="760" y1="220" x2="826" y2="220"/>
+    <line x1="1190" y1="220" x2="1256" y2="220"/>
+    <line x1="1010" y1="310" x2="1010" y2="366"/>
+    <line x1="1010" y1="530" x2="1010" y2="596"/>
+    <line x1="360" y1="690" x2="416" y2="690"/>
+    <line x1="760" y1="690" x2="826" y2="690"/>
+    <line x1="1190" y1="690" x2="1256" y2="690"/>
+    <line x1="1560" y1="690" x2="1616" y2="690"/>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="822" y="122" width="376" height="196" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2143;0.3929" calcMode="discrete" dur="14s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="632" y="362" width="756" height="176" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3214;0.4643" calcMode="discrete" dur="14s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1612" y="592" width="256" height="196" rx="26" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.7857" calcMode="discrete" dur="14s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <circle r="14" fill="#24292f" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion path="M364,220 L793,220" keyPoints="0;1;1" keyTimes="0;0.2143;1" calcMode="linear" dur="14s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0" keyTimes="0;0.3929" calcMode="discrete" dur="14s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="14" fill="#24292f" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion path="M364,690 L1600,690" keyPoints="0;0;0.3471;1;1" keyTimes="0;0.4286;0.4714;0.7857;1" calcMode="linear" dur="14s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1" keyTimes="0;0.4286" calcMode="discrete" dur="14s" repeatCount="indefinite"/>
+  </circle>
+</svg>

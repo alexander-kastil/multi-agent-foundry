@@ -60,6 +60,8 @@ The instructions are written for listening: short sentences and one question at 
 
 The script opens a realtime connection, sends each user turn as a text message item and asks for a response. The reply arrives as audio deltas plus a transcript, and each reply is saved as a PCM16, 24 kHz, mono WAV file.
 
+![Realtime session events between your client and the session: connect and wait for the session-ready event, then for each user turn send conversation.item.create and response.create and receive response.audio.delta chunks, response.audio_transcript.done and response.done](../pptx/images/08-01-realtime-session-events.svg)
+
 ```python
 with project.beta.voice_agents.realtime.connect(agent_name=AGENT) as conn:
     conn.conversation.item.create(
@@ -114,6 +116,8 @@ The script then deletes the conversation and the agent.
 ## Step 4: Create a text agent with Voice Live settings
 
 The second path keeps an ordinary text agent. The Voice Live settings (voice, turn detection, noise suppression, echo cancellation) are stored in the agent's metadata under `microsoft.voice-live.configuration`, split into 512-character chunks.
+
+![VOICE_LIVE_CONFIG stored in the metadata of m3-voice-live-agent:1; the client connects through the Voice Live API by agent name and version, session.updated reports the voice from the metadata and the answer's facts come from the instructions](../pptx/images/08-02-voice-settings-metadata.svg)
 
 ```python
 agent = project.agents.create_version(

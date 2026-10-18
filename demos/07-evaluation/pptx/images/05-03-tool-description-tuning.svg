@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Tuning tool descriptions with a code-based evaluator</title>
+  <desc>Twelve queries each expect one of four tools. The prompt agent m7-tool-agent picks a tool by its vague description and emits a function call; the tools are not executed. The code-based evaluator m7_tool_choice reads the function call and scores 0.0 for another tool, 0.5 for the expected tool and 1.0 for the expected tool with its main argument. The optimization model, which sees only the queries, the calls and the scores, rewrites the four descriptions. The best candidate raised the score from 0.33 to 0.50. A dot travels the loop.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="60" y="80" width="460" height="420" rx="24" fill="#f6f8fa"/>
+    <rect x="640" y="80" width="540" height="420" rx="24" fill="#eaf2ff"/>
+    <rect x="1300" y="80" width="560" height="420" rx="24" fill="#f6f8fa"/>
+    <rect x="1300" y="600" width="560" height="400" rx="24" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="640" y="600" width="540" height="400" rx="24" fill="#f3edff"/>
+    <rect x="60" y="600" width="460" height="400" rx="24" fill="#e9f7ef"/>
+  </g>
+
+  <g font-size="32" font-weight="700" fill="#24292f">
+    <text x="95" y="140">12 queries</text>
+    <text x="675" y="140">Prompt agent</text>
+    <text x="1335" y="140">Function call</text>
+    <text x="1335" y="660">Code-based evaluator</text>
+    <text x="675" y="660">Optimization model</text>
+    <text x="95" y="660">Best candidate</text>
+  </g>
+
+  <text x="95" y="185" font-size="26" fill="#57606a">each expects one tool</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#24292f">
+    <text x="95" y="250">op_a1</text>
+    <text x="95" y="300">op_a2</text>
+    <text x="95" y="350">op_b2</text>
+    <text x="95" y="400">op_c3</text>
+    <text x="95" y="465" fill="#57606a">ground_truth: tool|value</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="200" y="250">order status</text>
+    <text x="200" y="300">customer account data</text>
+    <text x="200" y="350">product search</text>
+    <text x="200" y="400">store hours</text>
+  </g>
+
+  <text x="675" y="185" font-family="Consolas, Menlo, monospace" font-size="26" fill="#57606a">m7-tool-agent</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#24292f">
+    <text x="675" y="250">op_a1</text>
+    <text x="675" y="300">op_a2</text>
+    <text x="675" y="350">op_b2</text>
+    <text x="675" y="400">op_c3</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="780" y="250">"Does a lookup."</text>
+    <text x="780" y="300">"Does another lookup."</text>
+    <text x="780" y="350">"Does a search."</text>
+    <text x="780" y="400">"Gets some data."</text>
+  </g>
+  <text x="675" y="465" font-size="26" fill="#57606a">tools are not executed</text>
+
+  <text x="1335" y="185" font-size="26" fill="#57606a">what the agent decided</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#24292f">
+    <text x="1335" y="250">"type": "function_call"</text>
+    <text x="1335" y="300">"name"</text>
+    <text x="1335" y="350">"arguments"</text>
+  </g>
+  <text x="1335" y="465" font-size="26" fill="#57606a">read by the evaluator</text>
+
+  <text x="1335" y="705" font-family="Consolas, Menlo, monospace" font-size="26" fill="#57606a">m7_tool_choice</text>
+  <g font-size="26" fill="#24292f">
+    <text x="1335" y="785">another tool</text>
+    <text x="1335" y="845">expected tool</text>
+    <text x="1335" y="905">expected tool and argument</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="28" font-weight="700" fill="#24292f" text-anchor="end">
+    <text x="1825" y="785">0.0</text>
+    <text x="1825" y="845">0.5</text>
+    <text x="1825" y="905">1.0</text>
+  </g>
+  <text x="1335" y="965" font-size="26" fill="#57606a">reads the call itself</text>
+
+  <g font-size="26" fill="#24292f">
+    <text x="675" y="720">rewrites the four descriptions</text>
+    <text x="675" y="765">names, types and required</text>
+    <text x="675" y="805">fields stay</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="675" y="885">sees only the queries,</text>
+    <text x="675" y="925">the calls and the scores</text>
+  </g>
+
+  <g font-size="26" fill="#24292f">
+    <text x="95" y="720">score rises from</text>
+    <text x="95" y="770" font-size="34" font-weight="700">0.33 to 0.50</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="95" y="845">read every new description</text>
+    <text x="95" y="885">before you promote it</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="524" y1="290" x2="634" y2="290"/>
+    <line x1="1184" y1="290" x2="1294" y2="290"/>
+    <line x1="1580" y1="504" x2="1580" y2="594"/>
+    <line x1="1296" y1="800" x2="1186" y2="800"/>
+    <line x1="910" y1="596" x2="910" y2="506"/>
+    <line x1="636" y1="800" x2="526" y2="800"/>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="1241" y="780" text-anchor="middle">score</text>
+    <text x="928" y="560">new descriptions</text>
+  </g>
+
+  <g fill="#e0a534" stroke="#ffffff" stroke-width="3">
+    <circle r="13" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.15;1" path="M524,290 L626,290"/>
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.15"/>
+    </circle>
+    <circle r="13" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.15;0.3;1" path="M1184,290 L1286,290"/>
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.15;0.3"/>
+    </circle>
+    <circle r="13" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.3;0.45;1" path="M1580,504 L1580,586"/>
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3;0.45"/>
+    </circle>
+    <circle r="13" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.45;0.6;1" path="M1296,800 L1194,800"/>
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.45;0.6"/>
+    </circle>
+    <circle r="13" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.6;0.75;1" path="M910,596 L910,514"/>
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6;0.75"/>
+    </circle>
+    <circle r="13" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.75;0.9;1" path="M636,800 L534,800"/>
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.75;0.9"/>
+    </circle>
+  </g>
+</svg>

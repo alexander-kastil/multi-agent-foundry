@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>One Agent, four swappable chat clients</title>
+  <desc>The Agent named OutdoorGuide owns instructions, tools, sessions and middleware and has one client slot. Four chat clients can fill the slot: FoundryChatClient calls a Foundry project deployment through the Responses endpoint, OpenAIChatClient uses the Responses API, OpenAIChatCompletionClient uses the Chat Completions API and AnthropicClient reaches Claude models. A highlight steps through the four clients while the agent stays the same.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e0a534"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="70" y="170" width="520" height="700" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="240" class="s b" font-size="40">Agent</text>
+  <text x="110" y="290" class="m sec" font-size="26">name="OutdoorGuide"</text>
+  <text x="110" y="352" class="s sec" font-size="26">owns</text>
+  <rect x="110" y="372" width="440" height="60" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="412" class="s" font-size="28">instructions</text>
+  <rect x="110" y="446" width="440" height="60" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="486" class="s" font-size="28">tools</text>
+  <rect x="110" y="520" width="440" height="60" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="560" class="s" font-size="28">sessions</text>
+  <rect x="110" y="594" width="440" height="60" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="135" y="634" class="s" font-size="28">middleware</text>
+  <rect x="110" y="700" width="440" height="110" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="140" y="767" class="m b" font-size="32">client=</text>
+  <line x1="550" y1="755" x2="590" y2="755" stroke="#e0a534" stroke-width="4"/>
+  <circle cx="590" cy="755" r="10" fill="#e0a534"/>
+
+  <rect x="70" y="910" width="520" height="80" rx="40" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="330" y="960" class="s" font-size="28" text-anchor="middle">Agent code stays the same</text>
+
+  <line x1="600" y1="755" x2="826" y2="225" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="600" y1="755" x2="826" y2="420" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="600" y1="755" x2="826" y2="615" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="600" y1="755" x2="826" y2="810" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="830" y="150" width="480" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="858" y="215" class="m b" font-size="30">FoundryChatClient</text>
+  <text x="858" y="262" class="m sec" font-size="26">agent-framework-foundry</text>
+  <rect x="830" y="345" width="480" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="858" y="410" class="m b" font-size="30">OpenAIChatClient</text>
+  <text x="858" y="457" class="m sec" font-size="26">agent-framework-openai</text>
+  <rect x="830" y="540" width="480" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="858" y="605" class="m b" font-size="30">OpenAIChatCompletionClient</text>
+  <text x="858" y="652" class="m sec" font-size="26">agent-framework-openai</text>
+  <rect x="830" y="735" width="480" height="150" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="858" y="800" class="m b" font-size="30">AnthropicClient</text>
+  <text x="858" y="847" class="m sec" font-size="26">agent-framework-anthropic</text>
+  <rect x="1224" y="818" width="76" height="40" rx="20" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="1262" y="847" class="s sec" font-size="26" text-anchor="middle">beta</text>
+
+  <line x1="1310" y1="225" x2="1426" y2="225" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="1310" y1="420" x2="1426" y2="420" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="1310" y1="615" x2="1426" y2="615" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="1310" y1="810" x2="1426" y2="810" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="1430" y="150" width="420" height="150" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1458" y="215" class="s b" font-size="30">Foundry project</text>
+  <text x="1458" y="262" class="m sec" font-size="26">/openai/v1/responses</text>
+  <rect x="1430" y="345" width="420" height="150" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1458" y="410" class="s b" font-size="30">Responses API</text>
+  <text x="1458" y="457" class="s sec" font-size="26">OpenAI or Azure OpenAI</text>
+  <rect x="1430" y="540" width="420" height="150" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1458" y="605" class="s b" font-size="30">Chat Completions API</text>
+  <text x="1458" y="652" class="s sec" font-size="26">OpenAI-compatible endpoints</text>
+  <rect x="1430" y="735" width="420" height="150" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1458" y="800" class="s b" font-size="30">Claude models</text>
+  <text x="1458" y="847" class="s sec" font-size="26">Anthropic API</text>
+
+  <rect x="830" y="910" width="1020" height="80" rx="40" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1340" y="960" class="s" font-size="28" text-anchor="middle">Swapping the client changes where the model runs</text>
+
+  <g opacity="1">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.25"/>
+    <line x1="600" y1="755" x2="824" y2="229" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="830" y="150" width="480" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <line x1="1310" y1="225" x2="1424" y2="225" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="1430" y="150" width="420" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <circle cx="600" cy="755" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L222,-522" keyPoints="0;1;1" keyTimes="0;0.15;1" calcMode="linear"/>
+    </circle>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.5"/>
+    <line x1="600" y1="755" x2="823" y2="423" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="830" y="345" width="480" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <line x1="1310" y1="420" x2="1424" y2="420" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="1430" y="345" width="420" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <circle cx="600" cy="755" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L222,-333" keyPoints="0;0;1;1" keyTimes="0;0.25;0.4;1" calcMode="linear"/>
+    </circle>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.75"/>
+    <line x1="600" y1="755" x2="823" y2="617" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="830" y="540" width="480" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <line x1="1310" y1="615" x2="1424" y2="615" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="1430" y="540" width="420" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <circle cx="600" cy="755" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L222,-139" keyPoints="0;0;1;1" keyTimes="0;0.5;0.65;1" calcMode="linear"/>
+    </circle>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.75"/>
+    <line x1="600" y1="755" x2="824" y2="809" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="830" y="735" width="480" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <line x1="1310" y1="810" x2="1424" y2="810" stroke="#e0a534" stroke-width="6" marker-end="url(#aha)"/>
+    <rect x="1430" y="735" width="420" height="150" rx="14" fill="none" stroke="#e0a534" stroke-width="6"/>
+    <circle cx="600" cy="755" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L222,55" keyPoints="0;0;1;1" keyTimes="0;0.75;0.9;1" calcMode="linear"/>
+    </circle>
+  </g>
+</svg>

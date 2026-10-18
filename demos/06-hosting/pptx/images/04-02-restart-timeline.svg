@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Restarting the host during the approval wait</title>
+  <desc>A timeline with four lanes. You reject the draft with feedback, check the status, stop the host with Ctrl+C, start it again with func start, check the status again and approve. The function app process runs, stops and runs again. The orchestration record in the Durable Task Scheduler waits for review, round 2 the whole time and then completes. The status call returns waiting for review, round 2 before and after the restart, and Completed with published at the end. On Flex Consumption the app scales to zero during the wait. A highlight moves along the time axis.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#24292f">
+
+    <g fill="#f6f8fa">
+      <rect x="30" y="90" width="1860" height="130" rx="14"/>
+      <rect x="30" y="250" width="1860" height="130" rx="14"/>
+      <rect x="30" y="410" width="1860" height="130" rx="14"/>
+      <rect x="30" y="570" width="1860" height="130" rx="14"/>
+    </g>
+
+    <rect x="430" y="90" width="20" height="610" fill="#e0a534" opacity="0.28">
+      <animate attributeName="x" values="430;1870;1870" keyTimes="0;0.85;1" dur="12s" repeatCount="indefinite"/>
+    </rect>
+
+    <g font-size="28" font-weight="600">
+      <text x="60" y="147">You</text>
+      <text x="60" y="307">Function app</text>
+      <text x="60" y="467">Durable Task</text>
+      <text x="60" y="627">Status call</text>
+    </g>
+    <g font-size="26" fill="#57606a">
+      <text x="60" y="187">curl and terminal</text>
+      <text x="60" y="347">host process</text>
+      <text x="60" y="507">Scheduler</text>
+      <text x="60" y="667">returns</text>
+    </g>
+
+    <g stroke="#8c959f" stroke-width="2" fill="#ffffff">
+      <rect x="462" y="107" width="196" height="96" rx="12"/>
+      <rect x="690" y="107" width="196" height="96" rx="12"/>
+      <rect x="918" y="107" width="196" height="96" rx="12"/>
+      <rect x="1146" y="107" width="196" height="96" rx="12"/>
+      <rect x="1374" y="107" width="196" height="96" rx="12"/>
+      <rect x="1602" y="107" width="196" height="96" rx="12"/>
+    </g>
+    <g font-size="26" text-anchor="middle">
+      <text x="560" y="146" font-weight="600">reject</text>
+      <text x="560" y="184" fill="#57606a">with feedback</text>
+      <text x="788" y="146" font-weight="600">check</text>
+      <text x="788" y="184" fill="#57606a">status</text>
+      <text x="1016" y="146" font-weight="600">Ctrl+C</text>
+      <text x="1016" y="184" fill="#57606a">stop host</text>
+      <text x="1244" y="146" font-weight="600" font-family="Consolas, Courier New, monospace">func start</text>
+      <text x="1244" y="184" fill="#57606a">host back</text>
+      <text x="1472" y="146" font-weight="600">check</text>
+      <text x="1472" y="184" fill="#57606a">status</text>
+      <text x="1700" y="146" font-weight="600">approve</text>
+      <text x="1700" y="184" fill="#57606a">round 2</text>
+    </g>
+
+    <rect x="440" y="275" width="576" height="80" rx="10" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <rect x="1016" y="275" width="228" height="80" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 7"/>
+    <rect x="1244" y="275" width="636" height="80" rx="10" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <g font-size="26" text-anchor="middle">
+      <text x="728" y="324">running</text>
+      <text x="1130" y="324" fill="#57606a">stopped</text>
+      <text x="1562" y="324">running again</text>
+    </g>
+
+    <rect x="440" y="435" width="120" height="80" rx="10" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <rect x="560" y="435" width="1140" height="80" rx="10" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <rect x="1700" y="435" width="180" height="80" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+    <g font-size="26" text-anchor="middle">
+      <text x="500" y="484" fill="#57606a">round 1</text>
+      <text x="1130" y="484" font-weight="600">orchestration record: waiting for review, round 2</text>
+      <text x="1790" y="484">Completed</text>
+    </g>
+
+    <g stroke="#8c959f" stroke-width="2">
+      <rect x="658" y="587" width="260" height="96" rx="12" fill="#fff6e5" stroke="#e0a534"/>
+      <rect x="1342" y="587" width="260" height="96" rx="12" fill="#fff6e5" stroke="#e0a534"/>
+      <rect x="1700" y="587" width="180" height="96" rx="12" fill="#e9f7ef"/>
+      <line x1="918" y1="660" x2="1342" y2="660" stroke-dasharray="8 6"/>
+    </g>
+    <g font-size="26" text-anchor="middle">
+      <text x="788" y="626">waiting for review,</text>
+      <text x="788" y="664">round 2</text>
+      <text x="1472" y="626">waiting for review,</text>
+      <text x="1472" y="664">round 2</text>
+      <text x="1790" y="626">Completed,</text>
+      <text x="1790" y="664">published</text>
+      <text x="1130" y="636" fill="#57606a">same after the restart</text>
+    </g>
+
+    <line x1="440" y1="745" x2="1878" y2="745" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+    <g stroke="#8c959f" stroke-width="2">
+      <line x1="560" y1="736" x2="560" y2="754"/>
+      <line x1="788" y1="736" x2="788" y2="754"/>
+      <line x1="1016" y1="736" x2="1016" y2="754"/>
+      <line x1="1244" y1="736" x2="1244" y2="754"/>
+      <line x1="1472" y1="736" x2="1472" y2="754"/>
+      <line x1="1700" y1="736" x2="1700" y2="754"/>
+    </g>
+    <text x="1880" y="790" font-size="26" text-anchor="end" fill="#57606a">time</text>
+
+    <rect x="30" y="820" width="1860" height="140" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+    <text x="960" y="878" font-size="28" text-anchor="middle">On Flex Consumption the app scales to zero during the wait.</text>
+    <text x="960" y="922" font-size="28" text-anchor="middle" font-weight="600">The orchestration record in the scheduler is the only thing alive.</text>
+  </g>
+</svg>

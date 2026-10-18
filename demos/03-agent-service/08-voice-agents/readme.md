@@ -35,6 +35,8 @@ Both paths use a long-lived WebSocket session. The client sends events and recei
 3. Send `response.create` to ask for a reply.
 4. Collect `response.audio.delta` chunks and the `response.audio_transcript.done` text until `response.done`.
 
+![Realtime session events between your client and the session: connect and wait for the session-ready event, then for each user turn send conversation.item.create and response.create and receive response.audio.delta chunks, response.audio_transcript.done and response.done](../pptx/images/08-01-realtime-session-events.svg)
+
 Audio is PCM16, mono, 24 kHz in both directions in these demos. Real use streams microphone audio into the session and relies on server-side turn detection to decide when the user finished speaking. Semantic voice activity detection waits for a finished thought instead of the first pause.
 
 ## Voice Live with a Foundry agent
@@ -67,6 +69,8 @@ using VoiceLiveSession session = await client.StartSessionAsync(SessionTarget.Fr
 ## Store the voice settings with the agent
 
 Voice, turn detection and audio processing settings can live in the agent's metadata under `microsoft.voice-live.configuration`. A metadata value holds at most 512 characters, so longer JSON is split across numbered keys.
+
+![VOICE_LIVE_CONFIG stored in the metadata of m3-voice-live-agent:1; the client connects through the Voice Live API by agent name and version, session.updated reports the voice from the metadata and the answer's facts come from the instructions](../pptx/images/08-02-voice-settings-metadata.svg)
 
 ```json
 {

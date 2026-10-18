@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The eight topics of Foundry Agent Service: Tools, Knowledge and Memory</title>
+  <desc>Eight numbered topic cards in reading order, connected by arrows. 01 Prompt Agents: Versions and Conversations, versioned agents and conversations. 02 Code Interpreter, File and Web Search, run code, read files, cite the web. 03 Browser Automation and Computer Use, operate a UI with no API. 04 Foundry IQ: Knowledge Bases and Retrieval, cited answers from many sources. 05 Advanced RAG: Hybrid Search and Reranking, measured by mean reciprocal rank. 06 Agent Memory: User and Procedural Memory, remember users across sessions. 07 Stateful Agentic Loops: Plan and Resume, plan, reflect, fork and resume. 08 Voice Agents: Voice Live API, speech in, speech out.</desc>
+  <style>
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; text-anchor: middle; }
+    .num { font-size: 40px; font-weight: 700; fill: #57606a; }
+    .t { font-size: 32px; font-weight: 700; }
+    .s { font-size: 28px; fill: #57606a; }
+    .card { fill: #f3edff; stroke: #8c959f; stroke-width: 2; }
+    .arrow { fill: none; stroke: #8c959f; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="card" x="90" y="80" width="540" height="260" rx="24"/>
+  <text class="num" x="360" y="140">01</text>
+  <text class="t" x="360" y="195">Prompt Agents:</text>
+  <text class="t" x="360" y="237">Versions &amp; Conversations</text>
+  <text class="s" x="360" y="295">Versioned agents and conversations</text>
+
+  <rect class="card" x="690" y="80" width="540" height="260" rx="24"/>
+  <text class="num" x="960" y="140">02</text>
+  <text class="t" x="960" y="195">Code Interpreter,</text>
+  <text class="t" x="960" y="237">File &amp; Web Search</text>
+  <text class="s" x="960" y="295">Run code, read files, cite the web</text>
+
+  <rect class="card" x="1290" y="80" width="540" height="260" rx="24"/>
+  <text class="num" x="1560" y="140">03</text>
+  <text class="t" x="1560" y="195">Browser Automation</text>
+  <text class="t" x="1560" y="237">&amp; Computer Use</text>
+  <text class="s" x="1560" y="295">Operate a UI with no API</text>
+
+  <rect class="card" x="90" y="410" width="540" height="260" rx="24"/>
+  <text class="num" x="360" y="470">04</text>
+  <text class="t" x="360" y="525">Foundry IQ:</text>
+  <text class="t" x="360" y="567">Knowledge Bases &amp; Retrieval</text>
+  <text class="s" x="360" y="625">Cited answers from many sources</text>
+
+  <rect class="card" x="690" y="410" width="540" height="260" rx="24"/>
+  <text class="num" x="960" y="470">05</text>
+  <text class="t" x="960" y="525">Advanced RAG:</text>
+  <text class="t" x="960" y="567">Hybrid Search &amp; Reranking</text>
+  <text class="s" x="960" y="625">Measured by mean reciprocal rank</text>
+
+  <rect class="card" x="1290" y="410" width="540" height="260" rx="24"/>
+  <text class="num" x="1560" y="470">06</text>
+  <text class="t" x="1560" y="525">Agent Memory:</text>
+  <text class="t" x="1560" y="567">User &amp; Procedural Memory</text>
+  <text class="s" x="1560" y="625">Remember users across sessions</text>
+
+  <rect class="card" x="390" y="740" width="540" height="260" rx="24"/>
+  <text class="num" x="660" y="800">07</text>
+  <text class="t" x="660" y="855">Stateful Agentic Loops:</text>
+  <text class="t" x="660" y="897">Plan &amp; Resume</text>
+  <text class="s" x="660" y="955">Plan, reflect, fork and resume</text>
+
+  <rect class="card" x="990" y="740" width="540" height="260" rx="24"/>
+  <text class="num" x="1260" y="800">08</text>
+  <text class="t" x="1260" y="855">Voice Agents:</text>
+  <text class="t" x="1260" y="897">Voice Live API</text>
+  <text class="s" x="1260" y="955">Speech in, speech out</text>
+
+  <line class="arrow" x1="630" y1="210" x2="690" y2="210"/>
+  <line class="arrow" x1="1230" y1="210" x2="1290" y2="210"/>
+  <path class="arrow" d="M1560,340 L1560,375 L360,375 L360,410"/>
+  <line class="arrow" x1="630" y1="540" x2="690" y2="540"/>
+  <line class="arrow" x1="1230" y1="540" x2="1290" y2="540"/>
+  <path class="arrow" d="M1560,670 L1560,705 L660,705 L660,740"/>
+  <line class="arrow" x1="930" y1="870" x2="990" y2="870"/>
+</svg>

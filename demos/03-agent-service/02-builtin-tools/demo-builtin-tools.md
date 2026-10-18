@@ -20,6 +20,8 @@ cp .env.example .env
 
 Set `PROJECT_ENDPOINT` in `.env` first. The `assets` folder holds `quarterly_results.csv` (company results by sector) and `product-info.md` (a product sheet with warranty and return terms).
 
+![An agent version with Code Interpreter, File Search and Web Search: the sandbox and the vector store stay inside the Azure compliance boundary, while Web Search reaches the public web outside it](../pptx/images/02-02-tool-reach.svg)
+
 ## Step 1: Analyze a CSV with Code Interpreter
 
 The agent receives the uploaded file inside its sandbox, writes Python and saves a PNG. The `container_file_citation` annotation on the last message tells you where the file lives.
@@ -186,6 +188,8 @@ The agent refuses to guess because the instructions tell it to answer only from 
 ## Verify
 
 Each of the four steps printed a tool call item before its `message`: `code_interpreter_call`, `file_search_call`, `web_search_call` and both of the first two together. Step 2 carries a `file_citation` for `product-info.md` and Step 3 a `url_citation`.
+
+![Output items of the four demo steps: tool call items come before the message, and each message carries a container_file_citation, a file_citation, a url_citation or the computed answer](../pptx/images/02-01-tool-output-items.svg)
 
 ## Cleanup
 

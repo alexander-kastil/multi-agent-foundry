@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Where the history lives: service-managed or local</title>
+  <desc>Left, service-managed history, the default for FoundryChatClient: sessions/session.json holds only session_id, a service_session_id starting with resp_ and an empty state, and the four messages sit in the conversation in Foundry. Right, local history with options store False: sessions/local-session.json has service_session_id None and the four messages sit under state in_memory messages, written by InMemoryHistoryProvider, so stored messages reach 4 after two turns.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="70" y="86" class="s b" font-size="32">Service-managed history</text>
+  <text x="70" y="128" class="s sec" font-size="26">Default for <tspan class="m">FoundryChatClient</tspan></text>
+  <text x="990" y="86" class="s b" font-size="32">Local history</text>
+  <text x="990" y="128" class="m sec" font-size="26">options={"store": False}</text>
+
+  <rect x="70" y="160" width="860" height="280" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="105" y="212" class="m b" font-size="28">sessions/session.json</text>
+  <text x="105" y="268" class="m" font-size="26">"session_id": "0b299817-..."</text>
+  <rect x="95" y="290" width="580" height="44" rx="8" fill="#f3edff"/>
+  <text x="105" y="321" class="m" font-size="26">"service_session_id": "resp_0305..."</text>
+  <text x="105" y="374" class="m" font-size="26">"state": {}</text>
+
+  <line x1="500" y1="440" x2="500" y2="536" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="522" y="498" class="s sec" font-size="26">points to</text>
+
+  <rect x="70" y="540" width="860" height="370" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="592" class="s b" font-size="28">Conversation in Foundry</text>
+  <rect x="105" y="612" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="125" y="650" class="s sec b" font-size="26">user</text>
+  <text x="270" y="650" class="s" font-size="26">My name is Alex and I plan a kayak trip ...</text>
+  <rect x="105" y="682" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="125" y="720" class="s sec b" font-size="26">assistant</text>
+  <text x="270" y="720" class="s" font-size="26">Alex, for your kayak trip on the Danube, ...</text>
+  <rect x="105" y="752" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="125" y="790" class="s sec b" font-size="26">user</text>
+  <text x="270" y="790" class="s" font-size="26">Which river did I mention?</text>
+  <rect x="105" y="822" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="125" y="860" class="s sec b" font-size="26">assistant</text>
+  <text x="270" y="860" class="s" font-size="26">You mentioned the Danube. ...</text>
+
+  <rect x="990" y="160" width="860" height="750" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1025" y="212" class="m b" font-size="28">sessions/local-session.json</text>
+  <text x="1025" y="268" class="m" font-size="26">service_session_id: None</text>
+  <text x="1025" y="321" class="m" font-size="26">"state": {"in_memory": {"messages": [...]}}</text>
+  <text x="1025" y="374" class="s sec" font-size="26">Written by <tspan class="m">InMemoryHistoryProvider</tspan></text>
+  <rect x="1025" y="440" width="790" height="96" rx="12" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="1050" y="498" class="m b" font-size="28">stored messages   : 4</text>
+  <text x="1440" y="498" class="s sec" font-size="26">after two turns</text>
+  <rect x="1025" y="612" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1045" y="650" class="s sec b" font-size="26">user</text>
+  <text x="1190" y="650" class="s" font-size="26">My name is Alex and I plan a kayak trip ...</text>
+  <rect x="1025" y="682" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1045" y="720" class="s sec b" font-size="26">assistant</text>
+  <text x="1190" y="720" class="s" font-size="26">Nice to meet you, Alex. ...</text>
+  <rect x="1025" y="752" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1045" y="790" class="s sec b" font-size="26">user</text>
+  <text x="1190" y="790" class="s" font-size="26">Which river did I mention?</text>
+  <rect x="1025" y="822" width="790" height="58" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1045" y="860" class="s sec b" font-size="26">assistant</text>
+  <text x="1190" y="860" class="s" font-size="26">You mentioned the Danube. ...</text>
+
+  <rect x="70" y="945" width="860" height="80" rx="40" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="500" y="995" class="s" font-size="28" text-anchor="middle">The session is only an ID</text>
+  <rect x="990" y="945" width="860" height="80" rx="40" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1420" y="995" class="s" font-size="28" text-anchor="middle">The session carries every message</text>
+</svg>

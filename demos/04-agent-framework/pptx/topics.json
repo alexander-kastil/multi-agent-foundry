@@ -1,0 +1,11 @@
+{
+  "topics": [
+    {"title": "Chat Clients: Foundry, OpenAI & Claude", "subtitle": "Swap where the model runs, keep the agent code"},
+    {"title": "AgentSession: State & Persistence", "subtitle": "Carry a conversation across runs and restarts"},
+    {"title": "Context Providers & Long-Term Memory", "subtitle": "Add history, preferences and memory to each request"},
+    {"title": "Middleware: Agent, Function & Chat", "subtitle": "Wrap every run, tool call and model request"},
+    {"title": "Function Tools, MCP & Approvals", "subtitle": "Functions, MCP servers and hosted tools with a human approval gate"},
+    {"title": "Agent Skills: SKILL.md & Progressive Disclosure", "subtitle": "Load a company procedure only when the task needs it"},
+    {"title": "Harness Agent: Plan, Execute & Compaction", "subtitle": "Plan, act under standing approvals and compact the context"}
+  ]
+}

@@ -95,6 +95,8 @@ resp_068658134c411  'I can’t share other customers’ personal information or 
 
 An evaluation lists the evaluators; the rule decides when it runs. The `azure_ai_source` data source with the `responses` scenario lets the service read each response itself, and `max_hourly_runs` caps the cost.
 
+![The support agent evaluated three ways: a continuous evaluation rule on each completed response, stored response IDs and invoke_agent traces, each feeding an evaluation run](../pptx/images/04-01-evaluating-live-traffic.svg)
+
 ```python
 rule = project_client.evaluation_rules.create_or_update(
     id=RULE_ID,
@@ -329,6 +331,8 @@ run completed  ResultCounts(errored=0, failed=64, passed=44, total=108, skipped=
 ## Step 6: Read the findings before you act on them
 
 An attack success rate is one model's judgement of another model's reply. `red_team_report.py` groups the flagged items by attack technique and prints the judge's reason next to the agent's actual reply, so you can check the verdict.
+
+![A cloud red team run from the generated taxonomy through the baseline, Flip and Base64 strategies and the agent to the evaluators, then the flagged items per strategy and the review of the judge's reason](../pptx/images/04-02-red-team-run.svg)
 
 ```bash
 python red_team_report.py

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>How model router serves one call</title>
+  <desc>Your code calls responses.create with the router deployment m1-router-balanced as the model. Model router version 2025-11-18 reads the prompt text in real time and forwards it to the most suitable model in a pool of OpenAI, Anthropic, xAI, DeepSeek, Meta and Fireworks models; Claude models must be deployed first. On a transient problem it fails over to the next most suitable model in the same routing mode. response.model names the model that served the call, for example gpt-5.6-sol-2026-07-09.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <marker id="arrDark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#24292f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="80" y="170" width="580" height="250" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="218" class="b">Your code</text>
+  <text x="110" y="270" class="m" font-size="26">openai.responses.create(</text>
+  <text xml:space="preserve" x="110" y="312" class="m" font-size="26">  model=<tspan class="b">"m1-router-balanced"</tspan>,</text>
+  <text xml:space="preserve" x="110" y="354" class="m" font-size="26">  input="In one sentence, ...")</text>
+  <path d="M660,295 H772" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="80" y="480" width="580" height="160" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2" stroke-dasharray="10 6"/>
+  <text x="110" y="526" class="b">Automatic failover</text>
+  <text x="110" y="566" font-size="26">on a transient problem: the next most</text>
+  <text x="110" y="602" font-size="26">suitable model, same routing mode</text>
+  <path d="M660,530 H780" stroke="#e0a534" stroke-width="2" fill="none" stroke-dasharray="10 6"/>
+
+  <rect x="780" y="170" width="400" height="390" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="980" y="226" text-anchor="middle" class="b" font-size="32">Model router</text>
+  <text x="980" y="270" text-anchor="middle" class="m" font-size="26">model-router</text>
+  <text x="980" y="306" text-anchor="middle" class="m s" font-size="26">2025-11-18</text>
+  <path d="M800,334 H1160" stroke="#e0a534" stroke-width="2"/>
+  <text x="980" y="380" text-anchor="middle" font-size="26">reads the prompt text</text>
+  <text x="980" y="416" text-anchor="middle" font-size="26">in real time and picks</text>
+  <text x="980" y="452" text-anchor="middle" font-size="26">the most suitable model</text>
+  <text x="980" y="510" text-anchor="middle" class="s" font-size="26">routing mode: Balanced</text>
+  <rect x="780" y="170" width="400" height="390" rx="16" fill="none" stroke="#e0a534" stroke-width="7" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16;0.2;0.3;0.34;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <rect x="1300" y="70" width="540" height="880" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1330" y="114" class="b" font-size="30">Pool</text>
+  <rect x="1330" y="140" width="480" height="112" rx="12" fill="#ffffff" stroke="#24292f" stroke-width="3"/>
+  <text x="1570" y="206" text-anchor="middle" class="b">OpenAI</text>
+  <rect x="1330" y="140" width="480" height="112" rx="12" fill="none" stroke="#e0a534" stroke-width="7" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.46;0.56;0.6;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="1330" y="274" width="480" height="112" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1570" y="320" text-anchor="middle" class="b">Anthropic</text>
+  <text x="1570" y="358" text-anchor="middle" class="s" font-size="26">deploy each Claude model first</text>
+  <rect x="1330" y="408" width="480" height="112" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1570" y="474" text-anchor="middle" class="b">xAI</text>
+  <rect x="1330" y="542" width="480" height="112" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1570" y="608" text-anchor="middle" class="b">DeepSeek</text>
+  <rect x="1330" y="676" width="480" height="112" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1570" y="742" text-anchor="middle" class="b">Meta</text>
+  <rect x="1330" y="810" width="480" height="112" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1570" y="876" text-anchor="middle" class="b">Fireworks</text>
+
+  <path d="M1180,210 L1322,196" stroke="#24292f" stroke-width="3" fill="none" marker-end="url(#arrDark)"/>
+  <path d="M1180,275 L1322,330" stroke="#8c959f" stroke-width="2" fill="none" stroke-dasharray="8 6" marker-end="url(#arr)"/>
+  <path d="M1180,340 L1322,464" stroke="#8c959f" stroke-width="2" fill="none" stroke-dasharray="8 6" marker-end="url(#arr)"/>
+  <path d="M1180,405 L1322,598" stroke="#8c959f" stroke-width="2" fill="none" stroke-dasharray="8 6" marker-end="url(#arr)"/>
+  <path d="M1180,470 L1322,732" stroke="#8c959f" stroke-width="2" fill="none" stroke-dasharray="8 6" marker-end="url(#arr)"/>
+  <path d="M1180,535 L1322,866" stroke="#8c959f" stroke-width="2" fill="none" stroke-dasharray="8 6" marker-end="url(#arr)"/>
+
+  <path d="M980,560 V692" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="80" y="700" width="1100" height="250" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="116" y="760"><tspan class="m b" font-size="30">response.model</tspan> names the model that served the call</text>
+  <text x="116" y="818" class="m" font-size="30">gpt-5.6-sol-2026-07-09</text>
+  <text x="116" y="876" class="s" font-size="26">A different prompt, or the same prompt a moment later,</text>
+  <text x="116" y="912" class="s" font-size="26">can return a different name.</text>
+  <rect x="80" y="700" width="1100" height="250" rx="14" fill="none" stroke="#e0a534" stroke-width="7" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.74;0.78;0.94;0.98;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <circle r="13" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="668,295;668,295;766,295;766,295" keyTimes="0;0.04;0.16;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03;0.04;0.16;0.18;1" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="13" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="1186,209;1186,209;1316,197;1316,197" keyTimes="0;0.32;0.42;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31;0.32;0.42;0.44;1" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="13" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="980,566;980,566;980,686;980,686" keyTimes="0;0.62;0.74;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.61;0.62;0.74;0.76;1" dur="9s" repeatCount="indefinite"/>
+  </circle>
+</svg>

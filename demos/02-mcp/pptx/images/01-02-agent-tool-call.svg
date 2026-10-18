@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>How an agent calls a tool on the HR MCP server</title>
+  <desc>Sequence between the Foundry model gpt-5.4, agent.py with MCPStreamableHTTPTool, and the HR MCP server at 127.0.0.1:47003/mcp. 1 tools/list, 2 names, descriptions and JSON Schemas, 3 question and tool schemas to the model, 4 the model asks for search_employees, 5 tools/call search_employees, 6 the employee record for Marie Dubois, 7 tool result to the model, 8 answer. The answer reads: Marie Dubois has baking skills. She speaks French, English, and Italian. A dot travels along each message in order.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="20" markerHeight="20" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" stroke-dasharray="8 8">
+    <line x1="330" y1="200" x2="330" y2="880"/>
+    <line x1="960" y1="200" x2="960" y2="905"/>
+    <line x1="1590" y1="200" x2="1590" y2="880"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="110" y="70" width="440" height="130" rx="14" fill="#f3edff"/>
+    <rect x="700" y="70" width="520" height="130" rx="14" fill="#eaf2ff"/>
+    <rect x="1370" y="70" width="440" height="130" rx="14" fill="#fff6e5"/>
+    <rect x="420" y="905" width="1080" height="95" rx="14" fill="#e9f7ef"/>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="330" y="125">Foundry model</text>
+    <text x="960" y="125" font-family="Consolas, 'Courier New', monospace">agent.py</text>
+    <text x="1590" y="125">HR MCP server</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="330" y="168">gpt-5.4</text>
+    <text x="960" y="168">MCPStreamableHTTPTool</text>
+    <text x="1590" y="168">127.0.0.1:47003/mcp</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="966" y1="270" x2="1582" y2="270"/>
+    <line x1="1584" y1="350" x2="968" y2="350"/>
+    <line x1="954" y1="430" x2="338" y2="430"/>
+    <line x1="336" y1="510" x2="952" y2="510"/>
+    <line x1="966" y1="590" x2="1582" y2="590"/>
+    <line x1="1584" y1="670" x2="968" y2="670"/>
+    <line x1="954" y1="750" x2="338" y2="750"/>
+    <line x1="336" y1="830" x2="952" y2="830"/>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="1275" y="254"><tspan font-weight="700">1 </tspan><tspan font-family="Consolas, 'Courier New', monospace">tools/list</tspan></text>
+    <text x="1275" y="334"><tspan font-weight="700">2 </tspan>names, descriptions, JSON Schemas</text>
+    <text x="645" y="414"><tspan font-weight="700">3 </tspan>question + tool schemas</text>
+    <text x="645" y="494"><tspan font-weight="700">4 </tspan>call <tspan font-family="Consolas, 'Courier New', monospace">search_employees</tspan></text>
+    <text x="1275" y="574"><tspan font-weight="700">5 </tspan><tspan font-family="Consolas, 'Courier New', monospace">tools/call search_employees</tspan></text>
+    <text x="1275" y="654"><tspan font-weight="700">6 </tspan>employee record for Marie Dubois</text>
+    <text x="645" y="734"><tspan font-weight="700">7 </tspan>tool result</text>
+    <text x="645" y="814"><tspan font-weight="700">8 </tspan>answer</text>
+    <text x="960" y="962">Marie Dubois has baking skills. She speaks French, English, and Italian.</text>
+  </g>
+
+  <rect x="420" y="905" width="1080" height="95" rx="14" fill="none" stroke="#2da44e" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.83;0.98"/>
+  </rect>
+
+  <g fill="#e0a534">
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M966,270 L1582,270" keyPoints="0;0;1;1" keyTimes="0;0.05;0.13;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.05;0.13"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M1584,350 L968,350" keyPoints="0;0;1;1" keyTimes="0;0.15;0.23;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.15;0.23"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M954,430 L338,430" keyPoints="0;0;1;1" keyTimes="0;0.25;0.33;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.33"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M336,510 L952,510" keyPoints="0;0;1;1" keyTimes="0;0.35;0.43;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.35;0.43"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M966,590 L1582,590" keyPoints="0;0;1;1" keyTimes="0;0.45;0.53;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.45;0.53"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M1584,670 L968,670" keyPoints="0;0;1;1" keyTimes="0;0.55;0.63;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.55;0.63"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M954,750 L338,750" keyPoints="0;0;1;1" keyTimes="0;0.65;0.73;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.65;0.73"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="10s" repeatCount="indefinite" path="M336,830 L952,830" keyPoints="0;0;1;1" keyTimes="0;0.75;0.83;1" calcMode="linear"/><animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.75;0.83"/></circle>
+  </g>
+</svg>

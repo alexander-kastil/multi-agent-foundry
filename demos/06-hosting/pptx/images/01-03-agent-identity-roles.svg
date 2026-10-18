@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The agent identity, the project managed identity and the roles around a hosted agent</title>
+  <desc>Deploy time: you deploy a version with the Foundry Project Manager role at project scope, and on the container path the project managed identity, one for the whole project, pulls the image from Azure Container Registry with Container Registry Repository Reader. Run time: a caller with Foundry Agent Consumer, or a role with endpoint access, sends an Entra token to the agent endpoint. The session sandbox runs your container as the agent identity: one per agent, created at deploy time, a service principal you can see with az ad sp show, which starts with no role assignments. It reaches the Foundry model through the project endpoint with no role assignment, and your own Storage account only through a role you assign, for example Storage Blob Data Reader.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 12 12" refX="11" refY="6" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8c959f"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-size="28" font-weight="600" fill="#57606a">
+    <text x="60" y="98">Deploy time</text>
+    <text x="60" y="438">Run time</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="60" y="120" width="380" height="250" rx="20" fill="#eaf2ff"/>
+    <rect x="620" y="120" width="600" height="250" rx="20" fill="#f3edff"/>
+    <rect x="650" y="200" width="540" height="146" rx="14" fill="#ffffff"/>
+    <rect x="1420" y="120" width="440" height="250" rx="20" fill="#f6f8fa"/>
+    <rect x="60" y="640" width="380" height="240" rx="20" fill="#eaf2ff"/>
+    <rect x="620" y="460" width="600" height="550" rx="20" fill="#f3edff"/>
+    <rect x="650" y="630" width="540" height="350" rx="14" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="1420" y="460" width="440" height="240" rx="20" fill="#f3edff"/>
+    <rect x="1448" y="600" width="384" height="66" rx="33" fill="#e9f7ef"/>
+    <rect x="1420" y="770" width="440" height="240" rx="20" fill="#f6f8fa"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" marker-end="url(#arr)">
+    <line x1="442" y1="250" x2="616" y2="250"/>
+    <line x1="1222" y1="275" x2="1416" y2="275"/>
+    <line x1="442" y1="760" x2="616" y2="760"/>
+    <line x1="1222" y1="580" x2="1416" y2="580"/>
+    <line x1="1222" y1="890" x2="1416" y2="890"/>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="530" y="234">deploys</text>
+    <text x="1320" y="259">pulls the image</text>
+    <text x="530" y="744">Entra token</text>
+  </g>
+
+  <g fill="#24292f">
+    <text x="90" y="178" font-size="32" font-weight="700">You</text>
+    <text x="90" y="226" font-size="26">deploy a version with</text>
+    <text x="90" y="268" font-size="26" font-weight="600">Foundry Project Manager</text>
+    <text x="90" y="308" font-size="26">at project scope</text>
+
+    <text x="650" y="176" font-size="32" font-weight="700">Foundry project</text>
+    <text x="678" y="248" font-size="26" font-weight="600">Project managed identity</text>
+    <text x="678" y="288" font-size="26">one for the whole project,</text>
+    <text x="678" y="324" font-size="26">does platform work</text>
+
+    <text x="1450" y="174" font-size="28" font-weight="700">Azure Container Registry</text>
+    <text x="1450" y="214" font-size="26" fill="#57606a">container path only</text>
+    <text x="1450" y="262" font-size="26">the project identity needs</text>
+    <text x="1450" y="302" font-size="26" font-weight="600">Container Registry</text>
+    <text x="1450" y="340" font-size="26" font-weight="600">Repository Reader</text>
+
+    <text x="90" y="698" font-size="32" font-weight="700">Caller</text>
+    <text x="90" y="742" font-size="26">needs</text>
+    <text x="90" y="782" font-size="26" font-weight="600">Foundry Agent Consumer</text>
+    <text x="90" y="822" font-size="26">or a role with endpoint</text>
+    <text x="90" y="858" font-size="26">access</text>
+
+    <text x="650" y="518" font-size="32" font-weight="700">Session sandbox</text>
+    <text x="650" y="562" font-size="26">your container behind</text>
+    <text x="650" y="602" font-size="26" font-family="Consolas, 'Courier New', monospace">/agents/{name}/endpoint</text>
+
+    <text x="680" y="688" font-size="30" font-weight="700">Agent identity</text>
+    <text x="680" y="734" font-size="26">what your container</text>
+    <text x="680" y="770" font-size="26">authenticates as at run time</text>
+    <text x="680" y="820" font-size="26">one per agent, created at</text>
+    <text x="680" y="856" font-size="26">deploy time, a service principal</text>
+    <text x="680" y="906" font-size="26">see it with <tspan font-family="Consolas, 'Courier New', monospace">az ad sp show</tspan></text>
+    <text x="680" y="946" font-size="26">starts with no role assignments</text>
+
+    <text x="1450" y="518" font-size="32" font-weight="700">Foundry model</text>
+    <text x="1450" y="562" font-size="26">through the project endpoint</text>
+    <text x="1640" y="643" font-size="26" text-anchor="middle">no role assignment needed</text>
+
+    <text x="1450" y="828" font-size="32" font-weight="700">Your Storage account</text>
+    <text x="1450" y="872" font-size="26">needs a role you assign,</text>
+    <text x="1450" y="910" font-size="26">for example</text>
+    <text x="1450" y="954" font-size="26" font-weight="600">Storage Blob Data Reader</text>
+  </g>
+</svg>

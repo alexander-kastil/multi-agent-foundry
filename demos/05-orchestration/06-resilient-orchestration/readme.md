@@ -50,9 +50,13 @@ async def invoke_spoke(spoke_name: str, request: str, timeout: float = SPOKE_TIM
 
 Three mechanisms live in that function. `asyncio.wait_for` bounds each call, the semaphore caps concurrent spoke calls so one burst cannot exhaust capacity, and the circuit check skips a spoke that is known to be failing.
 
+![The hub calls every spoke through invoke_spoke: a circuit check, a semaphore for two calls and a timeout each end in a status, and every status returns to the hub in one JSON envelope](../pptx/images/06-01-spoke-envelope.svg)
+
 ## Circuit Breaker
 
 The breaker counts consecutive failures per spoke, and a success resets the counter. At `FAILURE_THRESHOLD` it opens, and for `COOLDOWN_SECONDS` every call returns `circuit_open` immediately without touching the model. This protects a degraded dependency from retry storms and protects your latency, because failing fast is cheaper than waiting for another timeout.
+
+![Four calls to compliance_check: three pass a closed breaker and time out with failures 1 to 3, and the fourth gets circuit_open at once without reaching the model](../pptx/images/06-02-circuit-breaker.svg)
 
 ```python
 def record_outcome(spoke_name: str, success: bool) -> None:
@@ -71,6 +75,8 @@ The state lives in a dictionary in the process. That is enough to teach the patt
 ## Quorum over Parallel Spokes
 
 When spokes are independent, call them all at once and decide how many answers are enough. `asyncio.gather(..., return_exceptions=True)` collects every outcome, the code counts successes, and `required` sets the quorum. Below the quorum the function reports `insufficient_quorum` instead of inventing a result from too little data.
+
+![Three quorum cases with required=2: three successes and two successes give success, one success gives insufficient_quorum](../pptx/images/06-03-quorum-parallel-spokes.svg)
 
 ```python
 successes = {r["spoke"]: r["result"] for r in results if isinstance(r, dict) and r["status"] == "success"}

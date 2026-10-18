@@ -140,6 +140,8 @@ def onboarding_plan(role: str, buddy: str) -> str:
 
 The docstring becomes the description and the type hints become the JSON Schema. A parameter named `search_term` in Python is `searchTerm` in the C# server, because each SDK follows its own naming convention. A client must read the schema from `tools/list` instead of guessing the argument names.
 
+![The search_employees tool in C# and Python mapped line by line to its tools/list entry, with the argument names searchTerm and search_term highlighted](../pptx/images/01-01-tool-schemas.svg)
+
 ## Choosing the Transport at Startup
 
 One server project can speak two transports. Standard input and output suit a server that a host launches as a child process, and HTTP suits a server that runs on its own and serves many clients. The next topic compares them in detail.
@@ -164,6 +166,8 @@ Tool design is prompt design. A few rules keep a server usable as it grows.
 ## Using the Server from an Agent
 
 Microsoft Agent Framework connects to a Streamable HTTP server with `MCPStreamableHTTPTool`. The agent lists the tools, passes their schemas to the model, and runs the calls the model requests.
+
+![agent.py lists the HR server's tools, passes their schemas to the Foundry model, runs the search_employees call the model asks for, and returns the answer about Marie Dubois](../pptx/images/01-02-agent-tool-call.svg)
 
 ```python
 hr = MCPStreamableHTTPTool(name="hr", url="http://127.0.0.1:47003/mcp", approval_mode="never_require")

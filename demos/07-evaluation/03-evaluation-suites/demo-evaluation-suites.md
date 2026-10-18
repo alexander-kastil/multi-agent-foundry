@@ -66,6 +66,8 @@ Generated 18 cases, 6 canaries
 
 The command replaces `synthetic_test_suite.json`. Open it and read one case with its `ground_truth`; `historical_probes.json` holds three more cases from past incidents that every full run appends.
 
+![The 18 cases from 3 interaction categories, 2 personas and 3 adversarial conditions, with the 6 canaries marked, 3 historical probes beside them and the ground truth of case-001](../pptx/images/03-01-suite-from-grid.svg)
+
 ### C#
 
 `GenerateDataset.cs` builds the same grid with LINQ and asks the model for each case through an `IChatClient`. Run `dotnet run -- generate`. Expected result:
@@ -165,6 +167,8 @@ Baseline saved: 86% completion, 8.5 avg score
 ## Step 4: Block a regressed prompt at the canaries
 
 The candidate defaults to `v2`. The script runs the 6 canaries first and stops when the completion rate falls below `canary_min_rate`.
+
+![The regression gate in stages: canaries, full suite and baseline comparison, with a BLOCK exit after the canaries and after the comparison and APPROVE DEPLOYMENT at the end](../pptx/images/03-02-staged-regression-gate.svg)
 
 ```bash
 python regression_gate.py
@@ -287,6 +291,8 @@ v2  Microsoft Foundry  2/3 passed
 ```
 
 Read the two providers against each other. The local policy check separates `v1` (3 of 3) from `v2` (1 of 3), while the judge-based Task Adherence passes `v2` on every query because `v2` does what its own instructions say. The deterministic check carries the policy; the judge catches what you cannot write as a rule.
+
+![One v2 run read by two checks: the Task Adherence judge reads the agent's own instructions and passes 3 of 3, the refunds_only_eligible_orders check reads the returns policy and passes 1 of 3](../pptx/images/03-03-judge-and-policy.svg)
 
 ### C#
 

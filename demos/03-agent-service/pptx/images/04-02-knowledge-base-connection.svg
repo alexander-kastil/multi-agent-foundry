@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Connecting an agent to a Foundry IQ knowledge base</title>
+  <desc>Inside the Foundry resource, the project pro-code-agents holds the agent m3-outdoor-agent (Python and C#), its MCPTool with server_label knowledge-base, allowed_tools knowledge_base_retrieve and require_approval never, and the project connection m3-outdoor-kb-mcp of category RemoteTool with ProjectManagedIdentity and the audience https://search.azure.com/. The MCP call reaches the knowledge base m3-outdoor-kb on the Azure AI Search service m3-procode-search through its endpoint /knowledgebases/m3-outdoor-kb/mcp, using the project identity with the Search Index Data Reader role. The knowledge base queries the knowledge sources m3-products-ks and m3-policies-ks, which point at the indexes m3-products (8 documents) and m3-policies (6 documents). For query planning and answer synthesis the knowledge base calls the gpt-5.4 deployment on the Foundry resource with the search service identity, which holds the Cognitive Services User role.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="40" width="700" height="980" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="92" class="b" font-size="30">Foundry resource</text>
+
+  <rect x="90" y="120" width="640" height="640" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="120" y="165" class="b" font-size="28">Project <tspan class="mono">pro-code-agents</tspan></text>
+
+  <rect x="130" y="195" width="560" height="120" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="410" y="245" text-anchor="middle" class="mono b" font-size="28">m3-outdoor-agent</text>
+  <text x="410" y="287" text-anchor="middle" class="sec">agent version from Python and C#</text>
+
+  <line x1="300" y1="315" x2="300" y2="353" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="318" y="343" class="mono sec">tools</text>
+
+  <rect x="130" y="355" width="560" height="190" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="410" y="399" text-anchor="middle" class="mono b" font-size="28">MCPTool</text>
+  <text x="410" y="439" text-anchor="middle" class="mono">server_label knowledge-base</text>
+  <text x="410" y="477" text-anchor="middle" class="mono">allowed_tools knowledge_base_retrieve</text>
+  <text x="410" y="515" text-anchor="middle" class="mono">require_approval never</text>
+
+  <line x1="300" y1="545" x2="300" y2="583" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="318" y="573" class="mono sec">project_connection_id</text>
+
+  <rect x="130" y="585" width="560" height="150" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="410" y="629" text-anchor="middle" class="mono b" font-size="28">m3-outdoor-kb-mcp</text>
+  <text x="410" y="669" text-anchor="middle" class="mono">RemoteTool, ProjectManagedIdentity</text>
+  <text x="410" y="707" text-anchor="middle" class="mono">audience https://search.azure.com/</text>
+
+  <rect x="130" y="800" width="560" height="190" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="410" y="862" text-anchor="middle" class="b" font-size="28"><tspan class="mono">gpt-5.4</tspan> deployment</text>
+  <text x="410" y="906" text-anchor="middle" class="sec">plans queries and writes answers</text>
+  <text x="410" y="944" text-anchor="middle" class="sec">for the knowledge base</text>
+
+  <rect x="1160" y="40" width="700" height="980" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1190" y="92" class="b" font-size="30">Azure AI Search <tspan class="mono" font-size="28">m3-procode-search</tspan></text>
+
+  <rect x="1200" y="160" width="300" height="120" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1350" y="212" text-anchor="middle" class="mono b" font-size="28">m3-products</text>
+  <text x="1350" y="252" text-anchor="middle" class="sec">index, 8 documents</text>
+  <rect x="1520" y="160" width="300" height="120" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1670" y="212" text-anchor="middle" class="mono b" font-size="28">m3-policies</text>
+  <text x="1670" y="252" text-anchor="middle" class="sec">index, 6 documents</text>
+
+  <line x1="1350" y1="360" x2="1350" y2="282" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1670" y1="360" x2="1670" y2="282" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1200" y="360" width="300" height="120" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1350" y="412" text-anchor="middle" class="mono b" font-size="28">m3-products-ks</text>
+  <text x="1350" y="452" text-anchor="middle" class="sec">knowledge source</text>
+  <rect x="1520" y="360" width="300" height="120" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1670" y="412" text-anchor="middle" class="mono b" font-size="28">m3-policies-ks</text>
+  <text x="1670" y="452" text-anchor="middle" class="sec">knowledge source</text>
+
+  <line x1="1350" y1="600" x2="1350" y2="482" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1670" y1="600" x2="1670" y2="482" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1200" y="600" width="620" height="290" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="3"/>
+  <text x="1510" y="652" text-anchor="middle" class="b" font-size="30">Knowledge base</text>
+  <text x="1510" y="695" text-anchor="middle" class="mono" font-size="28">m3-outdoor-kb</text>
+  <text x="1510" y="745" text-anchor="middle" class="sec">MCP endpoint</text>
+  <text x="1510" y="783" text-anchor="middle" class="mono">/knowledgebases/m3-outdoor-kb/mcp</text>
+  <text x="1510" y="845" text-anchor="middle" class="sec">tool <tspan class="mono" fill="#24292f">knowledge_base_retrieve</tspan></text>
+
+  <line x1="690" y1="670" x2="1198" y2="670" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="960" y="608" text-anchor="middle" class="sec">MCP call, project identity</text>
+  <text x="960" y="646" text-anchor="middle" class="b" font-size="28">Search Index Data Reader</text>
+
+  <line x1="1198" y1="850" x2="692" y2="850" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="960" y="894" text-anchor="middle" class="sec">search service identity</text>
+  <text x="960" y="932" text-anchor="middle" class="b" font-size="28">Cognitive Services User</text>
+</svg>

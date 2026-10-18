@@ -35,6 +35,8 @@ flowchart LR
 
 A session has a fixed lifecycle. The agent calls `create_browser_session`, receives an opaque `browserSessionId`, passes it to every browser tool and finishes with `close_browser_session`. An inactive session is cleaned up after 15 minutes, so the instructions should require explicit cleanup.
 
+![One browser session across three tasks: create_browser_session, browser_navigate, browser_snapshot, browser_click, browser_snapshot and close_browser_session, with the agent's answer after each task](../pptx/images/03-01-browser-session-trail.svg)
+
 | Tool | Purpose |
 | --- | --- |
 | `create_browser_session` | Start a session and return the Live View link |
@@ -49,6 +51,8 @@ Enable only the tools a scenario needs. The remote MCP server documentation list
 ## Set up the Playwright workspace
 
 Three things must exist before an agent can browse: a Playwright workspace, a role for the Foundry project identity on that workspace, and a project connection that points at the workspace. Creating the workspace needs the Contributor role on the resource group, and creating the connection needs Foundry Project Manager on the project.
+
+![The Python tool uses the connection m3-browser-mcp and the C# MCP tool uses m3-playwright-mcp; both reach the Playwright workspace with the project managed identity, which holds the Playwright Workspace Contributor role](../pptx/images/03-03-workspace-connection-setup.svg)
 
 ```bash
 az resource create --id /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.LoadTestService/playwrightWorkspaces/<name> --api-version 2025-09-01 --location westeurope --properties '{"regionalAffinity":"Enabled","localAuth":"Enabled"}'
@@ -138,6 +142,8 @@ agent = project.agents.create_version(
 ```
 
 The integration is a loop that your application owns.
+
+![The Computer Use loop: the agent proposes a computer_call, your application runs it in a sandbox and sends the new screenshot back as computer_call_output, and a person reviews any pending safety checks](../pptx/images/03-02-computer-use-loop.svg)
 
 1. Send the task and an initial screenshot to the agent.
 2. Read `computer_call` items in the output; each holds one action such as `click`, `type`, `scroll` or `screenshot`.

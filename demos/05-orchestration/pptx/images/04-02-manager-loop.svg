@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Magentic manager loop</title>
+  <desc>The Magentic manager turns the one task message into a task ledger with known facts, facts to look up and a plan, and emits PLAN_CREATED. Plan review pauses with a request_info event carrying a MagenticPlanReviewRequest: revise sends the plan back for a new ledger and REPLANNED, approve proceeds. Every round the manager fills a progress ledger with five questions and emits PROGRESS_LEDGER_UPDATED, then sends the next speaker, Researcher or Analyst with the sum_costs tool, an instruction and takes the reply. Rounds without progress raise the stall count; past the stall limit the manager resets and replans. The loop limits are max_round_count 8, max_stall_count 2 and max_reset_count 1. When satisfied is True the loop ends with the final answer.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #24292f; }
+      .s { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #57606a; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="290" y1="120" x2="290" y2="178"/>
+    <line x1="200" y1="500" x2="200" y2="638"/>
+    <line x1="400" y1="640" x2="400" y2="502"/>
+    <line x1="520" y1="700" x2="718" y2="700"/>
+    <line x1="720" y1="330" x2="522" y2="330"/>
+    <line x1="1240" y1="255" x2="1418" y2="255"/>
+    <line x1="1420" y1="325" x2="1242" y2="325"/>
+    <line x1="1240" y1="580" x2="1418" y2="580"/>
+    <line x1="1420" y1="650" x2="1242" y2="650"/>
+    <polyline points="1180,740 1180,920 1418,920"/>
+  </g>
+
+  <rect x="60" y="50" width="460" height="70" rx="35" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="290" y="95" font-size="28" text-anchor="middle">one task message</text>
+
+  <rect x="60" y="180" width="460" height="320" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="90" y="232" font-size="32" font-weight="700">Task ledger</text>
+  <text class="s" x="90" y="268" font-size="26">written by the manager</text>
+  <text class="t" x="90" y="316" font-size="28">known facts</text>
+  <text class="t" x="90" y="354" font-size="28">facts to look up</text>
+  <text class="t" x="90" y="392" font-size="28">plan for the team</text>
+  <rect x="90" y="420" width="200" height="46" rx="10" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="190" y="452" font-size="26" text-anchor="middle">PLAN_CREATED</text>
+  <rect x="305" y="420" width="170" height="46" rx="10" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="390" y="452" font-size="26" text-anchor="middle">REPLANNED</text>
+
+  <text class="s" x="185" y="580" font-size="26" text-anchor="end">plan</text>
+  <text class="s" x="415" y="580" font-size="26">revise</text>
+
+  <rect x="60" y="640" width="460" height="360" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="90" y="695" font-size="32" font-weight="700">Plan review</text>
+  <text class="s" x="90" y="731" font-size="26">a human checks the plan</text>
+  <text class="m" x="90" y="790" font-size="26">request_info</text>
+  <text class="m" x="90" y="828" font-size="26">MagenticPlanReviewRequest</text>
+  <text class="t" x="90" y="892" font-size="26"><tspan class="m">approve()</tspan> proceeds</text>
+  <text class="t" x="90" y="934" font-size="26"><tspan class="m">revise(feedback)</tspan> replans</text>
+
+  <text class="m" x="620" y="683" font-size="26" text-anchor="middle">approve()</text>
+  <text class="s" x="620" y="282" font-size="26" text-anchor="middle">reset and</text>
+  <text class="s" x="620" y="314" font-size="26" text-anchor="middle">replan</text>
+
+  <rect x="720" y="180" width="520" height="560" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="750" y="235" font-size="32" font-weight="700">Progress ledger</text>
+  <text class="s" x="750" y="271" font-size="26">every round</text>
+  <text class="t" x="750" y="325" font-size="28">request satisfied?</text>
+  <text class="t" x="750" y="367" font-size="28">team in a loop?</text>
+  <text class="t" x="750" y="409" font-size="28">progress being made?</text>
+  <text class="t" x="750" y="451" font-size="28">who speaks next?</text>
+  <text class="t" x="750" y="493" font-size="28">what should they do?</text>
+  <text class="s" x="750" y="562" font-size="26">no progress: stall count + 1</text>
+  <rect x="750" y="620" width="370" height="46" rx="10" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="935" y="652" font-size="26" text-anchor="middle">PROGRESS_LEDGER_UPDATED</text>
+
+  <text class="s" x="1330" y="238" font-size="26" text-anchor="middle">next speaker</text>
+  <text class="s" x="1330" y="360" font-size="26" text-anchor="middle">reply</text>
+
+  <rect x="1420" y="180" width="440" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1450" y="250" font-size="30" font-weight="700">Researcher</text>
+  <text class="s" x="1450" y="300" font-size="26">finds options</text>
+  <text class="s" x="1450" y="336" font-size="26">and prices</text>
+
+  <rect x="1420" y="500" width="440" height="240" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1450" y="565" font-size="30" font-weight="700">Analyst</text>
+  <text class="s" x="1450" y="612" font-size="26">checks totals against</text>
+  <text class="s" x="1450" y="648" font-size="26">the budget</text>
+  <rect x="1450" y="672" width="160" height="46" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="1530" y="704" font-size="26" text-anchor="middle">sum_costs</text>
+
+  <rect x="720" y="800" width="400" height="210" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="750" y="850" font-size="28" font-weight="700">Loop limits</text>
+  <text class="m" x="750" y="895" font-size="26">max_round_count=8</text>
+  <text class="m" x="750" y="935" font-size="26">max_stall_count=2</text>
+  <text class="m" x="750" y="975" font-size="26">max_reset_count=1</text>
+
+  <text class="m" x="1300" y="902" font-size="26" text-anchor="middle">satisfied=True</text>
+
+  <rect x="1420" y="840" width="440" height="160" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1640" y="932" font-size="30" font-weight="700" text-anchor="middle">final answer</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="5">
+    <rect x="84" y="414" width="212" height="58" rx="14" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.0714;0.2143" values="0;1;0"/>
+    </rect>
+    <rect x="299" y="414" width="182" height="58" rx="14" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.2143;0.3571" values="0;1;0"/>
+    </rect>
+    <rect x="744" y="614" width="382" height="58" rx="14" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.3571;0.4286;0.5;0.5714;0.6429;0.7143" values="0;1;0;1;0;1;0"/>
+    </rect>
+    <rect x="1412" y="832" width="456" height="176" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.7857" values="0;1"/>
+    </rect>
+  </g>
+
+  <g fill="#e0a534" stroke="#ffffff" stroke-width="3">
+    <circle r="13" cx="0" cy="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.0714;1" path="M290,120 L290,180"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.0714" values="1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.0714;0.1429;1" path="M200,500 L200,640"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.0714;0.1429" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.1429;0.2143;1" path="M400,640 L400,500"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1429;0.2143" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2143;0.2857;1" path="M200,500 L200,640"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.2143;0.2857" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2857;0.3571;1" path="M520,700 L720,700"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.2857;0.3571" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.3571;0.4286;1" path="M1240,255 L1420,255"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.3571;0.4286" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.4286;0.5;1" path="M1420,325 L1240,325"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4286;0.5" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.5;0.5714;1" path="M1240,580 L1420,580"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.5;0.5714" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.5714;0.6429;1" path="M1420,650 L1240,650"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.5714;0.6429" values="0;1;0"/>
+    </circle>
+    <circle r="13" cx="0" cy="0" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.6429;0.7857;1" path="M1180,740 L1180,920 L1420,920"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.6429;0.7857" values="0;1;0"/>
+    </circle>
+  </g>
+</svg>

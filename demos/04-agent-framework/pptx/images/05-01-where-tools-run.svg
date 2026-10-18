@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Where each kind of tool runs</title>
+  <desc>Two areas. Your process holds the Agent named TrailGuide and three kinds of tools: function tools made with the tool decorator (get_trail_status, estimate_price and book_hut, which needs approval), a local MCP tool over stdio, MCPStdioTool, with get_forecast, list_huts and reserve_bed, which needs approval, and a local MCP tool over HTTP, MCPStreamableHTTPTool, with microsoft_docs_search. MCPStdioTool starts trail_mcp_server.py as a child process. The Agent reaches the model deployment gpt-5.4 in the Foundry model service through FoundryChatClient. Foundry runs the hosted tools: the code interpreter from get_code_interpreter_tool, which runs Python in a Foundry sandbox, and hosted MCP from get_mcp_tool. Both MCPStreamableHTTPTool and the hosted MCP tool reach the Microsoft Learn MCP server at https://learn.microsoft.com/api/mcp: your process calls it in one case, Foundry calls it in the other.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+      .ln { stroke: #8c959f; stroke-width: 2; fill: none; }
+      .box { fill: #ffffff; stroke: #8c959f; stroke-width: 2; }
+      .pill { fill: #fff6e5; stroke: #e0a534; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="60" width="1250" height="700" rx="24" fill="#eaf2ff"/>
+  <rect x="1370" y="60" width="490" height="700" rx="24" fill="#f3edff"/>
+
+  <text x="96" y="114" class="s b" font-size="32">Your process</text>
+  <text x="96" y="154" class="s sec" font-size="26">you see every tool call</text>
+  <text x="1400" y="114" class="s b" font-size="32">Foundry model service</text>
+  <text x="1400" y="154" class="s sec" font-size="26">calls happen on the service</text>
+
+  <line x1="600" y1="320" x2="283" y2="418" class="ln" marker-end="url(#ah)"/>
+  <line x1="700" y1="320" x2="704" y2="418" class="ln" marker-end="url(#ah)"/>
+  <line x1="800" y1="320" x2="1110" y2="418" class="ln" marker-end="url(#ah)"/>
+  <line x1="900" y1="255" x2="1398" y2="255" class="ln" marker-end="url(#ah)"/>
+  <text x="1150" y="238" class="m sec" font-size="26" text-anchor="middle">FoundryChatClient</text>
+
+  <line x1="705" y1="730" x2="705" y2="848" class="ln" marker-end="url(#ah)"/>
+  <line x1="1112" y1="730" x2="1112" y2="848" class="ln" marker-end="url(#ah)"/>
+  <line x1="1615" y1="730" x2="1615" y2="848" class="ln" marker-end="url(#ah)"/>
+  <text x="1094" y="806" class="s sec" font-size="26" text-anchor="end">your process calls</text>
+  <text x="1633" y="806" class="s sec" font-size="26">Foundry calls</text>
+
+  <rect x="480" y="190" width="420" height="130" rx="14" class="box"/>
+  <text x="690" y="245" class="s b" font-size="30" text-anchor="middle">Agent</text>
+  <text x="690" y="290" class="m" font-size="26" text-anchor="middle">name="TrailGuide"</text>
+
+  <rect x="90" y="420" width="380" height="310" rx="14" class="box"/>
+  <text x="114" y="468" class="s b" font-size="28">Function tools</text>
+  <text x="114" y="508" class="m sec" font-size="26">@tool</text>
+  <text x="114" y="565" class="m" font-size="26">get_trail_status</text>
+  <text x="114" y="610" class="m" font-size="26">estimate_price</text>
+  <text x="114" y="655" class="m" font-size="26">book_hut</text>
+  <rect x="246" y="626" width="204" height="40" rx="20" class="pill"/>
+  <text x="348" y="655" class="s" font-size="26" text-anchor="middle">needs approval</text>
+
+  <rect x="495" y="420" width="420" height="310" rx="14" class="box"/>
+  <text x="519" y="468" class="s b" font-size="28">Local MCP over stdio</text>
+  <text x="519" y="508" class="m sec" font-size="26">MCPStdioTool</text>
+  <text x="519" y="565" class="m" font-size="26">get_forecast</text>
+  <text x="519" y="610" class="m" font-size="26">list_huts</text>
+  <text x="519" y="655" class="m" font-size="26">reserve_bed</text>
+  <rect x="692" y="626" width="204" height="40" rx="20" class="pill"/>
+  <text x="794" y="655" class="s" font-size="26" text-anchor="middle">needs approval</text>
+
+  <rect x="940" y="420" width="345" height="310" rx="14" class="box"/>
+  <text x="962" y="468" class="s b" font-size="28">Local MCP over HTTP</text>
+  <text x="962" y="508" class="m sec" font-size="26">MCPStreamableHTTPTool</text>
+  <text x="962" y="565" class="m" font-size="26">microsoft_docs_search</text>
+
+  <rect x="1400" y="190" width="430" height="130" rx="14" class="box"/>
+  <text x="1615" y="245" class="s b" font-size="28" text-anchor="middle">Model deployment</text>
+  <text x="1615" y="290" class="m" font-size="26" text-anchor="middle">gpt-5.4</text>
+
+  <rect x="1400" y="370" width="430" height="170" rx="14" class="box"/>
+  <text x="1424" y="418" class="s b" font-size="28">Code interpreter</text>
+  <text x="1424" y="462" class="m" font-size="26">get_code_interpreter_tool()</text>
+  <text x="1424" y="508" class="s sec" font-size="26">Python in a Foundry sandbox</text>
+
+  <rect x="1400" y="570" width="430" height="160" rx="14" class="box"/>
+  <text x="1424" y="618" class="s b" font-size="28">Hosted MCP</text>
+  <text x="1424" y="662" class="m" font-size="26">get_mcp_tool(...)</text>
+  <text x="1424" y="704" class="m sec" font-size="26">"microsoft-learn"</text>
+
+  <rect x="495" y="850" width="420" height="150" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="705" y="916" class="m" font-size="26" text-anchor="middle">trail_mcp_server.py</text>
+  <text x="705" y="960" class="s sec" font-size="26" text-anchor="middle">child process over stdio</text>
+
+  <rect x="960" y="850" width="860" height="150" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1390" y="914" class="s b" font-size="28" text-anchor="middle">Microsoft Learn MCP server</text>
+  <text x="1390" y="960" class="m" font-size="26" text-anchor="middle">https://learn.microsoft.com/api/mcp</text>
+</svg>

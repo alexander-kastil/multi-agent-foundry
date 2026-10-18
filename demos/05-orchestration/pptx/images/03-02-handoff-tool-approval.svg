@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Handoff with a tool approval</title>
+  <desc>Sequence of the handoff.py run with four lifelines: triage_agent, the handoff.py driver loop, billing_agent and the billing tools. The driver sends the customer message to triage_agent, which hands off to billing_agent (handoff_sent). billing_agent calls lookup_charges, marked never_require, which runs freely. When it calls issue_refund, marked always_require, the workflow pauses with a request_info for the tool approval; the driver answers with to_function_approval_response(approved=True) and issue_refund runs. billing_agent then answers the customer and the workflow pauses with a HandoffAgentUserRequest; the driver replies with create_response, and at the next HandoffAgentUserRequest it ends the conversation with terminate().</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#e0a534"/>
+    </marker>
+    <style>
+      .t{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#24292f}
+      .s{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a}
+      .m{font-family:Consolas,'Courier New',monospace;fill:#24292f}
+      .ms{font-family:Consolas,'Courier New',monospace;fill:#57606a}
+      .box{stroke:#8c959f;stroke-width:2}
+      .edge{fill:none;stroke:#8c959f;stroke-width:2}
+      .req{fill:none;stroke:#e0a534;stroke-width:3}
+      .life{stroke:#8c959f;stroke-width:2;stroke-dasharray:8 8}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="230" y="409" width="1170" height="148" rx="14" fill="#fff6e5"/>
+  <rect x="230" y="643" width="1170" height="148" rx="14" fill="#fff6e5"/>
+  <rect x="230" y="801" width="1170" height="148" rx="14" fill="#fff6e5"/>
+  <text class="s" x="575" y="507" font-size="26" text-anchor="end">tool approval</text>
+  <text class="s" x="575" y="741" font-size="26" text-anchor="end">user reply</text>
+  <text class="s" x="575" y="899" font-size="26" text-anchor="end">user reply</text>
+
+  <line class="life" x1="200" y1="150" x2="200" y2="975"/>
+  <line class="life" x1="600" y1="150" x2="600" y2="975"/>
+  <line class="life" x1="1360" y1="150" x2="1360" y2="975"/>
+  <line class="life" x1="1720" y1="150" x2="1720" y2="975"/>
+
+  <rect class="box" x="50" y="50" width="300" height="100" rx="14" fill="#f3edff"/>
+  <text class="m" x="200" y="93" font-size="28" font-weight="700" text-anchor="middle">triage_agent</text>
+  <text class="s" x="200" y="131" font-size="26" text-anchor="middle">frontline support</text>
+  <rect class="box" x="440" y="50" width="320" height="100" rx="14" fill="#f6f8fa"/>
+  <text class="m" x="600" y="93" font-size="28" font-weight="700" text-anchor="middle">handoff.py</text>
+  <text class="s" x="600" y="131" font-size="26" text-anchor="middle">driver loop</text>
+  <rect class="box" x="1200" y="50" width="320" height="100" rx="14" fill="#f3edff"/>
+  <text class="m" x="1360" y="93" font-size="28" font-weight="700" text-anchor="middle">billing_agent</text>
+  <text class="s" x="1360" y="131" font-size="26" text-anchor="middle">charges and refunds</text>
+  <rect class="box" x="1580" y="50" width="280" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="t" x="1720" y="93" font-size="28" font-weight="700" text-anchor="middle">billing tools</text>
+  <text class="ms" x="1720" y="131" font-size="26" text-anchor="middle">@tool</text>
+
+  <path class="edge" d="M600 225 L204 225" marker-end="url(#arrow)"/>
+  <text class="t" x="400" y="211" font-size="26" text-anchor="middle">I was charged twice</text>
+
+  <path class="edge" d="M200 303 L1356 303" marker-end="url(#arrow)"/>
+  <text class="m" x="980" y="289" font-size="26" text-anchor="middle">handoff_sent</text>
+
+  <path class="edge" d="M1360 381 L1716 381" marker-end="url(#arrow)"/>
+  <text class="m" x="1540" y="367" font-size="26" text-anchor="middle">lookup_charges</text>
+  <text class="ms" x="1540" y="411" font-size="26" text-anchor="middle">never_require</text>
+
+  <path class="req" d="M1360 459 L604 459" marker-end="url(#arrowAmber)"/>
+  <text class="m" x="980" y="445" font-size="26" text-anchor="middle">request_info: approve issue_refund</text>
+
+  <path class="edge" d="M600 537 L1356 537" marker-end="url(#arrow)"/>
+  <text class="m" x="980" y="523" font-size="26" text-anchor="middle">to_function_approval_response(approved=True)</text>
+
+  <path class="edge" d="M1360 615 L1716 615" marker-end="url(#arrow)"/>
+  <text class="m" x="1540" y="601" font-size="26" text-anchor="middle">issue_refund</text>
+  <text class="ms" x="1540" y="645" font-size="26" text-anchor="middle">always_require</text>
+
+  <path class="req" d="M1360 693 L604 693" marker-end="url(#arrowAmber)"/>
+  <text class="m" x="980" y="679" font-size="26" text-anchor="middle">request_info: HandoffAgentUserRequest</text>
+
+  <path class="edge" d="M600 771 L1356 771" marker-end="url(#arrow)"/>
+  <text class="m" x="980" y="757" font-size="26" text-anchor="middle">create_response("No, that is all, thank you.")</text>
+
+  <path class="req" d="M1360 849 L604 849" marker-end="url(#arrowAmber)"/>
+  <text class="m" x="980" y="835" font-size="26" text-anchor="middle">request_info: HandoffAgentUserRequest</text>
+
+  <path class="edge" d="M600 927 L1356 927" marker-end="url(#arrow)"/>
+  <text class="m" x="980" y="913" font-size="26" text-anchor="middle">HandoffAgentUserRequest.terminate()</text>
+</svg>

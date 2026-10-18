@@ -39,6 +39,8 @@ workflow = GroupChatBuilder(
 
 `termination_condition` receives the conversation and returns `True` to stop, and `max_rounds` is a hard cap. With a selection function you own the stopping rule; with an agent orchestrator the model can end early, for example when the reviewer says the draft is approved. The terminal output is an `AgentResponse` from the orchestrator, and participant turns arrive as `intermediate` events.
 
+![Round robin selection runs four turns until the termination condition, while the orchestrator agent ends the chat after two turns with the approved slogan](../pptx/images/04-01-speaker-selection.svg)
+
 ## Magentic: A Manager That Plans, Tracks and Replans
 
 Magentic follows the Magentic-One design. The manager first builds a task ledger from the request: the known facts, the facts to look up and a plan for the team. In every round it fills a progress ledger that answers five questions: is the request satisfied, is the team in a loop, is progress being made, who speaks next and what should they do.
@@ -56,6 +58,8 @@ workflow = MagenticBuilder(
 ```
 
 Rounds without progress increment a stall counter. When it passes `max_stall_count` the manager resets and replans, and `max_reset_count` and `max_round_count` bound the whole loop. Without these limits a confused team keeps spending tokens.
+
+![Magentic manager loop: the task ledger emits PLAN_CREATED, plan review approves or revises, each round fills a progress ledger and picks Researcher or Analyst, stalls reset and replan, and satisfied=True ends with the final answer](../pptx/images/04-02-manager-loop.svg)
 
 ## Orchestrator Events Show the Manager's Thinking
 

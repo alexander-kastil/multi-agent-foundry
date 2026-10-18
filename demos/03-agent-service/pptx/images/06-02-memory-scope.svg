@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Memory scope per user</title>
+  <desc>Two users, carol and dave, each ask "Please order my usual coffee" in a new conversation. Each request carries its own x-memory-user-id header. Both reach the same agent version m3-memory-agent:1, whose MemorySearchPreviewTool uses the scope "{{$userId}}", resolved from the x-memory-user-id header. In the memory store m3-memory-store, scope carol holds the preference from conversation 1 (flat white, oat milk) and scope dave holds no memories. The agent answers carol with "I remember your usual coffee preference: a flat white with oat milk." and dave with "I don't have any saved memory about your usual coffee." Animated: the two requests light up their paths in order, user to agent, agent to scope, scope to answer.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="40" y="180" width="400" height="300" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="232" text-anchor="middle" class="mono b" font-size="30">carol</text>
+  <text x="240" y="272" text-anchor="middle" class="sec">new conversation</text>
+  <text x="240" y="322" text-anchor="middle" font-size="28">Please order my</text>
+  <text x="240" y="360" text-anchor="middle" font-size="28">usual coffee</text>
+  <rect x="60" y="395" width="360" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="432" text-anchor="middle" class="mono">x-memory-user-id: carol</text>
+
+  <rect x="40" y="600" width="400" height="300" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="652" text-anchor="middle" class="mono b" font-size="30">dave</text>
+  <text x="240" y="692" text-anchor="middle" class="sec">new conversation</text>
+  <text x="240" y="742" text-anchor="middle" font-size="28">Please order my</text>
+  <text x="240" y="780" text-anchor="middle" font-size="28">usual coffee</text>
+  <rect x="60" y="815" width="360" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="852" text-anchor="middle" class="mono">x-memory-user-id: dave</text>
+
+  <rect x="560" y="330" width="420" height="420" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="770" y="400" text-anchor="middle" class="mono b" font-size="28">m3-memory-agent:1</text>
+  <text x="770" y="442" text-anchor="middle" class="sec">one agent version</text>
+  <rect x="585" y="480" width="370" height="230" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="770" y="530" text-anchor="middle" class="mono">MemorySearchPreviewTool</text>
+  <text x="770" y="576" text-anchor="middle" class="mono">scope "{{$userId}}"</text>
+  <text x="770" y="630" text-anchor="middle" class="sec">resolved from</text>
+  <text x="770" y="670" text-anchor="middle" class="mono">x-memory-user-id</text>
+
+  <rect x="1080" y="120" width="420" height="840" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1110" y="170" class="mono b" font-size="28">m3-memory-store</text>
+
+  <rect x="1110" y="200" width="360" height="260" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1290" y="252" text-anchor="middle" class="mono b" font-size="28">scope carol</text>
+  <text x="1290" y="304" text-anchor="middle" class="sec">preference from</text>
+  <text x="1290" y="342" text-anchor="middle" class="sec">conversation 1</text>
+  <text x="1290" y="396" text-anchor="middle" font-size="28">flat white, oat milk</text>
+
+  <rect x="1110" y="620" width="360" height="260" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1290" y="672" text-anchor="middle" class="mono b" font-size="28">scope dave</text>
+  <text x="1290" y="760" text-anchor="middle" class="sec">no memories</text>
+
+  <rect x="1600" y="200" width="280" height="260" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1740" y="250" text-anchor="middle" class="b" font-size="28">agent</text>
+  <text x="1740" y="300" text-anchor="middle">I remember your</text>
+  <text x="1740" y="338" text-anchor="middle">usual coffee</text>
+  <text x="1740" y="376" text-anchor="middle">preference: a flat</text>
+  <text x="1740" y="414" text-anchor="middle">white with oat milk.</text>
+
+  <rect x="1600" y="620" width="280" height="260" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1740" y="670" text-anchor="middle" class="b" font-size="28">agent</text>
+  <text x="1740" y="720" text-anchor="middle">I don't have any</text>
+  <text x="1740" y="758" text-anchor="middle">saved memory about</text>
+  <text x="1740" y="796" text-anchor="middle">your usual coffee.</text>
+
+  <line x1="440" y1="330" x2="558" y2="455" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;6;6;2;2" keyTimes="0;0.03;0.22;0.25;1" dur="6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="440" y1="750" x2="558" y2="625" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;6;6;2;2" keyTimes="0;0.03;0.22;0.25;1" dur="6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="980" y1="455" x2="1108" y2="330" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.25;0.28;0.47;0.5;1" dur="6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="980" y1="625" x2="1108" y2="750" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.25;0.28;0.47;0.5;1" dur="6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="1470" y1="330" x2="1598" y2="330" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.5;0.53;0.72;0.75;1" dur="6s" repeatCount="indefinite"/>
+  </line>
+  <line x1="1470" y1="750" x2="1598" y2="750" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.5;0.53;0.72;0.75;1" dur="6s" repeatCount="indefinite"/>
+  </line>
+</svg>

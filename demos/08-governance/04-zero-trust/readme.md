@@ -30,6 +30,8 @@ With the on-behalf-of flow the agent works with the signed-in user's delegated p
 
 When a partner API forces you to hold a key, store two of them and let the consumer fall back. The rotation order never leaves a moment with no valid key: write the new secondary, disable the primary, then restore the primary with the new value.
 
+![Rotation in four columns: both keys start as key-v1, the secondary gets key-v2, the primary is disabled and the caller reads key-v2 from the secondary, then the primary is restored with key-v2](../pptx/images/04-01-key-rotation.svg)
+
 ```python
 class KeyVaultSecretManager:
     def get_current_api_key(self, secret_name):
@@ -72,6 +74,8 @@ Microsoft recommends one vault per application per environment with roles at vau
 ## Derive the tenant from a verified token
 
 An agent must never learn its tenant from the model or from a request field. `tenant_context.py` verifies a signed token, reads the tenant from the verified claims, and stores it in a context variable for the rest of the request.
+
+![A signed request is verified with jwt.decode and sets current_tenant to tenant-a; the agent asks get_review for rev-b-001, the repository looks only in the tenant-a partition and returns null](../pptx/images/04-02-tenant-from-token.svg)
 
 ```python
 decoded = jwt.decode(

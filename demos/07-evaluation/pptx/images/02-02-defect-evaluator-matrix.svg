@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Which evaluator catches which defect</title>
+  <desc>The cloud run of eight evaluators over seven recorded refund runs. r1 correct passes every evaluator. Tool Selection passes r2 wrong_arguments, right tools with wrong values, and fails r3 wrong_tool. Tool Call Success fails only r4 tool_error, where the lookup returned a timeout. Task Completion passes r3 and r6 because their final answers read as finished work, so it should not gate on its own. Task Adherence fails every defective run, and the tool evaluators report n/a for r6 no_tool_call because there is no call to judge. Verdicts vary slightly between runs.</desc>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <rect x="464" y="52" width="517" height="50" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="722" y="86" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">System evaluators</text>
+  <rect x="989" y="52" width="867" height="50" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1422" y="86" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Process evaluators</text>
+  <text x="547.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Task</text>
+  <text x="547.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Completion</text>
+  <text x="722.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Task</text>
+  <text x="722.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Adherence</text>
+  <text x="897.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Intent</text>
+  <text x="897.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Resolution</text>
+  <text x="1072.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Tool Call</text>
+  <text x="1072.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Accuracy</text>
+  <text x="1247.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Tool</text>
+  <text x="1247.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Selection</text>
+  <text x="1422.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Tool Input</text>
+  <text x="1422.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Accuracy</text>
+  <text x="1597.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Tool Output</text>
+  <text x="1597.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Utilization</text>
+  <text x="1772.5" y="148" font-size="26" fill="#24292f" text-anchor="middle">Tool Call</text>
+  <text x="1772.5" y="182" font-size="26" fill="#24292f" text-anchor="middle">Success</text>
+  <text x="60" y="268" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r1 correct</text>
+  <rect x="468" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="547.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="643" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="722.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="818" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="897.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="993" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1072.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1168" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1247.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1343" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1422.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1518" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1597.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1693" y="214" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1772.5" y="268" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <text x="60" y="374" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r2 wrong_arguments</text>
+  <rect x="468" y="320" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="547.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="643" y="320" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="722.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="818" y="320" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="897.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="993" y="320" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1072.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1168" y="320" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1247.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1343" y="320" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1422.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1518" y="320" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1597.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1693" y="320" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1772.5" y="374" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <text x="60" y="480" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r3 wrong_tool</text>
+  <rect x="468" y="426" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="547.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="643" y="426" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="722.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="818" y="426" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="897.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="993" y="426" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1072.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1168" y="426" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1247.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1343" y="426" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1422.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1518" y="426" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1597.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1693" y="426" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1772.5" y="480" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <text x="60" y="586" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r4 tool_error</text>
+  <rect x="468" y="532" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="547.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="643" y="532" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="722.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="818" y="532" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="897.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="993" y="532" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1072.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1168" y="532" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1247.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1343" y="532" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1422.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1518" y="532" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1597.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1693" y="532" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1772.5" y="586" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <text x="60" y="692" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r5 ignored_tool_result</text>
+  <rect x="468" y="638" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="547.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="643" y="638" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="722.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="818" y="638" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="897.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="993" y="638" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1072.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1168" y="638" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1247.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1343" y="638" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1422.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1518" y="638" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1597.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1693" y="638" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1772.5" y="692" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <text x="60" y="798" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r6 no_tool_call</text>
+  <rect x="468" y="744" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="547.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="643" y="744" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="722.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="818" y="744" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="897.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="993" y="744" width="159" height="88" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1072.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">n/a</text>
+  <rect x="1168" y="744" width="159" height="88" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1247.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">n/a</text>
+  <rect x="1343" y="744" width="159" height="88" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1422.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">n/a</text>
+  <rect x="1518" y="744" width="159" height="88" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1597.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">n/a</text>
+  <rect x="1693" y="744" width="159" height="88" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1772.5" y="798" font-size="26" fill="#24292f" text-anchor="middle">n/a</text>
+  <text x="60" y="904" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">r7 wrong_intent</text>
+  <rect x="468" y="850" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="547.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="643" y="850" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="722.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="818" y="850" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="897.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="993" y="850" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1072.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1168" y="850" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1247.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1343" y="850" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1422.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1518" y="850" width="159" height="88" rx="10" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1597.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">fail</text>
+  <rect x="1693" y="850" width="159" height="88" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1772.5" y="904" font-size="26" fill="#24292f" text-anchor="middle">pass</text>
+  <rect x="1162" y="114" width="171" height="840" rx="14" fill="none" stroke="#e0a534" stroke-width="6" opacity="1">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.3333"/>
+  </rect>
+  <rect x="1687" y="114" width="171" height="840" rx="14" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3333;0.6667"/>
+  </rect>
+  <rect x="462" y="114" width="171" height="840" rx="14" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.6667"/>
+  </rect>
+</svg>

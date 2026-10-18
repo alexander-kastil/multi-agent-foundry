@@ -70,9 +70,13 @@ async def responses(body: dict[str, Any] = Body(...)) -> JSONResponse:
 
 The allowlist is the point of owning the route. A caller can send `tools`, `temperature` or a different model in the body; only the options your code lists reach the agent run.
 
+![One request through the Python Responses route: responses_to_run converts the body, your allowlist keeps only max_tokens, get_or_create_session loads the session from the SessionStore, target.run runs the support-desk agent with lookup_ticket against the Foundry model, set_session saves it and responses_from_run builds the reply](../pptx/images/05-01-responses-route.svg)
+
 ## Sessions and continuation
 
 The Responses protocol continues a chat in one of two ways: `previous_response_id` points at the last response, or `conversation` names a stable `conv_` id. They are mutually exclusive. The server looks up the saved session by that id, runs the new input in it, and saves the session again.
+
+![Two ways to continue: with previous_response_id each turn returns a new id and the session is saved under it; with a conversation id created by POST /v1/conversations both turns share one id and one session](../pptx/images/05-02-conversation-ids.svg)
 
 ```json
 { "model": "support-desk", "input": "And who is it assigned to?", "previous_response_id": "resp_..." }

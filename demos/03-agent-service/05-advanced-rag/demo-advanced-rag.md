@@ -76,6 +76,8 @@ Expected output (trimmed):
 
 Keyword search finds the exact code and finds nothing for "heart attack". Vector search finds the heart pathway and loses the code. Hybrid keeps both wins.
 
+![Reciprocal Rank Fusion for the query NDC 00071-0156-23: the keyword leg ranks Atorvastatin 40 mg tablets first, the vector leg with weight 0.3 ranks three other drugs first, and the summed 1/(k + rank) contributions keep Atorvastatin first in the hybrid order](../pptx/images/05-01-hybrid-rank-fusion.svg)
+
 ## Step 2: Tune the vector weight per source
 
 One weight does not fit every source. The script scores each mode by MRR over six labeled queries per source and sweeps the vector weight.
@@ -175,6 +177,8 @@ Query with drug_formulary unavailable: What are side effects of metformin?
 
 The TSH question needs one source and the ketoacidosis question needs two. The cafeteria question has no confident source, so the router widens to all three, and the unavailable-source case shows the fallback. The confidence values are model output and change between runs.
 
+![Router confidence per source for three questions with thresholds at 0.4 and 0.7: the TSH question searches lab_references only, the ketoacidosis question searches clinical_guidelines and lab_references, and the cafeteria question scores 0.0 everywhere and searches all three](../pptx/images/05-03-source-routing.svg)
+
 ## Step 5: Compare chunking strategies
 
 The document is a 1,299 character ketoacidosis protocol. The script embeds it as 300-character fixed chunks and as structural chunks, one per section, and finds the best chunk for two questions.
@@ -257,6 +261,8 @@ Deleted index m3-health
 ```
 
 The semantic ranker lifts the formulary to a perfect 1.00 and the guidelines from 0.58 to 0.92, and its reranker score (0 to 4) reorders the monitoring question toward the drug label, potassium and kidney function. Plain hybrid is not always better than one mode on a small set: guidelines are still best with vector alone at 1.00. That is the reason to measure on your own queries before choosing a configuration.
+
+![The semantic ranker rescores the top 50 hybrid results for an ACE inhibitor monitoring question: Lisinopril 10 mg tablets moves to rank 1, and Serum potassium, Estimated glomerular filtration rate and the ketoacidosis protocol rise from ranks 6 to 50 into the top 5](../pptx/images/05-02-semantic-reranking.svg)
 
 The C# commands print the same sections. Trimmed output of `dotnet run -- search` and `dotnet run -- routing`:
 

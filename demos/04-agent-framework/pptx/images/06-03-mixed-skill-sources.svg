@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-size="28">
+  <title>Mixed skill sources and the read-only approval rule</title>
+  <desc>On the left, nested boxes show how run_mixed_skills.py builds its SkillsProvider: a DeduplicatingSkillsSource wraps an AggregatingSkillsSource, which combines a FileSkillsSource and an InMemorySkillsSource. The FileSkillsSource reads the hut-booking and trail-safety folders from disk with script_runner=run_script, so file scripts run through your runner. The InMemorySkillsSource holds the altitude skill, an InlineSkill defined in code whose convert script runs in your process with no runner. An arrow passes the provider to the HutDesk agent as context_providers. Inside the agent, ToolApprovalMiddleware with read_only_tools_auto_approval_rule approves load_skill and read_skill_resource automatically and asks you before run_skill_script; without the middleware all three ask. A green result box reports that one question used two skills: trail-safety and altitude loaded without asking, only the convert script asked for approval, and the answer was 3019 meters is 9904.9 feet.</desc>
+  <style>
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="60" width="880" height="960" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="90" y="112" class="m b" font-size="30">SkillsProvider</text>
+  <rect x="90" y="140" width="820" height="850" rx="20" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="190" class="m b">DeduplicatingSkillsSource</text>
+  <rect x="120" y="220" width="760" height="740" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="150" y="270" class="m b">AggregatingSkillsSource</text>
+  <text x="150" y="308" class="s" font-size="26">combines the file skills and the code-defined skill</text>
+
+  <rect x="150" y="330" width="700" height="340" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="180" y="378" class="m b">FileSkillsSource</text>
+  <text x="180" y="420" class="s" font-size="26">skill folders on disk</text>
+  <rect x="180" y="445" width="300" height="70" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="330" y="490" class="m c">hut-booking</text>
+  <rect x="510" y="445" width="300" height="70" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="660" y="490" class="m c">trail-safety</text>
+  <text x="180" y="572" class="m" font-size="26">script_runner=run_script</text>
+  <text x="180" y="614" class="s" font-size="26">file scripts run through your runner</text>
+
+  <rect x="150" y="700" width="700" height="230" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="180" y="748" class="m b">InMemorySkillsSource</text>
+  <rect x="180" y="772" width="220" height="70" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="290" y="817" class="m c">altitude</text>
+  <text x="430" y="802" font-size="26"><tspan class="m">InlineSkill</tspan> defined in code</text>
+  <text x="430" y="840" class="s" font-size="26"><tspan class="m">convert</tspan> runs in your process</text>
+  <text x="180" y="898" class="s" font-size="26">no script runner needed</text>
+
+  <path d="M940,150 H1052" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="1060" y="60" width="800" height="960" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1090" y="114" font-size="34"><tspan class="b">Agent</tspan> <tspan class="m" font-size="28">name="HutDesk"</tspan></text>
+  <text x="1090" y="162" class="m" font-size="26">context_providers=[skills]</text>
+
+  <rect x="1090" y="200" width="740" height="560" rx="18" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1120" y="250" class="m b">ToolApprovalMiddleware</text>
+  <text x="1120" y="292" class="m s" font-size="26">read_only_tools_auto_approval_rule</text>
+
+  <g fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <rect x="1120" y="326" width="360" height="84" rx="12"/>
+    <rect x="1120" y="430" width="360" height="84" rx="12"/>
+    <rect x="1120" y="534" width="360" height="84" rx="12"/>
+  </g>
+  <text x="1300" y="378" class="m c">load_skill</text>
+  <text x="1300" y="482" class="m c">read_skill_resource</text>
+  <text x="1300" y="586" class="m c">run_skill_script</text>
+  <rect x="1510" y="326" width="290" height="84" rx="42" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1655" y="378" class="b c">auto-approved</text>
+  <rect x="1510" y="430" width="290" height="84" rx="42" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1655" y="482" class="b c">auto-approved</text>
+  <rect x="1510" y="534" width="290" height="84" rx="42" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1655" y="586" class="b c">asks you</text>
+  <text x="1120" y="690" class="s" font-size="26">without this middleware, all three ask</text>
+
+  <rect x="1090" y="790" width="740" height="200" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1120" y="836" class="b">One question used two skills</text>
+  <text x="1120" y="878" font-size="26"><tspan class="m">trail-safety</tspan> and <tspan class="m">altitude</tspan> loaded without asking</text>
+  <text x="1120" y="918" font-size="26">only the <tspan class="m">convert</tspan> script asked for approval</text>
+  <text x="1120" y="958" class="m" font-size="26">3019 meters is 9904.9 feet.</text>
+</svg>

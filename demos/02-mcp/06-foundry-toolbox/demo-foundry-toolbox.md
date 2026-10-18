@@ -81,6 +81,8 @@ snippets___hello_mcp -> Hello I am MCPTool!
 
 Both servers appear behind one endpoint. Each tool name starts with its server label and three underscores. The call reached the Functions app through the connection, so your script never saw the function key.
 
+![Three clients call the consumer endpoint of the toolbox m2-docs-and-snippets with an Entra token; the toolbox lists six prefixed tools and routes them to the Microsoft Learn MCP server and, through the connection m2-func-mcp-key, to the snippets function app](../pptx/images/06-01-toolbox-endpoint.svg)
+
 ## Step 3: Give the toolbox to an agent
 
 `agent_toolbox.py` builds an Agent Framework agent whose only tool is the toolbox. `FoundryToolbox` handles the token and the preview header.
@@ -163,6 +165,8 @@ snippets___hello_mcp -> Hello I am MCPTool!
 ```
 
 The same consumer URL now serves version 2. `agent_toolbox.py` would now see only the snippets tools, and nothing in it changed.
+
+![The consumer endpoint serves version 1 until update(default_version="2") makes version 2 the default, while list_tools.py 2 tests version 2 on its version endpoint and agent_toolbox.py stays unchanged](../pptx/images/06-02-version-promotion.svg)
 
 ## Step 5: Consume the toolbox from a .NET host
 

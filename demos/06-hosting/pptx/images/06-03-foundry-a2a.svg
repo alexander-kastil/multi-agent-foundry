@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>A2A in Foundry Agent Service: incoming and outgoing calls</title>
+  <desc>The prompt agent m6h2-a2a-agent serves the responses and a2a protocols, with an agent card of version 1.0 and the skill releases, at its endpoint path .../endpoint/protocols/a2a with the card at agentCard/v1.0. In Step 4, call_foundry_a2a.py sends an Entra token for https://ai.azure.com/.default, reads the card from agentCard/v1.0 and sends a v1.0 message; the answer is a task in state TASK_STATE_COMPLETED with artifacts. In Step 5, the prompt agent m6h2-a2a-caller uses the A2ATool with its own agent identity through the project connection m6h2-a2a-target of category RemoteA2A, which points at the agent's A2A base path. Every caller needs the Foundry Agent Consumer role on the project or on the agent.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#24292f">
+
+    <rect x="50" y="110" width="510" height="300" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="305" y="165" font-size="28" font-weight="600" text-anchor="middle" font-family="Consolas, Courier New, monospace">call_foundry_a2a.py</text>
+    <text x="305" y="215" font-size="26" text-anchor="middle" fill="#57606a">Entra token for</text>
+    <text x="305" y="255" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">https://ai.azure.com/.default</text>
+    <text x="305" y="305" font-size="26" text-anchor="middle" fill="#57606a">card from <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">agentCard/v1.0</tspan></text>
+    <text x="305" y="352" font-size="26" text-anchor="middle" fill="#57606a">sends a v1.0 message</text>
+
+    <rect x="50" y="600" width="510" height="280" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+    <text x="305" y="652" font-size="28" font-weight="600" text-anchor="middle">Prompt agent</text>
+    <text x="305" y="694" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-a2a-caller</text>
+    <text x="305" y="742" font-size="26" text-anchor="middle"><tspan font-family="Consolas, Courier New, monospace">A2ATool</tspan> for protocol 1.0</text>
+    <text x="305" y="790" font-size="26" text-anchor="middle" fill="#57606a">calls with its own</text>
+    <text x="305" y="828" font-size="26" text-anchor="middle" fill="#57606a">agent identity</text>
+
+    <rect x="690" y="600" width="470" height="280" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+    <text x="925" y="652" font-size="28" font-weight="600" text-anchor="middle">Project connection</text>
+    <text x="925" y="694" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-a2a-target</text>
+    <text x="925" y="742" font-size="26" text-anchor="middle" fill="#57606a">category <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">RemoteA2A</tspan></text>
+    <text x="925" y="790" font-size="26" text-anchor="middle" fill="#57606a">points at the agent's</text>
+    <text x="925" y="828" font-size="26" text-anchor="middle" fill="#57606a">A2A base path</text>
+
+    <rect x="1300" y="110" width="570" height="770" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1585" y="162" font-size="28" font-weight="600" text-anchor="middle">Prompt agent</text>
+    <text x="1585" y="204" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-a2a-agent</text>
+    <text x="1585" y="252" font-size="26" text-anchor="middle" fill="#57606a">protocols</text>
+    <rect x="1330" y="268" width="250" height="70" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1455" y="313" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">responses</text>
+    <rect x="1600" y="268" width="240" height="70" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="1720" y="313" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">a2a</text>
+    <rect x="1330" y="370" width="510" height="180" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="1585" y="418" font-size="28" font-weight="600" text-anchor="middle">Agent card</text>
+    <text x="1585" y="460" font-size="26" text-anchor="middle" fill="#57606a">version 1.0</text>
+    <text x="1585" y="502" font-size="26" text-anchor="middle" fill="#57606a">skill <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">releases</tspan></text>
+    <rect x="1330" y="580" width="510" height="180" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1585" y="628" font-size="28" font-weight="600" text-anchor="middle">A2A endpoint</text>
+    <text x="1585" y="672" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">.../endpoint/protocols/a2a</text>
+    <text x="1585" y="716" font-size="26" text-anchor="middle" fill="#57606a">card at <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">agentCard/v1.0</tspan></text>
+    <text x="1585" y="810" font-size="26" text-anchor="middle" fill="#57606a">switched on with one PATCH:</text>
+    <text x="1585" y="850" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">update_details</text>
+
+    <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#ah)">
+      <line x1="560" y1="230" x2="1298" y2="230"/>
+      <line x1="1300" y1="330" x2="562" y2="330"/>
+      <line x1="560" y1="740" x2="688" y2="740"/>
+      <line x1="1160" y1="740" x2="1298" y2="740"/>
+    </g>
+    <g font-size="26" text-anchor="middle">
+      <text x="929" y="212" font-weight="600">Step 4: incoming A2A message</text>
+      <text x="929" y="372" fill="#57606a"><tspan font-family="Consolas, Courier New, monospace" fill="#24292f">TASK_STATE_COMPLETED</tspan> with artifacts</text>
+      <text x="925" y="572" font-weight="600">Step 5: outgoing call through the A2A tool</text>
+    </g>
+
+    <rect x="50" y="930" width="1820" height="100" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="960" y="990" font-size="28" font-weight="600" text-anchor="middle">The calling identity needs the Foundry Agent Consumer role on the project or on the agent.</text>
+  </g>
+</svg>

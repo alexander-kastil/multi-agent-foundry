@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>A router agent that calls two remote A2A agents as tools</title>
+  <desc>routing_client.py reads the cards of m6h2-title-agent on localhost:9101 and m6h2-outline-agent on localhost:9102 with A2ACardResolver and wraps each in A2AAgent.as_tool(). The router agent m6h2-routing-agent receives the prompt Prepare a blog post about hosted agents in Microsoft Foundry, asks the title agent for a title over A2A, passes that title to the outline agent, and returns the title and the outline in one answer. Adding a third specialist is one more URL in REMOTES. Dots travel the calls in this order.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#24292f">
+
+    <rect x="60" y="60" width="500" height="140" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="310" y="120" font-size="26" text-anchor="middle">Prepare a blog post about</text>
+    <text x="310" y="160" font-size="26" text-anchor="middle">hosted agents in Microsoft Foundry</text>
+
+    <rect x="60" y="270" width="500" height="530" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="310" y="322" font-size="28" font-weight="600" text-anchor="middle">Router agent</text>
+    <text x="310" y="364" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-routing-agent</text>
+    <text x="310" y="406" font-size="26" text-anchor="middle" fill="#57606a">title first, then outline</text>
+    <rect x="90" y="450" width="440" height="120" rx="12" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+    <text x="310" y="500" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">m6h2_title_agent</text>
+    <text x="310" y="545" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" fill="#57606a">A2AAgent.as_tool()</text>
+    <rect x="90" y="640" width="440" height="120" rx="12" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+    <text x="310" y="690" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">m6h2_outline_agent</text>
+    <text x="310" y="735" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" fill="#57606a">A2AAgent.as_tool()</text>
+
+    <rect x="60" y="870" width="500" height="140" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+    <text x="310" y="930" font-size="28" font-weight="600" text-anchor="middle">Title and outline</text>
+    <text x="310" y="972" font-size="26" text-anchor="middle" fill="#57606a">in one answer</text>
+
+    <rect x="660" y="60" width="1200" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="700" y="116" font-size="26"><tspan font-family="Consolas, Courier New, monospace" font-weight="600">A2ACardResolver</tspan> reads both cards first</text>
+    <text x="700" y="168" font-size="26" font-family="Consolas, Courier New, monospace" fill="#57606a">found remote agent: m6h2-title-agent</text>
+    <text x="700" y="208" font-size="26" font-family="Consolas, Courier New, monospace" fill="#57606a">found remote agent: m6h2-outline-agent</text>
+    <text x="700" y="280" font-size="26">Each tool takes its name and description from the card.</text>
+
+    <rect x="1260" y="400" width="600" height="220" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="1560" y="452" font-size="28" font-weight="600" text-anchor="middle">Title agent</text>
+    <text x="1560" y="494" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-title-agent</text>
+    <text x="1560" y="536" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" fill="#57606a">localhost:9101</text>
+    <text x="1560" y="580" font-size="26" text-anchor="middle" fill="#57606a">skill <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">generate_title</tspan></text>
+
+    <rect x="1260" y="650" width="600" height="220" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="1560" y="702" font-size="28" font-weight="600" text-anchor="middle">Outline agent</text>
+    <text x="1560" y="744" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-outline-agent</text>
+    <text x="1560" y="786" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" fill="#57606a">localhost:9102</text>
+    <text x="1560" y="830" font-size="26" text-anchor="middle" fill="#57606a">skill <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">generate_outline</tspan></text>
+
+    <rect x="1260" y="900" width="600" height="110" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 7"/>
+    <text x="1560" y="965" font-size="26" text-anchor="middle" fill="#57606a">Next specialist: one more URL in <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">REMOTES</tspan></text>
+
+    <text x="895" y="420" font-size="26" font-weight="600" text-anchor="middle" fill="#57606a">A2A over JSON-RPC</text>
+    <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#ah)">
+      <line x1="310" y1="200" x2="310" y2="268"/>
+      <line x1="530" y1="490" x2="1258" y2="490"/>
+      <line x1="1260" y1="540" x2="532" y2="540"/>
+      <line x1="530" y1="680" x2="1258" y2="680"/>
+      <line x1="1260" y1="730" x2="532" y2="730"/>
+      <line x1="310" y1="800" x2="310" y2="868"/>
+    </g>
+    <g font-size="26">
+      <text x="328" y="244">1 prompt</text>
+      <text x="895" y="464" text-anchor="middle">2 ask for a title</text>
+      <text x="895" y="578" text-anchor="middle" fill="#57606a">title</text>
+      <text x="895" y="654" text-anchor="middle">3 send the title</text>
+      <text x="895" y="768" text-anchor="middle" fill="#57606a">outline</text>
+      <text x="328" y="844">4 answer</text>
+    </g>
+
+    <g fill="none" stroke="#e0a534" stroke-width="8" stroke-opacity="0">
+      <rect x="1260" y="400" width="600" height="220" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.2167;0.2833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="1260" y="650" width="600" height="220" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.5167;0.5833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="60" y="870" width="500" height="140" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1" keyTimes="0;0.8" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g fill="#e0a534" stroke="#24292f" stroke-width="2">
+      <circle cx="310" cy="200" r="13" opacity="0">
+        <animate attributeName="cy" values="200;270;270" keyTimes="0;0.1;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0" keyTimes="0;0.1" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="530" cy="490" r="13" opacity="0">
+        <animate attributeName="cx" values="530;530;1260;1260" keyTimes="0;0.1;0.2167;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1;0.2167" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1260" cy="540" r="13" opacity="0">
+        <animate attributeName="cx" values="1260;1260;530;530" keyTimes="0;0.2833;0.3833;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2833;0.3833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="530" cy="680" r="13" opacity="0">
+        <animate attributeName="cx" values="530;530;1260;1260" keyTimes="0;0.4;0.5167;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4;0.5167" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1260" cy="730" r="13" opacity="0">
+        <animate attributeName="cx" values="1260;1260;530;530" keyTimes="0;0.5833;0.6833;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5833;0.6833" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="310" cy="800" r="13" opacity="0">
+        <animate attributeName="cy" values="800;800;870;870" keyTimes="0;0.7;0.8;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.7;0.8" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+</svg>

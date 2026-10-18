@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Resume and rewind</title>
+  <desc>A timeline of the four checkpoints submit.py wrote: superstep 0 eebeed27, the entry checkpoint, superstep 1 043d107d, superstep 2 df9d92a4 and superstep 3 3533abcf with pending_requests=1. decide.py approve resumes at superstep 3: the summary is read from the checkpoint, request 97a8ecb2 is re-emitted with the same id, and the result is decision 1: APPROVE. decide.py reject 1 rewinds to superstep 1: expense_summarizer runs again and is billed, a new request 4e344c49 is raised, and the result is decision 1: REJECT with new summary text.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#24292f}
+      .s{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a}
+      .m{font-family:Consolas,'Courier New',monospace;fill:#24292f}
+      .ms{font-family:Consolas,'Courier New',monospace;fill:#57606a}
+      .box{stroke:#8c959f;stroke-width:2}
+      .edge{fill:none;stroke:#8c959f;stroke-width:2}
+      .cp{fill:#fff6e5;stroke:#e0a534;stroke-width:3}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <line x1="266" y1="230" x2="1474" y2="230" stroke="#8c959f" stroke-width="3"/>
+  <circle class="cp" cx="240" cy="230" r="26"/>
+  <circle class="cp" cx="660" cy="230" r="26"/>
+  <circle class="cp" cx="1080" cy="230" r="26"/>
+  <circle class="cp" cx="1500" cy="230" r="26" stroke-width="5"/>
+  <text class="t" x="240" y="130" font-size="28" text-anchor="middle">superstep 0</text>
+  <text class="ms" x="240" y="172" font-size="26" text-anchor="middle">eebeed27</text>
+  <text class="t" x="660" y="130" font-size="28" text-anchor="middle">superstep 1</text>
+  <text class="ms" x="660" y="172" font-size="26" text-anchor="middle">043d107d</text>
+  <text class="t" x="1080" y="130" font-size="28" text-anchor="middle">superstep 2</text>
+  <text class="ms" x="1080" y="172" font-size="26" text-anchor="middle">df9d92a4</text>
+  <text class="t" x="1500" y="130" font-size="28" text-anchor="middle">superstep 3</text>
+  <text class="ms" x="1500" y="172" font-size="26" text-anchor="middle">3533abcf</text>
+  <text class="s" x="240" y="302" font-size="26" text-anchor="middle">entry checkpoint</text>
+  <text class="m" x="1544" y="239" font-size="26" font-weight="700">pending_requests=1</text>
+
+  <path class="edge" d="M660 256 L660 378" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1500 256 L1500 378" marker-end="url(#arrow)"/>
+  <text class="m" x="680" y="330" font-size="26">decide.py reject 1</text>
+  <text class="m" x="1520" y="330" font-size="26">decide.py approve</text>
+
+  <rect class="box" x="60" y="380" width="840" height="600" rx="20" fill="#ffffff"/>
+  <text class="t" x="480" y="436" font-size="32" font-weight="700" text-anchor="middle">Rewind to superstep 1</text>
+  <text class="s" x="480" y="474" font-size="26" text-anchor="middle">agent calls after superstep 1 repeat and are billed</text>
+  <rect class="box" x="100" y="505" width="760" height="84" rx="14" fill="#f6f8fa"/>
+  <text class="m" x="480" y="556" font-size="26" text-anchor="middle">resuming from checkpoint 043d107d (superstep 1)</text>
+  <rect class="box" x="100" y="621" width="760" height="84" rx="14" fill="#f3edff"/>
+  <text class="t" x="480" y="673" font-size="28" text-anchor="middle"><tspan class="m" font-weight="700">expense_summarizer</tspan> runs again</text>
+  <rect class="box" x="100" y="737" width="760" height="84" rx="14" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="t" x="480" y="789" font-size="26" text-anchor="middle"><tspan class="m">re-emitted request: 4e344c49</tspan> (new id)</text>
+  <rect class="box" x="100" y="853" width="760" height="84" rx="14" fill="#e9f7ef"/>
+  <text class="t" x="480" y="905" font-size="26" text-anchor="middle"><tspan class="m" font-size="28" font-weight="700">decision 1: REJECT</tspan>, new summary text</text>
+  <path class="edge" d="M480 589 L480 619" marker-end="url(#arrow)"/>
+  <path class="edge" d="M480 705 L480 735" marker-end="url(#arrow)"/>
+  <path class="edge" d="M480 821 L480 851" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="1020" y="380" width="840" height="600" rx="20" fill="#ffffff"/>
+  <text class="t" x="1440" y="436" font-size="32" font-weight="700" text-anchor="middle">Resume at the pause</text>
+  <text class="s" x="1440" y="474" font-size="26" text-anchor="middle">same request, no new agent call</text>
+  <rect class="box" x="1060" y="505" width="760" height="84" rx="14" fill="#f6f8fa"/>
+  <text class="m" x="1440" y="556" font-size="26" text-anchor="middle">resuming from checkpoint 3533abcf (superstep 3)</text>
+  <rect class="box" x="1060" y="621" width="760" height="84" rx="14" fill="#f6f8fa"/>
+  <text class="t" x="1440" y="673" font-size="28" text-anchor="middle">summary read from the checkpoint</text>
+  <rect class="box" x="1060" y="737" width="760" height="84" rx="14" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="t" x="1440" y="789" font-size="26" text-anchor="middle"><tspan class="m">re-emitted request: 97a8ecb2</tspan> (same id)</text>
+  <rect class="box" x="1060" y="853" width="760" height="84" rx="14" fill="#e9f7ef"/>
+  <text class="t" x="1440" y="905" font-size="26" text-anchor="middle"><tspan class="m" font-size="28" font-weight="700">decision 1: APPROVE</tspan>, stored summary</text>
+  <path class="edge" d="M1440 589 L1440 619" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1440 705 L1440 735" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1440 821 L1440 851" marker-end="url(#arrow)"/>
+</svg>

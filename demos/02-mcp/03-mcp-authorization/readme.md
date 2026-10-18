@@ -104,6 +104,8 @@ Microsoft's guidance is to set the Application ID URI to the canonical HTTPS URL
 
 The token is just as strict about audience: `aud` is the API's client ID.
 
+![The settings of the app registration m2-mcp-hr-api become the aud, iss, scp and azp claims of the token, which the server checks with ValidAudience, ValidIssuer and the scp claim](../pptx/images/03-02-registration-token-checks.svg)
+
 ## Validating the Token in the Server
 
 Validation is the part you must not improvise. Microsoft's guidance is to use a maintained library and to check signature, issuer, tenant, audience, expiry and scope on every request. A server must reject a token that was issued for another resource, and it must never forward the token it received to an upstream API.
@@ -175,6 +177,8 @@ WWW-Authenticate: Bearer error="insufficient_scope", scope="api://<api-client-id
 ```
 
 The client reads the challenge, requests the union of its previous scopes and the new one, and retries the original request. It must limit the number of retries and treat repeated failure as final. The ASP.NET Core server implements the check as a small middleware that reads the tool name from the `tools/call` body and compares the token's `scp` claim with the scope that tool needs.
+
+![Five curl requests pass the JWT bearer handler, RequireAuthorization, ScopeChallengeMiddleware and MapMcp, and each stops at the stage that answers 401, 403 or 200](../pptx/images/03-01-protected-requests.svg)
 
 ```csharp
 if (tool is not null && WriteTools.Contains(tool) && !HasScope(context.User, options.Value.WriteScope))

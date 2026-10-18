@@ -60,6 +60,8 @@ version = project.toolboxes.create_version(
 )
 ```
 
+![Three clients call the consumer endpoint of the toolbox m2-docs-and-snippets with an Entra token; the toolbox lists six prefixed tools and routes them to the Microsoft Learn MCP server and, through the connection m2-func-mcp-key, to the snippets function app](../pptx/images/06-01-toolbox-endpoint.svg)
+
 The second tool uses the project connection from the previous topic, so the key never reaches an agent. Add a `description` to every tool, because the model uses it to choose. With `azd` version 1.27.1 or later and the `microsoft.foundry` extension, the same toolbox is a YAML file and one command.
 
 ```bash
@@ -136,6 +138,8 @@ toolbox = project.toolboxes.update(NAME, default_version="2")
 ```
 
 After `update`, the consumer endpoint serves version 2. Agents that were already connected to the consumer endpoint see the change without a redeployment. To roll back, call `update` with the earlier version.
+
+![The consumer endpoint serves version 1 until update(default_version="2") makes version 2 the default, while list_tools.py 2 tests version 2 on its version endpoint and agent_toolbox.py stays unchanged](../pptx/images/06-02-version-promotion.svg)
 
 ## Approvals and Guardrails
 

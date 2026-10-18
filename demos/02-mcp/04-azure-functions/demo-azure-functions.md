@@ -92,6 +92,8 @@ Expected result:
 }
 ```
 
+![The get_snippet function mapped to its tool name, description and input property, and a tools/call whose snippetname argument resolves the blob path to snippets/greeting.json](../pptx/images/04-01-function-to-tool.svg)
+
 The C# project `functions-mcp-cs` exposes the same three tools with `McpToolTrigger`. Stop the Python host, or start the C# host on another port, and call it the same way.
 
 ```powershell
@@ -233,6 +235,8 @@ mcp_call get_snippet {"snippetname":"fizz"}
 `for i in range(3): print(i)`
 cleaned up
 ```
+
+![agent.py names the connection m2-func-mcp-key, Foundry Agent Service attaches the x-functions-key header from it, and the function app checks the system key before it reads and writes blob storage](../pptx/images/04-02-foundry-agent-connection.svg)
 
 ## Verify
 

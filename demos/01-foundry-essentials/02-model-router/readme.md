@@ -31,6 +31,8 @@ print(response.model)
 
 The `model` field of the response carries the name of the underlying model, for example `gpt-5.6-sol-2026-07-09`. A different prompt, or the same prompt a moment later, can return a different name.
 
+![A call to the m1-router-balanced deployment passes through model router 2025-11-18, which picks a model from the OpenAI, Anthropic, xAI, DeepSeek, Meta and Fireworks pool and names it in response.model](../pptx/images/02-01-router-request-flow.svg)
+
 ## Routing modes
 
 The routing mode controls how the router trades quality against cost. Balanced is the default and the right start for most workloads.
@@ -70,6 +72,8 @@ A model subset restricts the router to the models you list. Use it for complianc
 ```
 
 Automatic failover is on by default. When the chosen model has a transient problem, the router redirects the request to the next most suitable model and keeps your routing mode. Your subset doubles as the fallback set, so choose at least two models to benefit from it.
+
+![Four router deployments plotting the same pool by cost and quality: Balanced picks the cheapest model near the top, Quality the highest-rated, Cost the cheapest in a wider band, and the subset only gpt-5-mini or gpt-5.4](../pptx/images/02-02-routing-modes.svg)
 
 ## Claude models in the pool
 

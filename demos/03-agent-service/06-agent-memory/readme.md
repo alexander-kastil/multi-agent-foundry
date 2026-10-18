@@ -16,6 +16,8 @@ A memory store extracts and keeps three types of memory. Each has its own retrie
 
 Memory works in three phases. Extraction pulls candidate facts out of the conversation, consolidation merges duplicates and resolves conflicts (a new allergy replaces the old note), and retrieval searches the store when the agent needs context.
 
+![A conversation with a preference, an allergy and a correction passes through extraction and consolidation in m3-memory-store, lands in scope alice as user_profile, chat_summary and procedural memories, and comes back through a static and a contextual search_memories call](../pptx/images/06-01-three-memory-phases.svg)
+
 Choose the right store for the job. Use memory for what the agent learns about a user over time, a Foundry IQ knowledge base for curated organizational content and file search for documents a user provides during an interaction.
 
 ## Create a memory store
@@ -59,6 +61,8 @@ Every operation names a `scope`, and each scope is an isolated collection inside
 | Low-level memory APIs | An explicit `scope` argument on every call |
 
 With `{{$userId}}`, the service takes the id from the `x-memory-user-id` request header. Without the header it falls back to the caller's Microsoft Entra tenant and object id. Use the header in a backend that calls the API on behalf of many users.
+
+![carol and dave ask one agent version the same question with their own x-memory-user-id header; the scope {{$userId}} resolves to scope carol, which holds the oat milk preference, and to scope dave, which is empty, so only carol gets the remembered answer](../pptx/images/06-02-memory-scope.svg)
 
 ## Attach memory to an agent
 

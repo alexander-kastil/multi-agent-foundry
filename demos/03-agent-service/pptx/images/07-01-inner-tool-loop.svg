@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The inner tool loop in run_turn</title>
+  <desc>Your code sends the user input with responses.create. Foundry Agent Service runs the agent m3-investment-analyst and returns its output. Your code checks for function_call items. If there is one, your code runs get_market_data locally against market_data.py, which holds local prices and ratios for MSFT, GOOG and NVDA, and sends back a function_call_output with the same call_id, chained by previous_response_id. If there is none, the loop ends and run_turn returns the final response. A highlight steps through one tool round and then the exit.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; font-size: 26px; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+    .box { stroke: #8c959f; stroke-width: 2; }
+    .hl { fill: none; stroke: #e0a534; stroke-width: 8; }
+    .arrow { fill: none; stroke: #8c959f; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="box" x="80" y="110" width="365" height="280" rx="24" fill="#eaf2ff"/>
+  <text class="sec c" x="262" y="168">Your code</text>
+  <text class="mono b c" x="262" y="228">responses.create</text>
+  <text class="c" x="262" y="290">sends the user input</text>
+  <text class="c" x="262" y="330">or the tool outputs</text>
+
+  <rect class="box" x="545" y="110" width="365" height="280" rx="24" fill="#f3edff"/>
+  <text class="sec c" x="727" y="168">Foundry Agent Service</text>
+  <text class="b c" x="727" y="228" font-size="30">runs the agent</text>
+  <text class="mono c" x="727" y="282" font-size="26">m3-investment-analyst</text>
+  <text class="c" x="727" y="335">and returns its output</text>
+
+  <rect class="box" x="1010" y="110" width="365" height="280" rx="24" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="sec c" x="1192" y="168">Your code checks</text>
+  <text class="b c" x="1192" y="228" font-size="30">Any</text>
+  <text class="mono b c" x="1192" y="282" font-size="30">function_call</text>
+  <text class="c" x="1192" y="335">item in the output?</text>
+
+  <rect class="box" x="1475" y="110" width="365" height="280" rx="24" fill="#e9f7ef"/>
+  <text class="sec c" x="1657" y="168">Your code</text>
+  <text class="b c" x="1657" y="228" font-size="30">Loop ends</text>
+  <text class="c" x="1657" y="290"><tspan class="mono">run_turn</tspan> returns</text>
+  <text class="c" x="1657" y="330">the final response</text>
+
+  <rect class="box" x="545" y="520" width="830" height="240" rx="24" fill="#eaf2ff"/>
+  <text class="sec c" x="960" y="572">Your code</text>
+  <text class="b c" x="960" y="626" font-size="30">runs the tool locally</text>
+  <text class="mono c" x="960" y="680" font-size="26">get_market_data(**json.loads(item.arguments))</text>
+  <text class="c" x="960" y="730" font-size="26">sends back <tspan class="mono">function_call_output</tspan> with the same <tspan class="mono">call_id</tspan></text>
+
+  <rect class="box" x="545" y="860" width="830" height="130" rx="24" fill="#f6f8fa"/>
+  <text class="mono b c" x="960" y="912">market_data.py</text>
+  <text class="c" x="960" y="958" font-size="26">local prices and ratios for MSFT, GOOG and NVDA</text>
+
+  <line class="arrow" x1="445" y1="250" x2="545" y2="250"/>
+  <line class="arrow" x1="910" y1="250" x2="1010" y2="250"/>
+  <line class="arrow" x1="1375" y1="250" x2="1475" y2="250"/>
+  <text class="sec b c" x="1425" y="230">no</text>
+  <line class="arrow" x1="1192" y1="390" x2="1192" y2="520"/>
+  <text class="sec b" x="1212" y="465">yes</text>
+  <path class="arrow" d="M545,640 L262,640 L262,390"/>
+  <text class="sec" x="90" y="690">next request with</text>
+  <text class="mono" x="90" y="730" font-size="26">previous_response_id</text>
+  <line x1="960" y1="760" x2="960" y2="860" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect class="hl" x="80" y="110" width="365" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="1;0;1;0" keyTimes="0;0.125;0.5;0.625"/>
+    </rect>
+    <rect class="hl" x="545" y="110" width="365" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;1;0" keyTimes="0;0.125;0.25;0.625;0.75"/>
+    </rect>
+    <rect class="hl" x="1010" y="110" width="365" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;1;0" keyTimes="0;0.25;0.375;0.75;0.875"/>
+    </rect>
+    <rect class="hl" x="545" y="520" width="830" height="240" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.375;0.5"/>
+    </rect>
+    <rect class="hl" x="545" y="860" width="830" height="130" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.375;0.5"/>
+    </rect>
+    <rect class="hl" x="1475" y="110" width="365" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.875"/>
+    </rect>
+  </g>
+</svg>

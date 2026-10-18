@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Prompt injection defense layers</title>
+  <desc>Three runs of the same patient document. Layer 1, no defense: the platform filter with Prompt Shields, then the model with the baseline prompt v1.0.0.txt. Layer 2, delimiters plus persona stability: wrap_document adds delimiters, then the platform filter, then the model with the hardened prompt v1.1.0.txt. Layer 3, scan plus delimiters plus persona plus output check: the input scan adds a safety note when risk is high, then delimiters, the platform filter, the model with v1.1.0.txt and finally validate_output checks the reply.</desc>
+  <style>
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 30px; fill: #24292f; text-anchor: middle; }
+    .lh { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 36px; fill: #24292f; }
+    .lb { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .amber { fill: #fff6e5; stroke: #e0a534; stroke-width: 2; }
+    .kept { fill: #ffffff; stroke: #8c959f; stroke-width: 2; }
+    .svc { fill: #f3edff; stroke: #8c959f; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="40" y="60" width="1840" height="300" rx="22" fill="#f6f8fa"/>
+  <rect x="40" y="390" width="1840" height="300" rx="22" fill="#f6f8fa"/>
+  <rect x="40" y="720" width="1840" height="300" rx="22" fill="#f6f8fa"/>
+
+  <text class="lh" x="80" y="190">Layer 1</text>
+  <text class="lb" x="80" y="236">no defense</text>
+
+  <text class="lh" x="80" y="502">Layer 2</text>
+  <text class="lb" x="80" y="548">delimiters +</text>
+  <text class="lb" x="80" y="584">persona stability</text>
+
+  <text class="lh" x="80" y="832">Layer 3</text>
+  <text class="lb" x="80" y="878">scan + delimiters +</text>
+  <text class="lb" x="80" y="914">persona + output check</text>
+
+  <rect class="svc" x="1024" y="105" width="250" height="210" rx="16"/>
+  <text class="h" x="1149" y="188">Platform filter</text>
+  <text class="b" x="1149" y="234">Prompt Shields</text>
+
+  <rect class="svc" x="1316" y="105" width="250" height="210" rx="16"/>
+  <text class="h" x="1441" y="170">Model</text>
+  <text class="c" x="1441" y="216">v1.0.0.txt</text>
+  <text class="b" x="1441" y="260">baseline prompt</text>
+
+  <line class="line" x1="400" y1="210" x2="1022" y2="210" marker-end="url(#arr)"/>
+  <line class="line" x1="1276" y1="210" x2="1314" y2="210" marker-end="url(#arr)"/>
+
+  <rect class="amber" x="732" y="435" width="250" height="210" rx="16"/>
+  <text class="h" x="857" y="518">Delimiters</text>
+  <text class="c" x="857" y="564">wrap_document</text>
+
+  <rect class="svc" x="1024" y="435" width="250" height="210" rx="16"/>
+  <text class="h" x="1149" y="518">Platform filter</text>
+  <text class="b" x="1149" y="564">Prompt Shields</text>
+
+  <rect class="amber" x="1316" y="435" width="250" height="210" rx="16"/>
+  <text class="h" x="1441" y="500">Model</text>
+  <text class="c" x="1441" y="546">v1.1.0.txt</text>
+  <text class="b" x="1441" y="590">hardened prompt</text>
+
+  <line class="line" x1="400" y1="540" x2="730" y2="540" marker-end="url(#arr)"/>
+  <line class="line" x1="984" y1="540" x2="1022" y2="540" marker-end="url(#arr)"/>
+  <line class="line" x1="1276" y1="540" x2="1314" y2="540" marker-end="url(#arr)"/>
+
+  <rect class="amber" x="440" y="765" width="250" height="210" rx="16"/>
+  <text class="h" x="565" y="830">Input scan</text>
+  <text class="c" x="565" y="876">risk=high</text>
+  <text class="b" x="565" y="920">adds a safety note</text>
+
+  <rect class="kept" x="732" y="765" width="250" height="210" rx="16"/>
+  <text class="h" x="857" y="848">Delimiters</text>
+  <text class="c" x="857" y="894">wrap_document</text>
+
+  <rect class="svc" x="1024" y="765" width="250" height="210" rx="16"/>
+  <text class="h" x="1149" y="848">Platform filter</text>
+  <text class="b" x="1149" y="894">Prompt Shields</text>
+
+  <rect class="svc" x="1316" y="765" width="250" height="210" rx="16"/>
+  <text class="h" x="1441" y="830">Model</text>
+  <text class="c" x="1441" y="876">v1.1.0.txt</text>
+  <text class="b" x="1441" y="920">hardened prompt</text>
+
+  <rect class="amber" x="1608" y="765" width="250" height="210" rx="16"/>
+  <text class="h" x="1733" y="848">Output check</text>
+  <text class="c" x="1733" y="894">validate_output</text>
+
+  <line class="line" x1="400" y1="870" x2="438" y2="870" marker-end="url(#arr)"/>
+  <line class="line" x1="692" y1="870" x2="730" y2="870" marker-end="url(#arr)"/>
+  <line class="line" x1="984" y1="870" x2="1022" y2="870" marker-end="url(#arr)"/>
+  <line class="line" x1="1276" y1="870" x2="1314" y2="870" marker-end="url(#arr)"/>
+  <line class="line" x1="1568" y1="870" x2="1606" y2="870" marker-end="url(#arr)"/>
+</svg>

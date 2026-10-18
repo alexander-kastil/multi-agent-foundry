@@ -13,6 +13,8 @@ The Foundry SDK is a thin client over every Foundry project API, reached through
 
 You get the second client from the first, so authentication and the endpoint are configured once.
 
+![PROJECT_ENDPOINT and DefaultAzureCredential configure AIProjectClient, which handles Foundry-native operations and hands out the OpenAI-compatible client for Responses, conversations, agents and evaluations, both reaching one Foundry project](../pptx/images/03-01-two-clients.svg)
+
 ```python
 import os
 from azure.ai.projects import AIProjectClient
@@ -70,6 +72,8 @@ print(completion.choices[0].message.content)
 
 Tool calling follows the same pattern in both. With Responses the model returns a `function_call` item, your code runs the function, and you send back a `function_call_output` item with the same `call_id`.
 
+![Sequence between your code and the model: function_call item, lookup_weather runs, function_call_output with the same call_id, answer; beside it the C# ChatClientBuilder with UseFunctionInvocation that runs the same loop](../pptx/images/03-02-function-calling-loop.svg)
+
 ```python
 input_items += response.output
 input_items.append(
@@ -99,6 +103,8 @@ Newer adapter releases pull a newer `OpenAI` package, and the project then fails
 ## Microsoft.Extensions.AI
 
 Microsoft.Extensions.AI defines `IChatClient`, one interface for chat that works with any provider. You write application code against `IChatClient` and decide at the composition root which model client sits behind it. The adapter package turns the Foundry Responses client into an `IChatClient`.
+
+![Layer stack from application code through IChatClient, the AsIChatClient adapter, the Responses client and AIProjectClient to the Foundry project, with each package version and the shared OpenAI 2.9.1 dependency](../pptx/images/03-03-ichatclient-stack.svg)
 
 ```csharp
 AIProjectClient project = new(new Uri(endpoint), new DefaultAzureCredential());

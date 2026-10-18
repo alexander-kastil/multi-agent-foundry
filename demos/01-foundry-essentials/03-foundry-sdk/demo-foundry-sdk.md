@@ -33,6 +33,8 @@ Copy the same `.env` into `../foundry-sdk-cs/` when you reach step 4.
 
 The project client authenticates once and hands out an OpenAI-compatible client bound to the project. The Responses API takes the system prompt as `instructions` and the user turn as `input`.
 
+![PROJECT_ENDPOINT and DefaultAzureCredential configure AIProjectClient, which handles Foundry-native operations and hands out the OpenAI-compatible client for Responses, conversations, agents and evaluations, both reaching one Foundry project](../pptx/images/03-01-two-clients.svg)
+
 ```python
 project = AIProjectClient(
     endpoint=os.environ["PROJECT_ENDPOINT"],
@@ -97,6 +99,8 @@ The two calls hit the same deployment. Note that Chat Completions reports the da
 
 Tool calling is a loop you own: the model returns a `function_call` item, you run the function, and you send the result back as a `function_call_output` item with the same `call_id`.
 
+![Sequence between your code and the model: function_call item, lookup_weather runs, function_call_output with the same call_id, answer; beside it the C# ChatClientBuilder with UseFunctionInvocation that runs the same loop](../pptx/images/03-02-function-calling-loop.svg)
+
 ```python
 for item in response.output:
     if item.type == "function_call":
@@ -130,6 +134,8 @@ The tool call line proves the model asked for your function with arguments it ex
 ## Step 4: Wrap the model as an IChatClient in C#
 
 In .NET the same project endpoint feeds `IChatClient`. The application code below never mentions Foundry or OpenAI, so you can swap the provider without touching it.
+
+![Layer stack from application code through IChatClient, the AsIChatClient adapter, the Responses client and AIProjectClient to the Foundry project, with each package version and the shared OpenAI 2.9.1 dependency](../pptx/images/03-03-ichatclient-stack.svg)
 
 ```csharp
 AIProjectClient project = new(endpoint, new DefaultAzureCredential());

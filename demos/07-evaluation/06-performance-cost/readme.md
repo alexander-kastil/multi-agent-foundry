@@ -30,6 +30,8 @@ The quality floor scores each answer and retries one tier up when the score is b
 
 The first two are yours to build. A result cache is a key-value lookup. A semantic cache embeds the request, compares it with stored entries by cosine similarity and returns the stored answer above a threshold, so the threshold is a quality knob: raise it when a wrong cached answer is expensive.
 
+![Six support requests passing the result cache, the semantic cache and the router to tier 1, 2 or 3, with one hit in each cache](../pptx/images/06-01-routing-cache.svg)
+
 ```python
 def check_cache(self, query_text, agent_id):
     query_embedding = self.get_embedding(query_text)
@@ -50,6 +52,8 @@ print(response.usage.input_tokens_details.cached_tokens)
 ## Budget the Context
 
 Every token in the prompt is paid for on every call. Give each agent type a token budget and assemble its context in a fixed order: a digest of established facts, the last few exchanges, older turns that carry preferences or commitments, and tool results compressed to the few fields the agent needs. Only when the result is still over budget does the assembler prune, in a defined order: shorten the window, drop important turns, drop tool results.
+
+![Context layers of a reasoning agent and a lookup agent, the lookup agent's three pruning steps in order and the token counts against the naive prompt](../pptx/images/06-02-token-budgets.svg)
 
 ```python
 AGENT_BUDGETS = {"lookup": 2000, "reasoning": 4000, "policy": 8000}

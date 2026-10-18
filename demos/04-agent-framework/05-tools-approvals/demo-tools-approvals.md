@@ -2,6 +2,8 @@
 
 An agent that only talks cannot check a trail, read live documentation or book a hut. In this demo you give a trail-guide agent your own functions, a local MCP server, a remote MCP server and two hosted tools, and you put a human approval in front of every action that costs money. You finish with one agent that acts through four kinds of tools and cannot book anything without a yes.
 
+![Where tools run: function tools, MCPStdioTool and MCPStreamableHTTPTool in your process, the code interpreter and hosted MCP on the Foundry model service, and the Microsoft Learn MCP server reached from both](../pptx/images/05-01-where-tools-run.svg)
+
 What you practice here: choosing where a tool runs and gating it with approval_mode.
 
 Duration: about 50 minutes.
@@ -57,6 +59,8 @@ One question produced two tool calls. The model chose both, and the price (2 nig
 ## Step 2: Require approval for an action
 
 `book_hut` charges a customer, so it uses `approval_mode="always_require"`. The agent stops before the call and returns it in `user_input_requests`; the script answers on the same session.
+
+![The approval loop: book_hut stops the agent, a human approves or rejects, the answer goes back on the same session, and the loop repeats until no request is left](../pptx/images/05-02-approval-loop.svg)
 
 ```python
 @tool(approval_mode="always_require")

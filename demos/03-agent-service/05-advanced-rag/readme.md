@@ -25,6 +25,8 @@ def reciprocal_rank(index, query, expected, **kwargs):
 
 A hybrid query runs the keyword query and the vector query at the same time and merges the two ranked lists with Reciprocal Rank Fusion (RRF). Each result list contributes `1 / (k + rank)` for every document, the contributions are added and the documents are re-sorted. A weight on the vector leg makes it count more or less.
 
+![Reciprocal Rank Fusion for the query NDC 00071-0156-23: the keyword leg ranks Atorvastatin 40 mg tablets first, the vector leg with weight 0.3 ranks three other drugs first, and the summed 1/(k + rank) contributions keep Atorvastatin first in the hybrid order](../pptx/images/05-01-hybrid-rank-fusion.svg)
+
 ```python
 for rank, i in enumerate(keyword_order):
     scores[i] = scores.get(i, 0) + 1 / (RRF_K + rank + 1)
@@ -52,6 +54,8 @@ Retrieval casts a wide net and reranking orders what it caught. A reranker canno
 
 Azure AI Search offers the semantic ranker, a model-based second stage that rescores the top 50 results of a keyword or hybrid query. It reports `@search.rerankerScore` on a scale of 0 to 4, separate from the RRF score.
 
+![The semantic ranker rescores the top 50 hybrid results for an ACE inhibitor monitoring question: Lisinopril 10 mg tablets moves to rank 1, and Serum potassium, Estimated glomerular filtration rate and the ketoacidosis protocol rise from ranks 6 to 50 into the top 5](../pptx/images/05-02-semantic-reranking.svg)
+
 ```python
 results = search.search(
     search_text=query,
@@ -69,6 +73,8 @@ The alternative is an LLM as reranker: ask a model to score each candidate from 
 ## Route a question to the right sources
 
 An enterprise has several knowledge sources, and searching all of them for every question wastes calls and adds noise. A router asks a model for the probability that each source is needed, searches only the confident ones and merges the results.
+
+![Router confidence per source for three questions with thresholds at 0.4 and 0.7: the TSH question searches lab_references only, the ketoacidosis question searches clinical_guidelines and lab_references, and the cafeteria question scores 0.0 everywhere and searches all three](../pptx/images/05-03-source-routing.svg)
 
 | Rule | Value |
 | --- | --- |

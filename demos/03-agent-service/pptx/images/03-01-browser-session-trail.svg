@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The browser session lifecycle</title>
+  <desc>Three tasks run in one conversation and one browser session. Task 1 calls create_browser_session and the live view URL is received and kept private. Task 2 calls browser_navigate to https://example.com and browser_snapshot, and the agent reports the page title Example Domain. Task 3 calls browser_click on ref=e13, browser_snapshot and close_browser_session, and the agent reports the heading Example Domains. The browserSessionId is passed to every action. A highlight steps through the actions and answers in order.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="70" y="100" width="360" height="150" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="100" y="146" class="b" font-size="28">Task 1</text>
+  <text x="100" y="188" class="sec">Create a browser</text>
+  <text x="100" y="224" class="sec">session</text>
+
+  <rect x="70" y="290" width="360" height="270" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="100" y="336" class="b" font-size="28">Task 2</text>
+  <text x="100" y="380" class="sec">Open</text>
+  <text x="100" y="418" class="mono sec">https://example.com</text>
+  <text x="100" y="458" class="sec">report the page title</text>
+  <text x="100" y="496" class="sec">and the description</text>
+
+  <rect x="70" y="600" width="360" height="380" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="100" y="646" class="b" font-size="28">Task 3</text>
+  <text x="100" y="690" class="sec">Follow the link in the</text>
+  <text x="100" y="728" class="sec">description paragraph,</text>
+  <text x="100" y="766" class="sec">then close the browser</text>
+  <text x="100" y="804" class="sec">session</text>
+
+  <rect x="470" y="135" width="50" height="830" rx="25" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="0" y="0" transform="translate(504 550) rotate(-90)" text-anchor="middle" class="mono">browserSessionId</text>
+
+  <rect x="560" y="135" width="560" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="184" class="mono b">create_browser_session</text>
+
+  <rect x="560" y="310" width="560" height="90" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="347" class="mono b">browser_navigate</text>
+  <text x="585" y="384" class="mono sec">{'url': 'https://example.com'}</text>
+
+  <rect x="560" y="450" width="560" height="90" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="487" class="mono b">browser_snapshot</text>
+  <text x="585" y="524" class="mono sec">{'depth': 4}</text>
+
+  <rect x="560" y="615" width="560" height="90" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="652" class="mono b">browser_click</text>
+  <text x="585" y="689" class="mono sec">{'target': 'ref=e13'}</text>
+
+  <rect x="560" y="750" width="560" height="90" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="787" class="mono b">browser_snapshot</text>
+  <text x="585" y="824" class="mono sec">{'depth': 4}</text>
+
+  <rect x="560" y="885" width="560" height="80" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="585" y="934" class="mono b">close_browser_session</text>
+
+  <line x1="840" y1="215" x2="840" y2="308" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="840" y1="400" x2="840" y2="448" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="840" y1="540" x2="840" y2="613" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="840" y1="705" x2="840" y2="748" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="840" y1="840" x2="840" y2="883" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1220" y="115" width="630" height="120" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1250" y="164">live view URL received</text>
+  <text x="1250" y="204" class="sec">(kept private)</text>
+
+  <rect x="1220" y="350" width="630" height="210" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1250" y="400" class="b">Page title: Example Domain</text>
+  <text x="1250" y="446" class="sec">Description paragraph: This</text>
+  <text x="1250" y="484" class="sec">domain is for use in</text>
+  <text x="1250" y="522" class="sec">documentation examples ...</text>
+
+  <rect x="1220" y="700" width="630" height="150" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1250" y="752" class="b">The heading is: Example Domains</text>
+  <text x="1250" y="800" class="sec">The browser session is now closed.</text>
+
+  <line x1="1120" y1="175" x2="1218" y2="175" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1120" y1="495" x2="1218" y2="495" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1120" y1="795" x2="1218" y2="795" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="554" y="129" width="572" height="92" rx="16" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.1"/>
+  </rect>
+  <rect x="1214" y="109" width="642" height="132" rx="18" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1;0.2"/>
+  </rect>
+  <rect x="554" y="304" width="572" height="102" rx="16" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2;0.3"/>
+  </rect>
+  <rect x="554" y="444" width="572" height="102" rx="16" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3;0.4"/>
+  </rect>
+  <rect x="1214" y="344" width="642" height="222" rx="18" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4;0.5"/>
+  </rect>
+  <rect x="554" y="609" width="572" height="102" rx="16" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.6"/>
+  </rect>
+  <rect x="554" y="744" width="572" height="102" rx="16" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6;0.7"/>
+  </rect>
+  <rect x="554" y="879" width="572" height="92" rx="16" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.7;0.8"/>
+  </rect>
+  <rect x="1214" y="694" width="642" height="162" rx="18" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="20s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.8;0.9"/>
+  </rect>
+</svg>

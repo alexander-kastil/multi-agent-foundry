@@ -1,0 +1,12 @@
+{
+  "topics": [
+    {"title": "Hosted Agents: Containers & Agent Identity", "subtitle": "Your code on Foundry-run compute"},
+    {"title": "Foundry Routines: Schedules & Event Triggers", "subtitle": "One trigger, one action per routine"},
+    {"title": "azd AI Agent: Deploy & Monitor", "subtitle": "Ship and monitor in one loop"},
+    {"title": "Durable Agents: Functions & Task Scheduler", "subtitle": "Approval waits that cost no compute"},
+    {"title": "Self-Hosting: ASP.NET Core & Responses", "subtitle": "An agent inside your web server"},
+    {"title": "A2A Protocol: Agent Cards & Endpoints", "subtitle": "One wire format between agents"},
+    {"title": "Enterprise A2A: Registry & Shared State", "subtitle": "Routing, tenants and conflicts"},
+    {"title": "AG-UI & CopilotKit: Web Front Ends", "subtitle": "Agent events streamed to a browser"}
+  ]
+}

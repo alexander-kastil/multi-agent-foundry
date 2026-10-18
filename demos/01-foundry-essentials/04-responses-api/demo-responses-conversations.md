@@ -85,6 +85,8 @@ No agent was created anywhere. The `instructions` travelled with the request, an
 
 The first approach to memory points at the last response. The second keeps the service out of it with `store=False` and resends the earlier messages.
 
+![Three rows comparing previous_response_id, a conversation and client-side history with store=False: what turn 2 sends and where the history lives](../pptx/images/04-01-carry-history.svg)
+
 ```python
 second = openai.responses.create(
     model=model,
@@ -134,6 +136,8 @@ Both answers are right, and you pay for the history differently. The chained cal
 ## Step 3: Keep the history in a conversation
 
 A conversation is a durable object that collects the input and output items of every response that references it. `conversation.py` creates one with a first message, asks two questions against it, appends a message manually and lists the items.
+
+![A conversation with six items beside one turn: the service prepends the stored items, the model answers, and the new input and output are appended](../pptx/images/04-02-conversation-items.svg)
 
 ```python
 conversation = openai.conversations.create(
@@ -197,6 +201,8 @@ In C# the conversation id goes into the responses client, so every call through 
 ## Step 4: Read the event stream
 
 With `stream=True` the call returns events. `stream_events.py` prints the text deltas as they arrive and records the event types and the time to the first token.
+
+![The nine streaming event types in order with their .NET update classes, and a bar with the first token at 1.75 s and completion at 2.63 s](../pptx/images/04-03-streaming-events.svg)
 
 ```python
 stream = openai.responses.create(model=model, input="Explain in three sentences why streaming improves perceived latency.", stream=True)

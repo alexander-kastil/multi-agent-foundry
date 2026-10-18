@@ -2,6 +2,8 @@
 
 A clinical summary agent reads documents that nobody controls, and a sentence hidden in one of them can change what the agent says about a patient. You run four injection attacks against three layers of defense and see exactly which layer stops which attack. You also add an attack of your own to the regression set.
 
+![Three lanes, one per defense layer: layer 1 runs the platform filter and the model with the baseline prompt, layer 2 adds delimiters and the hardened prompt, layer 3 adds an input scan before and an output check after the call](../pptx/images/02-01-defense-layers.svg)
+
 What you practice here: measuring a defense with a repeatable attack set instead of trusting that a hardened prompt works.
 
 Duration: about 40 minutes.
@@ -188,6 +190,8 @@ The C# layer 3 uses `Guards.ScanForInjection` and `Guards.ValidateOutput` and en
   ...
   defended 4/4
 ```
+
+![Results grid of the Python run: the input scan rates two of four attacks high risk, layer 1 defends three of four with the prompt leak compromised, layers 2 and 3 defend all four](../pptx/images/02-02-attack-results.svg)
 
 ## Step 5: Add an attack of your own
 

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Prompt chain with a gate and a branch</title>
+  <desc>A prompt chain over the Fabrikam Robotics filing text. Step 1, metric_extractor, returns JSON metrics. The code gate validate_metrics checks that operating_margin lies between -1.0 and 1.0 and that debt_to_equity is at least 0; out of range values raise an AssertionError and the chain stops before the next model call. Step 2, profile_classifier, returns a label, here GROWTH_DRIVEN. The BRANCHES dictionary maps the label to a valuation prompt without a model call: GROWTH_DRIVEN to a five year DCF, MATURE_EARNINGS to comparable multiples, ASSET_HEAVY to book value. Step 3, valuation_analyst, returns method and valuation_summary, and step 4, analyst_commentator, writes two sentences of commentary.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #24292f; }
+      .s { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #57606a; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="427" y1="410" x2="535" y2="410"/>
+    <line x1="904" y1="410" x2="1012" y2="410"/>
+    <line x1="1381" y1="410" x2="1489" y2="410"/>
+    <line x1="1197" y1="290" x2="1197" y2="222"/>
+    <polyline points="1675,530 1675,620 420,620 420,698"/>
+    <line x1="780" y1="812" x2="888" y2="812"/>
+    <line x1="1300" y1="855" x2="1408" y2="855"/>
+  </g>
+
+  <rect x="1014" y="70" width="367" height="150" rx="16" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text class="m" x="1197" y="122" font-size="26" text-anchor="middle">AssertionError</text>
+  <text class="t" x="1197" y="162" font-size="26" text-anchor="middle">the chain stops before</text>
+  <text class="t" x="1197" y="198" font-size="26" text-anchor="middle">the next model call</text>
+  <text class="s" x="1215" y="264" font-size="26">out of range</text>
+
+  <rect x="60" y="290" width="367" height="240" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="90" y="362" font-size="28" font-weight="700">FILING_TEXT</text>
+  <text class="t" x="90" y="416" font-size="26">Fabrikam Robotics</text>
+  <text class="s" x="90" y="456" font-size="26">FY2025 filing text</text>
+
+  <rect x="537" y="290" width="367" height="240" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="567" y="350" font-size="26">Step 1</text>
+  <text class="m" x="567" y="402" font-size="28" font-weight="700">metric_extractor</text>
+  <text class="t" x="567" y="454" font-size="26">returns JSON metrics</text>
+
+  <rect x="1014" y="290" width="367" height="240" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="m" x="1044" y="345" font-size="28" font-weight="700">validate_metrics</text>
+  <text class="m" x="1044" y="398" font-size="26">operating_margin</text>
+  <text class="t" x="1044" y="436" font-size="26">from -1.0 to 1.0</text>
+  <text class="m" x="1044" y="488" font-size="26">debt_to_equity &gt;= 0</text>
+  <text class="s" x="1436" y="390" font-size="26" text-anchor="middle">pass</text>
+
+  <rect x="1491" y="290" width="367" height="240" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="1521" y="350" font-size="26">Step 2</text>
+  <text class="m" x="1521" y="402" font-size="28" font-weight="700">profile_classifier</text>
+  <text class="t" x="1521" y="454" font-size="26">returns a label</text>
+
+  <text class="s" x="1050" y="600" font-size="26" text-anchor="middle">label, here <tspan class="m">GROWTH_DRIVEN</tspan></text>
+
+  <rect x="60" y="700" width="720" height="310" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="90" y="752" font-size="26"><tspan class="m" font-size="28" font-weight="700">BRANCHES</tspan> lookup, no model call</text>
+  <rect x="80" y="780" width="680" height="64" rx="10" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <rect x="80" y="856" width="680" height="64" rx="10" fill="#ffffff"/>
+  <rect x="80" y="932" width="680" height="64" rx="10" fill="#ffffff"/>
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="335" y1="812" x2="393" y2="812"/>
+    <line x1="335" y1="888" x2="393" y2="888"/>
+    <line x1="335" y1="964" x2="393" y2="964"/>
+  </g>
+  <text class="m" x="100" y="822" font-size="26">GROWTH_DRIVEN</text>
+  <text class="t" x="410" y="822" font-size="26">five year DCF</text>
+  <text class="m" x="100" y="898" font-size="26">MATURE_EARNINGS</text>
+  <text class="t" x="410" y="898" font-size="26">comparable multiples</text>
+  <text class="m" x="100" y="974" font-size="26">ASSET_HEAVY</text>
+  <text class="t" x="410" y="974" font-size="26">book value</text>
+
+  <rect x="890" y="700" width="410" height="310" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="920" y="768" font-size="26">Step 3</text>
+  <text class="m" x="920" y="820" font-size="28" font-weight="700">valuation_analyst</text>
+  <text class="t" x="920" y="878" font-size="26">returns <tspan class="m">method</tspan></text>
+  <text class="t" x="920" y="916" font-size="26">and <tspan class="m">valuation_summary</tspan></text>
+
+  <rect x="1410" y="700" width="448" height="310" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="1440" y="768" font-size="26">Step 4</text>
+  <text class="m" x="1440" y="820" font-size="28" font-weight="700">analyst_commentator</text>
+  <text class="t" x="1440" y="878" font-size="26">two sentences</text>
+  <text class="t" x="1440" y="916" font-size="26">of commentary</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="52" y="282" width="383" height="256" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1" values="1;0"/>
+    </rect>
+    <rect x="529" y="282" width="383" height="256" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1;0.2" values="0;1;0"/>
+    </rect>
+    <rect x="1006" y="282" width="383" height="256" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.2;0.3" values="0;1;0"/>
+    </rect>
+    <rect x="1483" y="282" width="383" height="256" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.3;0.4" values="0;1;0"/>
+    </rect>
+    <rect x="52" y="692" width="736" height="326" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;0.55" values="0;1;0"/>
+    </rect>
+    <rect x="76" y="776" width="688" height="72" rx="14" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;0.55" values="0;1;0"/>
+    </rect>
+    <rect x="882" y="692" width="426" height="326" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.55;0.65" values="0;1;0"/>
+    </rect>
+    <rect x="1402" y="692" width="464" height="326" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.65" values="0;1"/>
+    </rect>
+  </g>
+</svg>

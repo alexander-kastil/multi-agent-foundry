@@ -36,6 +36,8 @@ The agent identity supports two authentication scenarios.
 
 At runtime Agent Service handles the token exchange in four stages: it authenticates the blueprint, receives a token for the agent identity, asks Entra for an access token scoped to the audience of the downstream service, and passes that token to the MCP server or A2A endpoint. The audience is the resource identifier of the service, for example `https://storage.azure.com` or `https://vault.azure.net`, not the URL of the MCP server. A wrong audience fails even when the roles are correct.
 
+![Four numbered stages: the project managed identity authenticates the blueprint, Agent Service gets a token for the agent identity, Entra issues an access token for the audience, and the MCP server or A2A endpoint receives it](../pptx/images/03-01-token-exchange.svg)
+
 ## Choose the authentication type on the connection
 
 Authentication is a property of the project connection, never of agent code. You choose it once with `azd ai connection create`, and Foundry handles token acquisition, exchange and refresh.
@@ -90,6 +92,8 @@ MCPTool(
 
 The first time a user needs a tool, the response contains an `oauth_consent_request` item instead of a tool result. Your application shows the `consent_link` to the user. After the user signs in and consents, you send a second response that continues from the first.
 
+![Sequence between user, your application, Foundry Agent Service and MCP server: the first call returns an oauth_consent_request, the user consents, and a second call with previous_response_id reaches the tool with the user's token](../pptx/images/03-02-consent-round-trip.svg)
+
 ```python
 for item in response.output:
     if item.type == "oauth_consent_request":
@@ -108,6 +112,8 @@ Consent is scoped per tool connection per project and per user, and it is asked 
 ## Least privilege between agents
 
 The Foundry Agent Consumer role has a single data action, `Microsoft.CognitiveServices/accounts/AIServices/endpoints/interact/action`. You can assign it at the project scope for every agent endpoint, or at the scope of one agent for just that endpoint. An agent that calls another agent over A2A is a consumer like any other, and its identity is the assignee.
+
+![The orders agent identity holds the Foundry Agent Consumer role at the scope of the m8-idn-hr agent, which reaches only that endpoint, while the project scope would reach every agent endpoint](../pptx/images/03-03-agent-scope.svg)
 
 ```bash
 az role assignment create \

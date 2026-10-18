@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The six topics of module 1 in order</title>
+  <desc>Two rows of three numbered cards, read left to right, with a connector from card 03 down to card 04. 01 Microsoft Foundry: Projects and Resources, one project endpoint and the renamed Foundry roles. 02 Model Deployments and Model Router, routing modes, model subsets and failover. 03 Foundry SDK and Microsoft.Extensions.AI, project client, OpenAI-compatible client and IChatClient. 04 Responses API: Conversations and Streaming, chained responses, conversations and streaming events. 05 Foundry Toolkit and Foundry MCP Server, azd ai, Agent Inspector and the Foundry MCP server. 06 Context Engineering: Budgets, Compaction and Caching, measure, trim, compact and cache the context. A highlight steps through the cards in order.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="110" width="560" height="350" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="94" y="180" class="b s" font-size="44">01</text>
+  <text x="94" y="238" class="b" font-size="30">Microsoft Foundry:</text>
+  <text x="94" y="278" class="b" font-size="30">Projects &amp; Resources</text>
+  <text x="94" y="390" class="s" font-size="26">One project endpoint and</text>
+  <text x="94" y="426" class="s" font-size="26">the renamed Foundry roles</text>
+  <rect x="680" y="110" width="560" height="350" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="714" y="180" class="b s" font-size="44">02</text>
+  <text x="714" y="238" class="b" font-size="30">Model Deployments &amp;</text>
+  <text x="714" y="278" class="b" font-size="30">Model Router</text>
+  <text x="714" y="390" class="s" font-size="26">Routing modes, model</text>
+  <text x="714" y="426" class="s" font-size="26">subsets and failover</text>
+  <rect x="1300" y="110" width="560" height="350" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1334" y="180" class="b s" font-size="44">03</text>
+  <text x="1334" y="238" class="b" font-size="30">Foundry SDK &amp;</text>
+  <text x="1334" y="278" class="b" font-size="30">Microsoft.Extensions.AI</text>
+  <text x="1334" y="390" class="s" font-size="26">Project client, OpenAI-compatible</text>
+  <text x="1334" y="426" class="s" font-size="26">client and IChatClient</text>
+  <rect x="60" y="620" width="560" height="350" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="94" y="690" class="b s" font-size="44">04</text>
+  <text x="94" y="748" class="b" font-size="30">Responses API:</text>
+  <text x="94" y="788" class="b" font-size="30">Conversations &amp; Streaming</text>
+  <text x="94" y="900" class="s" font-size="26">Chained responses, conversations</text>
+  <text x="94" y="936" class="s" font-size="26">and streaming events</text>
+  <rect x="680" y="620" width="560" height="350" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="714" y="690" class="b s" font-size="44">05</text>
+  <text x="714" y="748" class="b" font-size="30">Foundry Toolkit &amp;</text>
+  <text x="714" y="788" class="b" font-size="30">Foundry MCP Server</text>
+  <text x="714" y="900" class="s" font-size="26">azd ai, Agent Inspector and</text>
+  <text x="714" y="936" class="s" font-size="26">the Foundry MCP server</text>
+  <rect x="1300" y="620" width="560" height="350" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1334" y="690" class="b s" font-size="44">06</text>
+  <text x="1334" y="748" class="b" font-size="30">Context Engineering:</text>
+  <text x="1334" y="788" class="b" font-size="30">Budgets, Compaction &amp;</text>
+  <text x="1334" y="828" class="b" font-size="30">Caching</text>
+  <text x="1334" y="900" class="s" font-size="26">Measure, trim, compact and</text>
+  <text x="1334" y="936" class="s" font-size="26">cache the context</text>
+  <path d="M620,285 H672" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M1240,285 H1292" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M620,795 H672" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M1240,795 H1292" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M1580,460 V540 H340 V612" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="60" y="110" width="560" height="350" rx="18" fill="none" stroke="#e0a534" stroke-width="6" opacity="1">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="1;0" keyTimes="0;0.1667" calcMode="discrete"/>
+  </rect>
+  <rect x="680" y="110" width="560" height="350" rx="18" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.1667;0.3333" calcMode="discrete"/>
+  </rect>
+  <rect x="1300" y="110" width="560" height="350" rx="18" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.3333;0.5000" calcMode="discrete"/>
+  </rect>
+  <rect x="60" y="620" width="560" height="350" rx="18" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5000;0.6667" calcMode="discrete"/>
+  </rect>
+  <rect x="680" y="620" width="560" height="350" rx="18" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.6667;0.8333" calcMode="discrete"/>
+  </rect>
+  <rect x="1300" y="620" width="560" height="350" rx="18" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;1" keyTimes="0;0.8333" calcMode="discrete"/>
+  </rect>
+</svg>

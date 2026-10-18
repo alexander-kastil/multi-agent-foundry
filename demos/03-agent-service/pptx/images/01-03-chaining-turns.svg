@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Carrying history between turns</title>
+  <desc>Three ways a response gets the earlier turns. With a conversation, the server stores the items, the next call passes conversation=conversation.id, the whole conversation becomes input and the output is appended to it. With a previous response, the next call passes previous_response_id=first.id and is chained to the stored response. With your own items, your code keeps the earlier items, resends them with the new input and nothing is kept on the server.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="350" y="145" text-anchor="middle" class="b" font-size="32">Conversation</text>
+  <text x="960" y="145" text-anchor="middle" class="b" font-size="32">Previous response</text>
+  <text x="1570" y="145" text-anchor="middle" class="b" font-size="32">Your own items</text>
+
+  <rect x="80" y="180" width="540" height="220" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="238" class="b">Conversation on the server</text>
+  <text x="110" y="290" class="sec">message, tool call and</text>
+  <text x="110" y="328" class="sec">tool output items</text>
+
+  <rect x="690" y="180" width="540" height="220" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="238" class="b">Stored response</text>
+  <text x="720" y="288" class="mono">first.id</text>
+  <text x="720" y="333" class="sec">input: What is the largest city</text>
+  <text x="720" y="371" class="sec">in France?</text>
+
+  <rect x="1300" y="180" width="540" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1330" y="238" class="b">Your code</text>
+  <text x="1330" y="290" class="sec">keeps the earlier items</text>
+  <text x="1330" y="328" class="sec">nothing kept on the server</text>
+
+  <line x1="350" y1="400" x2="350" y2="468" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="960" y1="400" x2="960" y2="468" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1570" y1="400" x2="1570" y2="468" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="80" y="470" width="540" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="522" class="sec">next call passes</text>
+  <text x="110" y="572" class="mono">conversation=conversation.id</text>
+  <text x="110" y="620" class="sec">input: Which tent did I buy?</text>
+
+  <rect x="690" y="470" width="540" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="522" class="sec">next call passes</text>
+  <text x="720" y="572" class="mono">previous_response_id=first.id</text>
+  <text x="720" y="620" class="sec">input: What is the population</text>
+  <text x="720" y="658" class="sec">of that city?</text>
+
+  <rect x="1300" y="470" width="540" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1330" y="522" class="sec">next call passes</text>
+  <text x="1330" y="572">the earlier items</text>
+  <text x="1330" y="620">plus the new input</text>
+
+  <line x1="350" y1="690" x2="350" y2="758" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="960" y1="690" x2="960" y2="758" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1570" y1="690" x2="1570" y2="758" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="80" y="760" width="540" height="200" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="110" y="816" class="b">Response</text>
+  <text x="110" y="864" class="sec">the whole conversation is input</text>
+  <text x="110" y="904" class="sec">output appended to it</text>
+
+  <rect x="690" y="760" width="540" height="200" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="816" class="b">Response</text>
+  <text x="720" y="864" class="sec">chained to the stored response</text>
+
+  <rect x="1300" y="760" width="540" height="200" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1330" y="816" class="b">Response</text>
+  <text x="1330" y="864" class="sec">built from the items you resend</text>
+
+  <path d="M620,880 H655 V290 H624" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

@@ -38,6 +38,8 @@ The C# project loads `.env` with DotNetEnv and writes `replay-snapshots/` and `p
 
 `foundry.py` holds two pricing prompts. `v1` returns the number only; `v2` adds the currency symbol and a sentence of explanation, which is friendlier and breaks `process_payment`, because the payment step accepts only a plain number.
 
+![Checkout pipeline in which pricing agent v1 returns a plain number that the payment step accepts and v2 returns a currency symbol and a sentence that it rejects](../pptx/images/07-01-pricing-contract.svg)
+
 ```python
 PRICE_PATTERN = re.compile(r"\d+(\.\d{1,2})?")
 
@@ -129,6 +131,8 @@ return {
 
 The replay feeds the mocked tool response and the captured prompt to the same deployment. The prompts it compares against are read back from the Foundry agent versions with `get_version(...).definition.instructions`.
 
+![Replay snapshot fields feeding the hash check and the replay, and bisection over the prompt versions naming v2 as the first failing version](../pptx/images/07-02-replay-bisection.svg)
+
 Expected result (the wording of the explanation varies):
 
 ```text
@@ -161,6 +165,8 @@ The hash mismatch proves the snapshot came from a different prompt than `v1`. Re
 ## Step 4: Limit the damage with a breaker and a runbook
 
 This part is local and makes no Foundry call. With the primary payment gateway unhealthy, the circuit breaker opens once failures exceed 40% of at least ten calls and serves charges from the backup; after the probe interval, shortened to half a second here, one call goes to the primary and closes the breaker when it succeeds.
+
+![Circuit breaker moving from closed to open to half open and back, sending charges to the primary or the backup gateway](../pptx/images/07-03-circuit-breaker.svg)
 
 ```python
 if len(self.results) >= 10 and failures / len(self.results) > self.failure_threshold:

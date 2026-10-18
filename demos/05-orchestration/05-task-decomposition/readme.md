@@ -22,6 +22,8 @@ valuation = await ask_json(valuer, f"{BRANCHES[profile['classification']]} Metri
 
 `validate_metrics` is a gate: an out-of-range operating margin stops the chain before a model spends tokens on bad input. `BRANCHES` maps the classifier's label to a valuation prompt, so the branch is a dictionary lookup instead of another model call.
 
+![Prompt chain: metric_extractor, the validate_metrics gate that raises AssertionError on out-of-range values, profile_classifier, the BRANCHES lookup that maps GROWTH_DRIVEN to a DCF prompt, valuation_analyst and analyst_commentator](../pptx/images/05-01-prompt-chain.svg)
+
 ## A Planner Builds the Dependency Graph
 
 Here a planner agent receives the query and a registry of available specialists with their capabilities, and returns a JSON plan. Each subtask names its agent and lists `depends_on`, so the plan is a directed acyclic graph that your code can run.
@@ -68,6 +70,8 @@ results = await asyncio.gather(
 
 Never trust a generated plan. The empty `ready` check turns a cyclic or dangling plan into an error instead of an endless loop, and a production planner should also verify that every `assigned_agent` is in the registry.
 
+![The planner turns the query and registry into a JSON plan; execute_plan finds ready tasks, runs each wave with asyncio.gather and stores the results until nothing is pending, and a plan with no ready task raises ValueError](../pptx/images/05-02-plan-waves.svg)
+
 ## Handoff Collaboration with Turn Limits
 
 In the third strategy no plan exists. A filing analyst extracts metrics and, when foreign revenue is above a threshold written into its instructions, hands off to an international risk assessor that sees the earlier conversation. `with_autonomous_mode(turn_limits=...)` lets agents continue without waiting for a user message, and the limits stop the loop.
@@ -84,6 +88,8 @@ workflow = (
 ```
 
 Handoff agents must be created with `require_per_service_call_history_persistence=True`. An agent with no outgoing handoff, here the risk assessor, is a terminal specialist, and the builder logs a warning that it cannot hand off further.
+
+![Handoff run: sec_filing_analyzer hands off to international_risk_assessor because foreign revenue is above 30 percent, credit_analyst does not speak, and turn limits cap both agents at two turns](../pptx/images/05-03-handoff-limits.svg)
 
 ## Choosing a Strategy
 

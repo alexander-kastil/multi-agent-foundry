@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Foundry roles across the control plane and the data plane</title>
+  <desc>Azure RBAC separates the control plane (create deployments and projects) from the data plane (build agents, run evaluations, upload files, call models). Foundry User, Foundry Project Manager and Foundry Agent Consumer cover the data plane, Foundry Account Owner covers the control plane, and Foundry Owner covers both. Each role is listed with the role definition ID that scripts use.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="80" y="200" class="b" font-size="30">Role</text>
+  <text x="80" y="238" class="s" font-size="26">role definition ID used in scripts</text>
+
+  <rect x="680" y="70" width="560" height="190" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="128" text-anchor="middle" class="b" font-size="32">Control plane</text>
+  <text x="960" y="178" text-anchor="middle" font-size="26">create deployments</text>
+  <text x="960" y="218" text-anchor="middle" font-size="26">create projects</text>
+
+  <rect x="1280" y="70" width="560" height="190" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="128" text-anchor="middle" class="b" font-size="32">Data plane</text>
+  <text x="1560" y="178" text-anchor="middle" font-size="26">build agents, run evaluations</text>
+  <text x="1560" y="218" text-anchor="middle" font-size="26">upload files, call models</text>
+
+  <text x="80" y="334" class="b" font-size="30">Foundry User</text>
+  <text x="80" y="374" class="m s" font-size="26">53ca6127-db72-4b80-b1b0-d745d6d5456d</text>
+  <text x="290" y="334" class="s" font-size="26">for day-to-day developers</text>
+  <rect x="1280" y="298" width="560" height="88" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="3"/>
+  <text x="1560" y="334" text-anchor="middle" font-size="26">Build and test agents in a project,</text>
+  <text x="1560" y="370" text-anchor="middle" font-size="26">call models</text>
+
+  <text x="80" y="462" class="b" font-size="30">Foundry Project Manager</text>
+  <text x="80" y="502" class="m s" font-size="26">eadc314b-1a2d-4efa-be10-5d325db5065e</text>
+  <rect x="1280" y="426" width="560" height="88" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1560" y="462" text-anchor="middle" font-size="26">Develop, publish agents,</text>
+  <text x="1560" y="498" text-anchor="middle" font-size="26">assign Foundry User</text>
+
+  <text x="80" y="590" class="b" font-size="30">Foundry Account Owner</text>
+  <text x="80" y="630" class="m s" font-size="26">e47c6f54-e4a2-4754-9501-8e0985b135e1</text>
+  <rect x="680" y="554" width="560" height="88" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="590" text-anchor="middle" font-size="26">Create accounts and projects,</text>
+  <text x="960" y="626" text-anchor="middle" font-size="26">manage models</text>
+
+  <text x="80" y="718" class="b" font-size="30">Foundry Owner</text>
+  <text x="80" y="758" class="m s" font-size="26">c883944f-8b7b-4483-af10-35834be79c4a</text>
+  <rect x="680" y="682" width="1160" height="88" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1260" y="736" text-anchor="middle" font-size="26">Everything above for a self-serve owner</text>
+
+  <text x="80" y="846" class="b" font-size="30">Foundry Agent Consumer</text>
+  <text x="80" y="886" class="m s" font-size="26">eed3b665-ab3a-47b6-8f48-c9382fb1dad6</text>
+  <rect x="1280" y="810" width="300" height="88" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1430" y="864" text-anchor="middle" font-size="26">Only calls agents</text>
+
+  <text x="80" y="990" class="s" font-size="26">Scripts assign roles by ID: the IDs stayed the same when the Azure AI roles were renamed to Foundry.</text>
+</svg>

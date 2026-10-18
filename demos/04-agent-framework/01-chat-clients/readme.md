@@ -2,6 +2,8 @@
 
 An Agent Framework agent is two things glued together: an `Agent` that owns instructions, tools, sessions and middleware, and a chat client that talks to a model. Swapping the client changes where the model runs; the agent code around it stays the same. This topic covers the clients you will meet most often and the one decision that separates them: does your code own the agent definition, or does Microsoft Foundry own it?
 
+![One Agent that owns instructions, tools, sessions and middleware, with a client slot that FoundryChatClient, OpenAIChatClient, OpenAIChatCompletionClient or AnthropicClient fills, each reaching a different model endpoint](../pptx/images/01-01-agent-chat-client.svg)
+
 ## Agent and chat client
 
 Agent Framework is generally available (Python 1.22.0, .NET 1.25.0 at the time of writing). In Python the agent class is `Agent`; the older `ChatAgent` name is gone. The client is passed in through `client=` and the model name is always the `model` argument.
@@ -64,6 +66,8 @@ result = await agent.run("How do I return a tent?")
 ```
 
 Hosted Agents omit `agent_version`. A local Python callable passed through `tools=` only supplies the implementation of a function the Foundry agent already declares; it never adds a new tool to the definition. Use `Agent(client=FoundryChatClient(...))` whenever you need per-run control over instructions or tools.
+
+![FoundryChatClient keeps instructions, tools, middleware and session handling in your process, while FoundryAgent leaves model, instructions and hosted tools in the Prompt Agent stored in Microsoft Foundry](../pptx/images/01-02-agent-definition-owner.svg)
 
 ## OpenAI clients: Responses and Chat Completions
 

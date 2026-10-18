@@ -34,6 +34,8 @@ Two models are involved. The eval model scores responses and can be any chat mod
 
 A stronger optimization model usually proposes better candidates because it reasons over all the failures at once.
 
+![Six steps of an optimizer run: select the baseline, dataset and evaluators, run the optimizer, review the ranked results and apply the winner](../pptx/images/05-01-optimization-loop.svg)
+
 ## Starting a Job From Python
 
 The SDK exposes the job as `AgentOptimizationJob`. For a prompt agent the target is the agent name and version, the dataset can be supplied inline as test cases with a `query` and an optional `ground_truth`, and the evaluators are referenced by name.
@@ -75,11 +77,15 @@ The optimizer scores each candidate between 0.0 and 1.0: it rescales every evalu
 
 Look beyond the score. Optimized instructions are often longer, so input tokens and cost rise with them, and you decide whether the increase is proportional to the gain. Results also vary between runs of the same job, because the candidate generation is itself a model; repeat the job or raise `max_candidates` before you trust a single outcome.
 
+![Candidate improvements over the baseline drawn over the noise, moderate, significant and major bands, next to the tokens per answer of each candidate](../pptx/images/05-02-candidate-scores.svg)
+
 Promotion creates a new prompt agent version with the candidate's configuration. If the agent is pinned to a version, the new version receives no traffic until you set it as the active version. Always confirm the win with an evaluation of your own on the promoted version, ideally on data the optimizer did not see.
 
 ## The Dataset Is the Specification
 
 The optimizer can only reward what the dataset and evaluators measure. A dataset of queries with no ground truth teaches it nothing about the answer you want; a metric that rewards the wrong behavior is optimized just as eagerly. For tool tuning the built-in tool evaluators skip a response that is only a function call, so a prompt agent's tool descriptions need an evaluator that reads the tool call itself, such as a code-based custom evaluator that compares the chosen tool and its arguments with the expected ones.
+
+![Tool tuning loop: queries reach the prompt agent, the code-based evaluator scores its function call and the optimization model rewrites the tool descriptions](../pptx/images/05-03-tool-description-tuning.svg)
 
 ## Prompt Optimizer in the Portal
 

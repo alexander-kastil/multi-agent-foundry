@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Capability routing in the agent registry</title>
+  <desc>Three registry entries built from agent cards: market-analysis-v2-eastus with sector-analysis and trend-forecasting, market-analysis-v2-westeurope with sector-analysis, and risk-v1-eastus with portfolio-risk, all healthy with a fresh heartbeat. A query for sector-analysis keeps an entry only when it offers the capability, its status is healthy, its heartbeat is younger than 120 seconds and it is within its 300 second time to live, then routes round robin over the sorted candidates. The four results of lab Step 1: two candidates, eastus and westeurope; round robin over four calls alternates eastus and westeurope; after westeurope sets draining only eastus is left; after the eastus heartbeat goes stale there are no candidates. The animation steps through the four results and shows the draining and stale states on the entries.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <g fill="#57606a" font-size="26">
+    <text x="70" y="140">Registry entries from agent cards</text>
+    <text x="1330" y="140">What lab Step 1 prints</text>
+  </g>
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="70" y="170" width="560" height="230" rx="20" fill="#eaf2ff">
+      <animate attributeName="fill" dur="10s" repeatCount="indefinite" calcMode="discrete" values="#eaf2ff;#f6f8fa" keyTimes="0;0.75"/>
+    </rect>
+    <rect x="70" y="435" width="560" height="230" rx="20" fill="#eaf2ff">
+      <animate attributeName="fill" dur="10s" repeatCount="indefinite" calcMode="discrete" values="#eaf2ff;#f6f8fa" keyTimes="0;0.5"/>
+    </rect>
+    <rect x="70" y="700" width="560" height="230" rx="20" fill="#eaf2ff"/>
+  </g>
+  <g fill="#24292f" font-size="28" font-weight="700" font-family="Consolas, monospace">
+    <text x="100" y="225">market-analysis-v2-eastus</text>
+    <text x="100" y="490">market-analysis-v2-westeurope</text>
+    <text x="100" y="755">risk-v1-eastus</text>
+  </g>
+  <g fill="#57606a" font-size="26">
+    <text x="100" y="278">capabilities</text>
+    <text x="100" y="543">capabilities</text>
+    <text x="100" y="808">capabilities</text>
+  </g>
+  <g fill="#24292f" font-size="26" font-family="Consolas, monospace">
+    <text x="290" y="278">sector-analysis</text>
+    <text x="290" y="318">trend-forecasting</text>
+    <text x="290" y="543">sector-analysis</text>
+    <text x="290" y="808">portfolio-risk</text>
+  </g>
+  <g font-size="26">
+    <text x="100" y="370" fill="#57606a">healthy, fresh heartbeat
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.75"/>
+    </text>
+    <text x="100" y="370" fill="#24292f" font-weight="700" opacity="0">last heartbeat 600 s ago
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.75"/>
+    </text>
+    <text x="100" y="635" fill="#57606a">healthy, fresh heartbeat
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.5"/>
+    </text>
+    <text x="100" y="635" fill="#24292f" font-weight="700" opacity="0">status draining
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.5"/>
+    </text>
+    <text x="100" y="900" fill="#57606a">healthy, fresh heartbeat</text>
+  </g>
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="634" y1="285" x2="712" y2="420"/>
+    <line x1="634" y1="550" x2="712" y2="550"/>
+    <line x1="634" y1="815" x2="712" y2="680"/>
+  </g>
+  <rect x="720" y="320" width="520" height="460" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="750" y="375" font-size="28" font-weight="700" fill="#24292f">Query for <tspan font-family="Consolas, monospace">sector-analysis</tspan></text>
+  <g fill="#e9f7ef" stroke="#57606a" stroke-width="2">
+    <circle cx="768" cy="426" r="14"/>
+    <circle cx="768" cy="481" r="14"/>
+    <circle cx="768" cy="536" r="14"/>
+    <circle cx="768" cy="591" r="14"/>
+  </g>
+  <g fill="none" stroke="#24292f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M761,426 l5,5 l9,-10"/>
+    <path d="M761,481 l5,5 l9,-10"/>
+    <path d="M761,536 l5,5 l9,-10"/>
+    <path d="M761,591 l5,5 l9,-10"/>
+  </g>
+  <g fill="#24292f" font-size="26">
+    <text x="796" y="435">offers the capability</text>
+    <text x="796" y="490">status is <tspan font-family="Consolas, monospace">healthy</tspan></text>
+    <text x="796" y="545">heartbeat younger than 120 s</text>
+    <text x="796" y="600">within its 300 s time to live</text>
+  </g>
+  <line x1="750" y1="640" x2="1210" y2="640" stroke="#e0a534" stroke-width="2"/>
+  <g fill="#24292f" font-size="26">
+    <text x="750" y="690">then round robin over</text>
+    <text x="750" y="730">the sorted candidates</text>
+  </g>
+  <line x1="1244" y1="550" x2="1322" y2="550" stroke="#57606a" stroke-width="3" marker-end="url(#a)"/>
+  <rect x="1330" y="170" width="520" height="760" rx="20" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <g fill="#e9f7ef" stroke="#8c959f" stroke-width="2">
+    <rect x="1350" y="190" width="480" height="165" rx="16"/>
+    <rect x="1350" y="375" width="480" height="165" rx="16"/>
+    <rect x="1350" y="560" width="480" height="165" rx="16"/>
+    <rect x="1350" y="745" width="480" height="165" rx="16"/>
+  </g>
+  <g fill="#24292f" font-size="26" font-weight="700">
+    <text x="1376" y="240">1<tspan x="1412">Two candidates</tspan></text>
+    <text x="1376" y="425">2<tspan x="1412">Round robin, four calls</tspan></text>
+    <text x="1376" y="610">3<tspan x="1412">westeurope sets draining</tspan></text>
+    <text x="1376" y="795">4<tspan x="1412">eastus heartbeat goes stale</tspan></text>
+  </g>
+  <g fill="#24292f" font-size="26" font-family="Consolas, monospace">
+    <text x="1376" y="290">eastus, westeurope</text>
+    <text x="1376" y="475">eastus, westeurope,</text>
+    <text x="1376" y="515">eastus, westeurope</text>
+    <text x="1376" y="660">eastus</text>
+    <text x="1376" y="845">[]</text>
+  </g>
+  <text x="1420" y="845" font-size="26" fill="#57606a">no candidates</text>
+  <rect x="1347" y="187" width="486" height="171" rx="18" fill="none" stroke="#e0a534" stroke-width="6">
+    <animate attributeName="y" dur="10s" repeatCount="indefinite" calcMode="discrete" values="187;372;557;742" keyTimes="0;0.25;0.5;0.75"/>
+  </rect>
+</svg>

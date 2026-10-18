@@ -14,6 +14,8 @@ Agent Framework has one middleware type per layer of an agent run.
 
 A run that calls one tool therefore passes through agent middleware once, function middleware once, and chat middleware twice: the first call asks the model, the second returns the tool result.
 
+![One agent run that calls one tool: agent middleware surrounds the whole run, chat middleware runs for two model calls, function middleware runs once around get_trail_status](../pptx/images/04-01-interception-points.svg)
+
 ## The middleware shape
 
 In Python a middleware is an async function that takes the context and a `call_next` callback. Everything before `await call_next()` runs on the way in; everything after runs on the way out. `call_next()` takes no argument, because middleware changes the shared context object in place.
@@ -55,6 +57,8 @@ For streaming runs `context.result` is an async generator of `AgentResponseUpdat
 
 To refuse a request, set `context.result` and raise `MiddlewareTermination`. The rest of the chain and the model call are skipped, and the caller receives your result.
 
+![Two runs through GuardrailMiddleware: the trail question passes on to the model call, the password question sets context.result and raises MiddlewareTermination, so the model call is skipped](../pptx/images/04-03-early-termination.svg)
+
 ```python
 from agent_framework import AgentResponse, Message, MiddlewareTermination
 
@@ -79,6 +83,8 @@ result = await agent.run("Is the loop open?", middleware=[R1, R2])
 ```
 
 The execution order is A1, A2, R1, R2, the agent, then back out through R2, R1, A2, A1. Function and chat middleware follow the same wrapping when the tool or model call happens.
+
+![Middleware order: A1, A2, R1 and R2 run their code before call_next on the way in, the agent runs, then R2, R1, A2 and A1 run their code after call_next on the way out](../pptx/images/04-02-registration-order.svg)
 
 ## Middleware in C#
 

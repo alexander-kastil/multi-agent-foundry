@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Retiring agent version 2.2.0 in six steps</title>
+  <desc>Retirement of Security Analyzer 2.2.0 in six steps, highlighted in order. In the deprecation window from 2026-09-01 to 2026-12-01, 91 days with a minimum of 90: 1 deprecate, 2.2.0 deprecated on 2026-09-01 with the replacement security-analyzer 2.3.0; 2 warn, the tenant with a pin on 2.2.0, standard-northwind, gets HTTP 200 with a deprecation_warning and keeps working under its pin; 3 block, the tenant without a pin, standard-contoso, gets HTTP 410 agent_deprecated with the replacement. 2.2.0 is registered in Foundry as v1 and 2.3.0 as v2. On the deletion date 2026-12-01, after the latest pin expiry 2026-10-30: 4 archive the full 2.2.0 manifest to out/archive-security-analyzer-2.2.0.json, and disable the managed identity now and delete it after 90 days; 5 repoint with pin_endpoint(old.name, new.version), so the endpoint selector serves v2 (2.3.0); 6 delete with project.agents.delete_version, leaving the versions ['v2']. Repointing before deleting means the endpoint never points at a version that no longer exists.</desc>
+  <style>
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; fill: #24292f; }
+    .num { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #24292f; text-anchor: middle; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .bm { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .amber { fill: #fff6e5; stroke: #e0a534; stroke-width: 2; }
+    .green { fill: #e9f7ef; stroke: #8c959f; stroke-width: 2; }
+    .grey { fill: #f6f8fa; stroke: #8c959f; stroke-width: 2; }
+    .blue { fill: #eaf2ff; stroke: #8c959f; stroke-width: 2; }
+    .purple { fill: #f3edff; stroke: #8c959f; stroke-width: 2; }
+    .badge { fill: #ffffff; stroke: #8c959f; stroke-width: 2; }
+    .hl { fill: none; stroke: #e0a534; stroke-width: 4; }
+  </style>
+  <defs>
+    <marker id="r-ah" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="120" width="6" height="290" fill="#e0a534"/>
+  <text class="h" x="84" y="170">deprecation</text>
+  <text class="h" x="84" y="208">window</text>
+  <text class="b" x="84" y="260">2026-09-01 to</text>
+  <text class="b" x="84" y="296">2026-12-01</text>
+  <text class="b" x="84" y="348">91 days, minimum 90</text>
+
+  <rect x="60" y="580" width="6" height="290" fill="#8c959f"/>
+  <text class="h" x="84" y="630">deletion</text>
+  <text class="h" x="84" y="668">date</text>
+  <text class="b" x="84" y="720">2026-12-01</text>
+  <text class="b" x="84" y="772">latest pin expiry</text>
+  <text class="b" x="84" y="808">2026-10-30: clear</text>
+
+  <path class="line" d="M840 265 H888" marker-end="url(#r-ah)"/>
+  <path class="line" d="M1350 265 H1398" marker-end="url(#r-ah)"/>
+  <path class="line" d="M1630 430 V495 H610 V558" marker-end="url(#r-ah)"/>
+  <path class="line" d="M840 725 H888" marker-end="url(#r-ah)"/>
+  <path class="line" d="M1350 725 H1398" marker-end="url(#r-ah)"/>
+
+  <rect class="amber" x="380" y="100" width="460" height="330" rx="18"/>
+  <circle class="badge" cx="422" cy="152" r="26"/>
+  <text class="num" x="422" y="162">1</text>
+  <text class="h" x="464" y="162">Deprecate</text>
+  <text class="b" x="410" y="215">2.2.0 deprecated on 2026-09-01</text>
+  <text class="b" x="410" y="263">replacement:</text>
+  <text class="c" x="410" y="301">security-analyzer 2.3.0</text>
+  <text class="b" x="410" y="353">registered in Foundry as v1,</text>
+  <text class="b" x="410" y="391">with 2.3.0 as v2</text>
+
+  <rect class="green" x="890" y="100" width="460" height="330" rx="18"/>
+  <circle class="badge" cx="932" cy="152" r="26"/>
+  <text class="num" x="932" y="162">2</text>
+  <text class="h" x="974" y="162">Warn</text>
+  <text class="b" x="920" y="215">tenant with a pin on 2.2.0</text>
+  <text class="c" x="920" y="253">standard-northwind</text>
+  <text class="b" x="920" y="305">HTTP 200 with a</text>
+  <text class="c" x="920" y="343">deprecation_warning</text>
+  <text class="b" x="920" y="395">keeps working under its pin</text>
+
+  <rect class="grey" x="1400" y="100" width="460" height="330" rx="18"/>
+  <circle class="badge" cx="1442" cy="152" r="26"/>
+  <text class="num" x="1442" y="162">3</text>
+  <text class="h" x="1484" y="162">Block</text>
+  <text class="b" x="1430" y="215">tenant without a pin</text>
+  <text class="c" x="1430" y="253">standard-contoso</text>
+  <text class="c" x="1430" y="305">HTTP 410 agent_deprecated</text>
+  <text class="b" x="1430" y="343">with the replacement</text>
+
+  <rect class="blue" x="380" y="560" width="460" height="330" rx="18"/>
+  <circle class="badge" cx="422" cy="612" r="26"/>
+  <text class="num" x="422" y="622">4</text>
+  <text class="h" x="464" y="622">Archive</text>
+  <text class="b" x="410" y="675">the full 2.2.0 manifest to</text>
+  <text class="c" x="410" y="713">out/archive-security-</text>
+  <text class="c" x="410" y="751">analyzer-2.2.0.json</text>
+  <text class="b" x="410" y="803">managed identity: disable now,</text>
+  <text class="b" x="410" y="841">delete after 90 days</text>
+
+  <rect class="purple" x="890" y="560" width="460" height="330" rx="18"/>
+  <circle class="badge" cx="932" cy="612" r="26"/>
+  <text class="num" x="932" y="622">5</text>
+  <text class="h" x="974" y="622">Repoint</text>
+  <text class="c" x="920" y="675">pin_endpoint(old.name,</text>
+  <text class="c" x="949" y="713">new.version)</text>
+  <text class="b" x="920" y="765">endpoint selector now</text>
+  <text class="b" x="920" y="803">serves v2 (2.3.0)</text>
+
+  <rect class="purple" x="1400" y="560" width="460" height="330" rx="18"/>
+  <circle class="badge" cx="1442" cy="612" r="26"/>
+  <text class="num" x="1442" y="622">6</text>
+  <text class="h" x="1484" y="622">Delete</text>
+  <text class="c" x="1430" y="675">project.agents</text>
+  <text class="c" x="1459" y="713">.delete_version</text>
+  <text class="b" x="1430" y="765">remaining versions:</text>
+  <text class="c" x="1430" y="803">['v2']</text>
+
+  <text class="bm" x="1120" y="970">repoint before delete: the endpoint never points at a version that no longer exists</text>
+
+  <rect class="hl" x="372" y="92" width="476" height="346" rx="24">
+    <animate attributeName="x" values="372;882;1392;372;882;1392" keyTimes="0;0.1667;0.3333;0.5;0.6667;0.8333" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="92;92;92;552;552;552" keyTimes="0;0.1667;0.3333;0.5;0.6667;0.8333" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+  </rect>
+</svg>

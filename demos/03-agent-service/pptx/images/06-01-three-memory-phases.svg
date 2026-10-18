@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The three memory phases: extraction, consolidation and retrieval</title>
+  <desc>A conversation for alice holds a preference (dark roast coffee), an allergy (peanuts) and a correction (the release-notes process). begin_update_memories with scope alice and update_delay=0 sends it to the memory store m3-memory-store. Extraction lets gpt-5.4 pull candidate facts out of the conversation; consolidation merges duplicates and resolves conflicts. The scope alice then holds 3 user_profile memories, 2 chat_summary memories and 1 procedural memory. Retrieval runs through search_memories: a static search with the scope only returns the 3 user_profile memories, and a contextual search with the scope and the items "Publish the release notes for 2.6" returns all three memory types, up to max_memories=5. Animated: the phases light up in order, extraction, consolidation, the stored memories and then retrieval.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="770" y="96" text-anchor="middle" class="mono">begin_update_memories(scope="alice", update_delay=0)</text>
+  <path d="M460,132 V116 H1080 V132" fill="none" stroke="#8c959f" stroke-width="2"/>
+  <text x="1720" y="96" text-anchor="middle" class="mono">search_memories</text>
+  <path d="M1560,132 V116 H1880 V132" fill="none" stroke="#8c959f" stroke-width="2"/>
+
+  <rect x="40" y="300" width="340" height="560" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="210" y="352" text-anchor="middle" class="b" font-size="30">Conversation</text>
+  <rect x="65" y="390" width="290" height="120" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="210" y="438" text-anchor="middle" class="b">preference</text>
+  <text x="210" y="478" text-anchor="middle" class="sec">dark roast coffee</text>
+  <rect x="65" y="535" width="290" height="120" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="210" y="583" text-anchor="middle" class="b">allergy</text>
+  <text x="210" y="623" text-anchor="middle" class="sec">peanuts</text>
+  <rect x="65" y="680" width="290" height="120" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="210" y="728" text-anchor="middle" class="b">correction</text>
+  <text x="210" y="768" text-anchor="middle" class="sec">release-notes process</text>
+
+  <rect x="420" y="160" width="1080" height="840" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="450" y="208" class="mono b" font-size="28">m3-memory-store</text>
+
+  <rect x="460" y="420" width="280" height="320" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;6;6;2;2" keyTimes="0;0.03;0.22;0.25;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <text x="600" y="490" text-anchor="middle" class="b" font-size="30">Extraction</text>
+  <text x="600" y="545" text-anchor="middle" class="sec"><tspan class="mono">gpt-5.4</tspan> pulls</text>
+  <text x="600" y="583" text-anchor="middle" class="sec">candidate facts</text>
+  <text x="600" y="621" text-anchor="middle" class="sec">out of the</text>
+  <text x="600" y="659" text-anchor="middle" class="sec">conversation</text>
+
+  <rect x="800" y="420" width="280" height="320" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.25;0.28;0.47;0.5;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <text x="940" y="490" text-anchor="middle" class="b" font-size="30">Consolidation</text>
+  <text x="940" y="545" text-anchor="middle" class="sec">merges duplicates</text>
+  <text x="940" y="583" text-anchor="middle" class="sec">and resolves</text>
+  <text x="940" y="621" text-anchor="middle" class="sec">conflicts</text>
+
+  <rect x="1140" y="260" width="320" height="640" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.5;0.53;0.72;0.75;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <text x="1300" y="312" text-anchor="middle" class="mono b" font-size="28">scope alice</text>
+  <rect x="1165" y="350" width="270" height="140" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1300" y="408" text-anchor="middle" class="mono b">user_profile</text>
+  <text x="1300" y="452" text-anchor="middle" class="sec">3 memories</text>
+  <rect x="1165" y="515" width="270" height="140" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1300" y="573" text-anchor="middle" class="mono b">chat_summary</text>
+  <text x="1300" y="617" text-anchor="middle" class="sec">2 memories</text>
+  <rect x="1165" y="680" width="270" height="140" rx="12" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1300" y="738" text-anchor="middle" class="mono b">procedural</text>
+  <text x="1300" y="782" text-anchor="middle" class="sec">1 memory</text>
+
+  <rect x="1560" y="190" width="320" height="70" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" values="2;2;6;6;2" keyTimes="0;0.75;0.78;0.97;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <text x="1720" y="236" text-anchor="middle" class="b" font-size="30">Retrieval</text>
+
+  <rect x="1560" y="300" width="320" height="250" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1720" y="352" text-anchor="middle" class="b" font-size="30">static</text>
+  <text x="1720" y="394" text-anchor="middle" class="sec">scope only</text>
+  <text x="1720" y="452" text-anchor="middle" class="mono">user_profile</text>
+  <text x="1720" y="492" text-anchor="middle">3 memories</text>
+
+  <rect x="1560" y="590" width="320" height="310" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1720" y="642" text-anchor="middle" class="b" font-size="30">contextual</text>
+  <text x="1720" y="684" text-anchor="middle" class="sec">scope and items</text>
+  <text x="1720" y="730" text-anchor="middle">"Publish the release</text>
+  <text x="1720" y="768" text-anchor="middle">notes for 2.6"</text>
+  <text x="1720" y="820" text-anchor="middle">all three types</text>
+  <text x="1720" y="862" text-anchor="middle" class="mono">max_memories=5</text>
+
+  <line x1="380" y1="580" x2="458" y2="580" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;6;6;2;2" keyTimes="0;0.03;0.22;0.25;1" dur="8s" repeatCount="indefinite"/>
+  </line>
+  <line x1="740" y1="580" x2="798" y2="580" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.25;0.28;0.47;0.5;1" dur="8s" repeatCount="indefinite"/>
+  </line>
+  <line x1="1080" y1="580" x2="1138" y2="580" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2;2" keyTimes="0;0.5;0.53;0.72;0.75;1" dur="8s" repeatCount="indefinite"/>
+  </line>
+  <line x1="1460" y1="425" x2="1558" y2="425" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2" keyTimes="0;0.75;0.78;0.97;1" dur="8s" repeatCount="indefinite"/>
+  </line>
+  <line x1="1460" y1="745" x2="1558" y2="745" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <animate attributeName="stroke-width" values="2;2;6;6;2" keyTimes="0;0.75;0.78;0.97;1" dur="8s" repeatCount="indefinite"/>
+  </line>
+</svg>

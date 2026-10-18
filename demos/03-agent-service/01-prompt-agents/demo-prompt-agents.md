@@ -126,6 +126,8 @@ message  assistant  You bought it one week ago.
 
 A second `create_version` call under the same name creates version 2. Version 1 stays untouched, so you can send the same question to both and compare.
 
+![Three callers reference m3-support-agent: pinning version 1 reaches version 1, while pinning version 2 or naming no version reaches version 2](../pptx/images/01-01-version-references.svg)
+
 ```python
 V2_INSTRUCTIONS = (
     "You are a support agent for Contoso Outdoor. "
@@ -153,6 +155,8 @@ m3-support-agent:2 -> Gently brush out any dirt or fabric caught in the zipper, 
 ## Step 6: Continue the same conversation on version 2
 
 History belongs to the conversation, so a newer version can pick up where version 1 stopped. The script then lists both versions and removes everything it created.
+
+![One stored conversation with seven items: version 1 answers the first two questions and version 2 summarizes the same conversation](../pptx/images/01-02-conversation-across-versions.svg)
 
 ```python
 turn = openai.responses.create(

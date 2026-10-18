@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The project endpoint and what it names</title>
+  <desc>PROJECT_ENDPOINT in .env holds one URL. Its host starts with the Foundry resource name and its last path segment is the project name. The OpenAI-compatible base_url and the Responses API URL are derived from it, and the Foundry SDK, the Responses API, agents, evaluations and the Foundry MCP server all start from it.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="560" y="72" width="800" height="124" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="126" text-anchor="middle"><tspan class="m b" font-size="32">PROJECT_ENDPOINT</tspan><tspan class="s"> in </tspan><tspan class="m s">.env</tspan></text>
+  <text x="960" y="170" text-anchor="middle" class="s" font-size="26">the only value that identifies your project in code</text>
+  <path d="M960,196 V270" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="166" y="280" width="171" height="80" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="345" y="280" width="435" height="80" rx="10" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="788" y="280" width="664" height="80" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1460" y="280" width="294" height="80" rx="10" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="251.5" y="331" text-anchor="middle" class="m s" font-size="32" textLength="141" lengthAdjust="spacingAndGlyphs">https://</text>
+  <text x="562.5" y="331" text-anchor="middle" class="m b" font-size="32" textLength="405" lengthAdjust="spacingAndGlyphs">pro-code-agents-foundry</text>
+  <text x="1120" y="331" text-anchor="middle" class="m s" font-size="32" textLength="634" lengthAdjust="spacingAndGlyphs">.services.ai.azure.com/api/projects/</text>
+  <text x="1607" y="331" text-anchor="middle" class="m b" font-size="32" textLength="264" lengthAdjust="spacingAndGlyphs">pro-code-agents</text>
+
+  <path d="M351,372 v14 h423 v-14 M562.5,386 v24" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <text x="562.5" y="448" text-anchor="middle" class="b" font-size="30">Foundry resource</text>
+  <text x="562.5" y="486" text-anchor="middle" class="s" font-size="26">first label of the host</text>
+  <path d="M1466,372 v14 h282 v-14 M1607,386 v24" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <text x="1607" y="448" text-anchor="middle" class="b" font-size="30">Project</text>
+  <text x="1607" y="486" text-anchor="middle" class="s" font-size="26">last path segment</text>
+
+  <path d="M960,360 V582" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="166" y="566" class="s" font-size="26">Derived from the same value</text>
+  <rect x="166" y="592" width="1588" height="196" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <path d="M166,690 H1754" stroke="#8c959f" stroke-width="2"/>
+  <text x="206" y="652" class="m" font-size="30"><tspan class="s">PROJECT_ENDPOINT</tspan><tspan class="b"> + /openai/v1/</tspan></text>
+  <text x="1714" y="652" text-anchor="end"><tspan class="m">base_url</tspan> of the OpenAI-compatible client</text>
+  <text x="206" y="750" class="m" font-size="30"><tspan class="s">PROJECT_ENDPOINT</tspan><tspan class="b"> + /openai/v1/responses</tspan></text>
+  <text x="1714" y="750" text-anchor="end">Responses API</text>
+
+  <text x="166" y="866" class="s" font-size="26">All start from the project endpoint</text>
+  <rect x="166" y="888" width="298.4" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="488.4" y="888" width="298.4" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="810.8" y="888" width="298.4" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1133.2" y="888" width="298.4" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1455.6" y="888" width="298.4" height="80" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="315.2" y="938" text-anchor="middle">Foundry SDK</text>
+  <text x="637.6" y="938" text-anchor="middle">Responses API</text>
+  <text x="960" y="938" text-anchor="middle">Agents</text>
+  <text x="1282.4" y="938" text-anchor="middle">Evaluations</text>
+  <text x="1604.8" y="938" text-anchor="middle">Foundry MCP server</text>
+</svg>

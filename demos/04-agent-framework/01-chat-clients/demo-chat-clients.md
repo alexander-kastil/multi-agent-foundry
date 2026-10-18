@@ -78,6 +78,8 @@ The wording is model-dependent; the structure is not: one blocking answer, one s
 
 The agent, its name and its instructions stay identical; only the client object changes. `OpenAIChatClient` speaks the Responses API and `OpenAIChatCompletionClient` speaks Chat Completions, both against the Azure OpenAI endpoint of the same resource.
 
+![One Agent that owns instructions, tools, sessions and middleware, with a client slot that FoundryChatClient, OpenAIChatClient, OpenAIChatCompletionClient or AnthropicClient fills, each reaching a different model endpoint](../pptx/images/01-01-agent-chat-client.svg)
+
 ```python
 for client in (
     OpenAIChatClient(model=model, azure_endpoint=azure_endpoint, credential=credential),
@@ -130,6 +132,8 @@ created m4-support-agent version 1
 ## Step 4: Connect with FoundryAgent and see who owns the instructions
 
 The script never states instructions for this agent; the stored definition supplies them. It then tries to override them for one run to show where the boundary sits.
+
+![FoundryChatClient keeps instructions, tools, middleware and session handling in your process, while FoundryAgent leaves model, instructions and hosted tools in the Prompt Agent stored in Microsoft Foundry](../pptx/images/01-02-agent-definition-owner.svg)
 
 ```python
 agent = FoundryAgent(

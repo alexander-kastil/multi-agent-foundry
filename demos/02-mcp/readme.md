@@ -4,6 +4,8 @@ Agents become useful when they can reach your data and your systems, and the Mod
 
 Every demo is a finished, run-verified project in the topic folder, and the guide walks through its code. The Python projects pin their own packages. Agent Framework 1.22.0 cannot yet read the initialize result of `mcp` 2.x, so the projects that connect an agent to a server use `mcp==1.30.0` in a separate environment from the servers that use `mcp==2.3.0`.
 
+![The six topics in two rows: build, debug and protect a server in topics 01 to 03, then host, harden and publish it in topics 04 to 06](./pptx/images/00-02-overview.svg)
+
 | Topic | Description |
 | --- | --- |
 | [01 MCP Servers: Tools, Resources & Prompts](./01-mcp-servers/readme.md) | The three server primitives, tool design, and the same HR server in C# and Python |

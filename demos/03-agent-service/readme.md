@@ -6,6 +6,8 @@ The stack is the `azure-ai-projects` 2.x Python SDK and the `Azure.AI.Projects` 
 
 Each project has its own `.env.example`, a pinned `requirements.txt` or `.csproj` and a `.gitignore`. Copy `.env.example` to `.env`, set your project endpoint and run. The demos that need Azure resources ship a `provision.azcli` and, where useful, a `deprovision.azcli` beside the guide.
 
+![Eight numbered topic cards in reading order, from 01 Prompt Agents: Versions & Conversations to 08 Voice Agents: Voice Live API](./pptx/images/00-02-overview.svg)
+
 | Topic | Description |
 | --- | --- |
 | [01 Prompt Agents: Versions & Conversations](01-prompt-agents/readme.md) | Agent versions with `create_version`, `name:version` references, conversations, items and responses; the move away from classic threads and runs |

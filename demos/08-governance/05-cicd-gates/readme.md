@@ -54,6 +54,8 @@ Each agent exposes a tool contract: required parameters, optional parameters and
 
 A removed tool, a new required parameter, an optional parameter that became required and a removed response field are breaking. Added optional parameters and added response fields are not. For each breaking change the gate also lists the dependents, found by walking the dependency graph, so the reviewer sees the blast radius.
 
+![Seven agents in five deployment waves; style-checker carries a breaking change, the gate names orchestrator and reporting as affected dependents and exits with code 1](../pptx/images/05-01-dependency-contract-gate.svg)
+
 ## Canary gate on Foundry agent versions
 
 A Foundry agent version is an immutable snapshot, and the stable endpoint serves the version the version selector names. By default the selector follows the latest version, so a pipeline that deploys and then tests would change production traffic before the test runs. The gate therefore pins production first, creates the candidate, and tests both versions by naming them in the agent reference.
@@ -71,6 +73,8 @@ passed = all(baseline[m] - candidate[m] <= THRESHOLD for m in baseline)
 ```
 
 Foundry does not split traffic between versions, so there is no gradual 20 percent step. Promotion is a single `pin_endpoint` call that moves 100 percent of the traffic to the canary, and a failed gate leaves the pin where it was.
+
+![The canary gate pins the stable endpoint to v1, creates canary v2, tests both versions by reference and moves the pin to v2 only when neither metric drops more than 5 points](../pptx/images/05-02-canary-gate.svg)
 
 Rolling back later is the same call with the previous version number. The demo creates both versions itself so it runs anywhere; in a real pipeline the deploy job creates the candidate and hands its version number to the gate.
 

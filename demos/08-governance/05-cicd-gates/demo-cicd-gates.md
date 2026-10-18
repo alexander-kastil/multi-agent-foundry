@@ -89,6 +89,8 @@ Gate result: FAIL, breaking changes block deployment
 
 Check the exit code with `echo $?` in Bash or `$LASTEXITCODE` in PowerShell. It is 1. The security scanner also changed, with a new optional parameter and a new response field, and the gate correctly ignores both.
 
+![Seven agents in five deployment waves; style-checker carries a breaking change, the gate names orchestrator and reporting as affected dependents and exits with code 1](../pptx/images/05-01-dependency-contract-gate.svg)
+
 ### C#
 
 `Compatibility.cs` reads the manifest with YamlDotNet and compares the contracts with `System.Text.Json.Nodes`. Run `dotnet run -- compat`; the output of Steps 1 and 2 is identical, and `echo $?` prints 1:
@@ -118,6 +120,8 @@ Gate result: FAIL, breaking changes block deployment
 ## Step 3: Promote a canary that passes
 
 The canary gate creates a stable version and a canary version of one agent. It pins the stable endpoint to the stable version first, so the test cannot change production traffic.
+
+![The canary gate pins the stable endpoint to v1, creates canary v2, tests both versions by reference and moves the pin to v2 only when neither metric drops more than 5 points](../pptx/images/05-02-canary-gate.svg)
 
 ```python
 stable = create_agent(NAME, STABLE, metadata={"role": "stable"})

@@ -55,6 +55,8 @@ The `name` groups the checkpoints of one workflow. Orchestration builders such a
 
 Pass `checkpoint_id` to `workflow.run` to continue from a saved superstep. A pending request in that checkpoint is re-emitted as a `request_info` event, so a fresh process can pick up an approval that started in another one. You can pass `checkpoint_id` and `responses` together to resume and answer in one call.
 
+![submit.py pauses at the approval gate and exits, the checkpoints folder keeps the open request, and decide.py resumes from it in a new process and approves](../pptx/images/02-01-approval-two-processes.svg)
+
 ```python
 latest = await storage.get_latest(workflow_name="expense_approval")
 async for event in workflow.run(checkpoint_id=latest.checkpoint_id, stream=True):
@@ -63,6 +65,8 @@ async for event in workflow.run(checkpoint_id=latest.checkpoint_id, stream=True)
 ```
 
 Resuming from an earlier superstep replays everything after it. If an agent ran after that point it runs again, so its answer and the request id can change. A new workflow instance can resume too, as long as it keeps the same topology and executor ids.
+
+![Four checkpoints on a timeline: resuming at superstep 3 keeps the request id, rewinding to superstep 1 runs the summarizer again and raises a new request](../pptx/images/02-02-resume-and-rewind.svg)
 
 ## Executors Carry Their Own State
 

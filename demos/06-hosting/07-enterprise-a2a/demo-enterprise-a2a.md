@@ -46,6 +46,8 @@ dotnet run
 
 The registry is built from agent cards, so a new agent joins the network by publishing a card and nothing else. Routing then only considers agents that are healthy, have a recent heartbeat and have not expired.
 
+![Three registry entries feed a sector-analysis query that checks the capability, a healthy status, a heartbeat younger than 120 s and a 300 s time to live, next to the four results this step prints](../pptx/images/07-01-capability-routing.svg)
+
 The Python demo builds three cards in the A2A v1 shape and registers them directly.
 
 ```python
@@ -92,6 +94,8 @@ sector-analysis candidates: [market-analysis-v2-eastus, market-analysis-v2-weste
 ## Step 2: Write shared state with an etag guard
 
 Four agents add their findings to one document at the same moment. Each write must carry the etag it read, and a write against a changed document fails and retries instead of overwriting.
+
+![Sequence of two agents writing one shared document: the first write with etag 1 is accepted, the second with the stale etag gets 412 Precondition Failed, reads again and succeeds with etag 2](../pptx/images/07-02-etag-writes.svg)
 
 ```python
 document = self.read(tenant_id, task_id, use_cache=False)
@@ -160,6 +164,8 @@ Verify the isolation: the other client wrote one contribution, and none of it ap
 ## Step 4: Detect a conflict in two tiers
 
 The first pair of outputs disagrees in a structured field, so the cheap rule catches it without a model call. The second pair disagrees only in prose, so the model judge decides.
+
+![Two cases run through the rule-based tier, the semantic tier, the priority ranks and the audit trail: case 1 is resolved for risk-v1-eastus without a model call, case 2 is judged by the model and escalated](../pptx/images/07-03-conflict-resolution.svg)
 
 ```python
 def rule_based_conflict(output_a: dict, output_b: dict) -> dict | None:

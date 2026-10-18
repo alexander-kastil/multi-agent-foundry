@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The announcement approval orchestration</title>
+  <desc>The start function launches the announcement_approval orchestration. It drafts with agent.run, requests a review, then waits for the ApprovalDecision event or a 72 hour timer while no code runs. The reviewer raises the event through the decide function. A rejection rewrites the draft in the same session and starts the next round, up to three rounds; an approval calls publish; a timer that fires first raises TimeoutError. Both agent calls go to the durable entity dafx-AnnouncementWriter, which keeps the first draft and every rewrite. The highlight steps through round 1 rejected, round 2 approved.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#24292f">
+
+    <rect x="410" y="170" width="1490" height="550" rx="22" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="12 8"/>
+    <text x="440" y="640" font-size="26" fill="#57606a">orchestration</text>
+    <text x="440" y="682" font-size="26" font-family="Consolas, Courier New, monospace" fill="#57606a">announcement_approval</text>
+
+    <rect x="1340" y="36" width="540" height="114" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="1610" y="80" font-size="28" font-weight="600" text-anchor="middle">Reviewer calls <tspan font-family="Consolas, Courier New, monospace">decide</tspan></text>
+    <text x="1610" y="124" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" fill="#57606a">approvals/decision/{instanceId}</text>
+
+    <rect x="40" y="230" width="330" height="180" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="205" y="285" font-size="28" font-weight="600" text-anchor="middle">Start</text>
+    <text x="205" y="330" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">approvals/run</text>
+    <text x="205" y="373" font-size="26" text-anchor="middle" fill="#57606a">returns <tspan font-family="Consolas, Courier New, monospace">instanceId</tspan></text>
+
+    <rect x="440" y="230" width="390" height="180" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="635" y="285" font-size="28" font-weight="600" text-anchor="middle">1 Draft</text>
+    <text x="635" y="330" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">agent.run(...)</text>
+    <text x="635" y="373" font-size="26" text-anchor="middle" fill="#57606a">typed <tspan font-family="Consolas, Courier New, monospace">Announcement</tspan></text>
+
+    <rect x="890" y="230" width="390" height="180" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1085" y="285" font-size="28" font-weight="600" text-anchor="middle">2 Request review</text>
+    <text x="1085" y="330" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">request_review</text>
+    <text x="1085" y="373" font-size="26" text-anchor="middle" fill="#57606a">waiting for review, round N</text>
+
+    <rect x="1340" y="230" width="540" height="180" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="1610" y="276" font-size="28" font-weight="600" text-anchor="middle">3 Wait, no code runs</text>
+    <rect x="1360" y="298" width="260" height="94" rx="10" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+    <text x="1490" y="337" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">ApprovalDecision</text>
+    <text x="1490" y="376" font-size="26" text-anchor="middle" fill="#57606a">event</text>
+    <rect x="1640" y="298" width="220" height="94" rx="10" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+    <text x="1750" y="337" font-size="26" font-weight="600" text-anchor="middle">72 h</text>
+    <text x="1750" y="376" font-size="26" text-anchor="middle" fill="#57606a">timer</text>
+
+    <rect x="890" y="510" width="390" height="180" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="1085" y="563" font-size="28" font-weight="600" text-anchor="middle">Rejected: rewrite</text>
+    <text x="1085" y="607" font-size="26" text-anchor="middle" fill="#57606a">with the feedback,</text>
+    <text x="1085" y="647" font-size="26" text-anchor="middle" fill="#57606a">in the same session</text>
+
+    <rect x="1440" y="510" width="220" height="180" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+    <text x="1550" y="563" font-size="28" font-weight="600" text-anchor="middle">Approved</text>
+    <text x="1550" y="607" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">publish</text>
+    <text x="1550" y="647" font-size="26" text-anchor="middle" fill="#57606a">published</text>
+
+    <rect x="1680" y="510" width="200" height="180" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="1780" y="580" font-size="28" font-weight="600" text-anchor="middle">Timer first</text>
+    <text x="1780" y="627" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">TimeoutError</text>
+
+    <rect x="440" y="800" width="840" height="170" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="860" y="852" font-size="28" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">dafx-AnnouncementWriter</text>
+    <text x="860" y="895" font-size="26" text-anchor="middle">durable entity: one writer session</text>
+    <text x="860" y="935" font-size="26" text-anchor="middle" fill="#57606a">keeps the first draft and every rewrite</text>
+
+    <g font-size="26">
+      <rect x="1370" y="812" width="36" height="36" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+      <text x="1424" y="840">orchestration step</text>
+      <rect x="1370" y="866" width="36" height="36" rx="6" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+      <text x="1424" y="894">durable wait and state</text>
+      <rect x="1370" y="920" width="36" height="36" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+      <text x="1424" y="948">result</text>
+    </g>
+
+    <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#ah)">
+      <line x1="370" y1="320" x2="438" y2="320"/>
+      <line x1="830" y1="320" x2="888" y2="320"/>
+      <line x1="1280" y1="320" x2="1338" y2="320"/>
+      <line x1="1610" y1="150" x2="1610" y2="228"/>
+      <line x1="1400" y1="410" x2="1283" y2="598"/>
+      <line x1="1550" y1="410" x2="1550" y2="508"/>
+      <line x1="1780" y1="410" x2="1780" y2="508"/>
+      <line x1="1085" y1="510" x2="1085" y2="412"/>
+    </g>
+    <g stroke="#e0a534" stroke-width="2" fill="none" stroke-dasharray="8 6" marker-end="url(#ah)">
+      <line x1="790" y1="410" x2="790" y2="798"/>
+      <line x1="1085" y1="690" x2="1085" y2="798"/>
+    </g>
+    <text x="1595" y="212" font-size="26" text-anchor="end" fill="#57606a">raises the event</text>
+    <text x="1100" y="470" font-size="26" fill="#57606a">up to 3 rounds</text>
+    <text x="805" y="760" font-size="26" fill="#57606a">agent call</text>
+    <text x="1100" y="760" font-size="26" fill="#57606a">agent call</text>
+
+    <g fill="none" stroke="#e0a534" stroke-width="8" stroke-opacity="0">
+      <rect x="40" y="230" width="330" height="180" rx="14">
+        <animate attributeName="stroke-opacity" values="1;0" keyTimes="0;0.1" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="440" y="230" width="390" height="180" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.1;0.2" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="890" y="230" width="390" height="180" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0;1;0" keyTimes="0;0.2;0.3;0.5333;0.6333" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="1340" y="230" width="540" height="180" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0;1;0" keyTimes="0;0.3;0.4333;0.6333;0.7667" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="1340" y="36" width="540" height="114" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0;1;0" keyTimes="0;0.3667;0.4333;0.7;0.7667" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="890" y="510" width="390" height="180" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.4333;0.5333" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="440" y="800" width="840" height="170" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0;1;0" keyTimes="0;0.1;0.2;0.4333;0.5333" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="1440" y="510" width="220" height="180" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.7667;0.9333" calcMode="discrete" dur="15s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+  </g>
+</svg>

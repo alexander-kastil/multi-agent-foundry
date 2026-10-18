@@ -74,6 +74,8 @@ The `description` is the only part the agent reads before deciding to use the sk
 
 `SkillsProvider.from_paths` discovers the skills, and a `script_runner` lets the agent execute `price_quote.py`. All three skill tools require approval by default, so the script approves each request and prints it.
 
+![The four parts of the hut-booking skill folder feed four loading stages: advertise on every run, then load_skill, read_skill_resource and run_skill_script only when the task needs them](../pptx/images/06-01-progressive-disclosure.svg)
+
 ```python
 skills = SkillsProvider.from_paths(
     skill_paths=Path(__file__).parent / "skills",
@@ -149,9 +151,13 @@ approved: run_skill_script({"skill_name":"hut-booking","script_name":"scripts/pr
 
 Read the numbers as stages. The 682 tokens of "advertise only" include the skill descriptions and the three skill tool definitions; call 2 adds the loaded `SKILL.md`; call 3 adds the policy, the template and the script result. A greeting never pays for the policy.
 
+![Bar chart of input tokens per model call: 31 without skills, 682 with skills advertised, then 696, 990 and 1244 as the hut quote loads SKILL.md, the policy, the template and the script result](../pptx/images/06-02-tokens-per-stage.svg)
+
 ## Step 4: Mix a code-defined skill and auto-approve the harmless tools
 
 `altitude_skill.py` defines a second skill in code. Its `convert` script runs in your process, so it needs no runner. `AggregatingSkillsSource` combines it with the file skills, and `ToolApprovalMiddleware` auto-approves `load_skill` and `read_skill_resource` while `run_skill_script` still asks.
+
+![A SkillsProvider combines a FileSkillsSource with hut-booking and trail-safety and an InMemorySkillsSource with altitude; ToolApprovalMiddleware approves load_skill and read_skill_resource automatically and asks before run_skill_script](../pptx/images/06-03-mixed-skill-sources.svg)
 
 ```python
 altitude_skill = InlineSkill(

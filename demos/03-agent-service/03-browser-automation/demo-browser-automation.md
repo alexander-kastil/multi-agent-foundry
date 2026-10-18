@@ -28,6 +28,8 @@ Edit `provision.azcli` first so the resource group, Foundry resource, project an
 
 The browser runs in a Playwright workspace, so the script creates one, gives the Foundry project identity the Playwright Workspace Contributor role on it and registers a project connection that uses that identity. Managed identity means no access token is stored anywhere.
 
+![The Python tool uses the connection m3-browser-mcp and the C# MCP tool uses m3-playwright-mcp; both reach the Playwright workspace with the project managed identity, which holds the Playwright Workspace Contributor role](../pptx/images/03-03-workspace-connection-setup.svg)
+
 ```bash
 az resource create --id $WORKSPACE_ID --api-version 2025-09-01 --location westeurope --properties '{"regionalAffinity":"Enabled","localAuth":"Enabled"}'
 
@@ -146,6 +148,8 @@ Deleted m3-browser-agent:7
 
 The exact element reference and the number of snapshots vary between runs, because the model decides each step from the page it sees. The sequence create, navigate, snapshot, click, snapshot, close is the part that stays stable.
 
+![One browser session across three tasks: create_browser_session, browser_navigate, browser_snapshot, browser_click, browser_snapshot and close_browser_session, with the agent's answer after each task](../pptx/images/03-01-browser-session-trail.svg)
+
 ## Step 6: Probe the Computer Use access gate
 
 Computer Use uses a different model and a different loop, and its model is gated. This step checks whether your subscription can deploy it, because you cannot build the loop without a deployment.
@@ -161,6 +165,8 @@ ERROR: (SpecialFeatureOrQuotaIdRequired) The current subscription does not have 
 ```
 
 Request access through the application form linked in the Computer Use documentation. After approval the same command creates the deployment, and the loop in the topic readme applies: send a screenshot, execute the returned action in a sandbox, send the next screenshot and acknowledge any pending safety checks.
+
+![The Computer Use loop: the agent proposes a computer_call, your application runs it in a sandbox and sends the new screenshot back as computer_call_output, and a person reviews any pending safety checks](../pptx/images/03-02-computer-use-loop.svg)
 
 ## Verify
 

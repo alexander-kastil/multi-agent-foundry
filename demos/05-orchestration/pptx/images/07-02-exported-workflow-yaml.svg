@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Running an exported Foundry workflow</title>
+  <desc>Left, the Foundry project: the workflow agent m5-support-router, version 1, and the prompt agents m5-classifier, m5-billing and m5-technical. export_workflow.py exports the workflow to exported.workflow.yaml, in the middle, whose InvokeAzureAgent actions name m5-classifier, m5-billing and m5-technical. Right, Agent Framework: run_migrated.py loads the file with WorkflowFactory and uses register_agent to register local agents under the same three names. Dashed lines join each name across the three cards, and the YAML runs without edits. Below, both runs route the same three messages the same way: "I was charged twice this month." gives Category: billing and an answer from m5-billing, "The app crashes when I scan a receipt." gives Category: technical and an answer from m5-technical, and "Do you have a partner program?" gives Category: other and goes to a human.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="90" width="480" height="570" rx="24" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="720" y="90" width="480" height="570" rx="24" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="1380" y="90" width="480" height="570" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+
+  <text x="300" y="150" font-size="32" font-weight="700" fill="#24292f" text-anchor="middle">Foundry project</text>
+  <text x="300" y="200" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">m5-support-router</text>
+  <text x="300" y="238" font-size="26" fill="#57606a" text-anchor="middle">workflow agent, version 1</text>
+
+  <text x="960" y="150" font-size="30" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">exported.workflow.yaml</text>
+  <text x="960" y="200" font-size="26" fill="#57606a" text-anchor="middle">saved by <tspan font-family="Consolas, Courier New, monospace" fill="#24292f">export_workflow.py</tspan></text>
+  <text x="960" y="238" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">kind: InvokeAzureAgent</text>
+
+  <text x="1620" y="150" font-size="32" font-weight="700" fill="#24292f" text-anchor="middle">Agent Framework</text>
+  <text x="1620" y="200" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">run_migrated.py</text>
+  <text x="1620" y="238" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">WorkflowFactory</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#ffffff">
+    <rect x="110" y="290" width="380" height="60" rx="14"/>
+    <rect x="110" y="375" width="380" height="60" rx="14"/>
+    <rect x="110" y="460" width="380" height="60" rx="14"/>
+    <rect x="770" y="290" width="380" height="60" rx="14"/>
+    <rect x="770" y="375" width="380" height="60" rx="14"/>
+    <rect x="770" y="460" width="380" height="60" rx="14"/>
+    <rect x="1430" y="290" width="380" height="60" rx="14"/>
+    <rect x="1430" y="375" width="380" height="60" rx="14"/>
+    <rect x="1430" y="460" width="380" height="60" rx="14"/>
+  </g>
+  <g font-size="28" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="300" y="330">m5-classifier</text>
+    <text x="300" y="415">m5-billing</text>
+    <text x="300" y="500">m5-technical</text>
+    <text x="960" y="330">name: m5-classifier</text>
+    <text x="960" y="415">name: m5-billing</text>
+    <text x="960" y="500">name: m5-technical</text>
+    <text x="1620" y="330">m5-classifier</text>
+    <text x="1620" y="415">m5-billing</text>
+    <text x="1620" y="500">m5-technical</text>
+  </g>
+
+  <text x="300" y="605" font-size="26" fill="#57606a" text-anchor="middle">prompt agents in the project</text>
+  <text x="960" y="605" font-size="26" fill="#57606a" text-anchor="middle">runs without edits</text>
+  <text x="1620" y="588" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">register_agent</text>
+  <text x="1620" y="626" font-size="26" fill="#57606a" text-anchor="middle">under the same names</text>
+
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="630" y="182">exports</text>
+    <text x="1290" y="182">loads</text>
+  </g>
+  <g fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="540" y1="205" x2="716" y2="205"/>
+    <line x1="1200" y1="205" x2="1376" y2="205"/>
+  </g>
+  <g stroke="#e0a534" stroke-width="3" stroke-dasharray="10 8">
+    <line x1="540" y1="320" x2="720" y2="320"/>
+    <line x1="540" y1="405" x2="720" y2="405"/>
+    <line x1="540" y1="490" x2="720" y2="490"/>
+    <line x1="1200" y1="320" x2="1380" y2="320"/>
+    <line x1="1200" y1="405" x2="1380" y2="405"/>
+    <line x1="1200" y1="490" x2="1380" y2="490"/>
+  </g>
+
+  <rect x="60" y="705" width="1800" height="305" rx="24" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="760" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Both runs route the same three messages the same way</text>
+  <g stroke="#8c959f" stroke-width="2" fill="#ffffff">
+    <rect x="90" y="790" width="560" height="190" rx="18"/>
+    <rect x="680" y="790" width="560" height="190" rx="18"/>
+    <rect x="1270" y="790" width="560" height="190" rx="18"/>
+  </g>
+  <g font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="370" y="842">"I was charged twice this month."</text>
+    <text x="960" y="842">"The app crashes when I scan a receipt."</text>
+    <text x="1550" y="842">"Do you have a partner program?"</text>
+  </g>
+  <g font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="370" y="897">Category: billing</text>
+    <text x="960" y="897">Category: technical</text>
+    <text x="1550" y="897">Category: other</text>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="370" y="947">answered by <tspan font-family="Consolas, Courier New, monospace">m5-billing</tspan></text>
+    <text x="960" y="947">answered by <tspan font-family="Consolas, Courier New, monospace">m5-technical</tspan></text>
+    <text x="1550" y="947">routed to a human</text>
+  </g>
+</svg>

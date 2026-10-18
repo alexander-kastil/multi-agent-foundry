@@ -4,6 +4,8 @@ Every later module in this class builds on the same few Microsoft Foundry basics
 
 You work on the current Foundry (new) platform throughout. The stack is the Foundry SDK (`azure-ai-projects` 2.x for Python, `Azure.AI.Projects` 2.0.x for .NET), the OpenAI-compatible Responses API, Microsoft.Extensions.AI for .NET, model router for model selection, and the Foundry Toolkit, `azd ai` extensions and Foundry MCP server for day-to-day operation.
 
+![The six topics of the module as numbered cards, from Foundry projects to context engineering](./pptx/images/00-02-overview.svg)
+
 | Topic | Description |
 | --- | --- |
 | [Microsoft Foundry: Projects & Resources](./01-foundry-projects/readme.md) | The Foundry resource, its projects, the single project endpoint, the Foundry (new) versus classic split and the renamed Foundry RBAC roles |

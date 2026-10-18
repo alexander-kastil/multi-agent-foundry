@@ -49,6 +49,8 @@ def get_snippet(file: func.InputStream, snippetname: str) -> str:
 
 The blob path shows the main benefit of the model. `{mcptoolargs.snippetname}` binds a tool argument into a normal Functions binding, so the function receives the blob content without any storage code. Without the `mcptoolargs.` prefix the binding fails with `No value for named parameter`.
 
+![The get_snippet function mapped to its tool name, description and input property, and a tools/call whose snippetname argument resolves the blob path to snippets/greeting.json](../pptx/images/04-01-function-to-tool.svg)
+
 In C#, the isolated worker model uses `McpToolTrigger` and `McpToolProperty`. Only the isolated worker model is supported.
 
 ```csharp
@@ -140,6 +142,8 @@ agent = project.agents.create_version(
     definition=PromptAgentDefinition(model="gpt-5.4", instructions="You manage code snippets.", tools=[functions_tool]),
 )
 ```
+
+![agent.py names the connection m2-func-mcp-key, Foundry Agent Service attaches the x-functions-key header from it, and the function app checks the system key before it reads and writes blob storage](../pptx/images/04-02-foundry-agent-connection.svg)
 
 Anyone with access to the project can read a key stored in a connection, so use it only for shared secrets and prefer Microsoft Entra authentication for production. The Learn article on connecting a Functions MCP server lists the Entra and OAuth setup steps, including the built-in authentication that also switches the key requirement off.
 

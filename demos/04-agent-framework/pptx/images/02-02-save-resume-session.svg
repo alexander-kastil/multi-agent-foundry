@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Save a session and resume it in another process</title>
+  <desc>Process 1, the first run of session_file.py, creates a session, runs the introduction and writes session.to_dict() to sessions/session.json. The file holds session_id, service_session_id resp_0305 and an empty state, no messages. Process 2, the second run, rebuilds it with AgentSession.from_dict and answers You mentioned the Danube. The service_session_id points to the conversation that FoundryChatClient stores in Foundry. Another worker, session_service_id.py, rebuilds a session from the ID alone with agent.get_session and answers that Alex is planning a kayak trip on the Danube. A dot carries the session from process 1 through the file to process 2, then the ID to the other worker.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="70" y="130" width="490" height="470" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="185" class="s b" font-size="30">Process 1</text>
+  <text x="105" y="228" class="s sec" font-size="26">first run of <tspan class="m">session_file.py</tspan></text>
+  <rect x="105" y="255" width="420" height="110" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="125" y="298" class="s" font-size="26">My name is Alex and I plan</text>
+  <text x="125" y="340" class="s" font-size="26">a kayak trip on the Danube.</text>
+  <text x="105" y="418" class="m" font-size="26">agent.create_session()</text>
+  <text x="105" y="462" class="m" font-size="26">agent.run(message,</text>
+  <text x="162" y="506" class="m" font-size="26">session=session)</text>
+  <text x="105" y="560" class="m b" font-size="26">session.to_dict()</text>
+
+  <line x1="560" y1="365" x2="716" y2="365" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="638" y="345" class="s sec" font-size="26" text-anchor="middle">write</text>
+
+  <rect x="720" y="130" width="480" height="470" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="750" y="185" class="m b" font-size="28">sessions/session.json</text>
+  <text x="750" y="250" class="m" font-size="26">"session_id":</text>
+  <text x="779" y="292" class="m" font-size="26">"0b299817-..."</text>
+  <text x="750" y="344" class="m" font-size="26">"service_session_id":</text>
+  <text x="779" y="386" class="m" font-size="26">"resp_0305..."</text>
+  <text x="750" y="438" class="m" font-size="26">"state": {}</text>
+  <text x="750" y="545" class="s sec" font-size="26">Holds no messages</text>
+
+  <line x1="1200" y1="365" x2="1356" y2="365" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="1278" y="345" class="s sec" font-size="26" text-anchor="middle">read</text>
+
+  <rect x="1360" y="130" width="490" height="470" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1395" y="185" class="s b" font-size="30">Process 2</text>
+  <text x="1395" y="228" class="s sec" font-size="26">second run of <tspan class="m">session_file.py</tspan></text>
+  <text x="1395" y="282" class="m b" font-size="26">AgentSession.from_dict(...)</text>
+  <text x="1395" y="326" class="m" font-size="26">agent.run(message,</text>
+  <text x="1452" y="370" class="m" font-size="26">session=session)</text>
+  <rect x="1395" y="392" width="420" height="66" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1415" y="435" class="s" font-size="26">Which river did I mention?</text>
+  <rect x="1395" y="476" width="420" height="94" rx="12" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1415" y="533" class="s" font-size="26">You mentioned the Danube.</text>
+
+  <line x1="315" y1="600" x2="315" y2="736" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="337" y="678" class="s sec" font-size="26">stores the conversation</text>
+  <line x1="960" y1="600" x2="960" y2="736" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="982" y="678" class="m sec" font-size="26">service_session_id</text>
+
+  <rect x="70" y="740" width="1130" height="260" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="795" class="s b" font-size="30">Conversation in Foundry</text>
+  <text x="105" y="862" class="m" font-size="26">resp_030544eaa0e2f0e0006ad46001ed7481939b13f5...</text>
+  <text x="105" y="935" class="s sec" font-size="26">The session only carries the <tspan class="m">resp_</tspan> ID that points here</text>
+
+  <path d="M1200,560 L1280,560 L1280,840 L1356,840" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+
+  <rect x="1360" y="660" width="490" height="360" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1395" y="712" class="s b" font-size="30">Another worker, ID only</text>
+  <text x="1395" y="752" class="m sec" font-size="26">session_service_id.py</text>
+  <text x="1395" y="805" class="m b" font-size="26">agent.get_session(</text>
+  <text x="1424" y="847" class="m" font-size="26">service_session_id=...)</text>
+  <rect x="1395" y="870" width="420" height="120" rx="12" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1415" y="920" class="s" font-size="26">Alex, you're planning a</text>
+  <text x="1415" y="962" class="s" font-size="26">kayak trip on the Danube.</text>
+
+  <circle cx="560" cy="365" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="1">
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.3"/>
+    <animateMotion dur="6s" repeatCount="indefinite" path="M0,0 L156,0" keyPoints="0;1;1" keyTimes="0;0.2;1" calcMode="linear"/>
+  </circle>
+  <circle cx="1200" cy="365" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3;0.6"/>
+    <animateMotion dur="6s" repeatCount="indefinite" path="M0,0 L156,0" keyPoints="0;0;1;1" keyTimes="0;0.3;0.5;1" calcMode="linear"/>
+  </circle>
+  <circle cx="1200" cy="560" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.6"/>
+    <animateMotion dur="6s" repeatCount="indefinite" path="M0,0 L80,0 L80,280 L156,280" keyPoints="0;0;1;1" keyTimes="0;0.6;0.9;1" calcMode="linear"/>
+  </circle>
+</svg>

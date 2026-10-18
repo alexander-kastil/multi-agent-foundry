@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The seven topics of module 8 as layers of control around a Foundry agent</title>
+  <desc>Seven numbered topic cards in reading order, grouped by the three risks of an agent in production. An agent that reads untrusted text: 01 Guardrails: Prompt Shields and Intervention Points, guardrails at the platform; 02 Prompt Injection: Layered Defenses, defenses in the prompt. An agent that holds credentials: 03 Entra Agent ID: On-Behalf-Of Flows, an identity for every agent; 04 Zero Trust: Tenant Isolation and Secrets, isolation of tenants and secrets. An agent that changes behavior with every prompt edit: 05 CI/CD: GitHub Actions Quality Gates, quality gates in the pipeline; 06 Agent Lifecycle: Versions, Quotas and Retirement, a lifecycle for versions; 07 Responsible AI: Fairness Probes and Audit, a fairness and audit practice.</desc>
+  <style>
+    .cap { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 600; fill: #24292f; }
+    .num { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 44px; font-weight: 700; fill: #24292f; }
+    .t { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #24292f; }
+    .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .blue { fill: #eaf2ff; stroke: #8c959f; stroke-width: 2; }
+    .purple { fill: #f3edff; stroke: #8c959f; stroke-width: 2; }
+    .green { fill: #e9f7ef; stroke: #8c959f; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="o-ah" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="120" width="6" height="180" fill="#8c959f"/>
+  <text class="cap" x="84" y="196">reads untrusted</text>
+  <text class="cap" x="84" y="234">text</text>
+
+  <rect x="60" y="440" width="6" height="180" fill="#8c959f"/>
+  <text class="cap" x="84" y="516">holds</text>
+  <text class="cap" x="84" y="554">credentials</text>
+
+  <rect x="60" y="760" width="6" height="180" fill="#8c959f"/>
+  <text class="cap" x="84" y="818">changes behavior</text>
+  <text class="cap" x="84" y="856">with every</text>
+  <text class="cap" x="84" y="894">prompt edit</text>
+
+  <path class="line" d="M1130 210 H1168" marker-end="url(#o-ah)"/>
+  <path class="line" d="M1515 340 V370 H785 V398" marker-end="url(#o-ah)"/>
+  <path class="line" d="M1130 530 H1168" marker-end="url(#o-ah)"/>
+  <path class="line" d="M1515 660 V690 H663 V718" marker-end="url(#o-ah)"/>
+  <path class="line" d="M886 850 H924" marker-end="url(#o-ah)"/>
+  <path class="line" d="M1372 850 H1410" marker-end="url(#o-ah)"/>
+
+  <rect class="blue" x="440" y="80" width="690" height="260" rx="20"/>
+  <text class="num" x="472" y="144">01</text>
+  <text class="t" x="472" y="198">Guardrails: Prompt Shields &amp;</text>
+  <text class="t" x="472" y="236">Intervention Points</text>
+  <text class="s" x="472" y="300">guardrails at the platform</text>
+
+  <rect class="blue" x="1170" y="80" width="690" height="260" rx="20"/>
+  <text class="num" x="1202" y="144">02</text>
+  <text class="t" x="1202" y="198">Prompt Injection:</text>
+  <text class="t" x="1202" y="236">Layered Defenses</text>
+  <text class="s" x="1202" y="300">defenses in the prompt</text>
+
+  <rect class="purple" x="440" y="400" width="690" height="260" rx="20"/>
+  <text class="num" x="472" y="464">03</text>
+  <text class="t" x="472" y="518">Entra Agent ID:</text>
+  <text class="t" x="472" y="556">On-Behalf-Of Flows</text>
+  <text class="s" x="472" y="620">an identity for every agent</text>
+
+  <rect class="purple" x="1170" y="400" width="690" height="260" rx="20"/>
+  <text class="num" x="1202" y="464">04</text>
+  <text class="t" x="1202" y="518">Zero Trust:</text>
+  <text class="t" x="1202" y="556">Tenant Isolation &amp; Secrets</text>
+  <text class="s" x="1202" y="620">isolation of tenants and secrets</text>
+
+  <rect class="green" x="440" y="720" width="446" height="260" rx="20"/>
+  <text class="num" x="472" y="784">05</text>
+  <text class="t" x="472" y="838">CI/CD: GitHub Actions</text>
+  <text class="t" x="472" y="876">Quality Gates</text>
+  <text class="s" x="472" y="940">quality gates in the pipeline</text>
+
+  <rect class="green" x="926" y="720" width="446" height="260" rx="20"/>
+  <text class="num" x="958" y="784">06</text>
+  <text class="t" x="958" y="838">Agent Lifecycle: Versions,</text>
+  <text class="t" x="958" y="876">Quotas &amp; Retirement</text>
+  <text class="s" x="958" y="940">a lifecycle for versions</text>
+
+  <rect class="green" x="1412" y="720" width="446" height="260" rx="20"/>
+  <text class="num" x="1444" y="784">07</text>
+  <text class="t" x="1444" y="838">Responsible AI:</text>
+  <text class="t" x="1444" y="876">Fairness Probes &amp; Audit</text>
+  <text class="s" x="1444" y="940">a fairness and audit practice</text>
+</svg>

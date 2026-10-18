@@ -65,6 +65,8 @@ ProjectsAgentVersion agent = await project.AgentAdministrationClient.CreateAgent
 
 Versions are immutable, so a version number is a stable contract. A caller that pins `support-agent:1` keeps getting version 1 behavior while you publish and test version 2. A reference without a version targets the latest version.
 
+![Three callers reference m3-support-agent: pinning version 1 reaches version 1, while pinning version 2 or naming no version reaches version 2](../pptx/images/01-01-version-references.svg)
+
 ```python
 openai = project.get_openai_client()
 
@@ -108,11 +110,15 @@ Conversations store items, not only chat messages. Common item types are message
 
 Because the conversation and the agent are separate objects, you can continue one conversation on a newer agent version. History belongs to the conversation; behavior belongs to the version.
 
+![One stored conversation with seven items: version 1 answers the first two questions and version 2 summarizes the same conversation](../pptx/images/01-02-conversation-across-versions.svg)
+
 If a conversation grows past the model context size, the service truncates the input it sends to the model. The stored conversation itself is not truncated.
 
 ## Responses without a conversation
 
 A conversation is optional. Chain turns by passing the id of a previous stored response, or resend earlier items yourself and keep nothing on the server.
+
+![Three ways to carry history between turns: a conversation on the server, previous_response_id chained to a stored response, or earlier items that your code resends](../pptx/images/01-03-chaining-turns.svg)
 
 ```python
 first = openai.responses.create(

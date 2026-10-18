@@ -21,6 +21,8 @@ A routine has exactly one trigger and one action. It also has an input, a lifecy
 
 Event triggers authenticate to the external system through a project connection that Foundry provisions in the account's connector namespace. When a GitHub event fires, the issue payload replaces `action.input`; the configured input only applies to manual dispatches.
 
+![A timer, schedule or github_issue trigger, or a manual dispatch, starts the routine; its one action invokes one agent, and the run history records timer_delivery, schedule_delivery or queued_dispatch with the response id](../pptx/images/02-01-routine-run-flow.svg)
+
 ## Create routines with the Python SDK
 
 Routines need `azure-ai-projects` 2.4.0 or later and the Foundry User role on the project. The trigger map has one entry whose key is a name you choose.
@@ -98,6 +100,8 @@ for run in project.beta.routines.list_runs("m6-weekday-digest"):
 Each run records the trigger source (`timer_delivery`, `schedule_delivery`, `queued_dispatch`), the dispatch id and the response id, which links to the agent response and trace. REST uses `POST {project}/routines/{name}:dispatch_async?api-version=v1`; the older `:dispatch` route is not part of the public contract.
 
 Delivery makes up to five attempts with exponential backoff from 5 to 60 seconds. HTTP 408, 429 and 5xx are retried and other 4xx responses fail the run at once. Each attempt has a 30 second timeout that covers acceptance of the background request, so a completed run does not guarantee that the agent's own work is finished.
+
+![Up to five delivery attempts with exponential backoff of 5 to 60 seconds; an accepted request completes the run, 408, 429 and 5xx are retried, and any other 4xx fails the run at once](../pptx/images/02-02-delivery-retries.svg)
 
 ## The azd route
 

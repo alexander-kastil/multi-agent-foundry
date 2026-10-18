@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The .NET packages behind IChatClient</title>
+  <desc>Layer stack from application code to the Foundry project: application code calls GetResponseAsync on IChatClient with ChatClientBuilder and UseFunctionInvocation from Microsoft.Extensions.AI 10.4.1; AsIChatClient from Microsoft.Extensions.AI.OpenAI 10.4.1 adapts the Responses client; GetProjectOpenAIClient and GetProjectResponsesClient come from Azure.AI.Extensions.OpenAI 2.0.0; AIProjectClient with DefaultAzureCredential comes from Azure.AI.Projects 2.0.1 and Azure.Identity 1.21.0; it reaches the Foundry project through PROJECT_ENDPOINT. The adapter and the Responses client both resolve the OpenAI package 2.9.1, so they are upgraded together.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .down { stroke: #8c959f; stroke-width: 2; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="120" y="100" width="1340" height="104" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="150" y="143" class="b" font-size="30">Your application code</text>
+  <text x="150" y="183" class="m" font-size="26">client.GetResponseAsync(...)</text>
+  <text x="1430" y="163" text-anchor="end" class="s" font-size="26">never mentions Foundry or OpenAI</text>
+  <path class="down" d="M790,206 V230" marker-end="url(#arr)"/>
+
+  <rect x="120" y="240" width="1340" height="104" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="150" y="283"><tspan class="m b" font-size="30">IChatClient</tspan><tspan class="b"> and middleware</tspan></text>
+  <text x="150" y="323" class="m" font-size="26">ChatClientBuilder(...).UseFunctionInvocation()</text>
+  <text x="1430" y="283" text-anchor="end" class="m" font-size="26">Microsoft.Extensions.AI</text>
+  <text x="1430" y="323" text-anchor="end" class="m b" font-size="26">10.4.1</text>
+  <path class="down" d="M790,346 V370" marker-end="url(#arr)"/>
+
+  <rect x="120" y="380" width="1340" height="104" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="150" y="423" class="b" font-size="30">Adapter</text>
+  <text x="150" y="463" class="m" font-size="26">.AsIChatClient(model)</text>
+  <text x="1430" y="423" text-anchor="end" class="m" font-size="26">Microsoft.Extensions.AI.OpenAI</text>
+  <text x="1430" y="463" text-anchor="end" class="m b" font-size="26">10.4.1</text>
+  <path class="down" d="M790,486 V510" marker-end="url(#arr)"/>
+
+  <rect x="120" y="520" width="1340" height="104" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="150" y="563" class="b" font-size="30">Responses client</text>
+  <text x="150" y="603" class="m" font-size="26">.GetProjectOpenAIClient().GetProjectResponsesClient()</text>
+  <text x="1430" y="563" text-anchor="end" class="m" font-size="26">Azure.AI.Extensions.OpenAI</text>
+  <text x="1430" y="603" text-anchor="end" class="m b" font-size="26">2.0.0</text>
+  <path class="down" d="M790,626 V650" marker-end="url(#arr)"/>
+
+  <rect x="120" y="660" width="1340" height="104" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="150" y="703" class="b" font-size="30">Project client</text>
+  <text x="150" y="743" class="m" font-size="26">new AIProjectClient(endpoint, new DefaultAzureCredential())</text>
+  <text x="1430" y="703" text-anchor="end" class="m" font-size="26">Azure.AI.Projects <tspan class="b">2.0.1</tspan></text>
+  <text x="1430" y="743" text-anchor="end" class="m" font-size="26">Azure.Identity <tspan class="b">1.21.0</tspan></text>
+  <path class="down" d="M790,766 V790" marker-end="url(#arr)"/>
+
+  <rect x="120" y="800" width="1340" height="104" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="150" y="843" class="b" font-size="30">Foundry project</text>
+  <text x="150" y="883" class="m" font-size="26">PROJECT_ENDPOINT</text>
+  <text x="1430" y="863" text-anchor="end" class="s" font-size="26">one project endpoint</text>
+
+  <path d="M1480,380 h22 V624 h-22 M1502,502 h30" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <rect x="1540" y="398" width="300" height="208" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1690" y="448" text-anchor="middle" font-size="26">both resolve</text>
+  <text x="1690" y="492" text-anchor="middle" class="m b">OpenAI 2.9.1</text>
+  <text x="1690" y="540" text-anchor="middle" font-size="26">upgrade them</text>
+  <text x="1690" y="576" text-anchor="middle" font-size="26">together</text>
+
+  <text x="120" y="990" class="s" font-size="26">Application code depends only on <tspan class="m">IChatClient</tspan>; the composition root decides which model client sits behind it.</text>
+</svg>

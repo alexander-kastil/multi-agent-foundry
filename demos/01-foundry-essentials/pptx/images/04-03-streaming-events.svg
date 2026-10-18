@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The event sequence of a streamed text response</title>
+  <desc>Nine event types in the order a streamed text response emits them, with the matching .NET update class beside each: response.created (Created), response.in_progress (InProgress), response.output_item.added (OutputItemAdded), response.content_part.added (ContentPartAdded), a run of response.output_text.delta (OutputTextDelta), response.output_text.done (OutputTextDone), response.content_part.done (ContentPartDone), response.output_item.done (OutputItemDone) and response.completed (Completed). Brackets pair each added event with its done event. Only the delta events carry text, and the completed event carries event.response.usage. A bar below shows the run of stream_events.py: the first token after 1.75 seconds and completion after 2.63 seconds. A highlight steps through the events while a marker moves along the bar.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="120" y="70" class="s b" font-size="26"><tspan class="m">event.type</tspan> in Python</text>
+  <text x="900" y="70" class="s b" font-size="26">.NET update in C#</text>
+
+  <path d="M120,130 H95 V802 H120" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <path d="M190,298 H165 V718 H190" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <path d="M260,382 H235 V634 H260" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <path d="M330,466 H305 V550 H330" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <rect x="120" y="96" width="1740" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="144" y="141" class="m" font-size="28">response.created</text>
+  <text x="900" y="141" class="m s" font-size="28">Created</text>
+  <rect x="120" y="180" width="1740" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="144" y="225" class="m" font-size="28">response.in_progress</text>
+  <text x="900" y="225" class="m s" font-size="28">InProgress</text>
+  <rect x="190" y="264" width="1670" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="214" y="309" class="m" font-size="28">response.output_item.added</text>
+  <text x="900" y="309" class="m s" font-size="28">OutputItemAdded</text>
+  <rect x="260" y="348" width="1600" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="284" y="393" class="m" font-size="28">response.content_part.added</text>
+  <text x="900" y="393" class="m s" font-size="28">ContentPartAdded</text>
+  <rect x="330" y="432" width="1530" height="68" rx="10" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="354" y="477" class="m b" font-size="28">response.output_text.delta</text>
+  <text x="900" y="477" class="m s" font-size="28">OutputTextDelta</text>
+  <rect x="330" y="516" width="1530" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="354" y="561" class="m" font-size="28">response.output_text.done</text>
+  <text x="900" y="561" class="m s" font-size="28">OutputTextDone</text>
+  <rect x="260" y="600" width="1600" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="284" y="645" class="m" font-size="28">response.content_part.done</text>
+  <text x="900" y="645" class="m s" font-size="28">ContentPartDone</text>
+  <rect x="190" y="684" width="1670" height="68" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="214" y="729" class="m" font-size="28">response.output_item.done</text>
+  <text x="900" y="729" class="m s" font-size="28">OutputItemDone</text>
+  <rect x="120" y="768" width="1740" height="68" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="144" y="813" class="m" font-size="28">response.completed</text>
+  <text x="900" y="813" class="m s" font-size="28">Completed</text>
+  <rect x="1220" y="444" width="150" height="44" rx="8" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="1295" y="475" text-anchor="middle" font-size="26">Streaming</text>
+  <rect x="1384" y="444" width="140" height="44" rx="8" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="1454" y="475" text-anchor="middle" font-size="26">improves</text>
+  <rect x="1538" y="444" width="150" height="44" rx="8" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="1613" y="475" text-anchor="middle" font-size="26">perceived</text>
+  <rect x="1702" y="444" width="125" height="44" rx="8" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+  <text x="1764" y="475" text-anchor="middle" font-size="26">latency</text>
+  <text x="1220" y="813" class="m s" font-size="26">event.response.usage</text>
+  <rect x="120" y="96" width="1740" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="1">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="1;0" keyTimes="0;0.1250" calcMode="discrete"/>
+  </rect>
+  <rect x="120" y="180" width="1740" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.1250;0.2500" calcMode="discrete"/>
+  </rect>
+  <rect x="190" y="264" width="1670" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.2500;0.3750" calcMode="discrete"/>
+  </rect>
+  <rect x="260" y="348" width="1600" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.3750;0.5000" calcMode="discrete"/>
+  </rect>
+  <rect x="330" y="432" width="1530" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5000;0.7000" calcMode="discrete"/>
+  </rect>
+  <rect x="330" y="516" width="1530" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.7000;0.7250" calcMode="discrete"/>
+  </rect>
+  <rect x="260" y="600" width="1600" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.7250;0.7500" calcMode="discrete"/>
+  </rect>
+  <rect x="190" y="684" width="1670" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.7500;0.7750" calcMode="discrete"/>
+  </rect>
+  <rect x="120" y="768" width="1740" height="68" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1" keyTimes="0;0.7750" calcMode="discrete"/>
+  </rect>
+  <rect x="1220" y="444" width="150" height="44" rx="8" fill="#e0a534" fill-opacity="0.35" stroke="none" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5000;0.5500" calcMode="discrete"/>
+  </rect>
+  <rect x="1384" y="444" width="140" height="44" rx="8" fill="#e0a534" fill-opacity="0.35" stroke="none" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5500;0.6000" calcMode="discrete"/>
+  </rect>
+  <rect x="1538" y="444" width="150" height="44" rx="8" fill="#e0a534" fill-opacity="0.35" stroke="none" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.6000;0.6500" calcMode="discrete"/>
+  </rect>
+  <rect x="1702" y="444" width="125" height="44" rx="8" fill="#e0a534" fill-opacity="0.35" stroke="none" opacity="0">
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.6500;0.7000" calcMode="discrete"/>
+  </rect>
+
+  <text x="60" y="954" class="m s" font-size="26">stream_events.py</text>
+  <text x="340" y="906" font-size="26">0 s</text>
+  <text x="1338" y="906" text-anchor="middle" font-size="26"><tspan class="b">first token</tspan> 1.75 s</text>
+  <text x="1840" y="906" text-anchor="end" font-size="26"><tspan class="b">completed</tspan> 2.63 s</text>
+  <rect x="340" y="924" width="998" height="40" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1338" y="924" width="502" height="40" rx="6" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="839" y="1006" text-anchor="middle" class="s" font-size="26">events before the first token</text>
+  <text x="1589" y="1006" text-anchor="middle" class="s" font-size="26">text deltas, then the done events</text>
+  <circle cx="340" cy="944" r="14" fill="#ffffff" stroke="#24292f" stroke-width="4">
+    <animate attributeName="cx" dur="10s" repeatCount="indefinite" values="340;1338;1840;1840" keyTimes="0;0.5;0.8;1"/>
+  </circle>
+</svg>

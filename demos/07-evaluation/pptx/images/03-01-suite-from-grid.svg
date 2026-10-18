@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>An evaluation suite generated from a grid</title>
+  <desc>Three interaction categories, refund_calculation, returns_processing and order_modification, crossed with two personas, first-time buyer and premium repeat customer, and three adversarial conditions, none, vague request and policy edge case, give 18 cases, case-000 to case-017. The six cases with no adversarial condition are the canaries. Three historical probes from past incidents, probe-001 to probe-003, are appended to every full run, so the full run has 21 cases. Every case carries a ground truth; case-001 expects the agent to refund the amount actually paid, not the list price.</desc>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <rect x="484" y="56" width="472" height="56" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="94" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">first-time buyer</text>
+  <text x="560" y="172" font-size="26" fill="#57606a" text-anchor="middle">none</text>
+  <text x="720" y="156" font-size="26" fill="#57606a" text-anchor="middle">vague</text>
+  <text x="720" y="190" font-size="26" fill="#57606a" text-anchor="middle">request</text>
+  <text x="880" y="156" font-size="26" fill="#57606a" text-anchor="middle">policy</text>
+  <text x="880" y="190" font-size="26" fill="#57606a" text-anchor="middle">edge case</text>
+  <rect x="964" y="56" width="472" height="56" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1200" y="94" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">premium repeat customer</text>
+  <text x="1040" y="172" font-size="26" fill="#57606a" text-anchor="middle">none</text>
+  <text x="1200" y="156" font-size="26" fill="#57606a" text-anchor="middle">vague</text>
+  <text x="1200" y="190" font-size="26" fill="#57606a" text-anchor="middle">request</text>
+  <text x="1360" y="156" font-size="26" fill="#57606a" text-anchor="middle">policy</text>
+  <text x="1360" y="190" font-size="26" fill="#57606a" text-anchor="middle">edge case</text>
+  <text x="60" y="315" font-size="28" font-family="Consolas, Menlo, monospace" fill="#24292f">refund_calculation</text>
+  <rect x="488" y="223" width="144" height="175" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="560" y="305" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-000</text>
+  <text x="560" y="347" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">canary</text>
+  <rect x="648" y="223" width="144" height="175" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="305" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-001</text>
+  <rect x="808" y="223" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="880" y="305" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-002</text>
+  <rect x="968" y="223" width="144" height="175" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1040" y="305" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-003</text>
+  <text x="1040" y="347" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">canary</text>
+  <rect x="1128" y="223" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1200" y="305" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-004</text>
+  <rect x="1288" y="223" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1360" y="305" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-005</text>
+  <text x="60" y="510" font-size="28" font-family="Consolas, Menlo, monospace" fill="#24292f">returns_processing</text>
+  <rect x="488" y="418" width="144" height="175" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="560" y="500" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-006</text>
+  <text x="560" y="542" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">canary</text>
+  <rect x="648" y="418" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="500" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-007</text>
+  <rect x="808" y="418" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="880" y="500" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-008</text>
+  <rect x="968" y="418" width="144" height="175" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1040" y="500" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-009</text>
+  <text x="1040" y="542" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">canary</text>
+  <rect x="1128" y="418" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1200" y="500" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-010</text>
+  <rect x="1288" y="418" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1360" y="500" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-011</text>
+  <text x="60" y="705" font-size="28" font-family="Consolas, Menlo, monospace" fill="#24292f">order_modification</text>
+  <rect x="488" y="613" width="144" height="175" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="560" y="695" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-012</text>
+  <text x="560" y="737" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">canary</text>
+  <rect x="648" y="613" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="720" y="695" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-013</text>
+  <rect x="808" y="613" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="880" y="695" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-014</text>
+  <rect x="968" y="613" width="144" height="175" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1040" y="695" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-015</text>
+  <text x="1040" y="737" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">canary</text>
+  <rect x="1128" y="613" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1200" y="695" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-016</text>
+  <rect x="1288" y="613" width="144" height="175" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1360" y="695" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">case-017</text>
+  <text x="1680" y="100" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Historical probes</text>
+  <text x="1680" y="142" font-size="26" fill="#57606a" text-anchor="middle">from past incidents</text>
+  <text x="1680" y="180" font-size="26" fill="#57606a" text-anchor="middle">in every full run</text>
+  <rect x="1520" y="223" width="320" height="175" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1680" y="295" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">probe-001</text>
+  <text x="1680" y="339" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a" text-anchor="middle">returns_processing</text>
+  <rect x="1520" y="418" width="320" height="175" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1680" y="490" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">probe-002</text>
+  <text x="1680" y="534" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a" text-anchor="middle">returns_processing</text>
+  <rect x="1520" y="613" width="320" height="175" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1680" y="685" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">probe-003</text>
+  <text x="1680" y="729" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a" text-anchor="middle">order_modification</text>
+  <rect x="60" y="830" width="1380" height="210" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="878" font-size="28" fill="#24292f"><tspan font-family="Consolas, Menlo, monospace">case-001</tspan><tspan font-weight="700"> ground truth</tspan></text>
+  <text x="90" y="924" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">expected_action</text>
+  <text x="380" y="924" font-size="26" fill="#24292f">Refund the amount actually paid, not the list price.</text>
+  <text x="90" y="964" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">must_include</text>
+  <text x="380" y="964" font-size="26" fill="#24292f">Refund amount for the item is 27, not 36</text>
+  <text x="90" y="1004" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a">should_refuse</text>
+  <text x="380" y="1004" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">false</text>
+  <rect x="1520" y="830" width="320" height="210" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1680" y="880" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">Full run</text>
+  <text x="1680" y="930" font-size="26" fill="#24292f" text-anchor="middle">18 cases + 3 probes</text>
+  <text x="1680" y="984" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">21 cases</text>
+</svg>

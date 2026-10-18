@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Three terminals: a local agent, a question to it, and Agent Inspector</title>
+  <desc>Terminal 1 runs the local agent first, local-agent/main.py in Python or local-agent-cs in C#, an Agent Framework agent with the get_weather tool that listens on localhost:8088 with the Responses protocol. Terminal 2 sends What is the weather in Graz? with ask.py or dotnet run -- ask as a POST to /responses. The agent returns three output items in order: function_call, function_call_output and message, with the answer The weather in Graz is sunny with a high of 21°C. Terminal 3 runs azd ai inspector launch, which serves the Agent Inspector UI at http://127.0.0.1:8087 with localhost:8088 as its target and shows the request, the tool call with its arguments, the streamed events and the final output. A dot follows the question to the agent, the tool and the output items, then the inspector connection.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="90" width="540" height="310" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="142" class="b" font-size="30">Terminal 2</text>
+  <text x="90" y="184" class="s" font-size="26">send a question</text>
+  <text x="90" y="240" class="m" font-size="26">ask.py</text>
+  <text x="90" y="282" class="m" font-size="26">"What is the weather in Graz?"</text>
+  <text x="90" y="352" class="s" font-size="26">C#: <tspan class="m" fill="#24292f">dotnet run -- ask</tspan></text>
+
+  <rect x="60" y="560" width="540" height="390" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="90" y="612" class="b" font-size="30">Terminal 3</text>
+  <text x="90" y="660" class="m" font-size="26">azd ai inspector launch</text>
+  <text x="90" y="730" class="b">Agent Inspector UI</text>
+  <text x="90" y="772" class="m" font-size="26">http://127.0.0.1:8087</text>
+  <text x="90" y="836" class="s" font-size="26">shows the request, the tool call</text>
+  <text x="90" y="872" class="s" font-size="26">with its arguments, the streamed</text>
+  <text x="90" y="908" class="s" font-size="26">events and the final output</text>
+
+  <rect x="820" y="250" width="440" height="550" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="850" y="302" class="b" font-size="30">Terminal 1</text>
+  <text x="850" y="342" class="s" font-size="26">start the agent first</text>
+  <text x="850" y="400" class="m" font-size="26">local-agent/main.py</text>
+  <text x="850" y="440" class="m" font-size="26">local-agent-cs</text>
+  <text x="850" y="520" class="m b" font-size="32">localhost:8088</text>
+  <text x="850" y="562" class="s" font-size="26">Responses protocol</text>
+  <rect x="850" y="610" width="380" height="64" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1040" y="652" text-anchor="middle" class="m" font-size="28">get_weather</text>
+  <text x="850" y="746" class="s" font-size="26">Agent Framework, one tool</text>
+
+  <path d="M600,245 H710 V420 H812" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="614" y="226" class="m s" font-size="26">POST /responses</text>
+
+  <path d="M600,785 H710 V700 H812" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="614" y="846" class="s" font-size="26">target <tspan class="m">localhost:8088</tspan></text>
+
+  <path d="M1260,525 H1432" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="1346" y="507" text-anchor="middle" class="s" font-size="26">output items</text>
+
+  <rect x="1440" y="250" width="420" height="550" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1468" y="290" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="327" class="m" font-size="26">function_call</text>
+  <path d="M1650,346 V384" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="1468" y="390" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="427" class="m" font-size="26">function_call_output</text>
+  <path d="M1650,446 V484" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="1468" y="490" width="364" height="56" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1490" y="527" class="m" font-size="26">message</text>
+  <text x="1468" y="620" font-size="26">The weather in Graz is</text>
+  <text x="1468" y="656" font-size="26">sunny with a high of 21°C.</text>
+  <text x="1468" y="736" class="s" font-size="26">the tool ran first</text>
+
+  <rect x="850" y="610" width="380" height="64" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.15;0.3" calcMode="discrete"/>
+  </rect>
+  <rect x="1468" y="290" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.4;0.475" calcMode="discrete"/>
+  </rect>
+  <rect x="1468" y="390" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.475;0.55" calcMode="discrete"/>
+  </rect>
+  <rect x="1468" y="490" width="364" height="56" rx="10" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.55;0.625" calcMode="discrete"/>
+  </rect>
+  <rect x="60" y="560" width="540" height="390" rx="14" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1" keyTimes="0;0.8" calcMode="discrete"/>
+  </rect>
+
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M600,245 H710 V420 H812" keyPoints="0;0;1;1" keyTimes="0;0.0125;0.15;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.0125;0.15" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M1260,525 H1432" keyPoints="0;0;1;1" keyTimes="0;0.3;0.4;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.3;0.4" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M600,785 H710 V700 H812" keyPoints="0;0;1;1" keyTimes="0;0.625;0.8;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.625;0.8" calcMode="discrete"/>
+  </circle>
+</svg>

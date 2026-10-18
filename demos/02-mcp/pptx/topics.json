@@ -1,0 +1,10 @@
+{
+  "topics": [
+    {"title": "MCP Servers: Tools, Resources & Prompts", "subtitle": "One HR server in C# and Python"},
+    {"title": "Transports & MCP Inspector Debugging", "subtitle": "stdio versus Streamable HTTP"},
+    {"title": "MCP Authorization: OAuth 2.1 & PRM", "subtitle": "Entra ID tokens, scopes and step-up"},
+    {"title": "Hosting MCP on Azure Functions", "subtitle": "MCP tool triggers on Flex Consumption"},
+    {"title": "MCP Resilience: Retry & Circuit Breaker", "subtitle": "Retry, circuit breaker and fallback"},
+    {"title": "Foundry Toolbox: Managed MCP Endpoints", "subtitle": "Publish tools once, promote versions"}
+  ]
+}

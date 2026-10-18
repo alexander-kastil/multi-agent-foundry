@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Running the plan in waves</title>
+  <desc>The meta_agent_planner receives the query and the AGENT_REGISTRY and returns a JSON plan: complexity complex, four subtasks, T1, T2 and T3 with empty depends_on and T4 depending on T1, T2 and T3. execute_plan repeats one loop while tasks are pending: find the ready tasks whose depends_on are all in completed, run the wave in parallel with asyncio.gather, and store the results in completed as context for the next wave. For the complex query wave 1 runs T1, T2 and T3 with T4 still pending, wave 2 runs T4, and the final output is the result of T4. When no task is ready, as in the cycle_check.py plan where T1 waits for T2 and T2 waits for T1, the guard raises a ValueError instead of looping forever.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #24292f; }
+      .s { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #57606a; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="145" y1="170" x2="145" y2="238"/>
+    <line x1="385" y1="170" x2="385" y2="238"/>
+    <line x1="290" y1="400" x2="290" y2="468"/>
+    <polyline points="520,520 560,520 560,275 618,275"/>
+    <line x1="1000" y1="275" x2="1058" y2="275"/>
+    <line x1="1440" y1="275" x2="1498" y2="275"/>
+    <polyline points="1670,380 1670,450 810,450 810,382"/>
+    <line x1="680" y1="380" x2="680" y2="618"/>
+  </g>
+
+  <rect x="60" y="80" width="170" height="90" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="145" y="135" font-size="28" text-anchor="middle">query</text>
+  <rect x="250" y="80" width="270" height="90" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="385" y="134" font-size="26" text-anchor="middle">AGENT_REGISTRY</text>
+
+  <rect x="60" y="240" width="460" height="160" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="290" y="308" font-size="28" font-weight="700" text-anchor="middle">meta_agent_planner</text>
+  <text class="t" x="290" y="356" font-size="26" text-anchor="middle">returns a JSON plan</text>
+
+  <rect x="60" y="470" width="460" height="530" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="90" y="525" font-size="30" font-weight="700">JSON plan</text>
+  <text class="t" x="90" y="572" font-size="26">Complexity: complex</text>
+  <text class="t" x="90" y="608" font-size="26">subtasks: 4</text>
+  <text class="s" x="90" y="672" font-size="26">task_id</text>
+  <text class="s" x="200" y="672" font-size="26">depends_on</text>
+  <text class="m" x="90" y="727" font-size="28">T1</text>
+  <text class="m" x="200" y="727" font-size="28">[]</text>
+  <text class="m" x="90" y="777" font-size="28">T2</text>
+  <text class="m" x="200" y="777" font-size="28">[]</text>
+  <text class="m" x="90" y="827" font-size="28">T3</text>
+  <text class="m" x="200" y="827" font-size="28">[]</text>
+  <text class="m" x="90" y="877" font-size="28">T4</text>
+  <text class="m" x="200" y="877" font-size="28">["T1", "T2", "T3"]</text>
+  <text class="s" x="90" y="950" font-size="26">only the necessary subtasks</text>
+
+  <text class="t" x="620" y="130" font-size="26"><tspan class="m" font-size="30" font-weight="700">execute_plan</tspan>  repeats one loop</text>
+
+  <rect x="620" y="170" width="380" height="210" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="650" y="230" font-size="28" font-weight="700">1  find ready tasks</text>
+  <text class="t" x="650" y="285" font-size="26">every <tspan class="m">depends_on</tspan></text>
+  <text class="t" x="650" y="322" font-size="26">is in <tspan class="m">completed</tspan></text>
+
+  <rect x="1060" y="170" width="380" height="210" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="1090" y="230" font-size="28" font-weight="700">2  run the wave</text>
+  <text class="t" x="1090" y="285" font-size="26">in parallel with</text>
+  <text class="m" x="1090" y="322" font-size="26">asyncio.gather</text>
+
+  <rect x="1500" y="170" width="340" height="210" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="1530" y="230" font-size="28" font-weight="700">3  store results</text>
+  <text class="t" x="1530" y="285" font-size="26">in <tspan class="m">completed</tspan> as</text>
+  <text class="t" x="1530" y="322" font-size="26">context for the</text>
+  <text class="t" x="1530" y="356" font-size="26">next wave</text>
+
+  <text class="m" x="1240" y="495" font-size="26" text-anchor="middle">while pending</text>
+  <text class="s" x="698" y="545" font-size="26">no task ready</text>
+
+  <rect x="600" y="620" width="600" height="380" rx="16" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text class="t" x="630" y="675" font-size="28" font-weight="700">Guard against a bad plan</text>
+  <text class="t" x="630" y="725" font-size="26"><tspan class="m">cycle_check.py</tspan>: T1 waits for T2,</text>
+  <text class="t" x="630" y="763" font-size="26">T2 waits for T1</text>
+  <text class="m" x="630" y="830" font-size="26">ValueError:</text>
+  <text class="m" x="630" y="868" font-size="26">Plan has a dependency cycle</text>
+  <text class="m" x="630" y="906" font-size="26">or an unknown dependency</text>
+  <text class="m" x="630" y="944" font-size="26">among ['T1', 'T2']</text>
+
+  <rect x="1260" y="620" width="600" height="380" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1290" y="675" font-size="28" font-weight="700">Complex query</text>
+  <text class="t" x="1290" y="760" font-size="26" font-weight="700">Wave 1</text>
+  <rect x="1400" y="722" width="68" height="54" rx="10" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="1434" y="758" font-size="26" text-anchor="middle">T1</text>
+  <rect x="1482" y="722" width="68" height="54" rx="10" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="1516" y="758" font-size="26" text-anchor="middle">T2</text>
+  <rect x="1564" y="722" width="68" height="54" rx="10" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="1598" y="758" font-size="26" text-anchor="middle">T3</text>
+  <text class="s" x="1660" y="758" font-size="26">pending: T4</text>
+  <text class="t" x="1290" y="855" font-size="26" font-weight="700">Wave 2</text>
+  <rect x="1400" y="817" width="68" height="54" rx="10" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="m" x="1434" y="853" font-size="26" text-anchor="middle">T4</text>
+  <text class="s" x="1660" y="853" font-size="26">pending: none</text>
+  <rect x="1290" y="905" width="540" height="64" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1560" y="947" font-size="26" text-anchor="middle"><tspan font-weight="700">Final output:</tspan> result of T4</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="612" y="162" width="396" height="226" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.0833;0.3333;0.4167" values="1;0;1;0"/>
+    </rect>
+    <rect x="1052" y="162" width="396" height="226" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.0833;0.1667;0.4167;0.5" values="0;1;0;1;0"/>
+    </rect>
+    <rect x="1492" y="162" width="356" height="226" rx="22" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1667;0.25;0.5;0.5833" values="0;1;0;1;0"/>
+    </rect>
+    <rect x="1276" y="712" width="568" height="74" rx="14" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.0833;0.2917" values="0;1;0"/>
+    </rect>
+    <rect x="1276" y="807" width="568" height="74" rx="14" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4167;0.625" values="0;1;0"/>
+    </rect>
+    <rect x="1282" y="897" width="556" height="80" rx="16" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.625" values="0;1"/>
+    </rect>
+  </g>
+
+  <circle r="13" cx="0" cy="0" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.25;0.3333;1" path="M1670,380 L1670,450 L810,450 L810,380"/>
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.3333" values="0;1;0"/>
+  </circle>
+</svg>

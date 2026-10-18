@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The seven topics of Workflows and Multi-Agent Orchestration</title>
+  <desc>Seven numbered topic cards in reading order, four in the first row and three in the second, joined by arrows. 01 Workflows: Executors, Edges and Supersteps, typed graphs and the superstep scheduler. 02 Checkpointing and Human-in-the-Loop Requests, pause for a person and resume in another process. 03 Sequential, Concurrent and Handoff Orchestration, pass in agents and get back a workflow. 04 Group Chat and Magentic Orchestration, a manager decides who speaks next. 05 Task Decomposition: Planner and Waves, a planner builds the graph and waves run it. 06 Resilient Orchestration: Quorum and Supervisors, the hub keeps running when spokes fail. 07 Declarative YAML and Functional Workflows, YAML, plain Python and the portal migration. A grey card notes that everything runs on the Microsoft Agent Framework 1.x workflow engine on a Microsoft Foundry project.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <rect x="60" y="140" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="262.5" y="204" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">01</text>
+  <text x="262.5" y="281" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Workflows: Executors,</text>
+  <text x="262.5" y="319" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Edges &amp; Supersteps</text>
+  <text x="262.5" y="417" font-size="26" fill="#57606a" text-anchor="middle">Typed graphs and the</text>
+  <text x="262.5" y="453" font-size="26" fill="#57606a" text-anchor="middle">superstep scheduler</text>
+  <rect x="525" y="140" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="727.5" y="204" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">02</text>
+  <text x="727.5" y="262" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Checkpointing &amp;</text>
+  <text x="727.5" y="300" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Human-in-the-Loop</text>
+  <text x="727.5" y="338" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Requests</text>
+  <text x="727.5" y="417" font-size="26" fill="#57606a" text-anchor="middle">Pause for a person,</text>
+  <text x="727.5" y="453" font-size="26" fill="#57606a" text-anchor="middle">resume in another process</text>
+  <rect x="990" y="140" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1192.5" y="204" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">03</text>
+  <text x="1192.5" y="262" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Sequential, Concurrent</text>
+  <text x="1192.5" y="300" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">&amp; Handoff</text>
+  <text x="1192.5" y="338" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Orchestration</text>
+  <text x="1192.5" y="417" font-size="26" fill="#57606a" text-anchor="middle">Pass in agents,</text>
+  <text x="1192.5" y="453" font-size="26" fill="#57606a" text-anchor="middle">get back a workflow</text>
+  <rect x="1455" y="140" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1657.5" y="204" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">04</text>
+  <text x="1657.5" y="281" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Group Chat &amp; Magentic</text>
+  <text x="1657.5" y="319" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Orchestration</text>
+  <text x="1657.5" y="417" font-size="26" fill="#57606a" text-anchor="middle">A manager decides</text>
+  <text x="1657.5" y="453" font-size="26" fill="#57606a" text-anchor="middle">who speaks next</text>
+  <rect x="60" y="615" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="262.5" y="679" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">05</text>
+  <text x="262.5" y="756" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Task Decomposition:</text>
+  <text x="262.5" y="794" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Planner &amp; Waves</text>
+  <text x="262.5" y="892" font-size="26" fill="#57606a" text-anchor="middle">A planner builds the graph,</text>
+  <text x="262.5" y="928" font-size="26" fill="#57606a" text-anchor="middle">waves run it</text>
+  <rect x="525" y="615" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="727.5" y="679" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">06</text>
+  <text x="727.5" y="756" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Resilient Orchestration:</text>
+  <text x="727.5" y="794" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Quorum &amp; Supervisors</text>
+  <text x="727.5" y="892" font-size="26" fill="#57606a" text-anchor="middle">The hub keeps running</text>
+  <text x="727.5" y="928" font-size="26" fill="#57606a" text-anchor="middle">when spokes fail</text>
+  <rect x="990" y="615" width="405" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1192.5" y="679" font-size="40" font-weight="700" fill="#57606a" text-anchor="middle">07</text>
+  <text x="1192.5" y="756" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Declarative YAML &amp;</text>
+  <text x="1192.5" y="794" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Functional Workflows</text>
+  <text x="1192.5" y="892" font-size="26" fill="#57606a" text-anchor="middle">YAML, plain Python and</text>
+  <text x="1192.5" y="928" font-size="26" fill="#57606a" text-anchor="middle">the portal migration</text>
+  <rect x="1455" y="615" width="405" height="360" rx="24" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1657.5" y="756" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Microsoft Agent</text>
+  <text x="1657.5" y="794" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Framework 1.x</text>
+  <text x="1657.5" y="865" font-size="26" fill="#57606a" text-anchor="middle">workflow engine on a</text>
+  <text x="1657.5" y="901" font-size="26" fill="#57606a" text-anchor="middle">Microsoft Foundry project</text>
+  <g fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="465" y1="320" x2="521" y2="320"/>
+    <line x1="930" y1="320" x2="986" y2="320"/>
+    <line x1="1395" y1="320" x2="1451" y2="320"/>
+    <line x1="465" y1="795" x2="521" y2="795"/>
+    <line x1="930" y1="795" x2="986" y2="795"/>
+    <path d="M1657.5,500 V557 H262.5 V611"/>
+  </g>
+</svg>

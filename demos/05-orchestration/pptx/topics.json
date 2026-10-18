@@ -1,0 +1,32 @@
+{
+  "topics": [
+    {
+      "title": "Workflows: Executors, Edges & Supersteps",
+      "subtitle": "Typed graphs and the superstep scheduler"
+    },
+    {
+      "title": "Checkpointing & Human-in-the-Loop Requests",
+      "subtitle": "Pause for a person, resume in another process"
+    },
+    {
+      "title": "Sequential, Concurrent & Handoff Orchestration",
+      "subtitle": "Pass in agents, get back a workflow"
+    },
+    {
+      "title": "Group Chat & Magentic Orchestration",
+      "subtitle": "A manager decides who speaks next"
+    },
+    {
+      "title": "Task Decomposition: Planner & Waves",
+      "subtitle": "A planner builds the graph, waves run it"
+    },
+    {
+      "title": "Resilient Orchestration: Quorum & Supervisors",
+      "subtitle": "The hub keeps running when spokes fail"
+    },
+    {
+      "title": "Declarative YAML & Functional Workflows",
+      "subtitle": "YAML, plain Python and the portal migration"
+    }
+  ]
+}

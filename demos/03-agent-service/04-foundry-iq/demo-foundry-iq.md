@@ -105,9 +105,13 @@ Expected output (timings and token counts vary):
 
 Minimal returns raw extracted passages from both sources without any model call. Low and medium split the question into subqueries, search the sources and return a synthesized answer with `ref_id` citations. For a question this size the extra reasoning of medium buys little, and it takes almost twice as long as low in this run.
 
+![Minimal, low and medium reasoning effort compared: minimal makes no model call and returns extracted content, low and medium let gpt-5.4 plan subqueries and return a cited answer, with the time, searches and tokens of one demo run](../pptx/images/04-01-reasoning-effort.svg)
+
 ## Step 4: Create the project connection
 
 The agent reaches the knowledge base through its MCP endpoint, and a project connection provides the credential. This is a `RemoteTool` connection that signs in with the project managed identity for the Azure AI Search audience.
+
+![The agent m3-outdoor-agent and its MCPTool reach the knowledge base m3-outdoor-kb on Azure AI Search through the project connection m3-outdoor-kb-mcp as the project identity with Search Index Data Reader, and the knowledge base calls gpt-5.4 as the search service identity with Cognitive Services User](../pptx/images/04-02-knowledge-base-connection.svg)
 
 ```python
 requests.put(

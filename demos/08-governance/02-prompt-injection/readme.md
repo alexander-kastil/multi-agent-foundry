@@ -2,6 +2,8 @@
 
 A prompt injection is text that an agent reads as an instruction when it should read it as data. Direct attacks arrive in the user's message, and indirect attacks hide inside documents, emails and tool results that the agent is asked to process. Microsoft's guidance is to assume some attacks will succeed and to stack probabilistic and deterministic defenses, so this topic builds three layers around a clinical summary agent and measures what each layer adds.
 
+![Three lanes, one per defense layer: layer 1 runs the platform filter and the model with the baseline prompt, layer 2 adds delimiters and the hardened prompt, layer 3 adds an input scan before and an output check after the call](../pptx/images/02-01-defense-layers.svg)
+
 ## The test corpus
 
 Defenses need an attack set that you can run again after every change. `tests.json` holds four cases, each with patterns that the answer must not contain.

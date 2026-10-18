@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Where the built-in tools run</title>
+  <desc>An agent version holds model, instructions and tools in one definition, and the service runs each tool. Code Interpreter runs Python in a sandbox in the project's region with no outbound network requests, reading quarterly_results.csv. File Search searches the vector store m3-product-docs, which chunks and embeds product-info.md. Both stay inside the Azure compliance boundary. Web Search reaches the public web, needs no Bing resource or connection, and sends the query outside the boundary.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <path d="M50,70 H1870 V700 H1180 V1010 H50 Z" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="14 10"/>
+  <text x="80" y="114" class="sec">Azure compliance boundary</text>
+
+  <rect x="90" y="370" width="420" height="300" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="430" class="b" font-size="30">Agent version</text>
+  <text x="120" y="482" class="sec">model, instructions and</text>
+  <text x="120" y="520" class="sec">tools in one definition</text>
+  <text x="120" y="590" class="sec">the service runs</text>
+  <text x="120" y="628" class="sec">each tool</text>
+
+  <rect x="620" y="180" width="470" height="160" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="650" y="245" class="b" font-size="30">Code Interpreter</text>
+  <text x="650" y="295" class="mono sec">CodeInterpreterTool</text>
+
+  <rect x="620" y="460" width="470" height="160" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="650" y="525" class="b" font-size="30">File Search</text>
+  <text x="650" y="575" class="mono sec">FileSearchTool</text>
+
+  <rect x="620" y="780" width="470" height="160" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="650" y="845" class="b" font-size="30">Web Search</text>
+  <text x="650" y="895" class="mono sec">WebSearchTool</text>
+
+  <line x1="510" y1="440" x2="618" y2="270" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="510" y1="520" x2="618" y2="540" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="510" y1="610" x2="618" y2="850" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1250" y="120" width="580" height="270" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1280" y="178" class="b" font-size="30">Sandbox</text>
+  <text x="1280" y="228" class="sec">Python in the project's region</text>
+  <text x="1280" y="268" class="sec">no outbound network requests</text>
+  <text x="1280" y="336" class="mono">quarterly_results.csv</text>
+
+  <rect x="1250" y="420" width="580" height="250" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1280" y="478" class="b" font-size="30">Vector store</text>
+  <text x="1280" y="526" class="mono">m3-product-docs</text>
+  <text x="1280" y="572" class="sec">chunks, embeds and searches</text>
+  <text x="1280" y="630" class="mono">product-info.md</text>
+
+  <rect x="1250" y="760" width="580" height="200" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1280" y="818" class="b" font-size="30">Public web</text>
+  <text x="1280" y="866" class="sec">no Bing resource or connection</text>
+  <text x="1280" y="906" class="sec">the query leaves the boundary</text>
+
+  <line x1="1090" y1="260" x2="1248" y2="260" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1090" y1="540" x2="1248" y2="540" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1090" y1="860" x2="1248" y2="860" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

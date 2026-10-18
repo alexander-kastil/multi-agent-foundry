@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The checkout pipeline with pricing agent v1 and v2</title>
+  <desc>Each checkout runs order lookup, the pricing agent and the payment step. Pricing agent v1 replies with the numeric value only, so process_payment, which accepts only a plain number matching PRICE_PATTERN, marks all six v1 checkouts paid. Pricing agent v2 adds the currency symbol and a one sentence explanation, so all six v2 checkouts are rejected with non_numeric_amount, while the agent_pricing step reports ok in both. Result: 12 checkouts, 6 failed, error rate 50%, severity P1. A dot travels the v1 path, then the v2 path.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke-width="2">
+    <rect x="60" y="330" width="300" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f"/>
+    <rect x="440" y="110" width="500" height="340" rx="24" fill="#f3edff" stroke="#8c959f"/>
+    <rect x="440" y="570" width="500" height="340" rx="24" fill="#f3edff" stroke="#8c959f"/>
+    <rect x="1020" y="330" width="380" height="360" rx="24" fill="#eaf2ff" stroke="#8c959f"/>
+    <rect x="1480" y="150" width="380" height="260" rx="24" fill="#e9f7ef" stroke="#8c959f"/>
+    <rect x="1480" y="610" width="380" height="260" rx="24" fill="#fdecec" stroke="#c24141"/>
+    <rect x="470" y="372" width="300" height="48" rx="24" fill="#ffffff" stroke="#8c959f"/>
+    <rect x="470" y="832" width="300" height="48" rx="24" fill="#ffffff" stroke="#8c959f"/>
+    <rect x="490" y="945" width="940" height="70" rx="20" fill="#f6f8fa" stroke="#8c959f"/>
+  </g>
+
+  <g font-size="30" font-weight="700" fill="#24292f">
+    <text x="90" y="400">Order lookup</text>
+    <text x="470" y="175">Pricing agent v1</text>
+    <text x="470" y="635">Pricing agent v2</text>
+    <text x="1050" y="400">Payment step</text>
+    <text x="1515" y="230" font-size="34">paid</text>
+    <text x="1515" y="690" font-size="34">rejected</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#57606a">
+    <text x="90" y="448">order_lookup</text>
+    <text x="470" y="222">m7-pricing-agent</text>
+    <text x="470" y="682">m7-pricing-agent</text>
+    <text x="1050" y="448">process_payment</text>
+    <text x="1050" y="625">PRICE_PATTERN</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="90" y="520">order A100</text>
+    <text x="90" y="565">total 120.0</text>
+    <text x="90" y="610">10% discount</text>
+    <text x="470" y="290">numeric value only,</text>
+    <text x="470" y="330">two decimals, no currency symbol</text>
+    <text x="470" y="750">currency symbol and a</text>
+    <text x="470" y="790">one sentence explanation</text>
+    <text x="1050" y="520">accepts a plain number</text>
+    <text x="1515" y="290">all 6 v1 checkouts</text>
+    <text x="1515" y="800">all 6 v2 checkouts</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#24292f">
+    <text x="490" y="405">agent_pricing: ok</text>
+    <text x="490" y="865">agent_pricing: ok</text>
+    <text x="1050" y="580" font-size="28">\d+(\.\d{1,2})?</text>
+    <text x="1515" y="740">non_numeric_amount</text>
+    <text x="960" y="989" font-size="28" text-anchor="middle">12 checkouts, 6 failed, error rate 50%, severity P1</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <path d="M210,326 L210,280 L432,280"/>
+    <path d="M210,694 L210,740 L432,740"/>
+    <path d="M944,280 L1210,280 L1210,322"/>
+    <path d="M944,740 L1210,740 L1210,698"/>
+    <path d="M1404,450 L1440,450 L1440,280 L1472,280"/>
+    <path d="M1404,570 L1440,570 L1440,740 L1472,740"/>
+  </g>
+
+  <g fill="#e0a534" stroke="#ffffff" stroke-width="3">
+    <circle r="14" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.1389;1" path="M210,326 L210,280 L432,280"/>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.1389"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.1389;0.2778;1" path="M944,280 L1210,280 L1210,322"/>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1389;0.2778"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.2778;0.4167;1" path="M1404,450 L1440,450 L1440,280 L1472,280"/>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2778;0.4167"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.4167;0.5556;1" path="M210,694 L210,740 L432,740"/>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4167;0.5556"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.5556;0.6944;1" path="M944,740 L1210,740 L1210,698"/>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5556;0.6944"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.6944;0.8333;1" path="M1404,570 L1440,570 L1440,740 L1472,740"/>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6944;0.8333"/>
+    </circle>
+  </g>
+</svg>

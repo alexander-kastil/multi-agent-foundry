@@ -65,6 +65,8 @@ Agent m3-investment-analyst version 1
 
 `run_turn` in `loop_core.py` is the loop every later step calls. It sends the input, executes every `function_call` item locally, returns the `function_call_output` items and repeats until a response has no function call.
 
+![The run_turn loop: your code sends the request, Foundry Agent Service runs the agent, your code checks for a function_call item, runs get_market_data locally and sends back a function_call_output with the same call_id until no call remains](../pptx/images/07-01-inner-tool-loop.svg)
+
 ```python
 outputs = [
     FunctionCallOutput(
@@ -94,6 +96,8 @@ There is no separate output to check for this step; the next steps depend on it,
 ## Step 3: Plan, then act
 
 The first turn asks for a JSON plan and nothing else. The second turn is chained to the first with `previous_response_id`, so the agent executes a plan it can see.
+
+![One response chain: a JSON plan, a check in your code, the executed plan, three reflection cycles with confidence 6, 5 and 4 ended by the cycle cap, and bull and bear branches forked from the reflected response](../pptx/images/07-02-response-chain.svg)
 
 ```python
 plan_response = run_turn(openai_client, 'Decompose this task into research steps. Reply as JSON: {"steps": [...]}. Task: ' + task)
@@ -190,6 +194,8 @@ Both scenarios quote the 35.2 P/E from the first research pass. They reuse the d
 ## Step 6: Persist the session and resume it in a new process
 
 The end of `loops.py` opens a conversation, asks about GOOG and writes the conversation id, the last response id and the agent version to `sessions.json`. Then the process exits.
+
+![loops.py writes two ids and metadata to sessions.json and exits; resume.py reads the entry in a new process and continues the conversation that Foundry Agent Service stores, which answers GOOG with a P/E of 24.8](../pptx/images/07-03-persist-resume.svg)
 
 ```python
 save_session("analyst-session-1", conversation.id, first.id, {"ticker": "GOOG", "workflow": "research", "agent_version": agent.version})

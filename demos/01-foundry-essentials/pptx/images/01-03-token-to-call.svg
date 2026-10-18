@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>From sign-in to the first call</title>
+  <desc>DefaultAzureCredential picks up the az login session locally or a managed identity in Azure and requests an access token with the audience https://ai.azure.com. The token reaches the project pro-code-agents inside the Foundry resource pro-code-agents-foundry, resource group rg-pro-code-agents and the subscription. A Foundry User role assignment at the resource, resource group or subscription flows down to the project, so the first data plane call returns output: ready.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="80" y="180" width="380" height="120" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="270" y="232" text-anchor="middle"><tspan class="m b">az login</tspan> session</text>
+  <text x="270" y="272" text-anchor="middle" class="s" font-size="26">locally</text>
+  <rect x="500" y="180" width="380" height="120" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="690" y="232" text-anchor="middle" class="b">Managed identity</text>
+  <text x="690" y="272" text-anchor="middle" class="s" font-size="26">in Azure</text>
+  <path d="M270,300 L392,382" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M690,300 L568,382" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="200" y="390" width="560" height="100" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="480" y="451" text-anchor="middle" class="m b" font-size="30">DefaultAzureCredential</text>
+  <path d="M480,490 V570" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="80" y="578" width="800" height="300" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="116" y="630" class="b" font-size="30">Access token</text>
+  <text x="116" y="700" class="m" font-size="26"><tspan class="s">audience :</tspan><tspan class="b"> https://ai.azure.com</tspan></text>
+  <text x="116" y="760" class="m s" font-size="26">identity :<tspan font-family="'Segoe UI', Helvetica, Arial, sans-serif" fill="#24292f"> your user or the managed identity</tspan></text>
+  <text xml:space="preserve" x="116" y="820" class="m s" font-size="26">tenant   :<tspan font-family="'Segoe UI', Helvetica, Arial, sans-serif" fill="#24292f"> your Microsoft Entra ID tenant</tspan></text>
+
+  <rect x="960" y="70" width="880" height="940" rx="18" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="990" y="114" class="b">Subscription</text>
+  <rect x="1000" y="130" width="800" height="840" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1030" y="174"><tspan class="b">Resource group </tspan><tspan class="m s" font-size="26">rg-pro-code-agents</tspan></text>
+  <rect x="1040" y="192" width="720" height="738" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1070" y="236"><tspan class="b">Foundry resource </tspan><tspan class="m s" font-size="26">pro-code-agents-foundry</tspan></text>
+
+  <rect x="1070" y="262" width="660" height="110" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1400" y="306" text-anchor="middle"><tspan class="s" font-size="26">Role assignment: </tspan><tspan class="b">Foundry User</tspan></text>
+  <text x="1400" y="346" text-anchor="middle" class="s" font-size="26">here or at any scope above, flows down</text>
+  <rect id="badgeGlow" x="1070" y="262" width="660" height="110" rx="12" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.54;0.62;0.66;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <path d="M1400,372 V470" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="1080" y="478" width="640" height="420" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1110" y="524"><tspan class="b">Project </tspan><tspan class="m s" font-size="26">pro-code-agents</tspan></text>
+  <rect x="1140" y="578" width="550" height="120" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1415" y="626" text-anchor="middle" class="b">First data plane call</text>
+  <text x="1415" y="666" text-anchor="middle" class="m" font-size="26">responses.create(...)</text>
+  <rect id="callGlow" x="1140" y="578" width="550" height="120" rx="12" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64;0.68;0.76;0.8;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <path d="M1415,698 V762" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <rect x="1140" y="770" width="550" height="96" rx="12" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text xml:space="preserve" x="1415" y="828" text-anchor="middle" class="m b" font-size="30">output   : ready</text>
+  <rect id="resultGlow" x="1140" y="770" width="550" height="96" rx="12" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.82;0.94;0.98;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+
+  <path d="M880,660 H1132" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <circle r="13" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="480,496;480,496;480,564;480,564" keyTimes="0;0.06;0.2;1" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.06;0.2;0.22;1" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="13" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="886,660;886,660;1124,660;1124,660" keyTimes="0;0.26;0.48;1" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.26;0.48;0.5;1" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="11" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="1400,378;1400,378;1400,462;1400,462" keyTimes="0;0.54;0.64;1" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.53;0.54;0.64;0.66;1" dur="8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

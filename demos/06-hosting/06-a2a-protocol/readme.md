@@ -12,6 +12,8 @@ A2A is not a model API and not a tool protocol. MCP connects an agent to tools a
 
 A client starts with discovery. A self-hosted agent publishes its card at `/.well-known/agent-card.json`; a client fetches it and learns where to send messages.
 
+![client.py fetches the agent card from /.well-known/agent-card.json, reads the JSON-RPC interface URL, sends a message there, and A2AExecutor runs m6h2-title-agent while its instructions, tools and model stay on the server](../pptx/images/06-01-card-discovery.svg)
+
 ```json
 {
   "name": "m6h2-title-agent",
@@ -80,6 +82,8 @@ async with A2AAgent(agent_card=card) as agent:
 
 Because `A2AAgent` is an agent, `as_tool()` turns it into a function tool for another agent. A router agent then delegates to several remote specialists without knowing how any of them is built.
 
+![The router agent m6h2-routing-agent holds two A2AAgent tools, asks m6h2-title-agent for a title, passes it to m6h2-outline-agent and returns both in one answer](../pptx/images/06-02-router-remote-agents.svg)
+
 ```python
 router = Agent(client=client, name="router", instructions="...", tools=[remote.as_tool() for remote in remotes])
 ```
@@ -102,6 +106,8 @@ project.agents.update_details(
 ```
 
 Callers authenticate with Microsoft Entra only, and the calling identity needs the Foundry Agent Consumer role on the project or on the single agent. For outgoing calls, a project connection of category `RemoteA2A` stores the target URL and auth, and the `A2ATool` attaches it to a prompt agent.
+
+![Both directions in Foundry: call_foundry_a2a.py calls m6h2-a2a-agent with an Entra token, and m6h2-a2a-caller reaches it through the RemoteA2A connection m6h2-a2a-target with the A2A tool; the target serves the responses and a2a protocols with an agent card](../pptx/images/06-03-foundry-a2a.svg)
 
 ```python
 tools=[A2ATool(a2a_version=A2AProtocolVersion.V1_0, project_connection_id=connection.id)]

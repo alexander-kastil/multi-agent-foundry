@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Executors and agent nodes</title>
+  <desc>Two workflows side by side. Left, pipeline.py from Step 1: parse_invoice sends an Invoice to add_vat, add_vat sends an Invoice to format_receipt, and format_receipt yields a str that the caller reads with result.get_outputs(). Right, agent_step.py from Step 4: parse_invoice sends an AgentExecutorRequest to the invoice_reviewer agent, which the framework wraps in an agent executor, the agent answers with an AgentExecutorResponse to publish_decision, and publish_decision yields a str. build() checks that the message types match across every edge.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#24292f}
+      .s{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a}
+      .m{font-family:Consolas,'Courier New',monospace;fill:#24292f}
+      .ms{font-family:Consolas,'Courier New',monospace;fill:#57606a}
+      .box{stroke:#8c959f;stroke-width:2}
+      .edge{fill:none;stroke:#8c959f;stroke-width:2}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text class="s" x="480" y="62" font-size="28" text-anchor="middle"><tspan class="ms">pipeline.py</tspan>, Step 1</text>
+  <text class="s" x="1440" y="62" font-size="28" text-anchor="middle"><tspan class="ms">agent_step.py</tspan>, Step 4</text>
+
+  <path class="edge" d="M480 84 L480 148" marker-end="url(#arrow)"/>
+  <path class="edge" d="M480 250 L480 348" marker-end="url(#arrow)"/>
+  <path class="edge" d="M480 450 L480 548" marker-end="url(#arrow)"/>
+  <path class="edge" d="M480 650 L480 748" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1440 84 L1440 148" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1440 250 L1440 348" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1440 450 L1440 548" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1440 650 L1440 748" marker-end="url(#arrow)"/>
+
+  <text class="ms" x="500" y="126" font-size="26">workflow.run(line)</text>
+  <text class="m" x="500" y="309" font-size="26">send_message(Invoice)</text>
+  <text class="m" x="500" y="509" font-size="26">send_message(Invoice)</text>
+  <text class="m" x="500" y="709" font-size="26">yield_output(str)</text>
+  <text class="ms" x="1460" y="126" font-size="26">workflow.run(line)</text>
+  <text class="m" x="1460" y="309" font-size="26">AgentExecutorRequest</text>
+  <text class="m" x="1460" y="509" font-size="26">AgentExecutorResponse</text>
+  <text class="m" x="1460" y="709" font-size="26">yield_output(str)</text>
+
+  <rect class="box" x="180" y="150" width="600" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="480" y="194" font-size="30" font-weight="700" text-anchor="middle">parse_invoice</text>
+  <text class="ms" x="480" y="232" font-size="26" text-anchor="middle">WorkflowContext[Invoice]</text>
+  <rect class="box" x="180" y="350" width="600" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="480" y="394" font-size="30" font-weight="700" text-anchor="middle">add_vat</text>
+  <text class="ms" x="480" y="432" font-size="26" text-anchor="middle">WorkflowContext[Invoice]</text>
+  <rect class="box" x="180" y="550" width="600" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="480" y="594" font-size="30" font-weight="700" text-anchor="middle">format_receipt</text>
+  <text class="ms" x="480" y="632" font-size="26" text-anchor="middle">WorkflowContext[Never, str]</text>
+  <rect class="box" x="180" y="750" width="600" height="100" rx="14" fill="#e9f7ef"/>
+  <text class="m" x="480" y="794" font-size="30" font-weight="700" text-anchor="middle">result.get_outputs()</text>
+  <text class="ms" x="480" y="832" font-size="26" text-anchor="middle">output_from=[format_receipt]</text>
+
+  <rect class="box" x="1140" y="150" width="600" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="1440" y="194" font-size="30" font-weight="700" text-anchor="middle">parse_invoice</text>
+  <text class="ms" x="1440" y="232" font-size="26" text-anchor="middle">WorkflowContext[AgentExecutorRequest]</text>
+  <rect class="box" x="1140" y="350" width="600" height="100" rx="14" fill="#f3edff"/>
+  <text class="m" x="1440" y="394" font-size="30" font-weight="700" text-anchor="middle">invoice_reviewer</text>
+  <text class="s" x="1440" y="432" font-size="26" text-anchor="middle">agent, wrapped in an agent executor</text>
+  <rect class="box" x="1140" y="550" width="600" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="1440" y="594" font-size="30" font-weight="700" text-anchor="middle">publish_decision</text>
+  <text class="ms" x="1440" y="632" font-size="26" text-anchor="middle">WorkflowContext[Never, str]</text>
+  <rect class="box" x="1140" y="750" width="600" height="100" rx="14" fill="#e9f7ef"/>
+  <text class="m" x="1440" y="794" font-size="30" font-weight="700" text-anchor="middle">result.get_outputs()</text>
+  <text class="ms" x="1440" y="832" font-size="26" text-anchor="middle">output_from=[publish_decision]</text>
+
+  <rect class="box" x="180" y="910" width="1560" height="100" rx="18" fill="#f6f8fa"/>
+  <text class="t" x="960" y="970" font-size="30" text-anchor="middle"><tspan class="m">build()</tspan> checks that the message types match across every edge</text>
+</svg>

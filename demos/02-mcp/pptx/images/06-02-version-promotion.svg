@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Promoting toolbox version 2 without touching the agent</title>
+  <desc>agent_toolbox.py reads the consumer endpoint /toolboxes/{name}/mcp, which serves the default version, and needs no change. list_tools.py 2 reads the version endpoint /toolboxes/{name}/versions/2/mcp, which serves version 2 only. Version 1, created by create_toolbox.py, has 6 tools from mslearn and snippets and is the default before the update. Version 2, created by promote.py, has 3 tools, snippets only. After update(default_version="2") the consumer endpoint serves version 2. A request from the agent first lands on version 1, then on version 2.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="16" markerHeight="16" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#e0a534"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="120" y="90" width="640" height="160" rx="18" fill="#eaf2ff"/>
+    <rect x="1160" y="90" width="640" height="160" rx="18" fill="#eaf2ff"/>
+    <rect x="120" y="360" width="640" height="160" rx="18" fill="#f3edff"/>
+    <rect x="1160" y="360" width="640" height="160" rx="18" fill="#f3edff"/>
+    <rect x="120" y="760" width="640" height="200" rx="18" fill="#f6f8fa"/>
+    <rect x="1160" y="760" width="640" height="200" rx="18" fill="#f6f8fa"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="440" y="148">agent_toolbox.py</text>
+    <text x="1480" y="148">list_tools.py 2</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="440" y="415">Consumer endpoint</text>
+    <text x="1480" y="415">Version endpoint</text>
+    <text x="440" y="815">Version 1</text>
+    <text x="1480" y="815">Version 2</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="440" y="460">/toolboxes/{name}/mcp</text>
+    <text x="1480" y="460">/toolboxes/{name}/versions/2/mcp</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="440" y="198">no change needed</text>
+    <text x="1480" y="198">tests version 2 first</text>
+    <text x="440" y="500">serves the default version</text>
+    <text x="1480" y="500">serves version 2 only</text>
+    <text x="440" y="862">6 tools: mslearn and snippets</text>
+    <text x="1480" y="862">3 tools: snippets only</text>
+    <text x="440" y="910">created by <tspan font-family="Consolas, 'Courier New', monospace" fill="#24292f">create_toolbox.py</tspan></text>
+    <text x="1480" y="910">created by <tspan font-family="Consolas, 'Courier New', monospace" fill="#24292f">promote.py</tspan></text>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="end">
+    <text x="418" y="625">default</text>
+    <text x="418" y="662">before update</text>
+  </g>
+  <text x="1000" y="600" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">default after</text>
+  <text x="1000" y="640" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">update(default_version="2")</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="440" y1="256" x2="440" y2="354"/>
+    <line x1="1480" y1="256" x2="1480" y2="354"/>
+    <line x1="1480" y1="526" x2="1480" y2="754"/>
+    <line x1="440" y1="526" x2="440" y2="754" stroke-dasharray="10 8"/>
+  </g>
+  <line x1="700" y1="526" x2="1220" y2="754" stroke="#e0a534" stroke-width="3" marker-end="url(#arrow-amber)"/>
+
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="1;0;1;0" keyTimes="0;0.1333;0.5;0.6333" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M440,258 L440,350" keyPoints="0;1;1;0;1;1" keyTimes="0;0.1333;0.5;0.5;0.6333;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1333;0.3333" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M440,528 L440,750" keyPoints="0;0;1;1" keyTimes="0;0.1333;0.3333;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6333;0.8333" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M700,526 L1214,751" keyPoints="0;0;1;1" keyTimes="0;0.6333;0.8333;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <g fill="none" stroke="#e0a534" stroke-width="5">
+    <rect x="110" y="750" width="660" height="220" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1150" y="750" width="660" height="220" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.8333" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

@@ -178,11 +178,15 @@ answer       : Your booking reference is ZX-4417, and you’re travelling with y
 
 The 40 messages survive and the 40 tool items collapse into one encrypted `compaction` item, so the next turn costs 1,259 input tokens instead of 11,322 and still knows the booking reference. The C# command prints the same lines with `{message: 40, ...}` formatting.
 
+![The 20-turn history sent whole at 11,322 tokens, trimmed to 4 turns at 2,287 tokens that forget the booking reference, and compacted to 1,259 tokens that still know it](../pptx/images/06-01-trim-compact.svg)
+
 The compaction call itself reads the whole history once, so it pays off when you reuse the compacted window for many turns. Run the script a few times: the compaction item is sometimes larger, and occasionally close to the original size, so measure before you rely on a ratio.
 
 ## Step 4: Let the service compact during a loop
 
 You do not have to call the endpoint yourself. `server_compaction.py` adds `context_management` to every request, with a `compact_threshold` of 6,000 tokens, and keeps going as an agent loop would. After each response it appends the output items and drops everything before the latest `compaction` item, which is the documented rule for stateless chaining.
+
+![Input tokens for days 9 to 14 with the 6,000-token compact_threshold: day 11 emits a compaction item and the window drops from 40 items to 2](../pptx/images/06-02-server-compaction.svg)
 
 ```python
 response = openai.responses.create(
@@ -263,6 +267,8 @@ variable text first   :  2010 input,     0 cached
 ```
 
 Call 1 writes the cache, and calls 2 and 3 read 1,792 of about 2,000 tokens from it, which is the 1,024-token minimum plus six 128-token steps. The last request has the same key and the same handbook, but the question comes first, so the first 1,024 tokens differ and nothing is cached.
+
+![Three requests drawn to scale: call 1 writes the cache, calls 2 and 3 read 1,792 cached tokens, and the question-first request reads none](../pptx/images/06-03-stable-prefix.svg)
 
 The C# command prints the same pattern with token counts a few tokens apart.
 

@@ -21,6 +21,8 @@ A client posts one JSON request and keeps the connection open. The server answer
 
 Every run is a sequence of typed events between `RUN_STARTED` and `RUN_FINISHED`. The client decides how to draw each type; the protocol only fixes the vocabulary.
 
+![One POST request followed by the Server-Sent Events of one run: RUN_STARTED, the lookup_ticket tool call events, the assistant message deltas and RUN_FINISHED, next to a chat window that draws them](../pptx/images/08-01-event-stream.svg)
+
 | Event | Meaning |
 |-------|---------|
 | `RUN_STARTED`, `RUN_FINISHED`, `RUN_ERROR` | Lifecycle of one run |
@@ -71,6 +73,8 @@ def close_ticket(ticket_id: str, resolution: str) -> str:
 
 The interrupt arrives in the outcome of `RUN_FINISHED`. The client resumes the thread by sending the interrupt id back with a decision.
 
+![Two runs on thread approval-1: run-1 ends with an interrupt before close_ticket runs, the client answers with the interrupt id and a decision, and run-2 returns the tool result](../pptx/images/08-02-approval-interrupt.svg)
+
 ```json
 {
   "threadId": "approval-1",
@@ -94,6 +98,8 @@ add_agent_framework_fastapi_endpoint(
 ```
 
 The client then receives `STEP_STARTED` and `STEP_FINISHED` for every executor, which is enough to draw a progress bar of which agent is working. The .NET integration converts a workflow to an agent with `AsAIAgent()` and streams the text and tool calls, but it does not currently emit step events, activity snapshots or workflow interrupts.
+
+![Step events of the ticket workflow: superstep 1 wraps triage and superstep 2 wraps reply, each opened by STEP_STARTED and closed by STEP_FINISHED, above a two-segment progress indicator](../pptx/images/08-03-workflow-steps.svg)
 
 ## CopilotKit as the client
 

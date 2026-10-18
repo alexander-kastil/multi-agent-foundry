@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Voice settings in the agent metadata</title>
+  <desc>Your code defines VOICE_LIVE_CONFIG with the voice en-US-Ava:DragonHDLatestNeural, turn detection azure_semantic_vad, noise suppression azure_deep_noise_suppression and echo cancellation server_echo_cancellation. chunk_config stores it on the agent version m3-voice-live-agent:1 under the metadata key microsoft.voice-live.configuration, at most 512 characters per value, with longer JSON continuing in numbered keys .1, .2. The definition holds the gpt-5.4 deployment and instructions with the Contoso Outdoor fact that the Summit 4S is rated to minus 25 degrees Celsius. Your client calls connect with agent_name, agent_version and project_name over Microsoft Entra ID; the session code sets modalities and PCM16, with no voice and no instructions. The Voice Live API in agent mode loads the settings and calls the agent on every turn. session.updated reports the voice en-US-Ava:DragonHDLatestNeural from the metadata, and the answer that the tent is rated to minus 25 degrees Celsius comes from the instructions.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; font-size: 26px; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+    .box { stroke: #8c959f; stroke-width: 2; }
+    .arrow { fill: none; stroke: #8c959f; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="box" x="80" y="70" width="520" height="510" rx="24" fill="#eaf2ff"/>
+  <text class="sec" x="115" y="122">Your code</text>
+  <text class="mono b" x="115" y="172" font-size="32">VOICE_LIVE_CONFIG</text>
+  <text class="sec" x="115" y="232">voice</text>
+  <text class="mono" x="115" y="267" font-size="26">en-US-Ava:DragonHDLatestNeural</text>
+  <text class="sec" x="115" y="322">turn detection</text>
+  <text class="mono" x="115" y="357" font-size="26">azure_semantic_vad</text>
+  <text class="sec" x="115" y="412">noise suppression</text>
+  <text class="mono" x="115" y="447" font-size="26">azure_deep_noise_suppression</text>
+  <text class="sec" x="115" y="502">echo cancellation</text>
+  <text class="mono" x="115" y="537" font-size="26">server_echo_cancellation</text>
+
+  <rect class="box" x="810" y="70" width="1030" height="510" rx="24" fill="#f3edff"/>
+  <text class="sec" x="845" y="122">Agent version</text>
+  <text class="mono b" x="845" y="172" font-size="32">m3-voice-live-agent:1</text>
+
+  <rect class="box" x="840" y="210" width="590" height="340" rx="18" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="sec b" x="865" y="256">metadata</text>
+  <text class="mono" x="865" y="300" font-size="26">microsoft.voice-live.configuration</text>
+  <text x="865" y="348" font-size="26">the settings JSON, at most</text>
+  <text x="865" y="384" font-size="26">512 characters per value</text>
+  <rect x="865" y="420" width="540" height="105" rx="14" fill="#ffffff" stroke="#e0a534" stroke-width="2" stroke-dasharray="10 8"/>
+  <text class="sec" x="890" y="463">longer JSON continues in</text>
+  <text class="sec" x="890" y="503">numbered keys <tspan class="mono">.1</tspan>, <tspan class="mono">.2</tspan></text>
+
+  <rect class="box" x="1450" y="210" width="360" height="340" rx="18" fill="#ffffff"/>
+  <text class="sec b" x="1472" y="256">definition</text>
+  <text class="sec" x="1472" y="300">model</text>
+  <text class="mono" x="1472" y="335" font-size="26">gpt-5.4</text>
+  <text class="sec" x="1472" y="390">instructions</text>
+  <text x="1472" y="428" font-size="26">Contoso Outdoor facts:</text>
+  <text x="1472" y="464" font-size="26">Summit 4S rated to</text>
+  <text x="1472" y="500" font-size="26">minus 25 degrees Celsius</text>
+
+  <line class="arrow" x1="600" y1="320" x2="810" y2="320"/>
+  <text class="mono c" x="705" y="302" font-size="26">chunk_config</text>
+
+  <rect class="box" x="80" y="690" width="520" height="325" rx="24" fill="#eaf2ff"/>
+  <text class="sec" x="115" y="742">Your client</text>
+  <text class="mono" x="115" y="792" font-size="26">connect(agent_name,</text>
+  <text class="mono" x="145" y="830" font-size="26">agent_version, project_name)</text>
+  <text x="115" y="890" font-size="26">session code sets modalities</text>
+  <text x="115" y="926" font-size="26">and PCM16, with no voice</text>
+  <text x="115" y="962" font-size="26">and no instructions</text>
+
+  <rect class="box" x="760" y="690" width="460" height="325" rx="24" fill="#f3edff"/>
+  <text class="b c" x="990" y="750" font-size="30">Voice Live API</text>
+  <text class="sec c" x="990" y="795">agent mode</text>
+  <text class="c" x="990" y="860" font-size="26">loads the settings and</text>
+  <text class="c" x="990" y="896" font-size="26">calls the agent on</text>
+  <text class="c" x="990" y="932" font-size="26">every turn</text>
+
+  <line class="arrow" x1="600" y1="852" x2="760" y2="852"/>
+  <text class="sec c" x="680" y="832">Entra ID</text>
+  <line class="arrow" x1="990" y1="690" x2="990" y2="580"/>
+  <text class="sec" x="1010" y="645">by name and version</text>
+
+  <rect class="box" x="1340" y="690" width="500" height="155" rx="24" fill="#e9f7ef"/>
+  <text class="mono b c" x="1590" y="737">session.updated</text>
+  <text class="mono c" x="1590" y="780" font-size="26">en-US-Ava:DragonHDLatestNeural</text>
+  <text class="sec c" x="1590" y="822">voice from the metadata</text>
+
+  <rect class="box" x="1340" y="865" width="500" height="150" rx="24" fill="#e9f7ef"/>
+  <text class="c" x="1590" y="910" font-size="26">agent: ... rated to minus</text>
+  <text class="c" x="1590" y="946" font-size="26">25 degrees Celsius</text>
+  <text class="sec c" x="1590" y="990">facts from the instructions</text>
+
+  <line class="arrow" x1="1220" y1="767" x2="1340" y2="767"/>
+  <line class="arrow" x1="1220" y1="940" x2="1340" y2="940"/>
+</svg>

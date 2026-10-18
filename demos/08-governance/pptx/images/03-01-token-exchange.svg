@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Token exchange for a tool call</title>
+  <desc>Agent Service runs the token exchange in four stages. 1: the project managed identity (ManagedIdentity, one per project) authenticates the agent identity blueprint through a federated credential, so no secret is stored. 2: Agent Service receives a token for the agent identity (ServiceIdentity, one per agent). 3: Microsoft Entra ID issues an access token scoped to the audience of the downstream service, such as https://storage.azure.com, a resource identifier and not the MCP server URL. 4: the token goes to the MCP server or A2A endpoint, where the agent identity holds the role. Platform roles belong to the project managed identity, tool roles to the agent identity.</desc>
+  <style>
+    .num { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 38px; fill: #24292f; text-anchor: middle; }
+    .st { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 30px; fill: #24292f; text-anchor: middle; }
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 32px; fill: #24292f; text-anchor: middle; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 28px; fill: #24292f; text-anchor: middle; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <line class="line" x1="314" y1="110" x2="684" y2="110" marker-end="url(#arr)"/>
+  <line class="line" x1="774" y1="110" x2="1144" y2="110" marker-end="url(#arr)"/>
+  <line class="line" x1="1234" y1="110" x2="1604" y2="110" marker-end="url(#arr)"/>
+
+  <circle cx="270" cy="110" r="42" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="num" x="270" y="124">1</text>
+  <circle cx="730" cy="110" r="42" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="num" x="730" y="124">2</text>
+  <circle cx="1190" cy="110" r="42" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="num" x="1190" y="124">3</text>
+  <circle cx="1650" cy="110" r="42" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="num" x="1650" y="124">4</text>
+
+  <circle cx="270" cy="110" r="54" fill="none" stroke="#e0a534" stroke-width="5">
+    <animate attributeName="cx" dur="8s" repeatCount="indefinite" calcMode="discrete" values="270;730;1190;1650" keyTimes="0;0.25;0.5;0.75"/>
+  </circle>
+
+  <text class="st" x="270" y="212">Authenticate</text>
+  <text class="st" x="270" y="250">the blueprint</text>
+  <text class="st" x="730" y="212">Get a token for</text>
+  <text class="st" x="730" y="250">the agent identity</text>
+  <text class="st" x="1190" y="212">Get an access token</text>
+  <text class="st" x="1190" y="250">for the audience</text>
+  <text class="st" x="1650" y="212">Pass the token</text>
+  <text class="st" x="1650" y="250">to the tool</text>
+
+  <rect x="60" y="290" width="420" height="370" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke-width" dur="8s" repeatCount="indefinite" calcMode="discrete" values="6;2" keyTimes="0;0.25"/>
+  </rect>
+  <text class="h" x="270" y="352">Project managed</text>
+  <text class="h" x="270" y="390">identity</text>
+  <text class="c" x="270" y="442">ManagedIdentity</text>
+  <text class="b" x="270" y="492">one per project</text>
+  <text class="b" x="270" y="560">federated credential,</text>
+  <text class="b" x="270" y="594">no secret stored</text>
+
+  <rect x="520" y="290" width="420" height="370" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" dur="8s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.25;0.5"/>
+  </rect>
+  <text class="h" x="730" y="370">Agent identity</text>
+  <text class="c" x="730" y="422">ServiceIdentity</text>
+  <text class="b" x="730" y="472">one per agent, created</text>
+  <text class="b" x="730" y="506">from the blueprint</text>
+  <text class="b" x="730" y="560">stays the same when</text>
+  <text class="b" x="730" y="594">you add versions</text>
+
+  <rect x="980" y="290" width="420" height="370" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke-width" dur="8s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.5;0.75"/>
+  </rect>
+  <text class="h" x="1190" y="370">Microsoft Entra ID</text>
+  <text class="b" x="1190" y="420">scopes the token to the</text>
+  <text class="b" x="1190" y="454">downstream service</text>
+  <text class="c" x="1190" y="510">https://storage.azure.com</text>
+  <text class="b" x="1190" y="560">a resource identifier,</text>
+  <text class="b" x="1190" y="594">not the MCP server URL</text>
+
+  <rect x="1440" y="290" width="420" height="370" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke-width" dur="8s" repeatCount="indefinite" calcMode="discrete" values="2;6" keyTimes="0;0.75"/>
+  </rect>
+  <text class="h" x="1650" y="352">MCP server or</text>
+  <text class="h" x="1650" y="390">A2A endpoint</text>
+  <text class="b" x="1650" y="442">receives the token</text>
+  <text class="b" x="1650" y="526">the agent identity holds</text>
+  <text class="b" x="1650" y="560">the role on the</text>
+  <text class="b" x="1650" y="594">target resource</text>
+
+  <rect x="60" y="760" width="880" height="220" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="500" y="840">Project managed identity</text>
+  <text class="b" x="500" y="890">platform roles: model inference, container</text>
+  <text class="b" x="500" y="924">images, telemetry</text>
+
+  <rect x="980" y="760" width="880" height="220" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="h" x="1420" y="840">Agent identity</text>
+  <text class="b" x="1420" y="890">tool roles: the role on each target</text>
+  <text class="b" x="1420" y="924">resource the agent calls</text>
+</svg>

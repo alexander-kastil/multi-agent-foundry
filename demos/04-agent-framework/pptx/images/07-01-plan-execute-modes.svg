@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-size="28">
+  <title>Plan and execute modes with one standing approval</title>
+  <desc>Three stages left to right above one AgentSession. In mode plan the TrekPlanner agent analyzes, writes todos and presents a plan: it calls get_stage_status for all 4 stages and finds stages 1 to 3 open and stage 4 closed, writes three todos (check status of all 4 Grossglockner stages, identify huts to reserve for open stages, present plan and request approval to proceed), then stops and asks to confirm with nothing reserved yet. The application then calls set_agent_mode(session, "execute"), which allows the agent to act. In mode execute, on a second run with the same session, reserve_hut for Elberfelder Hut x3 requests approval, the application answers once with create_always_approve_tool_response and a standing rule is saved in the session, and reserve_hut for Salm Hut x3 and Glocknerhaus x3 are approved by the standing rule. Three reservations follow and every todo is complete. Both runs read and write the AgentSession, one session for the whole conversation, which holds the history, the todos, the mode and the standing approvals. A highlight steps through plan, switch, first reservation and answer, the two approved reservations, and the session.</desc>
+  <style>
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="60" width="720" height="630" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="90" y="112" class="m b" font-size="32">mode: plan</text>
+  <text x="90" y="152" class="s" font-size="26">analyzes, writes todos, presents a plan</text>
+
+  <rect x="90" y="180" width="660" height="110" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="226"><tspan class="m">get_stage_status</tspan> for all 4 stages</text>
+  <text x="120" y="266" class="s" font-size="26">Stages 1 to 3 open, Stage 4 closed</text>
+
+  <rect x="90" y="310" width="660" height="220" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="352" class="s" font-size="26">todos the agent wrote</text>
+  <g fill="#ffffff" stroke="#57606a" stroke-width="2">
+    <rect x="120" y="374" width="26" height="26" rx="4"/>
+    <rect x="120" y="422" width="26" height="26" rx="4"/>
+    <rect x="120" y="470" width="26" height="26" rx="4"/>
+  </g>
+  <g fill="none" stroke="#24292f" stroke-width="3">
+    <path d="M125,387 L131,394 L142,379"/>
+    <path d="M125,435 L131,442 L142,427"/>
+  </g>
+  <text x="162" y="396" font-size="26">Check status of all 4 Grossglockner stages</text>
+  <text x="162" y="444" font-size="26">Identify huts to reserve for open stages</text>
+  <text x="162" y="492" font-size="26">Present plan and request approval to proceed</text>
+
+  <rect x="90" y="550" width="660" height="110" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="596" class="b">Stops and asks to confirm</text>
+  <text x="120" y="636" class="s" font-size="26">Nothing reserved yet</text>
+
+  <text x="960" y="236" class="s c" font-size="26">application</text>
+  <rect x="835" y="255" width="250" height="250" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="855" y="310" class="m" font-size="26">set_agent_mode</text>
+  <text x="855" y="348" class="m" font-size="26">(session,</text>
+  <text x="855" y="386" class="m" font-size="26">"execute")</text>
+  <text x="960" y="440" class="s c" font-size="26">lets the agent</text>
+  <text x="960" y="476" class="s c" font-size="26">act on the plan</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M794,380 H827"/>
+    <path d="M1085,380 H1132"/>
+  </g>
+
+  <rect x="1140" y="60" width="720" height="630" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1170" y="112" class="m b" font-size="32">mode: execute</text>
+  <text x="1170" y="152" class="s" font-size="26">second run on the same session</text>
+
+  <rect x="1170" y="180" width="660" height="90" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1195" y="218"><tspan class="m">reserve_hut</tspan> Elberfelder Hut x3</text>
+  <text x="1195" y="254" class="s" font-size="26">approval requested</text>
+
+  <rect x="1170" y="285" width="660" height="100" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1195" y="325" class="m" font-size="26">create_always_approve_tool_response</text>
+  <text x="1195" y="363" class="s" font-size="26">the app answers once: standing rule saved</text>
+
+  <rect x="1170" y="400" width="660" height="90" rx="12" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1195" y="438"><tspan class="m">reserve_hut</tspan> Salm Hut x3</text>
+  <text x="1195" y="474" class="s" font-size="26">approved by the standing rule</text>
+
+  <rect x="1170" y="505" width="660" height="90" rx="12" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1195" y="543"><tspan class="m">reserve_hut</tspan> Glocknerhaus x3</text>
+  <text x="1195" y="579" class="s" font-size="26">approved by the standing rule</text>
+
+  <text x="1170" y="650" class="b">Three reservations, every todo complete</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-start="url(#arr)" marker-end="url(#arr)">
+    <path d="M420,706 V774"/>
+    <path d="M1500,706 V774"/>
+  </g>
+
+  <rect x="60" y="790" width="1800" height="230" rx="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="846"><tspan class="m b" font-size="30">AgentSession</tspan><tspan class="s" font-size="26" dx="24">one session for the whole conversation</tspan></text>
+  <g fill="#ffffff" stroke="#8c959f" stroke-width="2">
+    <rect x="90" y="885" width="412" height="96" rx="12"/>
+    <rect x="532" y="885" width="412" height="96" rx="12"/>
+    <rect x="974" y="885" width="412" height="96" rx="12"/>
+    <rect x="1416" y="885" width="414" height="96" rx="12"/>
+  </g>
+  <text x="296" y="943" class="b c">history</text>
+  <text x="738" y="943" class="b c">todos</text>
+  <text x="1180" y="943" class="b c">mode</text>
+  <text x="1623" y="943" class="b c">standing approvals</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="52" y="52" width="736" height="646" rx="28" stroke-opacity="1">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="1;0;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="827" y="247" width="266" height="266" rx="24" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;1;0;0;0" keyTimes="0;0.2;0.4;0.6;0.8" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1162" y="172" width="676" height="221" rx="18" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;1;0;0" keyTimes="0;0.2;0.4;0.6;0.8" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1162" y="392" width="676" height="211" rx="18" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="52" y="782" width="1816" height="246" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;0;1" keyTimes="0;0.2;0.4;0.6;0.8" dur="10s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

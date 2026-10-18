@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The function calling loop</title>
+  <desc>In Python you own the loop: responses.create with input and tools, the model returns a function_call item with a call_id, your code runs lookup_weather, and a second responses.create sends a function_call_output item with the same call_id. The model then answers from the returned data. In C#, ChatClientBuilder with UseFunctionInvocation runs the same loop, and AIFunctionFactory.Create turns LookupWeather into the tool.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .msg { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .life { stroke: #8c959f; stroke-width: 2; stroke-dasharray: 8 8; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="100" y="106" class="b" font-size="30">Python: you own the loop</text>
+  <text x="100" y="144" class="m s" font-size="26">function_calling.py</text>
+
+  <rect x="120" y="180" width="340" height="90" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="290" y="235" text-anchor="middle" class="b">your code</text>
+  <rect x="700" y="180" width="340" height="90" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="870" y="235" text-anchor="middle"><tspan class="b">model </tspan><tspan class="m" font-size="26">gpt-5.4</tspan></text>
+  <path class="life" d="M290,270 V488 M290,580 V810"/>
+  <path class="life" d="M870,270 V810"/>
+
+  <text x="580" y="326" text-anchor="middle" class="m" font-size="26">responses.create(input, tools)</text>
+  <path class="msg" d="M298,350 H862" marker-end="url(#arr)"/>
+
+  <text x="580" y="436" text-anchor="middle" font-size="26"><tspan class="m">function_call</tspan> item with a <tspan class="m">call_id</tspan></text>
+  <path class="msg" d="M862,460 H298" marker-end="url(#arr)"/>
+
+  <rect x="140" y="488" width="300" height="92" rx="12" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="290" y="526" text-anchor="middle" font-size="26">your code runs</text>
+  <text x="290" y="562" text-anchor="middle" class="m b" font-size="26">lookup_weather</text>
+  <rect x="140" y="488" width="300" height="92" rx="12" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.31;0.4;0.43;1" dur="10s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="580" y="618" text-anchor="middle" font-size="26">second <tspan class="m">responses.create</tspan> with</text>
+  <text x="580" y="654" text-anchor="middle" font-size="26"><tspan class="m">function_call_output</tspan>, same <tspan class="m">call_id</tspan></text>
+  <path class="msg" d="M298,680 H862" marker-end="url(#arr)"/>
+
+  <text x="580" y="756" text-anchor="middle" font-size="26">answer: sunny in Vienna, about 21°C</text>
+  <path class="msg" d="M862,780 H298" marker-end="url(#arr)"/>
+
+  <rect x="100" y="830" width="960" height="120" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="580" y="878" text-anchor="middle" class="m" font-size="26">{"weather": "sunny", "temperature": 21}</text>
+  <text x="580" y="918" text-anchor="middle" class="s" font-size="26">the answer comes from the data your function returned</text>
+  <rect x="100" y="830" width="960" height="120" rx="14" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66;0.69;0.78;0.81;1" dur="10s" repeatCount="indefinite"/>
+  </rect>
+
+  <path d="M1076,350 h16 V680 h-16" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <path d="M1092,515 L1172,372" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <text x="1180" y="106" class="b" font-size="30">C#: middleware runs the loop</text>
+  <text x="1180" y="144" class="m s" font-size="26">Tools.cs</text>
+  <rect x="1180" y="200" width="680" height="350" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1210" y="260" class="m" font-size="26">IChatClient client =</text>
+  <text xml:space="preserve" x="1210" y="302" class="m" font-size="26">  new ChatClientBuilder(inner)</text>
+  <rect x="1196" y="324" width="648" height="44" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text xml:space="preserve" x="1210" y="355" class="m b" font-size="26">    .UseFunctionInvocation()</text>
+  <rect x="1196" y="324" width="648" height="44" rx="8" fill="none" stroke="#e0a534" stroke-width="6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82;0.85;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+  </rect>
+  <text xml:space="preserve" x="1210" y="400" class="m" font-size="26">    .Build();</text>
+  <text x="1210" y="462" class="m" font-size="26">Tools = [AIFunctionFactory</text>
+  <text xml:space="preserve" x="1210" y="504" class="m" font-size="26">  .Create(LookupWeather)]</text>
+
+  <rect x="1180" y="600" width="680" height="180" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1210" y="650" font-size="26"><tspan class="m">UseFunctionInvocation()</tspan> runs the</text>
+  <text x="1210" y="688" font-size="26">call loop you wrote by hand in Python;</text>
+  <text x="1210" y="726" font-size="26"><tspan class="m">AIFunctionFactory.Create</tspan> turns a C#</text>
+  <text x="1210" y="764" font-size="26">method into the tool</text>
+
+  <rect x="1180" y="830" width="680" height="120" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text xml:space="preserve" x="1210" y="878" class="m" font-size="26">tool  : LookupWeather(...)</text>
+  <text x="1210" y="918" class="s" font-size="26">printed by your C# method before the answer</text>
+
+  <circle r="12" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="304,350;304,350;854,350;854,350" keyTimes="0;0.04;0.14;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03;0.04;0.14;0.16;1" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="856,460;856,460;306,460;306,460" keyTimes="0;0.17;0.27;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16;0.17;0.27;0.29;1" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="304,680;304,680;854,680;854,680" keyTimes="0;0.44;0.54;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43;0.44;0.54;0.56;1" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="0">
+    <animateMotion values="856,780;856,780;306,780;306,780" keyTimes="0;0.56;0.66;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55;0.56;0.66;0.68;1" dur="10s" repeatCount="indefinite"/>
+  </circle>
+</svg>

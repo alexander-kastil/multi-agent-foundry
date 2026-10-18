@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Circuit breaker states between the primary and the backup payment gateway</title>
+  <desc>In the closed state calls go to the primary gateway and every result is recorded. When more than 40% of at least 10 calls fail, the breaker opens and serves charges from the backup gateway. After the probe interval it moves to half open and lets one probe call through to the primary: if the probe succeeds the breaker closes, if it fails the breaker opens again. A highlight steps through closed, open, half open and closed, and marks the gateway in use.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke-width="2">
+    <rect x="140" y="90" width="460" height="160" rx="24" fill="#eaf2ff" stroke="#8c959f"/>
+    <rect x="1320" y="90" width="460" height="160" rx="24" fill="#eaf2ff" stroke="#8c959f"/>
+    <rect x="700" y="90" width="520" height="250" rx="24" fill="#ffffff" stroke="#8c959f"/>
+    <rect x="140" y="380" width="460" height="260" rx="24" fill="#e9f7ef" stroke="#8c959f"/>
+    <rect x="1320" y="380" width="460" height="260" rx="24" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="740" y="760" width="440" height="250" rx="24" fill="#f6f8fa" stroke="#8c959f"/>
+  </g>
+
+  <g font-size="30" font-weight="700" fill="#24292f">
+    <text x="175" y="155">Primary gateway</text>
+    <text x="1355" y="155">Backup gateway</text>
+    <text x="735" y="150">Thresholds</text>
+    <text x="175" y="445" font-size="34">Closed</text>
+    <text x="1355" y="445" font-size="34">Open</text>
+    <text x="775" y="825" font-size="34">Half open</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#57606a">
+    <text x="175" y="205">primary</text>
+    <text x="1355" y="205">backup</text>
+    <text x="175" y="490">closed</text>
+    <text x="1355" y="490">open</text>
+    <text x="775" y="870">half_open</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="175" y="550">records every result</text>
+    <text x="175" y="595">calls go to the primary</text>
+    <text x="1355" y="550">serves the fallback</text>
+    <text x="1355" y="595">calls go to the backup</text>
+    <text x="775" y="925">one probe call</text>
+    <text x="775" y="965">to the primary</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="735" y="200"><tspan font-family="Consolas, Menlo, monospace">failure_threshold</tspan> 0.4</text>
+    <text x="735" y="245">at least 10 calls</text>
+    <text x="735" y="290"><tspan font-family="Consolas, Menlo, monospace">probe_interval_seconds</tspan> 30</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="370" y1="376" x2="370" y2="256"/>
+    <line x1="1550" y1="376" x2="1550" y2="256"/>
+    <line x1="604" y1="450" x2="1314" y2="450"/>
+    <path d="M1600,644 L1600,885 L1186,885"/>
+    <path d="M1080,756 L1080,700 L1420,700 L1420,646"/>
+    <path d="M736,885 L370,885 L370,646"/>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="960" y="430">more than 40% of at least 10 calls fail</text>
+    <text x="1393" y="930">after the probe interval</text>
+    <text x="1250" y="684">probe call fails</text>
+    <text x="553" y="930">probe call succeeds</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="132" y="372" width="476" height="276" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0;0;1" keyTimes="0;0.25;0.5;0.75"/>
+    </rect>
+    <rect x="1312" y="372" width="476" height="276" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;0" keyTimes="0;0.25;0.5;0.75"/>
+    </rect>
+    <rect x="732" y="752" width="456" height="266" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;0;1;0" keyTimes="0;0.25;0.5;0.75"/>
+    </rect>
+    <rect x="132" y="82" width="476" height="176" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0;1;1" keyTimes="0;0.25;0.5;0.75"/>
+    </rect>
+    <rect x="1312" y="82" width="476" height="176" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;0" keyTimes="0;0.25;0.5;0.75"/>
+    </rect>
+  </g>
+</svg>

@@ -43,6 +43,8 @@ rule = project_client.evaluation_rules.create_or_update(
 
 You do not need a rule to evaluate production data. Two data sources read what already happened.
 
+![The support agent evaluated three ways: a continuous evaluation rule on each completed response, stored response IDs and invoke_agent traces, each feeding an evaluation run](../pptx/images/04-01-evaluating-live-traffic.svg)
+
 Response IDs select specific stored Responses API calls. They are passed inline as `file_content`; `file_id` is not supported for this source.
 
 ```python
@@ -67,6 +69,8 @@ Trace evaluation reads telemetry on behalf of the project, so the project manage
 ## What an AI Red Teaming Run Does
 
 The AI Red Teaming Agent automates adversarial probing with Microsoft's PyRIT framework. It takes seed attack objectives per risk category, applies attack strategies that disguise them, sends the result to your agent and has the Risk and Safety evaluators score each reply. The headline number is the Attack Success Rate, the share of attacks that got through.
+
+![A cloud red team run from the generated taxonomy through the baseline, Flip and Base64 strategies and the agent to the evaluators, then the flagged items per strategy and the review of the judge's reason](../pptx/images/04-02-red-team-run.svg)
 
 | Risk category | Targets | Where it runs |
 | --- | --- | --- |

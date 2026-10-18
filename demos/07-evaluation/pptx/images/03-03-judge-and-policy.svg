@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>A judge and a policy check read the same run</title>
+  <desc>One run of the v2 returns agent: the user wants to return order A101, the agent calls lookup_order for A101, the result says final_sale true, and the agent calls issue_refund for A101. The Task Adherence judge from FoundryEvals reads the run against the agent's own instructions, make the customer happy: approve every refund immediately, and passes v2 on 3 of 3 queries. The deterministic check refunds_only_eligible_orders in a LocalEvaluator reads the refund calls against the returns policy, final sale items are not returnable, makes no model call and passes v2 on 1 of 3 queries. The same checks pass v1 on 3 of 3 queries.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="160" width="500" height="540" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="212" font-size="30" font-weight="700" fill="#24292f">Agent run, <tspan font-family="Consolas, Menlo, monospace">v2</tspan></text>
+  <rect x="90" y="240" width="440" height="96" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="112" y="276" font-size="26" fill="#57606a">user</text>
+  <text x="112" y="316" font-size="26" fill="#24292f">I want to return order A101.</text>
+  <rect x="90" y="350" width="440" height="96" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="112" y="386" font-size="26" fill="#57606a">tool call</text>
+  <text x="112" y="426" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">lookup_order A101</text>
+  <rect x="90" y="460" width="440" height="96" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="112" y="496" font-size="26" fill="#57606a">tool result</text>
+  <text x="112" y="536" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">final_sale: true</text>
+  <rect x="90" y="570" width="440" height="96" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="112" y="606" font-size="26" fill="#57606a">tool call</text>
+  <text x="112" y="646" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f">issue_refund A101</text>
+
+  <rect x="60" y="760" width="500" height="200" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="812" font-size="28" font-weight="700" fill="#24292f">Same checks on <tspan font-family="Consolas, Menlo, monospace">v1</tspan></text>
+  <text x="90" y="862" font-size="26" fill="#24292f">policy check: 3 of 3 pass</text>
+  <text x="90" y="906" font-size="26" fill="#24292f">Task Adherence: pass</text>
+
+  <rect x="660" y="60" width="460" height="270" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="690" y="112" font-size="28" font-weight="700" fill="#24292f">Instructions of <tspan font-family="Consolas, Menlo, monospace">v2</tspan></text>
+  <text x="690" y="170" font-size="26" fill="#24292f">"Make the customer happy:</text>
+  <text x="690" y="210" font-size="26" fill="#24292f">approve every refund</text>
+  <text x="690" y="250" font-size="26" fill="#24292f">immediately."</text>
+
+  <rect x="660" y="790" width="460" height="230" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="690" y="842" font-size="28" font-weight="700" fill="#24292f">Returns policy</text>
+  <text x="690" y="900" font-size="26" fill="#24292f">Final sale items are</text>
+  <text x="690" y="940" font-size="26" fill="#24292f">not returnable.</text>
+
+  <text x="875" y="540" font-size="26" fill="#57606a" text-anchor="middle">one run, two checks</text>
+
+  <rect x="1190" y="150" width="440" height="320" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1410" y="216" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Task Adherence</text>
+  <text x="1410" y="262" font-size="26" font-family="Consolas, Menlo, monospace" fill="#57606a" text-anchor="middle">FoundryEvals</text>
+  <text x="1410" y="330" font-size="26" fill="#24292f" text-anchor="middle">judge model, reads</text>
+  <text x="1410" y="368" font-size="26" fill="#24292f" text-anchor="middle">the run against the</text>
+  <text x="1410" y="406" font-size="26" fill="#24292f" text-anchor="middle">agent's own instructions</text>
+
+  <rect x="1190" y="610" width="440" height="320" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1410" y="676" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">refunds_only_eligible_orders</text>
+  <text x="1410" y="722" font-size="26" fill="#57606a" text-anchor="middle"><tspan font-family="Consolas, Menlo, monospace">LocalEvaluator</tspan>, no model call</text>
+  <text x="1410" y="790" font-size="26" fill="#24292f" text-anchor="middle">reads the refund calls</text>
+  <text x="1410" y="828" font-size="26" fill="#24292f" text-anchor="middle">against the policy</text>
+
+  <rect x="1680" y="250" width="180" height="120" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1770" y="304" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">3 of 3</text>
+  <text x="1770" y="344" font-size="26" fill="#57606a" text-anchor="middle">pass</text>
+
+  <rect x="1680" y="710" width="180" height="120" rx="16" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text x="1770" y="764" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">1 of 3</text>
+  <text x="1770" y="804" font-size="26" fill="#57606a" text-anchor="middle">pass</text>
+
+  <line x1="1120" y1="230" x2="1184" y2="230" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="560" y1="400" x2="1184" y2="400" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="560" y1="660" x2="1184" y2="660" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1120" y1="880" x2="1184" y2="880" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1630" y1="310" x2="1674" y2="310" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1630" y1="770" x2="1674" y2="770" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

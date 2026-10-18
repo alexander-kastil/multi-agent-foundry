@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Spoke calls with a status envelope</title>
+  <desc>The hub agent research_orchestrator calls a spoke through invoke_spoke, the single door to the four spoke agents market_analysis, risk_assessment, compliance_check and esg_evaluation. Inside invoke_spoke a call passes three checks in order: the circuit check circuit_open, which skips a spoke known to be failing; the concurrency limit SEMAPHORE, which allows two spoke calls at a time; and the timeout asyncio.wait_for, which bounds every call and defaults to 90 seconds. Each way out ends in a status: circuit_open from the circuit check, timeout or error from the timeout step, success when the spoke answers. Every status goes into the same envelope with spoke, status and result, which returns to the hub as JSON and is never raised as an exception. The hub reads the status, names what is missing and continues with what it has. A dot follows a success, a timeout and an open circuit in turn.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="50" y="245" width="330" height="220" rx="22" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="215" y="315" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Hub agent</text>
+  <text x="215" y="365" font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">research_orchestrator</text>
+  <text x="215" y="415" font-size="26" fill="#57606a" text-anchor="middle">one tool per spoke</text>
+
+  <text x="965" y="105" font-size="34" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">invoke_spoke</text>
+  <text x="965" y="148" font-size="28" fill="#57606a" text-anchor="middle">the single door to every spoke</text>
+  <path d="M470,190 V172 H1460 V190" fill="none" stroke="#8c959f" stroke-width="2"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#eaf2ff">
+    <rect x="470" y="205" width="290" height="300" rx="20"/>
+    <rect x="820" y="205" width="290" height="300" rx="20"/>
+    <rect x="1170" y="205" width="290" height="300" rx="20"/>
+  </g>
+  <g font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="615" y="265">1. Circuit check</text>
+    <text x="965" y="265">2. Concurrency limit</text>
+    <text x="1315" y="265">3. Timeout</text>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="615" y="320">circuit_open()</text>
+    <text x="965" y="320">SEMAPHORE</text>
+    <text x="1315" y="320">asyncio.wait_for</text>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="615" y="400">skips a spoke</text>
+    <text x="615" y="436">known to be failing</text>
+    <text x="965" y="400">two spoke calls</text>
+    <text x="965" y="436">at a time</text>
+    <text x="1315" y="400">bounds every call,</text>
+    <text x="1315" y="436">default 90 seconds</text>
+  </g>
+
+  <text x="1715" y="228" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">Spoke agents</text>
+  <g stroke="#8c959f" stroke-width="2" fill="#f3edff">
+    <rect x="1550" y="250" width="330" height="60" rx="14"/>
+    <rect x="1550" y="325" width="330" height="60" rx="14"/>
+    <rect x="1550" y="400" width="330" height="60" rx="14"/>
+    <rect x="1550" y="475" width="330" height="60" rx="14"/>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="1715" y="289">market_analysis</text>
+    <text x="1715" y="364">risk_assessment</text>
+    <text x="1715" y="439">compliance_check</text>
+    <text x="1715" y="514">esg_evaluation</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#fff6e5">
+    <rect x="505" y="625" width="220" height="72" rx="36"/>
+    <rect x="1170" y="625" width="135" height="72" rx="36"/>
+    <rect x="1325" y="625" width="135" height="72" rx="36"/>
+  </g>
+  <rect x="1610" y="625" width="210" height="72" rx="36" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <g font-size="28" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="615" y="671">circuit_open</text>
+    <text x="1237" y="671">timeout</text>
+    <text x="1392" y="671">error</text>
+    <text x="1715" y="671">success</text>
+  </g>
+
+  <rect x="470" y="810" width="1410" height="175" rx="22" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1175" y="885" font-size="32" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">{"spoke": ..., "status": ..., "result": ...}</text>
+  <text x="1175" y="940" font-size="28" fill="#57606a" text-anchor="middle">returned to the hub as JSON, never raised as an exception</text>
+
+  <g font-size="28" fill="#57606a">
+    <text x="140" y="580">The hub reads the status,</text>
+    <text x="140" y="620">names what is missing</text>
+    <text x="140" y="660">and continues with</text>
+    <text x="140" y="700">what it has</text>
+  </g>
+
+  <g fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="380" y1="355" x2="466" y2="355"/>
+    <line x1="760" y1="355" x2="816" y2="355"/>
+    <line x1="1110" y1="355" x2="1166" y2="355"/>
+    <line x1="1460" y1="355" x2="1546" y2="355"/>
+    <line x1="615" y1="505" x2="615" y2="621"/>
+    <line x1="1237" y1="505" x2="1237" y2="621"/>
+    <line x1="1392" y1="505" x2="1392" y2="621"/>
+    <line x1="1715" y1="535" x2="1715" y2="621"/>
+    <line x1="615" y1="697" x2="615" y2="806"/>
+    <line x1="1237" y1="697" x2="1237" y2="806"/>
+    <line x1="1392" y1="697" x2="1392" y2="806"/>
+    <line x1="1715" y1="697" x2="1715" y2="806"/>
+    <path d="M470,897 H110 V469"/>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="1602" y="617" width="226" height="88" rx="44" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.3333" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1162" y="617" width="151" height="88" rx="44" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.6667" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="497" y="617" width="236" height="88" rx="44" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.6667" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <circle r="14" fill="#24292f" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion path="M384,355 L1715,355 L1715,897 L110,897 L110,469" keyPoints="0;1;1" keyTimes="0;0.3333;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0" keyTimes="0;0.3333" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="14" fill="#24292f" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion path="M384,355 L1237,355 L1237,897 L110,897 L110,469" keyPoints="0;0;1;1" keyTimes="0;0.3333;0.6667;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.6667" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="14" fill="#24292f" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animateMotion path="M384,355 L615,355 L615,897 L110,897 L110,469" keyPoints="0;0;1" keyTimes="0;0.6667;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1" keyTimes="0;0.6667" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+  </circle>
+</svg>

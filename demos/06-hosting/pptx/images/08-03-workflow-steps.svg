@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Step events of the ticket workflow on the Python server</title>
+  <desc>RUN_STARTED, then superstep:1 with STEP_STARTED superstep:1, the triage executor between STEP_STARTED triage and STEP_FINISHED triage, and STEP_FINISHED superstep:1, then superstep:2 with the reply executor between STEP_STARTED reply and STEP_FINISHED reply, then RUN_FINISHED. Triage classifies the ticket and gives a priority, reply writes the two-sentence customer reply. Below, a progress indicator with a triage segment and a reply segment drawn from the step events. A note says that on the C# server BuildSequential(triage, reply).AsAIAgent() sends TEXT_MESSAGE events only, authored by triage and reply. The animation fills the progress segments while each superstep is active.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <rect x="60" y="348" width="210" height="64" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke" dur="10s" repeatCount="indefinite" calcMode="discrete" values="#8c959f;#e0a534;#8c959f" keyTimes="0;0.02;0.1"/>
+    <animate attributeName="stroke-width" dur="10s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.02;0.1"/>
+  </rect>
+  <text x="80" y="389" font-size="26" font-family="Consolas, monospace" fill="#24292f">RUN_STARTED</text>
+  <rect x="340" y="120" width="570" height="520" rx="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke" dur="10s" repeatCount="indefinite" calcMode="discrete" values="#8c959f;#e0a534;#8c959f" keyTimes="0;0.1;0.4"/>
+    <animate attributeName="stroke-width" dur="10s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.1;0.4"/>
+  </rect>
+  <rect x="960" y="120" width="570" height="520" rx="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke" dur="10s" repeatCount="indefinite" calcMode="discrete" values="#8c959f;#e0a534;#8c959f" keyTimes="0;0.45;0.75"/>
+    <animate attributeName="stroke-width" dur="10s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.45;0.75"/>
+  </rect>
+  <rect x="380" y="210" width="490" height="330" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1000" y="210" width="490" height="330" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <g font-size="26" font-family="Consolas, monospace" fill="#24292f">
+    <text x="370" y="175">STEP_STARTED superstep:1</text>
+    <text x="410" y="262">STEP_STARTED triage</text>
+    <text x="410" y="510">STEP_FINISHED triage</text>
+    <text x="370" y="605">STEP_FINISHED superstep:1</text>
+    <text x="990" y="175">STEP_STARTED superstep:2</text>
+    <text x="1030" y="262">STEP_STARTED reply</text>
+    <text x="1030" y="510">STEP_FINISHED reply</text>
+    <text x="990" y="605">STEP_FINISHED superstep:2</text>
+  </g>
+  <g font-size="36" font-weight="700" font-family="Consolas, monospace" fill="#24292f">
+    <text x="410" y="345">triage</text>
+    <text x="1030" y="345">reply</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="410" y="392">classifies the ticket,</text>
+    <text x="410" y="432">gives a priority</text>
+    <text x="1030" y="392">writes the two-sentence</text>
+    <text x="1030" y="432">customer reply</text>
+  </g>
+  <rect x="1600" y="348" width="240" height="64" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <animate attributeName="stroke" dur="10s" repeatCount="indefinite" calcMode="discrete" values="#8c959f;#e0a534;#8c959f" keyTimes="0;0.75;0.85"/>
+    <animate attributeName="stroke-width" dur="10s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.75;0.85"/>
+  </rect>
+  <text x="1620" y="389" font-size="26" font-family="Consolas, monospace" fill="#24292f">RUN_FINISHED</text>
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="270" y1="380" x2="336" y2="380"/>
+    <line x1="910" y1="380" x2="956" y2="380"/>
+    <line x1="1530" y1="380" x2="1596" y2="380"/>
+  </g>
+  <rect x="60" y="710" width="1120" height="300" rx="22" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="762" font-size="26" fill="#57606a">A progress indicator from the step events</text>
+  <rect x="100" y="800" width="480" height="80" rx="40" fill="#e9f7ef">
+    <animate attributeName="width" dur="10s" repeatCount="indefinite" calcMode="linear" values="480;480;0;480;480" keyTimes="0;0.0999;0.1;0.4;1"/>
+  </rect>
+  <rect x="640" y="800" width="480" height="80" rx="40" fill="#e9f7ef">
+    <animate attributeName="width" dur="10s" repeatCount="indefinite" calcMode="linear" values="480;480;0;0;480;480" keyTimes="0;0.0999;0.1;0.45;0.75;1"/>
+  </rect>
+  <g fill="none" stroke="#8c959f" stroke-width="2">
+    <rect x="100" y="800" width="480" height="80" rx="40"/>
+    <rect x="640" y="800" width="480" height="80" rx="40"/>
+    <line x1="580" y1="840" x2="640" y2="840"/>
+  </g>
+  <g font-size="28" font-weight="700" font-family="Consolas, monospace" fill="#24292f" text-anchor="middle">
+    <text x="340" y="850">triage</text>
+    <text x="880" y="850">reply</text>
+  </g>
+  <g font-size="26" font-family="Consolas, monospace" fill="#57606a" text-anchor="middle">
+    <text x="340" y="940">superstep:1</text>
+    <text x="880" y="940">superstep:2</text>
+  </g>
+  <rect x="1240" y="710" width="620" height="300" rx="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="765" font-size="28" font-weight="700" fill="#24292f">On the C# server</text>
+  <g font-size="26" fill="#24292f">
+    <text x="1270" y="815" font-family="Consolas, monospace">BuildSequential(triage, reply)</text>
+    <text x="1270" y="855" font-family="Consolas, monospace">.AsAIAgent()</text>
+    <text x="1270" y="905">sends <tspan font-family="Consolas, monospace">TEXT_MESSAGE_*</tspan> only,</text>
+    <text x="1270" y="948">authored by <tspan font-family="Consolas, monospace">triage</tspan> and <tspan font-family="Consolas, monospace">reply</tspan></text>
+  </g>
+</svg>

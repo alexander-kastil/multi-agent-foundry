@@ -13,6 +13,8 @@ A control combines three things: the risk, such as violence or a prompt attack; 
 | Tool response (preview) | The content a tool returns to the agent, before it is added to memory or shown to the user | Agents only |
 | Output | The final completion returned to the user | Models and agents |
 
+![One agent run from the user to the agent to a tool and back, with the four intervention points User input, Tool call, Tool response and Output and their source names](../pptx/images/01-01-intervention-points.svg)
+
 For agents, the action is annotate and block; annotate-only is available for models.
 
 Each intervention point adds roughly 50 to 100 ms of latency. Tool call and tool response controls take effect only for tools that support moderation, such as Azure AI Search, Azure Functions, OpenAPI, Bing Grounding and Browser Automation; the intervention points article has the full list.
@@ -83,6 +85,8 @@ agent = project.agents.create_version(
 ## What a block looks like
 
 When user input is blocked, the call fails with HTTP 400 and the code `content_filter`, and the error body names the intervention point and the risk. When a tool response is blocked, the call succeeds with `status` set to `incomplete`, `incomplete_details.reason` set to `content_filter`, and a `content_filters` entry with `source_type` `post_tool` and `blocked` true.
+
+![A jailbreak stopped at user input ends in HTTP 400 with code content_filter, while an injected instruction stopped at the tool response ends in HTTP 200 with status incomplete](../pptx/images/01-02-block-signals.svg)
 
 ```python
 except BadRequestError as error:

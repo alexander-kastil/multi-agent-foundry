@@ -4,6 +4,8 @@ An agent that reaches production holds credentials, reads untrusted text and cha
 
 Every topic ships a runnable Python project built on `azure-ai-projects` 2.9.0 and the Responses API, and every demo runs against your Foundry project. The demos create agents and guardrails under `m8-` names and delete them when they end.
 
+![The seven topics of the module as numbered cards, grouped by what an agent in production does: reads untrusted text, holds credentials, changes behavior with every prompt edit](./pptx/images/00-02-overview.svg)
+
 ## Topics
 
 | Topic | Description |

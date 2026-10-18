@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Reranking hybrid candidates with the semantic ranker</title>
+  <desc>For the question "What should I monitor after starting an ACE inhibitor in a patient with diabetes?" the hybrid order is Hypertension in chronic kidney disease, Lisinopril 10 mg tablets, Type 2 diabetes treatment algorithm, Hemoglobin A1c and Hypothyroidism diagnosis and treatment, followed by candidates at ranks 6 to 50 that include Serum potassium, Estimated glomerular filtration rate and Diabetic ketoacidosis protocol. The semantic ranker rescores the top 50 and returns Lisinopril 10 mg tablets (2.48), Serum potassium (2.13), Estimated glomerular filtration rate (2.02), Hypertension in chronic kidney disease (1.95) and Diabetic ketoacidosis protocol (1.92). Lines connect each document's hybrid position to its semantic position; three documents rise from ranks 6 to 50. The score is @search.rerankerScore on a scale of 0 to 4, separate from the RRF score. Animated: a dot travels along each line from the hybrid order to the semantic order.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#e0a534"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="40" y="40" width="1840" height="72" rx="12" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="87" text-anchor="middle" font-size="28">What should I monitor after starting an ACE inhibitor in a patient with diabetes?</text>
+
+  <rect x="40" y="150" width="740" height="860" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="70" y="196" class="b" font-size="28">Hybrid order, top 50 candidates</text>
+
+  <rect x="70" y="220" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="108" cy="256" r="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="108" y="265" text-anchor="middle" class="b">1</text>
+  <text x="145" y="265">Hypertension in chronic kidney disease</text>
+
+  <rect x="70" y="304" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="108" cy="340" r="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="108" y="349" text-anchor="middle" class="b">2</text>
+  <text x="145" y="349">Lisinopril 10 mg tablets</text>
+
+  <rect x="70" y="388" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="108" cy="424" r="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="108" y="433" text-anchor="middle" class="b">3</text>
+  <text x="145" y="433" class="sec">Type 2 diabetes treatment algorithm</text>
+
+  <rect x="70" y="472" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="108" cy="508" r="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="108" y="517" text-anchor="middle" class="b">4</text>
+  <text x="145" y="517" class="sec">Hemoglobin A1c</text>
+
+  <rect x="70" y="556" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="108" cy="592" r="22" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="108" y="601" text-anchor="middle" class="b">5</text>
+  <text x="145" y="601" class="sec">Hypothyroidism diagnosis and treatment</text>
+
+  <rect x="70" y="650" width="680" height="330" rx="12" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="95" y="692" class="b sec">ranks 6 to 50</text>
+  <rect x="95" y="710" width="630" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="755">Serum potassium</text>
+  <rect x="95" y="794" width="630" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="839">Estimated glomerular filtration rate</text>
+  <rect x="95" y="878" width="630" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="120" y="923">Diabetic ketoacidosis protocol</text>
+
+  <rect x="815" y="150" width="290" height="64" rx="12" fill="#fff6e5" stroke="#e0a534" stroke-width="3"/>
+  <text x="960" y="192" text-anchor="middle" class="b" font-size="28">semantic ranker</text>
+
+  <rect x="1140" y="150" width="740" height="860" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1170" y="196" class="b" font-size="28">Semantic ranker order</text>
+  <text x="1850" y="196" text-anchor="end" class="sec">score 0 to 4</text>
+
+  <rect x="1170" y="220" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1208" cy="256" r="22" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1208" y="265" text-anchor="middle" class="b">1</text>
+  <text x="1245" y="265">Lisinopril 10 mg tablets</text>
+  <text x="1825" y="265" text-anchor="end" class="mono b">2.48</text>
+
+  <rect x="1170" y="304" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1208" cy="340" r="22" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1208" y="349" text-anchor="middle" class="b">2</text>
+  <text x="1245" y="349">Serum potassium</text>
+  <text x="1825" y="349" text-anchor="end" class="mono b">2.13</text>
+
+  <rect x="1170" y="388" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1208" cy="424" r="22" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1208" y="433" text-anchor="middle" class="b">3</text>
+  <text x="1245" y="433">Estimated glomerular filtration rate</text>
+  <text x="1825" y="433" text-anchor="end" class="mono b">2.02</text>
+
+  <rect x="1170" y="472" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1208" cy="508" r="22" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1208" y="517" text-anchor="middle" class="b">4</text>
+  <text x="1245" y="517">Hypertension in chronic kidney disease</text>
+  <text x="1825" y="517" text-anchor="end" class="mono b">1.95</text>
+
+  <rect x="1170" y="556" width="680" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <circle cx="1208" cy="592" r="22" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1208" y="601" text-anchor="middle" class="b">5</text>
+  <text x="1245" y="601">Diabetic ketoacidosis protocol</text>
+  <text x="1825" y="601" text-anchor="end" class="mono b">1.92</text>
+
+  <text x="1170" y="700" class="mono">@search.rerankerScore</text>
+  <text x="1170" y="740" class="sec">0 to 4, separate from the RRF score</text>
+  <text x="1170" y="800" class="sec">rescores the top 50 hybrid results</text>
+
+  <path d="M750,340 L1168,256" fill="none" stroke="#8c959f" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M750,256 L1168,508" fill="none" stroke="#8c959f" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M725,746 L1168,340" fill="none" stroke="#e0a534" stroke-width="3" marker-end="url(#arrow-amber)"/>
+  <path d="M725,830 L1168,424" fill="none" stroke="#e0a534" stroke-width="3" marker-end="url(#arrow-amber)"/>
+  <path d="M725,914 L1168,592" fill="none" stroke="#e0a534" stroke-width="3" marker-end="url(#arrow-amber)"/>
+
+  <circle r="10" fill="#57606a" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear" path="M750,340 L1168,256"/>
+  </circle>
+  <circle r="10" fill="#57606a" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear" path="M750,256 L1168,508"/>
+  </circle>
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear" path="M725,746 L1168,340"/>
+  </circle>
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear" path="M725,830 L1168,424"/>
+  </circle>
+  <circle r="10" fill="#e0a534" opacity="0">
+    <set attributeName="opacity" to="1" begin="0s"/>
+    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear" path="M725,914 L1168,592"/>
+  </circle>
+</svg>

@@ -46,6 +46,8 @@ Content-Type: application/merge-patch+json
 
 Promotion and rollback are the same call with a different version number. A caller that names a version in its `agent_reference` bypasses the selector, which is how you test a candidate before you promote it.
 
+![Four states of the version selector on one stable endpoint URL: created v1 with @latest, pinned to v1 with v2 tested by agent_reference, promoted to v2, rolled back to v1](../pptx/images/06-01-version-selector.svg)
+
 ```python
 client = project.get_openai_client(agent_name="m8-life-selector")
 client.responses.create(input="Is eval(user_input) a vulnerability?")
@@ -114,6 +116,8 @@ if self.window_tokens[tenant] + estimate > limits["tokens_per_minute"] or self.w
 
 The project simulates that gateway in a class so you can watch the behavior without an API Management instance, and it shortens the one-minute window to 6 seconds. A 429 is retried with exponential backoff and jitter, and a 403 is final. Chargeback then prices each tenant from the tokens the Responses API reports in `response.usage` and splits a shared compute cost evenly; the rates in the code are illustrative, not Azure prices.
 
+![Three tenants send requests through a retrying client to a token-limit gateway that answers 403 for the monthly quota and 429 for tokens per minute, then forwards to the Foundry agent and prices usage in a chargeback](../pptx/images/06-02-token-gateway.svg)
+
 ## Retirement
 
 Retiring a version has a sequence: deprecate, warn, block, archive, repoint, delete. The code enforces a minimum of 90 days between the deprecation date and the deletion date, then answers requests by tenant status.
@@ -137,6 +141,8 @@ return 410, {
 ```
 
 A pinned tenant keeps working and sees a deprecation warning. Everyone else receives HTTP 410 with the replacement. Before deletion the code archives the manifest to `out/`, repoints the stable endpoint to the replacement, and only then calls `project.agents.delete_version`, so the endpoint never points at a version that no longer exists.
+
+![Retirement of version 2.2.0 in six steps: deprecate, warn the pinned tenant, block the tenant without a pin, archive the manifest, repoint the endpoint to 2.3.0, delete the version](../pptx/images/06-03-retirement-sequence.svg)
 
 ## Hands-On Demo
 

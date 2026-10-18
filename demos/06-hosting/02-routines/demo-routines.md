@@ -6,6 +6,8 @@ What you practice here: pairing one trigger with one action, testing with `dispa
 
 Duration: about 40 minutes.
 
+![A timer, schedule or github_issue trigger, or a manual dispatch, starts the routine; its one action invokes one agent, and the run history records timer_delivery, schedule_delivery or queued_dispatch with the response id](../pptx/images/02-01-routine-run-flow.svg)
+
 ## Prerequisites
 
 - Python 3.10 or later, or the .NET 10 SDK for the C# version, Azure CLI signed in with `az login`, and the Azure Developer CLI 1.25.2 or later.

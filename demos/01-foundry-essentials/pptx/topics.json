@@ -1,0 +1,10 @@
+{
+  "topics": [
+    {"title": "Microsoft Foundry: Projects & Resources", "subtitle": "One project endpoint and the renamed Foundry roles"},
+    {"title": "Model Deployments & Model Router", "subtitle": "Routing modes, model subsets and failover"},
+    {"title": "Foundry SDK & Microsoft.Extensions.AI", "subtitle": "Project client, OpenAI-compatible client and IChatClient"},
+    {"title": "Responses API: Conversations & Streaming", "subtitle": "Chained responses, conversations and streaming events"},
+    {"title": "Foundry Toolkit & Foundry MCP Server", "subtitle": "azd ai, Agent Inspector and the Foundry MCP server"},
+    {"title": "Context Engineering: Budgets, Compaction & Caching", "subtitle": "Measure, trim, compact and cache the context"}
+  ]
+}

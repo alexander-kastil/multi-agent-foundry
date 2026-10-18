@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Events of a realtime voice session</title>
+  <desc>Your client and the realtime session, a voice agent or the Voice Live API, share one long-lived WebSocket. The client connects and waits for session.created or session.updated, the session-ready event. For each user turn the client sends conversation.item.create with the user turn as text or audio, then response.create to ask for a reply. The session sends many response.audio.delta events with base64 PCM16 audio, then response.audio_transcript.done with the reply as text, then response.done. Your client joins the chunks into reply-1.wav, PCM16, 24 kHz, mono, and prints the transcript. For a voice agent, session.created carries the conversation id to read the conversation back later. Dots travel along the events in order for two user turns.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; font-size: 26px; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+    .box { stroke: #8c959f; stroke-width: 2; }
+    .msg { fill: none; stroke: #8c959f; stroke-width: 2; marker-end: url(#arrow); }
+    .life { stroke: #8c959f; stroke-width: 2; stroke-dasharray: 10 8; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="box" x="110" y="40" width="520" height="110" rx="20" fill="#eaf2ff"/>
+  <text class="b c" x="370" y="87" font-size="32">Your client</text>
+  <text class="sec c" x="370" y="130">types the turn, saves the audio</text>
+
+  <rect class="box" x="1290" y="40" width="520" height="110" rx="20" fill="#f3edff"/>
+  <text class="b c" x="1550" y="87" font-size="32">Realtime session</text>
+  <text class="sec c" x="1550" y="130">voice agent or Voice Live API</text>
+
+  <text class="sec c" x="960" y="104">one long-lived WebSocket</text>
+
+  <line class="life" x1="370" y1="150" x2="370" y2="885"/>
+  <line class="life" x1="1550" y1="150" x2="1550" y2="885"/>
+
+  <rect x="100" y="345" width="1720" height="460" rx="16" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="4 6"/>
+  <text class="sec b" x="118" y="382">for each user turn</text>
+
+  <line class="msg" x1="370" y1="210" x2="1550" y2="210"/>
+  <text class="c" x="960" y="194" font-size="26"><tspan class="mono">connect</tspan><tspan class="sec" dx="24">open the session</tspan></text>
+
+  <line class="msg" x1="1550" y1="302" x2="370" y2="302"/>
+  <text class="c" x="960" y="286" font-size="26"><tspan class="mono">session.created</tspan> or <tspan class="mono">session.updated</tspan><tspan class="sec" dx="24">session ready</tspan></text>
+
+  <line class="msg" x1="370" y1="420" x2="1550" y2="420"/>
+  <text class="c" x="960" y="404" font-size="26"><tspan class="mono">conversation.item.create</tspan><tspan class="sec" dx="24">the user turn, as text or audio</tspan></text>
+
+  <line class="msg" x1="370" y1="505" x2="1550" y2="505"/>
+  <text class="c" x="960" y="489" font-size="26"><tspan class="mono">response.create</tspan><tspan class="sec" dx="24">ask for a reply</tspan></text>
+
+  <line class="msg" x1="1550" y1="590" x2="370" y2="590"/>
+  <text class="c" x="960" y="574" font-size="26"><tspan class="mono">response.audio.delta</tspan><tspan class="sec" dx="24">base64 PCM16 audio, many chunks</tspan></text>
+
+  <line class="msg" x1="1550" y1="675" x2="370" y2="675"/>
+  <text class="c" x="960" y="659" font-size="26"><tspan class="mono">response.audio_transcript.done</tspan><tspan class="sec" dx="24">the reply as text</tspan></text>
+
+  <line class="msg" x1="1550" y1="760" x2="370" y2="760"/>
+  <text class="c" x="960" y="744" font-size="26"><tspan class="mono">response.done</tspan><tspan class="sec" dx="24">the reply is complete</tspan></text>
+
+  <rect class="box" x="110" y="885" width="1000" height="130" rx="20" fill="#e9f7ef"/>
+  <text class="c" x="610" y="937">Your client joins the chunks into <tspan class="mono">reply-1.wav</tspan></text>
+  <text class="sec c" x="610" y="982">PCM16, 24 kHz, mono, and prints the transcript</text>
+
+  <rect class="box" x="1190" y="885" width="620" height="130" rx="20" fill="#f3edff"/>
+  <text class="c" x="1500" y="937" font-size="26">voice agent: <tspan class="mono">session.created</tspan></text>
+  <text class="sec c" x="1500" y="982">carries the conversation id</text>
+
+  <g>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M370,210 L1550,210" keyPoints="0;1;1" keyTimes="0;0.0571;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.0571"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,302 L370,302" keyPoints="0;0;1;1" keyTimes="0;0.0571;0.1143;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.0571;0.1143"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M370,420 L1550,420" keyPoints="0;0;1;1" keyTimes="0;0.1143;0.1714;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1143;0.1714"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M370,505 L1550,505" keyPoints="0;0;1;1" keyTimes="0;0.1714;0.2286;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1714;0.2286"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,590 L370,590" keyPoints="0;0;1;1" keyTimes="0;0.2286;0.2786;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2286;0.2786"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,590 L370,590" keyPoints="0;0;1;1" keyTimes="0;0.25;0.3;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.3"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,590 L370,590" keyPoints="0;0;1;1" keyTimes="0;0.2714;0.3214;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2714;0.3214"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,675 L370,675" keyPoints="0;0;1;1" keyTimes="0;0.3286;0.3857;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3286;0.3857"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,760 L370,760" keyPoints="0;0;1;1" keyTimes="0;0.3857;0.4429;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3857;0.4429"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M370,420 L1550,420" keyPoints="0;0;1;1" keyTimes="0;0.4857;0.5429;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4857;0.5429"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M370,505 L1550,505" keyPoints="0;0;1;1" keyTimes="0;0.5429;0.6;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5429;0.6"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,590 L370,590" keyPoints="0;0;1;1" keyTimes="0;0.6;0.65;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6;0.65"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,590 L370,590" keyPoints="0;0;1;1" keyTimes="0;0.6214;0.6714;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6214;0.6714"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,590 L370,590" keyPoints="0;0;1;1" keyTimes="0;0.6429;0.6929;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6429;0.6929"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,675 L370,675" keyPoints="0;0;1;1" keyTimes="0;0.7;0.7571;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.7;0.7571"/>
+    </circle>
+    <circle r="11" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+      <animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M1550,760 L370,760" keyPoints="0;0;1;1" keyTimes="0;0.7571;0.8143;1"/>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.7571;0.8143"/>
+    </circle>
+  </g>
+</svg>

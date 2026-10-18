@@ -8,6 +8,8 @@ Each project has its own `.env.example`, a pinned `requirements.txt` or `.csproj
 
 Demos that need Azure resources ship a `provision.azcli` and, where useful, a `deprovision.azcli` beside the guide. The demos that read traces use the Application Insights resource that the tracing demo connects to the project.
 
+![The seven topics of the module in two rows: tracing, agent evaluators, evaluation suites and continuous evaluation, then agent optimizer, performance and cost, and incident response](./pptx/images/00-02-overview.svg)
+
 | Topic | Description |
 | --- | --- |
 | [01 Tracing: OpenTelemetry & Application Insights](01-tracing/readme.md) | GenAI span conventions, Agent Framework instrumentation, Azure Monitor export, trace propagation across services and KQL over Foundry traces |

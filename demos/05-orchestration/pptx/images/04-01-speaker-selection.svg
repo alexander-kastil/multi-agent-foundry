@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Speaker selection in group chat</title>
+  <desc>Two group chat runs of the same writer and reviewer team. Top: a selection function maps the round number to the next speaker, so Writer, Reviewer, Writer and Reviewer speak in turn and the chat ends only at the termination condition after four assistant messages, although the Reviewer approved in turn 2. Bottom: an agent orchestrator reads the chat, lets the Writer and then the Reviewer speak, and ends the chat after two turns with the approved slogan as the final output.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #24292f; }
+      .s { font-family: Segoe UI, Helvetica, Arial, sans-serif; fill: #57606a; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="40" y="60" width="1840" height="440" rx="20" fill="#f6f8fa"/>
+  <rect x="40" y="580" width="1840" height="440" rx="20" fill="#f6f8fa"/>
+
+  <rect x="80" y="95" width="440" height="370" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="110" y="152" font-size="32" font-weight="700">Selection function</text>
+  <text class="m" x="110" y="207" font-size="26">selection_func=</text>
+  <text class="m" x="110" y="243" font-size="26">round_robin</text>
+  <text class="s" x="110" y="300" font-size="26">maps the round number</text>
+  <text class="s" x="110" y="336" font-size="26">to the next speaker</text>
+  <text class="t" x="110" y="394" font-size="26">stops after four</text>
+  <text class="t" x="110" y="430" font-size="26">assistant messages</text>
+
+  <rect x="80" y="615" width="440" height="370" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="t" x="110" y="672" font-size="32" font-weight="700">Agent orchestrator</text>
+  <text class="m" x="110" y="727" font-size="26">orchestrator_agent=</text>
+  <text class="m" x="110" y="763" font-size="26">orchestrator</text>
+  <text class="s" x="110" y="820" font-size="26">a model reads the chat</text>
+  <text class="s" x="110" y="856" font-size="26">and picks the speaker</text>
+  <text class="t" x="110" y="914" font-size="26">ends when Reviewer</text>
+  <text class="t" x="110" y="950" font-size="26">says APPROVED</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="520" y1="285" x2="598" y2="285"/>
+    <line x1="812" y1="285" x2="860" y2="285"/>
+    <line x1="1074" y1="285" x2="1122" y2="285"/>
+    <line x1="1336" y1="285" x2="1384" y2="285"/>
+    <line x1="1598" y1="285" x2="1646" y2="285"/>
+    <line x1="520" y1="805" x2="598" y2="805"/>
+    <line x1="812" y1="805" x2="860" y2="805"/>
+    <line x1="1074" y1="805" x2="1122" y2="805"/>
+  </g>
+
+  <rect x="600" y="170" width="212" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="706" y="232" font-size="26" text-anchor="middle">Turn 1</text>
+  <text class="t" x="706" y="292" font-size="30" font-weight="700" text-anchor="middle">Writer</text>
+  <text class="s" x="706" y="345" font-size="26" text-anchor="middle">new slogan</text>
+
+  <rect x="862" y="170" width="212" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="968" y="232" font-size="26" text-anchor="middle">Turn 2</text>
+  <text class="t" x="968" y="292" font-size="30" font-weight="700" text-anchor="middle">Reviewer</text>
+  <rect x="883" y="318" width="170" height="46" rx="23" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="968" y="350" font-size="26" font-weight="700" text-anchor="middle">APPROVED</text>
+
+  <rect x="1124" y="170" width="212" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="1230" y="232" font-size="26" text-anchor="middle">Turn 3</text>
+  <text class="t" x="1230" y="292" font-size="30" font-weight="700" text-anchor="middle">Writer</text>
+  <text class="s" x="1230" y="345" font-size="26" text-anchor="middle">new slogan</text>
+
+  <rect x="1386" y="170" width="212" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="1492" y="232" font-size="26" text-anchor="middle">Turn 4</text>
+  <text class="t" x="1492" y="292" font-size="30" font-weight="700" text-anchor="middle">Reviewer</text>
+  <rect x="1407" y="318" width="170" height="46" rx="23" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1492" y="350" font-size="26" font-weight="700" text-anchor="middle">APPROVED</text>
+
+  <rect x="1648" y="170" width="212" height="230" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1754" y="250" font-size="30" font-weight="700" text-anchor="middle">final</text>
+  <text class="s" x="1754" y="302" font-size="26" text-anchor="middle">termination</text>
+  <text class="s" x="1754" y="338" font-size="26" text-anchor="middle">condition</text>
+  <text class="s" x="1754" y="374" font-size="26" text-anchor="middle">reached</text>
+
+  <rect x="600" y="690" width="212" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="706" y="752" font-size="26" text-anchor="middle">Turn 1</text>
+  <text class="t" x="706" y="812" font-size="30" font-weight="700" text-anchor="middle">Writer</text>
+  <text class="s" x="706" y="865" font-size="26" text-anchor="middle">new slogan</text>
+
+  <rect x="862" y="690" width="212" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="s" x="968" y="752" font-size="26" text-anchor="middle">Turn 2</text>
+  <text class="t" x="968" y="812" font-size="30" font-weight="700" text-anchor="middle">Reviewer</text>
+  <rect x="883" y="838" width="170" height="46" rx="23" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="968" y="870" font-size="26" font-weight="700" text-anchor="middle">APPROVED</text>
+
+  <rect x="1124" y="690" width="212" height="230" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="t" x="1230" y="775" font-size="30" font-weight="700" text-anchor="middle">final</text>
+  <text class="t" x="1230" y="827" font-size="26" text-anchor="middle">approved</text>
+  <text class="t" x="1230" y="863" font-size="26" text-anchor="middle">slogan</text>
+
+  <text class="t" x="1400" y="775" font-size="30" font-weight="700">Two turns instead of four</text>
+  <text class="s" x="1400" y="825" font-size="26">the termination condition</text>
+  <text class="s" x="1400" y="861" font-size="26">stays the safety net</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="592" y="162" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.15" values="1;0"/>
+    </rect>
+    <rect x="592" y="682" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.15" values="1;0"/>
+    </rect>
+    <rect x="854" y="162" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.15;0.3" values="0;1;0"/>
+    </rect>
+    <rect x="854" y="682" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.15;0.3" values="0;1;0"/>
+    </rect>
+    <rect x="1116" y="162" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.3;0.45" values="0;1;0"/>
+    </rect>
+    <rect x="1116" y="682" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.3" values="0;1"/>
+    </rect>
+    <rect x="1378" y="162" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.45;0.6" values="0;1;0"/>
+    </rect>
+    <rect x="1640" y="162" width="228" height="246" rx="20" opacity="0">
+      <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.6" values="0;1"/>
+    </rect>
+  </g>
+</svg>

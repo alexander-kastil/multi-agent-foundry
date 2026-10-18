@@ -59,11 +59,15 @@ azd ai inspector launch
 
 The UI is served at `http://127.0.0.1:8087` and targets port 8088 by default. Use `--port` and `--inspector-port` when either port is taken, and `--conversation-id` to replay an existing conversation.
 
+![Terminal 1 runs the local agent on port 8088, terminal 2 posts a question to /responses, terminal 3 serves Agent Inspector on port 8087](../pptx/images/05-02-agent-inspector.svg)
+
 ## Foundry MCP server
 
 The Foundry MCP server (preview) is a Microsoft-hosted Model Context Protocol server at `https://mcp.ai.azure.com`. It exposes tools that manage a Foundry project in natural language: agents, sessions, toolboxes, datasets, evaluations, model deployments, connections and more. The documentation lists 79 tools in 17 categories, and the live server returned 80 when this module was written, because the tool set changes during the preview.
 
 Every call runs with your own permissions through the Microsoft Entra on-behalf-of flow. Reader is enough for read tools and Contributor is needed for tools that create, update or delete. Write tools affect live resources and billing at once, so review the parameters before you approve a call.
+
+![Python, C# and Copilot Agent Mode send a bearer token over streamable HTTP to the Foundry MCP server, which calls the project with your Reader or Contributor role](../pptx/images/05-01-foundry-mcp-server.svg)
 
 To use the server from VS Code with GitHub Copilot Agent Mode, add it to `.vscode/mcp.json` in the workspace and start it from the editor.
 

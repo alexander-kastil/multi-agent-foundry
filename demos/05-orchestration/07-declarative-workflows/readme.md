@@ -111,6 +111,8 @@ resumed = await pipeline.run(responses={"review": "Make it a single sentence."})
 
 `@step` caches a function's result by its name and bound arguments, so after a human pause the finished steps are replayed from the cache instead of calling the model again, and they emit `executor_bypassed`. `ctx.request_info` pauses the workflow, and the first run ends with state `IDLE_WITH_PENDING_REQUESTS`. Give the request an explicit `request_id` so the resume call can name it.
 
+![The first run calls write_draft and pauses at ctx.request_info; after the reviewer answers, the resume bypasses write_draft from the cache and only revise_draft calls the model](../pptx/images/07-01-functional-pause-resume.svg)
+
 ## Migrating Foundry Portal Workflows
 
 Workflows in the Foundry portal are a visual designer in preview. Microsoft Foundry retires them on December 1, 2026, and points new work to Microsoft Agent Framework. After that date the visual designer and in-portal execution are not supported, while YAML-based workflow definitions keep running when you deploy them as a hosted agent.

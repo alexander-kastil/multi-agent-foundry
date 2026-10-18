@@ -120,6 +120,8 @@ Step 4 commentary: This five-year DCF assumes modest top-line expansion from $25
 
 The company grew fast, so the classifier chose `GROWTH_DRIVEN`, and the branch table turned that label into a discounted cash flow prompt without another model call.
 
+![Prompt chain: metric_extractor, the validate_metrics gate that raises AssertionError on out-of-range values, profile_classifier, the BRANCHES lookup that maps GROWTH_DRIVEN to a DCF prompt, valuation_analyst and analyst_commentator](../pptx/images/05-01-prompt-chain.svg)
+
 ## Step 3: Let a planner build the dependency graph
 
 The planner receives the query and the registry of specialists and must return raw JSON. The prompt carries the rules: only necessary subtasks, tasks without dependencies can run in parallel, and a complex query ends with the thesis generator.
@@ -195,6 +197,8 @@ Final output: **Recommendation: Buy (long-term core holding), with valuation dis
 
 The simple question produced one task and one wave. The complex one produced the graph from the readme: three independent tasks in wave 1 and the thesis in wave 2 with their results as context. The financial data retriever has no live data source, so its figures are illustrative; the instructions say so.
 
+![The planner turns the query and registry into a JSON plan; execute_plan finds ready tasks, runs each wave with asyncio.gather and stores the results until nothing is pending, and a plan with no ready task raises ValueError](../pptx/images/05-02-plan-waves.svg)
+
 ## Step 5: Reject a plan that cannot run
 
 A planner is a model, so its output is untrusted input. `cycle_check.py` feeds `execute_plan` a plan in which T1 waits for T2 and T2 waits for T1, and without the guard the `while pending` loop would never find a ready task and would spin forever. Run `.venv/Scripts/python cycle_check.py` or `dotnet run -- cycle`.
@@ -262,6 +266,8 @@ Final message: {
 ```
 
 Foreign revenue in the prompt is 60 percent, so the analyst handed off. The first line is the builder warning about the terminal specialist: the risk assessor has no outgoing handoff by design, so the run ends there.
+
+![Handoff run: sec_filing_analyzer hands off to international_risk_assessor because foreign revenue is above 30 percent, credit_analyst does not speak, and turn limits cap both agents at two turns](../pptx/images/05-03-handoff-limits.svg)
 
 ## Verify
 

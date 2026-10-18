@@ -76,6 +76,8 @@ Expected result: the script is silent while it runs, then prints the probe resul
 
 Each junior and senior review is compared against the anonymized one. A review is flagged when the cosine similarity of its three scores drops below 0.95 or the quality score differs by more than 5.
 
+![One code sample reviewed three times by the same agent version, with a junior header, a senior header and no header; each context review is compared with the anonymized baseline and flagged when similarity drops below 0.95 or the quality gap is above 5](../pptx/images/07-01-consistency-probe.svg)
+
 ```python
 sim = similarity(orig, anon)
 gap = abs(orig["quality_score"] - anon["quality_score"])
@@ -153,6 +155,8 @@ Audit trail written to out/audit.jsonl (12 entries), 2 submissions flagged for h
 ## Step 5: Write each decision to the audit trail
 
 Each review appends one JSON line. It carries the agent version, the model deployment, the prompt label, a hash of the exact input and the correlation id.
+
+![The agent version m8-rai-reviewer v1 with its prompt_version metadata, the three audit entries of one correlation_id with different input hashes, and the three questions audit_report.py answers from the log](../pptx/images/07-02-audit-trail.svg)
 
 ```python
 entry = {

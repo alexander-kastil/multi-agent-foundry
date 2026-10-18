@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The approval loop for a tool with side effects</title>
+  <desc>The request to book the Erzherzog Johann Hut for 2 runs with agent.run on a session. Because book_hut has approval_mode always_require, the agent stops before the call and returns the pending call in result.user_input_requests. A human sees the approval request for book_hut, Erzherzog Johann Hut, 1 night, 2 hikers, and approves or rejects. The answer goes back on the same session as to_function_approval_response with the decision, through agent.run with the responses. The loop repeats while result.user_input_requests is not empty, because a rejected call is reported back to the model, which may ask again. When no request is left, the final answer arrives: on approve with confirmation HB-2935, on reject with the booking not completed. A highlight steps through the loop twice through the gate and then to the final answer.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+      .ln { stroke: #8c959f; stroke-width: 2; fill: none; }
+      .hl { fill: none; stroke: #e0a534; stroke-width: 8; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <line x1="580" y1="190" x2="678" y2="190" class="ln" marker-end="url(#ah)"/>
+  <line x1="1240" y1="190" x2="1338" y2="190" class="ln" marker-end="url(#ah)"/>
+  <polyline points="1160,320 1160,540 1298,540" class="ln" marker-end="url(#ah)"/>
+  <polyline points="1580,660 1580,870 1302,870" class="ln" marker-end="url(#ah)"/>
+  <polyline points="620,870 380,870 380,420 760,420 760,322" class="ln" marker-end="url(#ah)"/>
+
+  <path d="M620,870 H380 V420 H760 V330" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.52;0.62" values="0;1;0"/>
+  </path>
+
+  <rect x="60" y="60" width="520" height="260" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="680" y="60" width="560" height="260" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="1340" y="60" width="520" height="260" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1300" y="420" width="560" height="240" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="620" y="760" width="680" height="220" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+
+  <rect x="60" y="60" width="520" height="260" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.06;0.16" values="0;1;0"/>
+  </rect>
+  <rect x="680" y="60" width="560" height="260" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.16;0.28;0.62;0.72" values="0;1;0;1;0"/>
+  </rect>
+  <rect x="1300" y="420" width="560" height="240" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.28;0.4" values="0;1;0"/>
+  </rect>
+  <rect x="620" y="760" width="680" height="220" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4;0.52" values="0;1;0"/>
+  </rect>
+  <rect x="1340" y="60" width="520" height="260" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.72;0.92" values="0;1;0"/>
+  </rect>
+
+  <text x="320" y="128" class="s b" font-size="30" text-anchor="middle">Ask for the booking</text>
+  <text x="320" y="190" class="s" font-size="26" text-anchor="middle">"Book the Erzherzog Johann Hut for 2."</text>
+  <text x="320" y="250" class="m" font-size="26" text-anchor="middle">agent.run(..., session=session)</text>
+
+  <text x="960" y="122" class="s b" font-size="30" text-anchor="middle">The agent stops before the call</text>
+  <text x="960" y="172" class="m" font-size="26" text-anchor="middle">approval_mode="always_require"</text>
+  <text x="960" y="230" class="s sec" font-size="26" text-anchor="middle">pending call returned in</text>
+  <text x="960" y="274" class="m" font-size="26" text-anchor="middle">result.user_input_requests</text>
+
+  <text x="1600" y="122" class="s b" font-size="30" text-anchor="middle">Final answer</text>
+  <text x="1600" y="166" class="s sec" font-size="26" text-anchor="middle">when no request is left</text>
+  <text x="1600" y="228" class="s" font-size="26" text-anchor="middle">approve: confirmation <tspan class="m b">HB-2935</tspan></text>
+  <text x="1600" y="274" class="s" font-size="26" text-anchor="middle">reject: booking not completed</text>
+
+  <text x="1580" y="482" class="s b" font-size="30" text-anchor="middle">A human decides</text>
+  <text x="1580" y="530" class="m" font-size="26" text-anchor="middle">approval requested: book_hut</text>
+  <text x="1580" y="578" class="s" font-size="26" text-anchor="middle">Erzherzog Johann Hut, 1 night, 2 hikers</text>
+  <text x="1580" y="626" class="s sec" font-size="26" text-anchor="middle">approve or reject</text>
+
+  <text x="960" y="822" class="s b" font-size="30" text-anchor="middle">Answer on the same session</text>
+  <text x="960" y="872" class="m" font-size="26" text-anchor="middle">to_function_approval_response(decision)</text>
+  <text x="960" y="922" class="m" font-size="26" text-anchor="middle">agent.run(responses, session=session)</text>
+
+  <text x="770" y="568" class="m b" font-size="28" text-anchor="middle">while result.user_input_requests:</text>
+  <text x="770" y="622" class="s sec" font-size="26" text-anchor="middle">a rejected call is reported back to the model,</text>
+  <text x="770" y="662" class="s sec" font-size="26" text-anchor="middle">which may ask again</text>
+</svg>

@@ -183,6 +183,8 @@ rolled back, endpoint selector: 1
 
 Read the second block. The endpoint still answers in the version 1 style after version 2 exists, while a call that names version 2 directly already uses the `severity | CWE id | explanation` format. Promoting and rolling back are the same call with a different version number.
 
+![Four states of the version selector on one stable endpoint URL: created v1 with @latest, pinned to v1 with v2 tested by agent_reference, promoted to v2, rolled back to v1](../pptx/images/06-01-version-selector.svg)
+
 ### C#
 
 The version selector has no typed API in `Azure.AI.Projects.Agents` 2.0.0. `Foundry.cs` pins the endpoint with a merge-patch `PATCH /agents/{name}` and calls the stable endpoint at `/agents/{name}/endpoint/protocols/openai/responses`, both with `HttpClient` and a token for `https://ai.azure.com/.default`. Calls by version reference use the typed `GetProjectResponsesClientForAgent`.
@@ -211,6 +213,8 @@ rolled back, endpoint selector: 1
 ## Step 5: Meter tenants at a token gateway
 
 Three tenants share one model deployment. The gateway class gives each tier a token budget per window and a monthly quota, and the client retries 429 answers with backoff.
+
+![Three tenants send requests through a retrying client to a token-limit gateway that answers 403 for the monthly quota and 429 for tokens per minute, then forwards to the Foundry agent and prices usage in a chargeback](../pptx/images/06-02-token-gateway.svg)
 
 ```python
 TIERS = {
@@ -266,6 +270,8 @@ Chargeback (model cost from metered tokens, shared compute split evenly across a
 ## Step 6: Retire version 2.2.0 with notice
 
 Version 2.2.0 is deprecated and its deletion is scheduled. The script plays one deletion day on a fixed date, 2026-10-18, so the output is reproducible.
+
+![Retirement of version 2.2.0 in six steps: deprecate, warn the pinned tenant, block the tenant without a pin, archive the manifest, repoint the endpoint to 2.3.0, delete the version](../pptx/images/06-03-retirement-sequence.svg)
 
 ```python
 pin_endpoint(old.name, new.version)

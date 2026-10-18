@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Three orchestration builders</title>
+  <desc>Three panels. SequentialBuilder: workflow.run(BRIEF) goes to writer, then reviewer, then polisher, and the result is the AgentResponse from polisher; fixed order, each agent sees the earlier conversation. ConcurrentBuilder: workflow.run(PROPOSAL) goes to finance, security and compliance at once, their replies go to the aggregator set with with_aggregator(summarize), and the caller gets one aggregated result; all agents run in parallel, results are aggregated. HandoffBuilder: the user talks to triage_agent, set with with_start_agent, through request_info, and add_handoff links triage_agent with billing_agent and technical_agent in both directions; agents decide who owns the conversation next.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#24292f}
+      .s{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a}
+      .m{font-family:Consolas,'Courier New',monospace;fill:#24292f}
+      .ms{font-family:Consolas,'Courier New',monospace;fill:#57606a}
+      .box{stroke:#8c959f;stroke-width:2}
+      .edge{fill:none;stroke:#8c959f;stroke-width:2}
+      .pulse{fill:none;stroke:#e0a534;stroke-width:6}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="box" x="60" y="70" width="560" height="940" rx="20" fill="#ffffff"/>
+  <rect class="box" x="680" y="70" width="560" height="940" rx="20" fill="#ffffff"/>
+  <rect class="box" x="1300" y="70" width="560" height="940" rx="20" fill="#ffffff"/>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M340 230 L340 790" keyPoints="0;0;1;1" keyTimes="0;0.06;0.9;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.06;0.92" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+
+  <text class="m" x="340" y="138" font-size="32" font-weight="700" text-anchor="middle">SequentialBuilder</text>
+  <text class="m" x="960" y="138" font-size="32" font-weight="700" text-anchor="middle">ConcurrentBuilder</text>
+  <text class="m" x="1580" y="138" font-size="32" font-weight="700" text-anchor="middle">HandoffBuilder</text>
+
+  <rect class="box" x="140" y="190" width="400" height="80" rx="14" fill="#f6f8fa"/>
+  <text class="m" x="340" y="239" font-size="26" text-anchor="middle">workflow.run(BRIEF)</text>
+  <rect class="box" x="140" y="330" width="400" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="340" y="380" font-size="28" font-weight="700" text-anchor="middle">writer</text>
+  <rect class="box" x="140" y="470" width="400" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="340" y="520" font-size="28" font-weight="700" text-anchor="middle">reviewer</text>
+  <rect class="box" x="140" y="610" width="400" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="340" y="660" font-size="28" font-weight="700" text-anchor="middle">polisher</text>
+  <rect class="box" x="140" y="750" width="400" height="80" rx="14" fill="#e9f7ef"/>
+  <text class="t" x="340" y="799" font-size="26" text-anchor="middle"><tspan class="m">AgentResponse</tspan> from <tspan class="m">polisher</tspan></text>
+  <rect class="pulse" x="140" y="750" width="400" height="80" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.9;0.92;0.97;0.99;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <path class="edge" d="M340 270 L340 328" marker-end="url(#arrow)"/>
+  <path class="edge" d="M340 410 L340 468" marker-end="url(#arrow)"/>
+  <path class="edge" d="M340 550 L340 608" marker-end="url(#arrow)"/>
+  <path class="edge" d="M340 690 L340 748" marker-end="url(#arrow)"/>
+  <text class="s" x="340" y="905" font-size="26" text-anchor="middle">Fixed order, each agent sees</text>
+  <text class="s" x="340" y="943" font-size="26" text-anchor="middle">the earlier conversation</text>
+
+  <rect class="box" x="760" y="190" width="400" height="80" rx="14" fill="#f6f8fa"/>
+  <text class="m" x="960" y="239" font-size="26" text-anchor="middle">workflow.run(PROPOSAL)</text>
+  <rect class="box" x="700" y="400" width="160" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="780" y="449" font-size="26" font-weight="700" text-anchor="middle">finance</text>
+  <rect class="box" x="880" y="400" width="160" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="960" y="449" font-size="26" font-weight="700" text-anchor="middle">security</text>
+  <rect class="box" x="1060" y="400" width="160" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="1140" y="449" font-size="26" font-weight="700" text-anchor="middle">compliance</text>
+  <rect class="pulse" x="700" y="400" width="160" height="80" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16;0.18;0.28;0.30;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="pulse" x="880" y="400" width="160" height="80" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16;0.18;0.28;0.30;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="pulse" x="1060" y="400" width="160" height="80" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16;0.18;0.28;0.30;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="box" x="750" y="570" width="420" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="960" y="613" font-size="28" font-weight="700" text-anchor="middle">aggregator</text>
+  <text class="ms" x="960" y="651" font-size="26" text-anchor="middle">with_aggregator(summarize)</text>
+  <rect class="box" x="760" y="750" width="400" height="80" rx="14" fill="#e9f7ef"/>
+  <text class="t" x="960" y="799" font-size="26" text-anchor="middle">one aggregated result</text>
+  <rect class="pulse" x="760" y="750" width="400" height="80" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.56;0.95;0.97;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <path class="edge" d="M900 270 L781 398" marker-end="url(#arrow)"/>
+  <path class="edge" d="M960 270 L960 398" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1020 270 L1139 398" marker-end="url(#arrow)"/>
+  <path class="edge" d="M780 480 L869 568" marker-end="url(#arrow)"/>
+  <path class="edge" d="M960 480 L960 568" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1140 480 L1051 568" marker-end="url(#arrow)"/>
+  <path class="edge" d="M960 670 L960 748" marker-end="url(#arrow)"/>
+  <text class="s" x="960" y="905" font-size="26" text-anchor="middle">All agents run in parallel,</text>
+  <text class="s" x="960" y="943" font-size="26" text-anchor="middle">results are aggregated</text>
+
+  <rect class="box" x="1430" y="190" width="300" height="80" rx="14" fill="#f6f8fa"/>
+  <text class="t" x="1580" y="240" font-size="28" text-anchor="middle">user</text>
+  <rect class="box" x="1430" y="390" width="300" height="100" rx="14" fill="#f3edff"/>
+  <text class="m" x="1580" y="432" font-size="28" font-weight="700" text-anchor="middle">triage_agent</text>
+  <text class="ms" x="1580" y="470" font-size="26" text-anchor="middle">with_start_agent</text>
+  <rect class="box" x="1322" y="620" width="250" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="1447" y="669" font-size="26" font-weight="700" text-anchor="middle">billing_agent</text>
+  <rect class="box" x="1588" y="620" width="250" height="80" rx="14" fill="#f3edff"/>
+  <text class="m" x="1713" y="669" font-size="26" font-weight="700" text-anchor="middle">technical_agent</text>
+  <rect class="pulse" x="1322" y="620" width="250" height="80" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.38;0.40;0.95;0.97;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  <path class="edge" d="M1580 274 L1580 386" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1524 494 L1458 616" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1636 494 L1702 616" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="m" x="1600" y="340" font-size="26">request_info</text>
+  <text class="m" x="1580" y="577" font-size="26" text-anchor="middle">add_handoff</text>
+  <text class="s" x="1580" y="905" font-size="26" text-anchor="middle">Agents decide who owns</text>
+  <text class="s" x="1580" y="943" font-size="26" text-anchor="middle">the conversation next</text>
+
+
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M900 270 L780 400" keyPoints="0;0;1;1" keyTimes="0;0.06;0.16;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.06;0.17" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M960 270 L960 400" keyPoints="0;0;1;1" keyTimes="0;0.06;0.16;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.06;0.17" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1020 270 L1140 400" keyPoints="0;0;1;1" keyTimes="0;0.06;0.16;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.06;0.17" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M780 480 L870 570" keyPoints="0;0;1;1" keyTimes="0;0.30;0.40;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.30;0.41" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M960 480 L960 570" keyPoints="0;0;1;1" keyTimes="0;0.30;0.40;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.30;0.41" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1140 480 L1050 570" keyPoints="0;0;1;1" keyTimes="0;0.30;0.40;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.30;0.41" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M960 670 L960 790" keyPoints="0;0;1;1" keyTimes="0;0.44;0.54;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.44;0.55" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1580 270 L1580 390" keyPoints="0;0;1;1" keyTimes="0;0.06;0.18;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.06;0.19" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1524 494 L1456 620" keyPoints="0;0;1;1" keyTimes="0;0.25;0.37;1" calcMode="linear" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.25;0.38" calcMode="discrete" dur="8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

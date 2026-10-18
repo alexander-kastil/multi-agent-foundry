@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Candidate scores and tokens from the ticket-triage optimization job</title>
+  <desc>Left: each candidate's improvement over the baseline score of 0.012, drawn over the reading bands noise below 0.03, moderate 0.03 to 0.10, significant 0.10 to 0.20 and major above 0.20. candidate_1 gains 0.105 and lands in the significant band; candidate_2 gains 0.015 and candidate_3 gains 0.014, both noise. Right: average tokens per answer, 134 for the baseline, 328 for candidate_1, 600 for candidate_2 and 872 for candidate_3.</desc>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="360" y="150" width="105.6" height="680" fill="#f6f8fa"/>
+  <rect x="465.6" y="150" width="246.4" height="680" fill="#e9f7ef"/>
+  <rect x="712" y="150" width="352" height="680" fill="#d4efdd"/>
+  <rect x="1064" y="150" width="176" height="680" fill="#bfe6cc"/>
+
+  <g text-anchor="middle" font-size="28" font-weight="700" fill="#24292f">
+    <text x="412.8" y="125">Noise</text>
+    <text x="588.8" y="125">Moderate</text>
+    <text x="888" y="125">Significant</text>
+    <text x="1152" y="125">Major</text>
+  </g>
+  <g text-anchor="middle" font-size="26" fill="#57606a">
+    <text x="412.8" y="192">&lt; 0.03</text>
+    <text x="588.8" y="192">0.03 to 0.10</text>
+    <text x="888" y="192">0.10 to 0.20</text>
+    <text x="1152" y="192">&gt; 0.20</text>
+  </g>
+
+  <g font-family="Consolas, Menlo, monospace" font-size="28" fill="#24292f" text-anchor="end">
+    <text x="330" y="310">baseline</text>
+    <text x="330" y="460">candidate_1</text>
+    <text x="330" y="610">candidate_2</text>
+    <text x="330" y="760">candidate_3</text>
+  </g>
+
+  <g fill="#e0a534">
+    <rect x="360" y="420" width="369.6" height="60" rx="4"/>
+    <rect x="360" y="570" width="52.8" height="60" rx="4"/>
+    <rect x="360" y="720" width="49.3" height="60" rx="4"/>
+  </g>
+  <text x="380" y="310" font-size="26" fill="#24292f">score 0.012, the score to beat</text>
+  <g font-size="28" fill="#24292f">
+    <text x="747" y="460"><tspan font-weight="700">+0.105</tspan>, score 0.117, best</text>
+    <text x="430" y="610"><tspan font-weight="700">+0.015</tspan>, score 0.027</text>
+    <text x="427" y="760"><tspan font-weight="700">+0.014</tspan>, score 0.025</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <line x1="360" y1="830" x2="1240" y2="830"/>
+    <line x1="360" y1="830" x2="360" y2="842"/>
+    <line x1="536" y1="830" x2="536" y2="842"/>
+    <line x1="712" y1="830" x2="712" y2="842"/>
+    <line x1="888" y1="830" x2="888" y2="842"/>
+    <line x1="1064" y1="830" x2="1064" y2="842"/>
+    <line x1="1240" y1="830" x2="1240" y2="842"/>
+    <line x1="1440" y1="830" x2="1800" y2="830"/>
+    <line x1="1440" y1="830" x2="1440" y2="842"/>
+    <line x1="1620" y1="830" x2="1620" y2="842"/>
+    <line x1="1800" y1="830" x2="1800" y2="842"/>
+  </g>
+  <g text-anchor="middle" font-size="26" fill="#57606a">
+    <text x="360" y="878">0</text>
+    <text x="536" y="878">0.05</text>
+    <text x="712" y="878">0.10</text>
+    <text x="888" y="878">0.15</text>
+    <text x="1064" y="878">0.20</text>
+    <text x="1240" y="878">0.25</text>
+    <text x="1440" y="878">0</text>
+    <text x="1620" y="878">500</text>
+    <text x="1800" y="878">1000</text>
+  </g>
+  <g text-anchor="middle" font-size="28" fill="#24292f">
+    <text x="800" y="940">improvement over the baseline score</text>
+    <text x="1620" y="940">tokens per answer</text>
+  </g>
+
+  <rect x="1440" y="270" width="48.2" height="60" rx="4" fill="#8c959f"/>
+  <g fill="#e0a534">
+    <rect x="1440" y="420" width="118.1" height="60" rx="4"/>
+    <rect x="1440" y="570" width="216" height="60" rx="4"/>
+    <rect x="1440" y="720" width="313.9" height="60" rx="4"/>
+  </g>
+  <g font-size="28" fill="#24292f">
+    <text x="1500" y="310">134</text>
+    <text x="1570" y="460">328</text>
+    <text x="1668" y="610">600</text>
+    <text x="1766" y="760">872</text>
+  </g>
+</svg>

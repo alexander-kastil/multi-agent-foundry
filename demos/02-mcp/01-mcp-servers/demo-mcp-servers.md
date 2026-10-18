@@ -168,6 +168,8 @@ prompt: Draft a first-week onboarding plan for a new Line Cook. Pair them with C
 
 The Python tool takes `search_term` where the C# tool takes `searchTerm`. Each SDK follows its language convention, so a generic client always reads the schema.
 
+![The search_employees tool in C# and Python mapped line by line to its tools/list entry, with the argument names searchTerm and search_term highlighted](../pptx/images/01-01-tool-schemas.svg)
+
 ## Step 5: Switch between stdio and HTTP
 
 Both servers start in a different transport depending on the arguments. The C# `Program.cs` branches on `--stdio`, and the Python `server.py` branches on `--http`.
@@ -207,6 +209,8 @@ python agent.py
 ```
 
 Set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `.env` first. The script connects `MCPStreamableHTTPTool` to the Python server and asks a question that needs the directory.
+
+![agent.py lists the HR server's tools, passes their schemas to the Foundry model, runs the search_employees call the model asks for, and returns the answer about Marie Dubois](../pptx/images/01-02-agent-tool-call.svg)
 
 ```python
 hr = MCPStreamableHTTPTool(name="hr", url=SERVER_URL, approval_mode="never_require")

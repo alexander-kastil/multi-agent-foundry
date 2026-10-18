@@ -122,6 +122,8 @@ Superstep 0 is the entry checkpoint with the workflow input. Superstep 3 is the 
 
 `decide.py` is a different process with a freshly built workflow object. It loads the latest checkpoint, resumes from it to collect the re-emitted request, and then sends the human answer with `responses=`.
 
+![submit.py pauses at the approval gate and exits, the checkpoints folder keeps the open request, and decide.py resumes from it in a new process and approves](../pptx/images/02-01-approval-two-processes.svg)
+
 ```python
 chosen = await storage.get_latest(workflow_name=workflow.name)
 pending = [
@@ -171,6 +173,8 @@ decision 1: REJECT for: A team offsite dinner for 12 people was purchased at Gas
 ```
 
 The summary wording is different because the model ran again, and the request id is new. Use a rewind to recover from a bad step, and expect agent calls after the chosen superstep to be repeated and billed.
+
+![Four checkpoints on a timeline: decide.py approve resumes at superstep 3 with the same request id, decide.py reject 1 rewinds to superstep 1 and runs the summarizer again](../pptx/images/02-02-resume-and-rewind.svg)
 
 ## Step 6: The same pause with a RequestPort in C#
 

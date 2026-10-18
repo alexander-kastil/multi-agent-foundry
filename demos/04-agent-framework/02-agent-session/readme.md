@@ -34,6 +34,8 @@ Agent Framework supports two storage modes, and the session looks different in e
 
 `FoundryChatClient` and the OpenAI Responses client store history on the service by default, so the session is only an ID. Passing `options={"store": False}` keeps history local instead, and the serialized session then carries every message.
 
+![Service-managed history keeps the four messages in the Foundry conversation and only a resp_ ID in session.json, while local history keeps all four messages under state in local-session.json](../pptx/images/02-01-where-history-lives.svg)
+
 ```python
 result = await agent.run("My name is Alex.", session=session, options={"store": False})
 print(session.to_dict()["state"]["in_memory"]["messages"])
@@ -44,6 +46,8 @@ Local history grows with every turn. History reduction and long-term memory are 
 ## Serialize and restore
 
 `to_dict()` turns the session into plain JSON-compatible data and `AgentSession.from_dict()` rebuilds it. Persist the whole object, never only the message text, because provider state travels inside it.
+
+![Process 1 writes session.to_dict() to session.json, process 2 rebuilds it with AgentSession.from_dict, and another worker rebuilds the session from the service_session_id alone](../pptx/images/02-02-save-resume-session.svg)
 
 ```python
 import json

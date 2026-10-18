@@ -2,6 +2,8 @@
 
 A normal agent process holds everything in memory. Restart it, scale it in, or ask it to wait three days for a human and the conversation, the half-finished workflow and the model call you already paid for are gone. Durable agents move that state out of the process and into a store, so the host can stop, move or be deleted while the work stays alive.
 
+![Timeline of the demo restart: the function app process stops and starts again while the orchestration record in the Durable Task Scheduler keeps waiting for review, round 2, and the status call returns the same round before and after](../pptx/images/04-02-restart-timeline.svg)
+
 This topic hosts an Agent Framework agent in Azure Functions with the Durable extension, backs it with the Durable Task Scheduler, and builds a release announcement workflow that pauses for a reviewer without holding a single process open.
 
 ## What a durable agent is
@@ -76,6 +78,8 @@ Reusing the same session for the rewrite is what lets the agent remember its fir
 ## Waiting for a human without paying for it
 
 A human approval step is a durable external event raced against a timer. While the orchestration waits, no code runs and nothing holds the model open.
+
+![The announcement_approval orchestration: draft with agent.run, request a review, wait for the ApprovalDecision event or a 72 hour timer, then publish on approval or rewrite in the same session for up to three rounds, with both agent calls going to the dafx-AnnouncementWriter entity](../pptx/images/04-01-approval-orchestration.svg)
 
 ```python
 approval = context.wait_for_external_event("ApprovalDecision")

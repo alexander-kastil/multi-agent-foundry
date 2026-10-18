@@ -39,6 +39,8 @@ AIAgent agent = projectClient.AsAIAgent(
 
 Set `approval_mode="always_require"` on a tool that has side effects. The agent then stops before it executes the tool and returns the pending call in `result.user_input_requests`. Your code shows the call to a human and answers with `to_function_approval_response(True)` or `False`, sent back on the same session.
 
+![The approval loop: book_hut stops the agent, a human approves or rejects, the answer goes back on the same session, and the loop repeats until no request is left](../pptx/images/05-02-approval-loop.svg)
+
 ```python
 @tool(approval_mode="always_require")
 def book_hut(hut: str, nights: int, persons: int) -> str:
@@ -138,6 +140,8 @@ agent = Agent(
 ## Choosing where a tool runs
 
 Use a function tool for logic you own and want to test. Use a local MCP tool when you reuse a server across agents and frameworks. Use a hosted tool when the model service already offers the capability, such as sandboxed code, and gate every tool with side effects behind an approval.
+
+![Where tools run: function tools, MCPStdioTool and MCPStreamableHTTPTool in your process, the code interpreter and hosted MCP on the Foundry model service, and the Microsoft Learn MCP server reached from both](../pptx/images/05-01-where-tools-run.svg)
 
 ## Hands-On Demo
 

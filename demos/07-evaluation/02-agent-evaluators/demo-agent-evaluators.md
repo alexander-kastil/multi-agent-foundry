@@ -30,6 +30,8 @@ Set `PROJECT_ENDPOINT` in `.env`.
 
 Each record holds the system prompt, the user message, the tool calls and tool results, the final answer and the tools the agent could call. `build_dataset.py` writes seven of them, so every defect has a name and an expected evaluator.
 
+![A refund trajectory split into query, response and tool_definitions, with the system evaluators judging the whole run and the process evaluators checking the tool calls](../pptx/images/02-01-what-evaluators-read.svg)
+
 ```python
 record(
     "r2",
@@ -182,6 +184,8 @@ r7 wrong_intent         fail        fail        fail        pass        pass    
 `failed=6` counts a trajectory as failed when any evaluator fails it, so only the matrix tells you why.
 
 Three columns carry the lesson.
+
+![Matrix of the seven recorded runs against the eight evaluators, with pass, fail or n/a in each cell and the Tool Selection, Tool Call Success and Task Completion columns highlighted in turn](../pptx/images/02-02-defect-evaluator-matrix.svg)
 
 Tool Selection passes r2 (right tools, wrong values) and fails r3 (wrong tool). Tool Call Success fails only r4, where the lookup returned a timeout.
 

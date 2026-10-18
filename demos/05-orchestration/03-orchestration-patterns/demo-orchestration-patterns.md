@@ -2,6 +2,8 @@
 
 Developers who start with multi-agent ideas often hand-wire every edge, then discover they rebuilt the same three shapes: a pipeline, a panel and a front desk. This demo builds each shape with its builder, prints what every agent contributed and ends with a refund that only runs after a person approves it. The same three patterns are then built in C#.
 
+![SequentialBuilder chains writer, reviewer and polisher, ConcurrentBuilder runs finance, security and compliance in parallel into an aggregator, HandoffBuilder links triage_agent with billing_agent and technical_agent](../pptx/images/03-01-orchestration-builders.svg)
+
 What you practice here: picking the builder that matches the control flow and configuring it through constructor parameters.
 
 Duration: about 35 minutes.
@@ -145,6 +147,8 @@ workflow = (
 ```
 
 The driver loop answers whatever the workflow asks. A `HandoffAgentUserRequest` means an agent wants a user reply, any other request is the tool approval.
+
+![Sequence of handoff.py: triage_agent hands off to billing_agent, issue_refund pauses for a tool approval, and the driver loop answers two HandoffAgentUserRequest pauses, the last with terminate()](../pptx/images/03-02-handoff-tool-approval.svg)
 
 ```python
 for request in pending:

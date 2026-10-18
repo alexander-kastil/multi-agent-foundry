@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>OAuth consent round trip</title>
+  <desc>Sequence between the user, your application, Foundry Agent Service and the MCP server. Your application sends the first call. The response carries an oauth_consent_request item with a consent_link. The application shows the consent_link, and the user signs in and consents. The application sends a second call with previous_response_id, and the tool call reaches the MCP server with the user's token. Consent is asked once per tool connection, project and user.</desc>
+  <style>
+    .hd { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 30px; fill: #24292f; text-anchor: middle; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .bd { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .bt { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 30px; fill: #24292f; text-anchor: middle; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 28px; fill: #24292f; text-anchor: middle; }
+    .ci { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; }
+    .life { stroke: #8c959f; stroke-width: 2; stroke-dasharray: 10 8; fill: none; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="50" width="300" height="100" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="hd" x="210" y="111">User</text>
+  <rect x="510" y="50" width="360" height="100" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="hd" x="690" y="111">Your application</text>
+  <rect x="1050" y="50" width="400" height="100" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text class="hd" x="1250" y="111">Foundry Agent Service</text>
+  <rect x="1560" y="50" width="300" height="100" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="hd" x="1710" y="111">MCP server</text>
+
+  <line class="life" x1="210" y1="150" x2="210" y2="560"/>
+  <line class="life" x1="210" y1="680" x2="210" y2="880"/>
+  <line class="life" x1="690" y1="150" x2="690" y2="880"/>
+  <line class="life" x1="1250" y1="150" x2="1250" y2="880"/>
+  <line class="life" x1="1710" y1="150" x2="1710" y2="880"/>
+
+  <text class="bd" x="970" y="210">first call</text>
+  <text class="c" x="970" y="244">responses.create</text>
+  <line class="line" x1="692" y1="268" x2="1248" y2="268" marker-end="url(#arr)"/>
+
+  <text class="c" x="970" y="342">oauth_consent_request</text>
+  <text class="bd" x="970" y="376">with the <tspan class="ci">consent_link</tspan></text>
+  <line class="line" x1="1248" y1="400" x2="692" y2="400" marker-end="url(#arr)"/>
+
+  <text class="bd" x="450" y="474">shows the <tspan class="ci">consent_link</tspan></text>
+  <line class="line" x1="688" y1="498" x2="212" y2="498" marker-end="url(#arr)"/>
+
+  <rect x="70" y="560" width="280" height="120" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <animate attributeName="stroke-width" dur="10s" repeatCount="indefinite" calcMode="discrete" values="2;6;2" keyTimes="0;0.48;0.64"/>
+  </rect>
+  <text class="bd" x="210" y="612">signs in</text>
+  <text class="bd" x="210" y="648">and consents</text>
+
+  <text class="bd" x="970" y="682">second call continues the first</text>
+  <text class="c" x="970" y="716">previous_response_id</text>
+  <line class="line" x1="692" y1="740" x2="1248" y2="740" marker-end="url(#arr)"/>
+
+  <text class="bd" x="1480" y="806">tool call with</text>
+  <text class="bd" x="1480" y="840">the user's token</text>
+  <line class="line" x1="1252" y1="864" x2="1708" y2="864" marker-end="url(#arr)"/>
+
+  <circle r="11" fill="#57606a" opacity="1">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 694 268 L 1228 268" keyPoints="0;1;1" keyTimes="0;0.16;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.16"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1246 400 L 712 400" keyPoints="0;0;1;1" keyTimes="0;0.16;0.32;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.16;0.32"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 686 498 L 232 498" keyPoints="0;0;1;1" keyTimes="0;0.32;0.48;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.32;0.48"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 694 740 L 1228 740" keyPoints="0;0;1;1" keyTimes="0;0.64;0.8;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.64;0.8"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1254 864 L 1688 864" keyPoints="0;0;1;1" keyTimes="0;0.8;0.96;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.8;0.96"/>
+  </circle>
+
+  <rect x="60" y="920" width="1800" height="110" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="bt" x="960" y="986">Consent is asked once per tool connection, project and user</text>
+</svg>

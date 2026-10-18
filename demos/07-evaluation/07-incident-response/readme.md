@@ -33,6 +33,8 @@ Most agent incidents follow a change. Keep a change log with every prompt versio
 
 A differential between failed and successful requests supplies the pattern. In the incident of the demo, latency is the same in both groups, but every failed price contains a currency symbol and no successful one does.
 
+![Checkout pipeline in which pricing agent v1 returns a plain number that the payment step accepts and v2 returns a currency symbol and a sentence that it rejects](../pptx/images/07-01-pricing-contract.svg)
+
 ## Replay a Failure Without Production
 
 A failed trace is only useful later if it was captured with everything needed to run it again. A replay snapshot holds the input, the model deployment, the full prompt with its SHA-256 hash, the tool responses and the trace timeline, with identifiers in tool data masked.
@@ -52,6 +54,8 @@ Replay feeds the mocked tool response and the captured prompt to the same model 
 
 Bisection then turns "something changed" into "this version broke it": replay the snapshot against each prompt version in order and report the first one that fails the output contract.
 
+![Replay snapshot fields feeding the hash check and the replay, and bisection over the prompt versions naming v2 as the first failing version](../pptx/images/07-02-replay-bisection.svg)
+
 ```python
 def bisect_prompt_versions(self, snapshot, prompt_versions):
     results = {label: self.replay_pricing_step(snapshot, prompt_override=prompt)["valid"] for label, prompt in prompt_versions.items()}
@@ -62,6 +66,8 @@ def bisect_prompt_versions(self, snapshot, prompt_versions):
 ## Limit the Damage
 
 Remediation has to be bounded, or it becomes the second incident. A circuit breaker watches a dependency, opens when more than 40% of at least ten recent calls fail and routes to a fallback; after a probe interval it lets one call through and closes again when it succeeds.
+
+![Circuit breaker moving from closed to open to half open and back, sending charges to the primary or the backup gateway](../pptx/images/07-03-circuit-breaker.svg)
 
 A runbook is the same idea for a multi-step action such as switching payment gateways. Make it idempotent so a second run changes nothing, rate limited so a flapping alert cannot trigger it more than three times an hour, verified by a test transaction after the switch and escalating to a person when both gateways are unhealthy or the deadline passes.
 

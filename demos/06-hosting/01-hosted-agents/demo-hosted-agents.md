@@ -6,6 +6,8 @@ What you practice here: hosting an Agent Framework agent with `ResponsesHostServ
 
 Duration: about 50 minutes.
 
+![The same main.py runs on localhost:8088 with settings from .env, is packaged as a container image or a ZIP, and runs as hosted agent m6-support-desk with the FOUNDRY_* settings injected](../pptx/images/01-02-local-and-hosted.svg)
+
 ## Prerequisites
 
 - Python 3.12 or later, Docker Desktop for step 3, and Azure CLI signed in with `az login`.
@@ -185,6 +187,8 @@ Injected platform variables: `FOUNDRY_PROJECT_ENDPOINT`, `AZURE_AI_MODEL_DEPLOYM
 
 Compare the second answer with step 1. The same code now sees the project endpoint, the telemetry connection string and its own name and version, none of which you set. The first call after a quiet period is slower because the platform has to provision the session sandbox.
 
+![Once per version the platform pulls the image or builds the ZIP, creates the agent identity and publishes the endpoint; per session it provisions a sandbox, deprovisions it after 2 to 60 idle minutes and restores it when the same session returns](../pptx/images/01-01-sandbox-lifecycle.svg)
+
 ## Step 6: Inspect the agent identity
 
 The platform created a service principal for this agent. `inspect_agent.py` reads it from the agent object, and two Azure CLI calls show what it is and what it may do.
@@ -217,6 +221,8 @@ az role assignment list --all --assignee 4cb0c975-d154-4748-a9db-ec00f1ef9ccf -o
 ```
 
 The identity exists as its own principal, yet it holds no Azure role assignments. Model access through the project endpoint is part of the platform and needs none. To let the agent read your own Storage account you would run `az role assignment create --assignee-object-id <principal id> --assignee-principal-type ServicePrincipal --role "Storage Blob Data Reader" --scope <storage account id>`.
+
+![Foundry Project Manager deploys and Foundry Agent Consumer calls; the project managed identity pulls the image, and the agent identity reaches models without a role and your Storage account only with a role you assign](../pptx/images/01-03-agent-identity-roles.svg)
 
 ## Verify
 

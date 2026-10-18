@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Which part of a request the prompt cache can reuse</title>
+  <desc>Requests from caching.py drawn to scale in tokens. Call 1 sends about 2,000 tokens, the travel desk handbook in instructions first and the question last, and reads 0 cached tokens because it writes the cache. Calls 2 and 3 send the same handbook with another question, their first 1,024 tokens match call 1, and 1,792 tokens are served from the cache: 1,024 plus six steps of 128. The last request puts the question in front of the handbook, so its first 1,024 tokens differ from call 1 and 0 tokens are cached. All calls use the same prompt_cache_key and prompt_cache_retention 24h.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <path d="M120,120 H1808" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <path d="M120,110 V130" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <text x="120" y="96" text-anchor="start" class="s" font-size="26">0</text>
+  <path d="M980,110 V130" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <text x="980" y="96" text-anchor="middle" class="s" font-size="26">1,024</text>
+  <path d="M1625,110 V130" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <text x="1625" y="96" text-anchor="middle" class="s" font-size="26">1,792</text>
+  <path d="M1800,110 V130" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <text x="1840" y="96" text-anchor="end" class="s" font-size="26">2,000 tokens</text>
+  <text x="120" y="196" font-size="28"><tspan class="b">Call 1:</tspan> 2,001 input, <tspan class="b">0 cached</tspan></text>
+  <rect x="120" y="214" width="1653" height="70" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1773" y="214" width="28" height="70" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="144" y="259" font-size="26">travel desk handbook in <tspan class="m">instructions</tspan></text>
+  <text x="120" y="324" class="s" font-size="26">writes the cache</text>
+  <text x="1801" y="324" text-anchor="end" class="s" font-size="26">question last</text>
+  <text x="120" y="420" font-size="28"><tspan class="b">Calls 2 and 3:</tspan> 2,002 and 2,001 input, <tspan class="b">1,792 cached</tspan></text>
+  <rect x="120" y="438" width="1654" height="70" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1774" y="438" width="28" height="70" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="144" y="483" font-size="26">travel desk handbook in <tspan class="m">instructions</tspan></text>
+  <rect x="120" y="520" width="860" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="550" y="556" text-anchor="middle" font-size="26"><tspan class="b">1,024</tspan> tokens identical to call 1</text>
+  <rect x="980" y="520" width="108" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1034" y="556" text-anchor="middle" font-size="26">128</text>
+  <rect x="1088" y="520" width="108" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1141" y="556" text-anchor="middle" font-size="26">128</text>
+  <rect x="1195" y="520" width="108" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1249" y="556" text-anchor="middle" font-size="26">128</text>
+  <rect x="1303" y="520" width="108" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1356" y="556" text-anchor="middle" font-size="26">128</text>
+  <rect x="1410" y="520" width="108" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1464" y="556" text-anchor="middle" font-size="26">128</text>
+  <rect x="1518" y="520" width="108" height="54" rx="6" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1572" y="556" text-anchor="middle" font-size="26">128</text>
+  <text x="120" y="616" class="s" font-size="26">1,792 = 1,024 + 6 &#215; 128</text>
+  <text x="1802" y="616" text-anchor="end" class="s" font-size="26">question last</text>
+  <text x="120" y="712" font-size="28"><tspan class="b">Question first:</tspan> 2,010 input, <tspan class="b">0 cached</tspan></text>
+  <rect x="120" y="730" width="28" height="70" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="148" y="730" width="1660" height="70" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="172" y="775" font-size="26">travel desk handbook in <tspan class="m">instructions</tspan></text>
+  <rect x="120" y="812" width="860" height="54" rx="6" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="550" y="848" text-anchor="middle" font-size="26">first 1,024 tokens differ from call 1</text>
+  <text x="120" y="908" class="s" font-size="26">question in front of the handbook</text>
+  <rect x="120" y="950" width="1688" height="80" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="150" y="1000" font-size="26">every call: <tspan class="m">prompt_cache_key=f"m1-handbook-{run}"</tspan>, <tspan class="m">prompt_cache_retention="24h"</tspan></text>
+</svg>

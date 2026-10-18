@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Quorum over parallel spokes</title>
+  <desc>parallel_research(query, timeouts, required=2) calls market_analysis, risk_assessment and esg_evaluation at once with asyncio.gather and counts the successes. Three cases side by side. All spokes healthy: three successes against required=2, so the status is success with an empty missing list. ESG times out: market_analysis and risk_assessment succeed, two successes still meet the quorum, so the status is success and missing names esg_evaluation. Market analysis and ESG time out: only risk_assessment succeeds, one success is below required=2, so the status is insufficient_quorum with successful 1 and required 2, and the function gives no answer from a single opinion.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="40" width="1800" height="105" rx="20" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="84" font-size="30" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">parallel_research(query, timeouts, required=2)</text>
+  <text x="960" y="126" font-size="26" fill="#57606a" text-anchor="middle">calls all three spokes at once with <tspan font-family="Consolas, Courier New, monospace">asyncio.gather</tspan> and counts the successes</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f6f8fa">
+    <rect x="60" y="170" width="580" height="810" rx="22"/>
+    <rect x="670" y="170" width="580" height="810" rx="22"/>
+    <rect x="1280" y="170" width="580" height="810" rx="22"/>
+  </g>
+  <g font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="350" y="228">All spokes healthy</text>
+    <text x="960" y="228">ESG times out</text>
+    <text x="1570" y="228">Market analysis and ESG time out</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#ffffff">
+    <rect x="90" y="260" width="520" height="70" rx="14"/>
+    <rect x="90" y="345" width="520" height="70" rx="14"/>
+    <rect x="90" y="430" width="520" height="70" rx="14"/>
+    <rect x="700" y="260" width="520" height="70" rx="14"/>
+    <rect x="700" y="345" width="520" height="70" rx="14"/>
+    <rect x="700" y="430" width="520" height="70" rx="14"/>
+    <rect x="1310" y="260" width="520" height="70" rx="14"/>
+    <rect x="1310" y="345" width="520" height="70" rx="14"/>
+    <rect x="1310" y="430" width="520" height="70" rx="14"/>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f">
+    <text x="115" y="304">market_analysis</text>
+    <text x="115" y="389">risk_assessment</text>
+    <text x="115" y="474">esg_evaluation</text>
+    <text x="725" y="304">market_analysis</text>
+    <text x="725" y="389">risk_assessment</text>
+    <text x="725" y="474">esg_evaluation</text>
+    <text x="1335" y="304">market_analysis</text>
+    <text x="1335" y="389">risk_assessment</text>
+    <text x="1335" y="474">esg_evaluation</text>
+  </g>
+  <g stroke="#8c959f" stroke-width="2" fill="#e9f7ef">
+    <rect x="430" y="272" width="160" height="46" rx="23"/>
+    <rect x="430" y="357" width="160" height="46" rx="23"/>
+    <rect x="430" y="442" width="160" height="46" rx="23"/>
+    <rect x="1040" y="272" width="160" height="46" rx="23"/>
+    <rect x="1040" y="357" width="160" height="46" rx="23"/>
+    <rect x="1650" y="357" width="160" height="46" rx="23"/>
+  </g>
+  <g stroke="#e0a534" stroke-width="2" fill="#fff6e5">
+    <rect x="1040" y="442" width="160" height="46" rx="23"/>
+    <rect x="1650" y="272" width="160" height="46" rx="23"/>
+    <rect x="1650" y="442" width="160" height="46" rx="23"/>
+  </g>
+  <g font-size="26" font-weight="700" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="510" y="304">success</text>
+    <text x="510" y="389">success</text>
+    <text x="510" y="474">success</text>
+    <text x="1120" y="304">success</text>
+    <text x="1120" y="389">success</text>
+    <text x="1120" y="474">timeout</text>
+    <text x="1730" y="304">timeout</text>
+    <text x="1730" y="389">success</text>
+    <text x="1730" y="474">timeout</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#e9f7ef">
+    <rect x="120" y="555" width="60" height="60" rx="10"/>
+    <rect x="200" y="555" width="60" height="60" rx="10"/>
+    <rect x="280" y="555" width="60" height="60" rx="10"/>
+    <rect x="730" y="555" width="60" height="60" rx="10"/>
+    <rect x="810" y="555" width="60" height="60" rx="10"/>
+    <rect x="1340" y="555" width="60" height="60" rx="10"/>
+  </g>
+  <g stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6" fill="#ffffff">
+    <rect x="890" y="555" width="60" height="60" rx="10"/>
+    <rect x="1420" y="555" width="60" height="60" rx="10"/>
+    <rect x="1500" y="555" width="60" height="60" rx="10"/>
+  </g>
+  <g stroke="#e0a534" stroke-width="5">
+    <line x1="270" y1="540" x2="270" y2="630"/>
+    <line x1="880" y1="540" x2="880" y2="630"/>
+    <line x1="1490" y1="540" x2="1490" y2="630"/>
+  </g>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f">
+    <text x="380" y="578">required=2</text>
+    <text x="990" y="578">required=2</text>
+    <text x="1600" y="578">required=2</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="380" y="615">successes: 3</text>
+    <text x="990" y="615">successes: 2</text>
+    <text x="1600" y="615">successes: 1</text>
+  </g>
+
+  <g fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="350" y1="640" x2="350" y2="706"/>
+    <line x1="960" y1="640" x2="960" y2="706"/>
+    <line x1="1570" y1="640" x2="1570" y2="706"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#e9f7ef">
+    <rect x="90" y="710" width="520" height="240" rx="18"/>
+    <rect x="700" y="710" width="520" height="240" rx="18"/>
+  </g>
+  <rect x="1310" y="710" width="520" height="240" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <g font-size="26" font-family="Consolas, Courier New, monospace" fill="#24292f" text-anchor="middle">
+    <text x="350" y="775">"status": "success"</text>
+    <text x="350" y="818">"missing": []</text>
+    <text x="960" y="775">"status": "success"</text>
+    <text x="960" y="818">"missing": ["esg_evaluation"]</text>
+    <text x="1570" y="775">"status": "insufficient_quorum"</text>
+    <text x="1570" y="818">"successful": 1, "required": 2</text>
+  </g>
+  <g font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="350" y="895">a usable result, nothing missing</text>
+    <text x="960" y="895">a usable result that names the gap</text>
+    <text x="1570" y="895">no answer from a single opinion</text>
+  </g>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>How a decorated Python function becomes an MCP tool on Azure Functions</title>
+  <desc>Left: function_app.py with BLOB_PATH = "snippets/{mcptoolargs.snippetname}.json" and the get_snippet function decorated with app.mcp_tool, app.mcp_tool_property for snippetname and app.blob_input with path BLOB_PATH. Arrows map the code to the tool definition the host serves on tools/list: the snippetname property becomes an input property, the function name becomes the tool name get_snippet, and the docstring becomes the description "Retrieves a snippet by name from blob storage." Bottom: the MCP Inspector sends tools/call get_snippet with snippetname=greeting, the blob input binding resolves the path to snippets/greeting.json, blob storage (Azurite locally) supplies the content, and the tool result is print(1). The four stages light up in order.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="80" y="100" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a">function_app.py</text>
+  <text x="1080" y="266" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#57606a">Tool definition on tools/list</text>
+
+  <rect x="80" y="120" width="920" height="470" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="102" y="148" width="806" height="46" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="116" y="180">BLOB_PATH = "snippets/{mcptoolargs.snippetname}.json"</text>
+    <text x="116" y="252">@app.mcp_tool()</text>
+    <text x="116" y="324">@app.mcp_tool_property(arg_name="snippetname", ...)</text>
+    <text x="116" y="396">@app.blob_input(arg_name="file", ..., path=BLOB_PATH)</text>
+    <text x="116" y="468">def get_snippet(file: ..., snippetname: str) -&gt; str:</text>
+    <text x="173" y="540">"""Retrieves a snippet by name from blob storage."""</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f3edff">
+    <rect x="1080" y="292" width="760" height="48" rx="10"/>
+    <rect x="1080" y="436" width="760" height="48" rx="10"/>
+    <rect x="1080" y="508" width="760" height="96" rx="10"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">
+    <text x="1104" y="325">input property</text>
+    <text x="1104" y="469">name</text>
+    <text x="1104" y="541">description</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="1300" y="325">snippetname</text>
+    <text x="1300" y="469">get_snippet</text>
+  </g>
+  <text x="1104" y="584" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#24292f">Retrieves a snippet by name from blob storage.</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="1006" y1="316" x2="1074" y2="316"/>
+    <line x1="1006" y1="460" x2="1074" y2="460"/>
+    <line x1="1006" y1="532" x2="1074" y2="532"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="80" y="700" width="380" height="260" rx="18" fill="#f6f8fa"/>
+    <rect x="530" y="700" width="640" height="260" rx="18" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="1240" y="700" width="280" height="260" rx="18" fill="#f6f8fa"/>
+    <rect x="1590" y="700" width="250" height="260" rx="18" fill="#e9f7ef"/>
+  </g>
+  <rect x="660" y="864" width="380" height="40" rx="8" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;0.3;0" keyTimes="0;0.25;0.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="270" y="762">MCP Inspector</text>
+    <text x="850" y="762">Blob input binding</text>
+    <text x="1380" y="762">Blob storage</text>
+    <text x="1715" y="762">Tool result</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="270" y="814">tools/call</text>
+    <text x="270" y="856">get_snippet</text>
+    <text x="270" y="898">snippetname=greeting</text>
+    <text x="850" y="814">snippets/{mcptoolargs.snippetname}.json</text>
+    <text x="850" y="894">snippets/greeting.json</text>
+    <text x="1715" y="830">print(1)</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="850" y="854">resolves to</text>
+    <text x="1380" y="830">Azurite locally</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="466" y1="830" x2="524" y2="830"/>
+    <line x1="1176" y1="830" x2="1234" y2="830"/>
+    <line x1="1526" y1="830" x2="1584" y2="830"/>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="5">
+    <rect x="70" y="690" width="400" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.25" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="520" y="690" width="660" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.25;0.5" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1230" y="690" width="300" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.75" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1580" y="690" width="270" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.75" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

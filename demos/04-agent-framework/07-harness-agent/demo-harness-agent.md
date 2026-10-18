@@ -73,6 +73,8 @@ The agent read the stages, wrote its own todos and stopped at the booking, as th
 
 The application switches the session to `execute`, which tells the agent it may act. `reserve_hut` still needs approval, and the script answers the first request with `create_always_approve_tool_response`, which records a standing rule in the session.
 
+![In plan mode the agent checks the stages, writes todos and stops; set_agent_mode switches to execute, where one always-approve answer covers all three reserve_hut calls, and one AgentSession holds history, todos, mode and standing approvals](../pptx/images/07-01-plan-execute-modes.svg)
+
 ```python
 set_agent_mode(session, "execute")
 
@@ -129,6 +131,8 @@ with loop   : 4 of 4 todos complete
 
 The loop re-invokes the agent with a reminder of the open todos until none are left or six iterations pass. The bound is the safety net, so always set it.
 
+![The todo loop: the agent completes one todo and stops, loop_should_continue checks for open todos, and loop_next_message runs the agent again until no todos are left or loop_max_iterations is reached; without the loop 1 of 4 todos complete, with it 4 of 4](../pptx/images/07-02-todo-driven-looping.svg)
+
 ## Step 4: Compact the history
 
 `get_stage_report` returns a long hourly report, so six questions fill the context fast. `run_compaction.py` runs the same six questions twice and prints the input tokens of each turn.
@@ -150,6 +154,8 @@ with compaction: [961, 1875, 2814, 3753, 4678, 2888]
 ```
 
 Without compaction each turn re-sends everything and the count grows by about 940 tokens per question. With a 4000 token window the harness compacts when the history approaches the limit, and the last turn falls from about 5600 to 2888 tokens. During the compaction run this version logs `Rejected N compaction summary message(s) because their dependencies were not fully rooted ...` warnings on stderr; the token counts show that compaction still took effect.
+
+![Line chart of input tokens over six questions: without compaction they grow to 5639, with a 4000 token window the last turn falls to 2888](../pptx/images/07-03-history-compaction.svg)
 
 ## Step 5: Remember the group in file memory
 

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Replaying a captured snapshot and bisecting prompt versions</title>
+  <desc>A replay snapshot holds trace_id, input_data, model_deployments, system_prompts with a SHA-256 hash, tool_responses with the order id masked as MOCK-A100, trace_timeline and production_output. The hash check against the current v1 prompt reports a hash mismatch. Replay feeds the mocked tool response and the captured prompt to the same gpt-5.4 deployment and returns valid False without a production call. Bisection replays the snapshot with each prompt version read back from Foundry: v1 is valid, v2 is not, so the first failing version is v2. A highlight steps through v1, v2 and the result.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke-width="2">
+    <rect x="60" y="90" width="580" height="900" rx="24" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="740" y="90" width="520" height="240" rx="24" fill="#e9f7ef" stroke="#8c959f"/>
+    <rect x="740" y="420" width="520" height="340" rx="24" fill="#eaf2ff" stroke="#8c959f"/>
+    <rect x="740" y="850" width="520" height="140" rx="24" fill="#fdecec" stroke="#c24141"/>
+    <rect x="1360" y="90" width="500" height="900" rx="24" fill="#f6f8fa" stroke="#8c959f"/>
+    <rect x="1395" y="410" width="430" height="110" rx="18" fill="#e9f7ef" stroke="#8c959f"/>
+    <rect x="1395" y="570" width="430" height="110" rx="18" fill="#fdecec" stroke="#c24141"/>
+    <rect x="1395" y="770" width="430" height="170" rx="18" fill="#fff6e5" stroke="#e0a534"/>
+  </g>
+
+  <g font-size="32" font-weight="700" fill="#24292f">
+    <text x="95" y="150">Replay snapshot</text>
+    <text x="775" y="150">Hash check</text>
+    <text x="775" y="480">Replay</text>
+    <text x="1395" y="150">Bisection</text>
+  </g>
+
+  <text x="95" y="195" font-family="Consolas, Menlo, monospace" font-size="26" fill="#57606a">replay-snapshots/</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="28" fill="#24292f">
+    <text x="95" y="265">trace_id</text>
+    <text x="95" y="365">input_data</text>
+    <text x="95" y="465">model_deployments</text>
+    <text x="95" y="565">system_prompts</text>
+    <text x="95" y="665">tool_responses</text>
+    <text x="95" y="765">trace_timeline</text>
+    <text x="95" y="865">production_output</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="95" y="303">names the snapshot file</text>
+    <text x="95" y="403">order id A100</text>
+    <text x="95" y="503">pricing-agent on gpt-5.4</text>
+    <text x="95" y="603">content, SHA-256 hash, version v2</text>
+    <text x="95" y="703">mocked, order id MOCK-A100</text>
+    <text x="95" y="803">each step with its duration and status</text>
+    <text x="95" y="903">$108.00 and an explanation</text>
+  </g>
+
+  <g font-size="26" fill="#24292f">
+    <text x="775" y="200">snapshot hash against the</text>
+    <text x="775" y="240">current v1 prompt</text>
+    <text x="775" y="590">mocked tool response</text>
+    <text x="775" y="630">plus the captured prompt</text>
+    <text x="775" y="670">on the same deployment</text>
+    <text x="1395" y="200">replays the snapshot with</text>
+    <text x="1395" y="240">each prompt version, read</text>
+    <text x="1395" y="280">back from the Foundry agent</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="26" fill="#24292f">
+    <text x="775" y="300" font-weight="700">hash mismatch</text>
+    <text x="775" y="525" fill="#57606a">replay_pricing_step</text>
+    <text x="775" y="725">gpt-5.4</text>
+    <text x="775" y="910" font-size="30" font-weight="700">valid False</text>
+    <text x="1395" y="340" fill="#57606a">get_version(...)</text>
+    <text x="1430" y="475" font-size="30" font-weight="700">v1</text>
+    <text x="1535" y="475">valid True</text>
+    <text x="1430" y="635" font-size="30" font-weight="700">v2</text>
+    <text x="1535" y="635">valid False</text>
+    <text x="1430" y="895" font-size="34" font-weight="700">v2</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="775" y="955">reproduced without production</text>
+    <text x="1430" y="830" font-size="28" font-weight="700">first failing version</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="644" y1="210" x2="734" y2="210"/>
+    <line x1="644" y1="590" x2="734" y2="590"/>
+    <line x1="1000" y1="764" x2="1000" y2="844"/>
+    <line x1="1264" y1="590" x2="1354" y2="590"/>
+    <line x1="1610" y1="684" x2="1610" y2="764"/>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="1387" y="402" width="446" height="126" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.25"/>
+    </rect>
+    <rect x="1387" y="562" width="446" height="126" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.5"/>
+    </rect>
+    <rect x="1387" y="762" width="446" height="186" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.5"/>
+    </rect>
+  </g>
+</svg>

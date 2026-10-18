@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Tenant from a verified token</title>
+  <desc>A signed request carries a Bearer token. jwt.decode checks signature, audience, issuer and expiry, and the tenant from the verified claims goes into the context variable current_tenant, here tenant-a. The agent m8-zt-review-assistant asks for review rev-b-001 through the tool get_review, whose only parameter is review_id. The repository reads current_tenant.get() and looks only in the partition of tenant-a, which holds rev-a-001 and rev-a-002, so the tool returns null. The partition of tenant-b with rev-b-001 is never reached.</desc>
+  <style>
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 32px; fill: #24292f; text-anchor: middle; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .bd { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .bt { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 30px; fill: #24292f; text-anchor: middle; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 28px; fill: #24292f; text-anchor: middle; }
+    .cs { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .ci { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; }
+    .cl { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; }
+    .nul { font-family: Consolas, 'Courier New', monospace; font-weight: 700; font-size: 30px; fill: #24292f; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="70" width="420" height="260" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="270" y="160">Signed request</text>
+  <text class="c" x="270" y="214">Bearer &lt;token&gt;</text>
+  <text class="b" x="270" y="264">token for tenant-a</text>
+
+  <rect x="560" y="70" width="440" height="260" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="h" x="780" y="140">Verify the token</text>
+  <text class="c" x="780" y="192">jwt.decode</text>
+  <text class="b" x="780" y="242">signature, audience,</text>
+  <text class="b" x="780" y="276">issuer, expiry</text>
+
+  <rect x="1080" y="70" width="360" height="260" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="h" x="1260" y="140">Request context</text>
+  <text class="c" x="1260" y="192">current_tenant</text>
+  <text class="b" x="1260" y="242">set from the</text>
+  <text class="b" x="1260" y="276">verified claims</text>
+
+  <rect x="1520" y="70" width="340" height="260" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="1690" y="140">Partition</text>
+  <text class="c" x="1690" y="186">tenant-b</text>
+  <text class="cs" x="1690" y="240">rev-b-001</text>
+  <text class="b" x="1690" y="280">payroll.py</text>
+
+  <rect x="60" y="450" width="420" height="280" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="270" y="524">Agent</text>
+  <text class="cs" x="270" y="572">m8-zt-review-assistant</text>
+  <text class="bd" x="270" y="630">asks for <tspan class="ci">rev-b-001</tspan></text>
+  <text class="b" x="270" y="668">as the user told it</text>
+
+  <rect x="560" y="450" width="440" height="280" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="780" y="524">Tool</text>
+  <text class="c" x="780" y="572">get_review</text>
+  <text class="bd" x="780" y="630">only parameter: <tspan class="ci">review_id</tspan></text>
+  <text class="b" x="780" y="668">no tenant parameter</text>
+
+  <rect x="1080" y="450" width="360" height="280" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="1260" y="524">Repository</text>
+  <text class="cs" x="1260" y="572">current_tenant.get()</text>
+  <text class="b" x="1260" y="630">picks the partition</text>
+  <text class="b" x="1260" y="668">of the request</text>
+
+  <rect x="1520" y="450" width="340" height="280" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="1690" y="524">Partition</text>
+  <text class="c" x="1690" y="570">tenant-a</text>
+  <text class="cs" x="1690" y="624">rev-a-001</text>
+  <text class="cs" x="1690" y="664">rev-a-002</text>
+
+  <line class="line" x1="482" y1="200" x2="558" y2="200" marker-end="url(#arr)"/>
+  <line class="line" x1="1002" y1="200" x2="1078" y2="200" marker-end="url(#arr)"/>
+  <line class="line" x1="1260" y1="332" x2="1260" y2="448" marker-end="url(#arr)"/>
+  <text class="cl" x="1282" y="400">tenant-a</text>
+  <line class="line" x1="482" y1="590" x2="558" y2="590" marker-end="url(#arr)"/>
+  <line class="line" x1="1002" y1="590" x2="1078" y2="590" marker-end="url(#arr)"/>
+  <line class="line" x1="1442" y1="590" x2="1518" y2="590" marker-end="url(#arr)"/>
+  <path class="line" d="M 1260 732 L 1260 830 L 270 830 L 270 734" marker-end="url(#arr)"/>
+  <text class="nul" x="420" y="798">null</text>
+  <text class="bd" x="500" y="798" style="text-anchor: start">rev-b-001 is not in the partition of tenant-a</text>
+
+  <circle r="11" fill="#57606a" opacity="1">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 484 200 L 542 200" keyPoints="0;1;1" keyTimes="0;0.12;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.12"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1004 200 L 1062 200" keyPoints="0;0;1;1" keyTimes="0;0.12;0.24;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.12;0.24"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1260 334 L 1260 432" keyPoints="0;0;1;1" keyTimes="0;0.24;0.36;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.24;0.36"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 484 590 L 542 590" keyPoints="0;0;1;1" keyTimes="0;0.36;0.48;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.36;0.48"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1004 590 L 1062 590" keyPoints="0;0;1;1" keyTimes="0;0.48;0.6;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.48;0.6"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1444 590 L 1502 590" keyPoints="0;0;1;1" keyTimes="0;0.6;0.72;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.6;0.72"/>
+  </circle>
+  <circle r="11" fill="#57606a" opacity="0">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M 1260 734 L 1260 830 L 270 830 L 270 750" keyPoints="0;0;1;1" keyTimes="0;0.72;0.9;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="10s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.72;0.9"/>
+  </circle>
+
+  <rect x="60" y="890" width="1800" height="120" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="bt" x="960" y="962">Isolation holds even if the model follows the user's instruction perfectly</text>
+</svg>

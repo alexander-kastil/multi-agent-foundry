@@ -28,6 +28,8 @@ On macOS or Linux, activate with `source .venv/bin/activate` and copy with `cp .
 
 Two `InMemoryHistoryProvider` instances run side by side. The primary one replays the transcript to the model; the audit one only records, including any context other providers injected. `options={"store": False}` stops the Responses service from keeping the conversation, so the providers own it.
 
+![Each agent.run() calls before_run on every provider in list order, which fills the SessionContext, then the model call, then after_run, which stores one slice per source_id in session.state for the next run](../pptx/images/03-01-provider-lifecycle.svg)
+
 ```python
 primary = InMemoryHistoryProvider("memory", load_messages=True)
 audit = InMemoryHistoryProvider("audit", load_messages=False, store_context_messages=True)
@@ -141,6 +143,8 @@ Four lines, one per message, sit in `history/alex-trip.jsonl`. The session ID is
 ## Step 4: Add Foundry managed memory
 
 History replays everything; memory keeps extracted facts. This step creates a memory store and recalls a fact from a second, separate session. It needs the project's managed identity to call your embedding deployment, which Learn documents as the Foundry User role on the resource that holds the project.
+
+![History: FileHistoryProvider saves and replays the four lines of alex-trip.jsonl for one session ID. Memory: the Foundry memory store extracts facts about Bruno the dog from session 1 and recalls them in session 2](../pptx/images/03-02-history-and-memory.svg)
 
 ```powershell
 $resourceId = az cognitiveservices account show -g <resource-group> -n <foundry-resource> --query id -o tsv

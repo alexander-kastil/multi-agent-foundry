@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The six steps of an agent optimizer run</title>
+  <desc>You select a baseline agent version, an evaluation dataset and evaluators. The optimizer evaluates the baseline with the eval model, generates candidates with the optimization model and evaluates them on the same data. You review the ranked results and apply the winner, which promotion turns into a new agent version. A highlight steps through the six steps in order.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="70" y="95" width="440" height="250" rx="24" fill="#f6f8fa"/>
+    <rect x="70" y="415" width="440" height="250" rx="24" fill="#f6f8fa"/>
+    <rect x="70" y="735" width="440" height="250" rx="24" fill="#f6f8fa"/>
+    <rect x="610" y="95" width="720" height="890" rx="24" fill="#f3edff"/>
+    <rect x="650" y="225" width="640" height="130" rx="18" fill="#ffffff"/>
+    <rect x="650" y="395" width="640" height="130" rx="18" fill="#ffffff"/>
+    <rect x="650" y="565" width="640" height="130" rx="18" fill="#ffffff"/>
+    <rect x="650" y="745" width="640" height="210" rx="18" fill="#ffffff"/>
+    <rect x="1430" y="95" width="420" height="400" rx="24" fill="#e9f7ef"/>
+    <rect x="1430" y="585" width="420" height="400" rx="24" fill="#e9f7ef"/>
+  </g>
+
+  <g fill="#ffffff" stroke="#8c959f" stroke-width="2">
+    <circle cx="125" cy="157" r="30"/>
+    <circle cx="125" cy="477" r="30"/>
+    <circle cx="125" cy="797" r="30"/>
+    <circle cx="665" cy="157" r="30"/>
+    <circle cx="1485" cy="157" r="30"/>
+    <circle cx="1485" cy="647" r="30"/>
+  </g>
+  <g text-anchor="middle" font-size="30" font-weight="700" fill="#24292f">
+    <text x="125" y="168">1</text>
+    <text x="125" y="488">2</text>
+    <text x="125" y="808">3</text>
+    <text x="665" y="168">4</text>
+    <text x="1485" y="168">5</text>
+    <text x="1485" y="658">6</text>
+  </g>
+
+  <g font-size="32" font-weight="700" fill="#24292f">
+    <text x="175" y="168">Baseline</text>
+    <text x="175" y="488">Evaluation dataset</text>
+    <text x="175" y="808">Evaluators</text>
+    <text x="715" y="168" font-size="34">Run the optimizer</text>
+    <text x="1460" y="250" font-size="30">Review ranked results</text>
+    <text x="1460" y="740" font-size="30">Apply the winner</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="110" y="235">for a prompt agent, a version</text>
+    <text x="110" y="555">representative tasks</text>
+    <text x="110" y="875">measure what you want</text>
+    <text x="1460" y="305">scores from 0.0 to 1.0</text>
+    <text x="1460" y="350">the best candidate is marked</text>
+    <text x="1460" y="395">the baseline is in the list</text>
+    <text x="1460" y="795">promotion creates a new</text>
+    <text x="1460" y="835">prompt agent version</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="28" fill="#24292f">
+    <text x="110" y="300">version 1</text>
+    <text x="110" y="620">tickets.jsonl</text>
+    <text x="110" y="940">builtin.f1_score</text>
+    <text x="1460" y="905">version 2</text>
+  </g>
+
+  <g font-size="30" font-weight="700" fill="#24292f">
+    <text x="685" y="280">Evaluate the baseline</text>
+    <text x="685" y="450">Generate candidates</text>
+    <text x="685" y="620">Evaluate them on the same data</text>
+    <text x="685" y="800" font-size="28">Eval model</text>
+    <text x="685" y="895" font-size="28">Optimization model</text>
+  </g>
+  <g font-size="26" fill="#57606a">
+    <text x="685" y="325">scored by the eval model</text>
+    <text x="685" y="495">proposed by the optimization model</text>
+    <text x="685" y="665">scored by the eval model</text>
+    <text x="685" y="840">any chat model</text>
+    <text x="685" y="935">gpt-5 family or DeepSeek only</text>
+  </g>
+  <g font-family="Consolas, Menlo, monospace" font-size="28" fill="#24292f" text-anchor="end">
+    <text x="1265" y="800">gpt-5-mini</text>
+    <text x="1265" y="895">gpt-5.4</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="514" y1="220" x2="604" y2="220"/>
+    <line x1="514" y1="540" x2="604" y2="540"/>
+    <line x1="514" y1="860" x2="604" y2="860"/>
+    <line x1="970" y1="359" x2="970" y2="389"/>
+    <line x1="970" y1="529" x2="970" y2="559"/>
+    <line x1="1334" y1="295" x2="1424" y2="295"/>
+    <line x1="1640" y1="499" x2="1640" y2="579"/>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="62" y="87" width="456" height="266" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.125"/>
+    </rect>
+    <rect x="62" y="407" width="456" height="266" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.125;0.25"/>
+    </rect>
+    <rect x="62" y="727" width="456" height="266" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.375"/>
+    </rect>
+    <rect x="642" y="217" width="656" height="146" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.375;0.5"/>
+    </rect>
+    <rect x="642" y="387" width="656" height="146" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.625"/>
+    </rect>
+    <rect x="642" y="557" width="656" height="146" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.625;0.75"/>
+    </rect>
+    <rect x="1422" y="87" width="436" height="416" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.75;0.875"/>
+    </rect>
+    <rect x="1422" y="577" width="436" height="416" rx="30" opacity="0">
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.875"/>
+    </rect>
+  </g>
+</svg>

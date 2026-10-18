@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The canary gate keeps production on the stable version until the canary passes</title>
+  <desc>canary_gate.py in four steps while the stable endpoint keeps serving v1. Step 1: pin production to stable v1 with pin_endpoint(NAME, stable.version). Step 2: create canary v2 with create_agent(NAME, variant). Step 3: both versions answer the six labeled code samples of eval-set.jsonl, each call naming its version in the agent reference. Step 4: compare accuracy and schema_valid_rate with the baseline; neither may drop more than 5 points. A highlight steps through the four steps and then the two outcomes. With python canary_gate.py the gate passes: accuracy 0.83 to 1.0, schema_valid_rate 1.0 to 1.0, the pin moves to v2 and the exit code is 0. With python canary_gate.py regress it fails: accuracy 0.83 to 0.0, schema_valid_rate 1.0 to 0.0, the pin never moves, the endpoint stays on v1 and the exit code is 1.</desc>
+  <style>
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; fill: #24292f; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .lab { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 600; fill: #57606a; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; }
+    .cl { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #57606a; }
+    .num { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #24292f; text-anchor: middle; }
+    .ver { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; fill: #24292f; text-anchor: middle; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .blue { fill: #eaf2ff; stroke: #8c959f; stroke-width: 2; }
+    .purple { fill: #f3edff; stroke: #8c959f; stroke-width: 2; }
+    .green { fill: #e9f7ef; stroke: #8c959f; stroke-width: 2; }
+    .grey { fill: #f6f8fa; stroke: #8c959f; stroke-width: 2; }
+    .badge { fill: #ffffff; stroke: #8c959f; stroke-width: 2; }
+    .hl { fill: none; stroke: #e0a534; stroke-width: 4; }
+  </style>
+  <defs>
+    <marker id="c-ah" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text class="lab" x="80" y="110">stable endpoint</text>
+  <text class="lab" x="80" y="146">serves</text>
+  <text class="cl" x="340" y="120">canary_gate.py</text>
+
+  <path class="line" d="M180 235 V865"/>
+  <rect class="purple" x="90" y="195" width="180" height="80" rx="40"/>
+  <text class="ver" x="180" y="246">v1</text>
+  <rect class="purple" x="90" y="405" width="180" height="80" rx="40"/>
+  <text class="ver" x="180" y="456">v1</text>
+  <rect class="purple" x="90" y="615" width="180" height="80" rx="40"/>
+  <text class="ver" x="180" y="666">v1</text>
+  <rect class="purple" x="90" y="825" width="180" height="80" rx="40"/>
+  <text class="ver" x="180" y="876">v1</text>
+
+  <path class="line" d="M700 320 V358" marker-end="url(#c-ah)"/>
+  <path class="line" d="M700 530 V568" marker-end="url(#c-ah)"/>
+  <path class="line" d="M700 740 V778" marker-end="url(#c-ah)"/>
+
+  <rect class="blue" x="340" y="150" width="720" height="170" rx="18"/>
+  <circle class="badge" cx="395" cy="205" r="28"/>
+  <text class="num" x="395" y="215">1</text>
+  <text class="h" x="445" y="215">Pin production to stable v1</text>
+  <text class="c" x="445" y="262">pin_endpoint(NAME, stable.version)</text>
+
+  <rect class="blue" x="340" y="360" width="720" height="170" rx="18"/>
+  <circle class="badge" cx="395" cy="415" r="28"/>
+  <text class="num" x="395" y="425">2</text>
+  <text class="h" x="445" y="425">Create canary v2</text>
+  <text class="c" x="445" y="472">create_agent(NAME, variant)</text>
+
+  <rect class="blue" x="340" y="570" width="720" height="170" rx="18"/>
+  <circle class="badge" cx="395" cy="625" r="28"/>
+  <text class="num" x="395" y="635">3</text>
+  <text class="h" x="445" y="635">Both versions answer <tspan font-family="Consolas, 'Courier New', monospace" font-weight="400">eval-set.jsonl</tspan></text>
+  <text class="b" x="445" y="680">six labeled code samples, each call</text>
+  <text class="b" x="445" y="716">names its version in the agent reference</text>
+
+  <rect class="blue" x="340" y="780" width="720" height="170" rx="18"/>
+  <circle class="badge" cx="395" cy="835" r="28"/>
+  <text class="num" x="395" y="845">4</text>
+  <text class="h" x="445" y="845">Compare with the stable baseline</text>
+  <text class="c" x="445" y="890">accuracy, schema_valid_rate</text>
+  <text class="b" x="445" y="928">neither may drop more than 5 points</text>
+
+  <path class="line" d="M1060 865 H1120 V420 H1178" marker-end="url(#c-ah)"/>
+  <path class="line" d="M1120 780 H1178" marker-end="url(#c-ah)"/>
+
+  <text class="cl" x="1180" y="282">python canary_gate.py</text>
+  <rect class="green" x="1180" y="300" width="680" height="240" rx="18"/>
+  <text class="h" x="1210" y="355">PASS: endpoint promoted to v2</text>
+  <text class="c" x="1210" y="405">accuracy 0.83 → 1.0</text>
+  <text class="c" x="1210" y="445">schema_valid_rate 1.0 → 1.0</text>
+  <text class="b" x="1210" y="500">the pin moves to v2, exit code 0</text>
+
+  <text class="cl" x="1180" y="642">python canary_gate.py regress</text>
+  <rect class="grey" x="1180" y="660" width="680" height="240" rx="18"/>
+  <text class="h" x="1210" y="715">FAIL: endpoint stays on v1</text>
+  <text class="c" x="1210" y="765">accuracy 0.83 → 0.0</text>
+  <text class="c" x="1210" y="805">schema_valid_rate 1.0 → 0.0</text>
+  <text class="b" x="1210" y="860">the pin never moves, exit code 1</text>
+
+  <rect class="hl" x="332" y="142" width="736" height="186" rx="22">
+    <animate attributeName="y" values="142;352;562;772" keyTimes="0;0.2;0.4;0.6" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0" keyTimes="0;0.8" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="hl" x="1172" y="292" width="696" height="256" rx="22" opacity="0">
+    <animate attributeName="opacity" values="0;1" keyTimes="0;0.8" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+  </rect>
+  <rect class="hl" x="1172" y="652" width="696" height="256" rx="22" opacity="0">
+    <animate attributeName="opacity" values="0;1" keyTimes="0;0.8" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+  </rect>
+</svg>

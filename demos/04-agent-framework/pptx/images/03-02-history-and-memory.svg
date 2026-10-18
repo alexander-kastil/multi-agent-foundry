@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>History and memory: a replayed transcript versus extracted facts</title>
+  <desc>Top lane, history: each run uses AgentSession with session_id alex-trip and store False. FileHistoryProvider saves the messages to history/alex-trip.jsonl, one line per message, four lines after two runs, and gets them back before the next model call. RedisHistoryProvider or CosmosHistoryProvider change where the lines live and keep the same agent code. Bottom lane, memory: session 1 says I hike with a dog called Bruno, and I dislike steep climbs. The Foundry memory store m4-trail-memory with scope user-alex extracts facts asynchronously, and session 2, a different session, asking which kind of trail suits me, recalls the relevant facts. Dots move along the save and get arrows, then from session 1 through the store to session 2.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="70" y="96" class="s sec" font-size="28"><tspan class="s b" font-size="32" fill="#24292f">History</tspan><tspan dx="16">replays the transcript of one session ID</tspan></text>
+
+  <rect x="70" y="130" width="450" height="360" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="187" class="s b" font-size="30">Each run</text>
+  <text x="105" y="240" class="m" font-size="26">AgentSession(</text>
+  <text x="134" y="282" class="m" font-size="26">session_id="alex-trip")</text>
+  <text x="105" y="345" class="m sec" font-size="26">options={"store": False}</text>
+  <text x="105" y="420" class="s sec" font-size="26">Two runs, two processes</text>
+
+  <line x1="520" y1="270" x2="736" y2="270" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="630" y="252" class="m sec" font-size="26" text-anchor="middle">save_messages</text>
+  <line x1="740" y1="380" x2="524" y2="380" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="630" y="420" class="m sec" font-size="26" text-anchor="middle">get_messages</text>
+
+  <rect x="740" y="130" width="440" height="360" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="770" y="185" class="m b" font-size="28">FileHistoryProvider</text>
+  <text x="770" y="226" class="m sec" font-size="26">history/alex-trip.jsonl</text>
+  <rect x="770" y="250" width="380" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="790" y="284" class="s sec" font-size="26">line 1</text>
+  <text x="905" y="284" class="s" font-size="26">user</text>
+  <rect x="770" y="307" width="380" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="790" y="341" class="s sec" font-size="26">line 2</text>
+  <text x="905" y="341" class="s" font-size="26">assistant</text>
+  <rect x="770" y="364" width="380" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="790" y="398" class="s sec" font-size="26">line 3</text>
+  <text x="905" y="398" class="s" font-size="26">user</text>
+  <rect x="770" y="421" width="380" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="790" y="455" class="s sec" font-size="26">line 4</text>
+  <text x="905" y="455" class="s" font-size="26">assistant</text>
+
+  <line x1="1180" y1="310" x2="1376" y2="310" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8" marker-end="url(#ah)"/>
+  <text x="1280" y="292" class="s sec" font-size="26" text-anchor="middle">swap for</text>
+
+  <rect x="1380" y="130" width="470" height="360" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1415" y="187" class="s b" font-size="30">Same agent code</text>
+  <text x="1415" y="250" class="m" font-size="26">RedisHistoryProvider</text>
+  <text x="1415" y="295" class="m" font-size="26">CosmosHistoryProvider</text>
+  <text x="1415" y="370" class="s sec" font-size="26">Change where the</text>
+  <text x="1415" y="410" class="s sec" font-size="26">lines live</text>
+
+  <text x="70" y="576" class="s sec" font-size="28"><tspan class="s b" font-size="32" fill="#24292f">Memory</tspan><tspan dx="16">keeps extracted facts across sessions</tspan></text>
+
+  <rect x="70" y="610" width="450" height="380" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="105" y="665" class="s b" font-size="30">Session 1</text>
+  <rect x="105" y="690" width="380" height="145" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="125" y="732" class="s" font-size="26">I hike with a dog called</text>
+  <text x="125" y="773" class="s" font-size="26">Bruno, and I dislike</text>
+  <text x="125" y="814" class="s" font-size="26">steep climbs.</text>
+  <text x="105" y="900" class="m sec" font-size="26">agent.create_session()</text>
+
+  <line x1="520" y1="800" x2="736" y2="800" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="630" y="742" class="s sec" font-size="26" text-anchor="middle">extracts facts,</text>
+  <text x="630" y="776" class="s sec" font-size="26" text-anchor="middle">asynchronously</text>
+
+  <rect x="740" y="610" width="440" height="380" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="770" y="665" class="s b" font-size="28">Foundry memory store</text>
+  <text x="770" y="708" class="m" font-size="26">m4-trail-memory</text>
+  <text x="770" y="750" class="m sec" font-size="26">scope="user-alex"</text>
+  <rect x="770" y="785" width="380" height="64" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="790" y="827" class="s" font-size="26">dog called Bruno</text>
+  <rect x="770" y="867" width="380" height="64" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="790" y="909" class="s" font-size="26">dislikes steep climbs</text>
+
+  <line x1="1180" y1="800" x2="1376" y2="800" stroke="#8c959f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="1280" y="742" class="s sec" font-size="26" text-anchor="middle">recalls the</text>
+  <text x="1280" y="776" class="s sec" font-size="26" text-anchor="middle">relevant facts</text>
+
+  <rect x="1380" y="610" width="470" height="380" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1415" y="665" class="s b" font-size="30">Session 2</text>
+  <rect x="1410" y="690" width="410" height="70" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1428" y="735" class="s" font-size="26">Which kind of trail suits me?</text>
+  <text x="1415" y="900" class="m sec" font-size="26">agent.create_session()</text>
+  <text x="1415" y="945" class="s sec" font-size="26">A different session</text>
+
+  <circle cx="520" cy="270" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="1">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.25"/>
+    <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L216,0" keyPoints="0;1;1" keyTimes="0;0.2;1" calcMode="linear"/>
+  </circle>
+  <circle cx="740" cy="380" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.5"/>
+    <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L-216,0" keyPoints="0;0;1;1" keyTimes="0;0.25;0.45;1" calcMode="linear"/>
+  </circle>
+  <circle cx="520" cy="800" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.75"/>
+    <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L216,0" keyPoints="0;0;1;1" keyTimes="0;0.5;0.7;1" calcMode="linear"/>
+  </circle>
+  <circle cx="1180" cy="800" r="14" fill="#e0a534" stroke="#ffffff" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.75"/>
+    <animateMotion dur="8s" repeatCount="indefinite" path="M0,0 L196,0" keyPoints="0;0;1;1" keyTimes="0;0.75;0.95;1" calcMode="linear"/>
+  </circle>
+</svg>

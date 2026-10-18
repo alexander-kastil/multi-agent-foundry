@@ -1,0 +1,11 @@
+{
+  "topics": [
+    {"title": "Guardrails: Prompt Shields & Intervention Points", "subtitle": "Controls at four intervention points and Prompt Shields"},
+    {"title": "Prompt Injection: Layered Defenses", "subtitle": "Delimiters, a hardened prompt and output checks"},
+    {"title": "Entra Agent ID: On-Behalf-Of Flows", "subtitle": "An identity per agent and OAuth passthrough to MCP tools"},
+    {"title": "Zero Trust: Tenant Isolation & Secrets", "subtitle": "Verified tenants, rotated keys and per-agent secrets"},
+    {"title": "CI/CD: GitHub Actions Quality Gates", "subtitle": "Contract, canary and prompt regression gates"},
+    {"title": "Agent Lifecycle: Versions, Quotas & Retirement", "subtitle": "Manifests, the version selector, token limits and retirement"},
+    {"title": "Responsible AI: Fairness Probes & Audit", "subtitle": "Counterfactual probes and an audit trail per version"}
+  ]
+}

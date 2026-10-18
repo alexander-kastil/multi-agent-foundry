@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>One approval across two processes</title>
+  <desc>Process 1, submit.py, runs intake, the expense_summarizer agent and approval_gate, which calls ctx.request_info. The process prints request 97a8ecb2 and exits. The checkpoints folder, written by FileCheckpointStorage, holds four checkpoints from submit.py, superstep 0 to 3, and only superstep 3 has pending_requests=1. Process 2, decide.py approve, builds a new workflow object, loads the latest checkpoint, gets request 97a8ecb2 re-emitted, answers it with run(responses=...) and prints decision 1: APPROVE. The resume and the answer add three more checkpoints.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .t{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#24292f}
+      .s{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a}
+      .m{font-family:Consolas,'Courier New',monospace;fill:#24292f}
+      .ms{font-family:Consolas,'Courier New',monospace;fill:#57606a}
+      .box{stroke:#8c959f;stroke-width:2}
+      .edge{fill:none;stroke:#8c959f;stroke-width:2}
+      .pulse{fill:none;stroke:#e0a534;stroke-width:6}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="box" x="60" y="110" width="500" height="770" rx="20" fill="#f6f8fa"/>
+  <path d="M640 130 Q640 110 660 110 L860 110 Q874 110 884 122 L898 140 L1280 140 Q1300 140 1300 160 L1300 860 Q1300 880 1280 880 L660 880 Q640 880 640 860 Z" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect class="box" x="1380" y="110" width="480" height="770" rx="20" fill="#f6f8fa"/>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M310 305 L310 620 L560 620 C602 620 598 536 640 536" keyPoints="0;0;1;1" keyTimes="0;0.05;0.32;1" calcMode="linear" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.05;0.33" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="12" fill="#e0a534" stroke="#ffffff" stroke-width="2" opacity="0">
+    <animateMotion path="M1300 536 C1345 536 1335 305 1380 305 L1620 305 L1620 780" keyPoints="0;0;1;1" keyTimes="0;0.46;0.80;1" calcMode="linear" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.46;0.81" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <text class="m" x="310" y="172" font-size="32" font-weight="700" text-anchor="middle">submit.py</text>
+  <text class="s" x="310" y="212" font-size="26" text-anchor="middle">process 1</text>
+  <rect class="box" x="100" y="260" width="420" height="90" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="310" y="315" font-size="30" font-weight="700" text-anchor="middle">intake</text>
+  <rect class="box" x="100" y="410" width="420" height="100" rx="14" fill="#f3edff"/>
+  <text class="m" x="310" y="454" font-size="30" font-weight="700" text-anchor="middle">expense_summarizer</text>
+  <text class="s" x="310" y="492" font-size="26" text-anchor="middle">agent</text>
+  <rect class="box" x="100" y="570" width="420" height="100" rx="14" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="m" x="310" y="614" font-size="30" font-weight="700" text-anchor="middle">approval_gate</text>
+  <text class="ms" x="310" y="652" font-size="26" text-anchor="middle">ctx.request_info</text>
+  <path class="edge" d="M310 350 L310 408" marker-end="url(#arrow)"/>
+  <path class="edge" d="M310 510 L310 568" marker-end="url(#arrow)"/>
+  <text class="m" x="310" y="762" font-size="28" text-anchor="middle">request 97a8ecb2</text>
+  <text class="s" x="310" y="806" font-size="28" text-anchor="middle">the process now exits</text>
+
+  <text class="m" x="970" y="200" font-size="32" font-weight="700" text-anchor="middle">checkpoints/</text>
+  <text class="ms" x="970" y="238" font-size="26" text-anchor="middle">FileCheckpointStorage</text>
+  <text class="s" x="970" y="292" font-size="26" text-anchor="middle">written by <tspan class="ms">submit.py</tspan></text>
+  <rect class="box" x="665" y="310" width="610" height="56" rx="10" fill="#ffffff"/>
+  <text class="m" x="685" y="347" font-size="26">eebeed27 superstep=0 pending_requests=0</text>
+  <rect class="box" x="665" y="376" width="610" height="56" rx="10" fill="#ffffff"/>
+  <text class="m" x="685" y="413" font-size="26">043d107d superstep=1 pending_requests=0</text>
+  <rect class="box" x="665" y="442" width="610" height="56" rx="10" fill="#ffffff"/>
+  <text class="m" x="685" y="479" font-size="26">df9d92a4 superstep=2 pending_requests=0</text>
+  <rect x="665" y="508" width="610" height="56" rx="10" fill="#ffffff" stroke="#e0a534" stroke-width="4"/>
+  <text class="m" x="685" y="545" font-size="26">3533abcf superstep=3 <tspan font-weight="700">pending_requests=1</tspan></text>
+  <rect class="pulse" x="665" y="508" width="610" height="56" rx="10" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.32;0.34;0.46;0.48;1" dur="10s" repeatCount="indefinite"/>
+  </rect>
+  <text class="s" x="970" y="618" font-size="26" text-anchor="middle">added by <tspan class="ms">decide.py</tspan></text>
+  <rect class="box" x="665" y="636" width="610" height="56" rx="10" fill="#ffffff"/>
+  <text class="m" x="685" y="673" font-size="26">f8d2fd4e superstep=4 pending_requests=1</text>
+  <rect class="box" x="665" y="702" width="610" height="56" rx="10" fill="#ffffff"/>
+  <text class="m" x="685" y="739" font-size="26">fc07038b superstep=4 pending_requests=0</text>
+  <rect class="box" x="665" y="768" width="610" height="56" rx="10" fill="#ffffff"/>
+  <text class="m" x="685" y="805" font-size="26">74b3db70 superstep=5 pending_requests=0</text>
+
+  <text class="m" x="1620" y="172" font-size="32" font-weight="700" text-anchor="middle">decide.py approve</text>
+  <text class="s" x="1620" y="212" font-size="26" text-anchor="middle">process 2, new workflow object</text>
+  <rect class="box" x="1410" y="255" width="420" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="1620" y="298" font-size="28" font-weight="700" text-anchor="middle">storage.get_latest</text>
+  <text class="ms" x="1620" y="336" font-size="26" text-anchor="middle">resuming from 3533abcf</text>
+  <rect class="box" x="1410" y="415" width="420" height="100" rx="14" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="m" x="1620" y="458" font-size="28" font-weight="700" text-anchor="middle">request_info</text>
+  <text class="ms" x="1620" y="496" font-size="26" text-anchor="middle">re-emitted: 97a8ecb2</text>
+  <rect class="box" x="1410" y="575" width="420" height="100" rx="14" fill="#eaf2ff"/>
+  <text class="m" x="1620" y="618" font-size="28" font-weight="700" text-anchor="middle">run(responses=...)</text>
+  <text class="ms" x="1620" y="656" font-size="26" text-anchor="middle">{request_id: "approve"}</text>
+  <rect class="box" x="1410" y="735" width="420" height="90" rx="14" fill="#e9f7ef"/>
+  <text class="m" x="1620" y="790" font-size="28" font-weight="700" text-anchor="middle">decision 1: APPROVE</text>
+  <rect class="pulse" x="1410" y="735" width="420" height="90" rx="14" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.80;0.82;0.95;0.97;1" dur="10s" repeatCount="indefinite"/>
+  </rect>
+  <path class="edge" d="M1620 355 L1620 413" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1620 515 L1620 573" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1620 675 L1620 733" marker-end="url(#arrow)"/>
+
+  <path class="edge" d="M560 620 C602 620 598 536 638 536" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1300 536 C1345 536 1335 305 1378 305" marker-end="url(#arrow)"/>
+
+  <rect x="60" y="110" width="500" height="770" rx="20" fill="#ffffff" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.65;0.65;0" keyTimes="0;0.36;0.40;0.95;1" dur="10s" repeatCount="indefinite"/>
+  </rect>
+
+
+  <rect class="box" x="60" y="925" width="1800" height="95" rx="18" fill="#e9f7ef"/>
+  <text class="t" x="960" y="983" font-size="30" text-anchor="middle">The request id is the one <tspan class="m">submit.py</tspan> printed, and the agent does not run again.</text>
+</svg>

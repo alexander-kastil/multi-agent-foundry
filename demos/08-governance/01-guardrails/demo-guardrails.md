@@ -65,6 +65,8 @@ DefenderForAI    PreToolCall   True
 
 The first five rows are yours. The service added the `DefenderForAI` controls itself. `Prompt` is user input, `Completion` is output and `PostToolCall` is tool response.
 
+![One agent run from the user to the agent to a tool and back, with the four intervention points User input, Tool call, Tool response and Output and their source names](../pptx/images/01-01-intervention-points.svg)
+
 ## Step 2: Attach the guardrail and block input attacks
 
 The script creates an agent whose definition carries `rai_config`, then sends a normal question, a jailbreak and a violent request.
@@ -141,6 +143,8 @@ m8-guard-shielded: rai_config=m8-agent-guardrail
 ```
 
 The open agent got lucky: the model recognized the attack on its own, and nothing in the platform recorded it. The guarded agent was stopped at the tool response, the run ended as `incomplete` with the reason `content_filter`, and the HTTP status was still 200. A client that checks only the status code would miss the block.
+
+![A jailbreak stopped at user input ends in HTTP 400 with code content_filter, while an injected instruction stopped at the tool response ends in HTTP 200 with status incomplete](../pptx/images/01-02-block-signals.svg)
 
 ### C#
 

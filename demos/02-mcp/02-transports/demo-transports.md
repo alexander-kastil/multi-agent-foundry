@@ -80,9 +80,13 @@ add   -> {'result': 5}
 
 That is the practical difference: stdio gives every client its own server process, and Streamable HTTP shares one server between clients.
 
+![Every stdio_client.py run starts its own server process over stdin and stdout, while two http_client.py runs share one server on port 47004](../pptx/images/02-01-server-processes.svg)
+
 ## Step 3: Read the wire format of both protocol eras
 
 `wire.py` sends raw JSON-RPC with `httpx`. First it speaks the 2025-11-25 era with an `initialize` handshake and a session id, then the 2026-07-28 era with no handshake.
+
+![The 2025-11-25 era needs initialize and repeats the session id on every later request, while the 2026-07-28 era sends one self-contained tools/call and gets JSON back](../pptx/images/02-02-protocol-eras.svg)
 
 ```python
 meta = {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {}}

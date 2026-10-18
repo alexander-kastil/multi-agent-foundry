@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The same 20-turn history sent whole, trimmed and compacted</title>
+  <desc>Three versions of the 20-turn weather history from the demo, each turn a user message, a function_call, a function_call_output and an assistant message. All 20 turns are 80 items and 11,322 input tokens, and the model answers with booking reference ZX-4417 and the sister Marta from turn 1. Trimmed to the last 4 turns the request has 16 items and 2,287 input tokens, turn 1 is gone and the model answers I don't know. Compacted with responses.compact the window keeps all 40 messages and one encrypted compaction item in place of the 40 tool items, 41 items, and the next turn costs 1,259 input tokens and still answers with ZX-4417 and Marta.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <pattern id="tool" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="12" height="12" fill="#f6f8fa"/>
+      <path d="M0,0 V12" stroke="#8c959f" stroke-width="4"/>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="46" width="30" height="30" rx="4" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="102" y="71" font-size="26">message</text>
+  <rect x="280" y="46" width="30" height="30" rx="4" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <text x="322" y="71" class="m" font-size="26">function_call</text>
+  <text x="530" y="71" font-size="26">and</text>
+  <text x="584" y="71" class="m" font-size="26">function_call_output</text>
+  <rect x="940" y="46" width="30" height="30" rx="4" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="982" y="71" class="m" font-size="26">compaction</text>
+
+  <text x="60" y="140" class="b" font-size="30">All 20 turns</text>
+  <text x="60" y="178" class="s" font-size="26">80 items</text>
+  <rect x="70" y="210" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="210" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="210" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="210" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="235" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="235" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="235" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="235" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="260" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="260" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="260" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="260" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="285" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="285" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="285" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="285" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="310" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="310" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="310" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="310" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="335" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="335" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="335" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="335" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="360" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="360" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="360" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="360" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="385" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="385" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="385" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="385" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="410" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="410" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="410" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="410" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="435" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="435" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="435" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="435" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="460" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="460" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="460" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="460" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="485" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="485" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="485" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="485" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="510" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="510" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="510" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="510" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="535" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="535" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="535" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="535" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="560" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="560" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="560" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="560" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="585" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="585" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="585" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="585" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="610" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="610" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="610" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="610" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="635" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="635" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="635" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="635" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="660" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="660" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="660" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="660" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="70" y="685" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="118" y="685" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="178" y="685" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="432" y="685" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="522" y="229" class="s" font-size="26">turn 1</text>
+  <text x="522" y="704" class="s" font-size="26">turn 20</text>
+  <text x="60" y="752" font-size="26"><tspan class="b">11,322</tspan> input tokens</text>
+  <rect x="70" y="768" width="500" height="40" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="680" y="140" class="b" font-size="30">Last 4 turns</text>
+  <text x="680" y="178" class="s" font-size="26">16 items</text>
+  <rect x="690" y="210" width="438" height="395" rx="8" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <rect x="690" y="610" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="738" y="610" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="798" y="610" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1052" y="610" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="690" y="635" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="738" y="635" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="798" y="635" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1052" y="635" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="690" y="660" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="738" y="660" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="798" y="660" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1052" y="660" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="690" y="685" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="738" y="685" width="56" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="798" y="685" width="250" height="20" rx="3" fill="url(#tool)" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1052" y="685" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1142" y="229" class="s" font-size="26">turn 1</text>
+  <text x="1142" y="704" class="s" font-size="26">turn 20</text>
+  <text x="909" y="415" text-anchor="middle" class="s" font-size="26">turns 1 to 16 not sent</text>
+  <text x="680" y="752" font-size="26"><tspan class="b">2,287</tspan> input tokens</text>
+  <rect x="690" y="768" width="101" height="40" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1300" y="140" class="b" font-size="30">Compacted</text>
+  <text x="1300" y="178" class="s" font-size="26">41 items after <tspan class="m">responses.compact</tspan></text>
+  <rect x="1310" y="210" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="210" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="235" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="235" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="260" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="260" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="285" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="285" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="310" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="310" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="335" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="335" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="360" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="360" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="385" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="385" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="410" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="410" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="435" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="435" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="460" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="460" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="485" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="485" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="510" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="510" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="535" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="535" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="560" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="560" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="585" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="585" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="610" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="610" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="635" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="635" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="660" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="660" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1310" y="685" width="44" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1358" y="685" width="76" height="20" rx="3" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1448" y="229" class="s" font-size="26">turn 1</text>
+  <text x="1448" y="704" class="s" font-size="26">turn 20</text>
+  <rect x="1560" y="410" width="190" height="64" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1655" y="451" text-anchor="middle" class="m b" font-size="26">compaction</text>
+  <text x="1655" y="510" text-anchor="middle" class="s" font-size="26">1 item, encrypted</text>
+  <text x="1655" y="546" text-anchor="middle" class="s" font-size="26">replaces 40 tool items</text>
+  <text x="1300" y="752" font-size="26"><tspan class="b">1,259</tspan> input tokens on the next turn</text>
+  <rect x="1310" y="768" width="56" height="40" rx="6" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="60" y="850" width="560" height="170" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="86" y="900" font-size="26">Your booking reference is ZX-4417,</text>
+  <text x="86" y="938" font-size="26">and you are travelling with your</text>
+  <text x="86" y="976" font-size="26">sister Marta.</text>
+  <rect x="680" y="850" width="560" height="170" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="706" y="900" font-size="26">I don&#8217;t know.</text>
+  <rect x="1300" y="850" width="560" height="170" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1326" y="900" font-size="26">Your booking reference is ZX-4417,</text>
+  <text x="1326" y="938" font-size="26">and you&#8217;re travelling with your</text>
+  <text x="1326" y="976" font-size="26">sister Marta.</text>
+</svg>

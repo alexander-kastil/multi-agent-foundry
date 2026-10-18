@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>A guardrail ends a run before the model is called</title>
+  <desc>Two runs through the same GuardrailMiddleware. Top: the user asks whether the Wachau valley loop is open, the guardrail prints guardrail passed and awaits call_next, the model call happens with chat middleware, and the agent answers that the loop is open. Bottom: the user asks for the admin password of the booking system, the guardrail prints guardrail blocked, sets context.result and raises MiddlewareTermination, so the rest of the chain and the model call are skipped and the agent answers that it cannot help with credentials or secrets. Two dots travel the runs; the blocked run reaches its answer first because it never waits for a model call.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+    <style>
+      .s { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+      .m { font-family: Consolas, 'Courier New', monospace; fill: #24292f; }
+      .sec { fill: #57606a; }
+      .b { font-weight: 700; }
+      .ln { stroke: #8c959f; stroke-width: 2; fill: none; }
+      .hl { fill: none; stroke: #e0a534; stroke-width: 8; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <line x1="440" y1="260" x2="518" y2="260" class="ln" marker-end="url(#ah)"/>
+  <line x1="960" y1="260" x2="1098" y2="260" class="ln" marker-end="url(#ah)"/>
+  <line x1="1420" y1="260" x2="1498" y2="260" class="ln" marker-end="url(#ah)"/>
+  <line x1="440" y1="760" x2="518" y2="760" class="ln" marker-end="url(#ah)"/>
+  <line x1="960" y1="760" x2="1498" y2="760" class="ln" marker-end="url(#ah)"/>
+
+  <circle r="13" fill="#24292f" cx="0" cy="0" transform="translate(250 260)">
+    <animateMotion dur="7s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;0.7063;0.7063;1;1" keyTimes="0;0.1;0.3825;0.6825;0.8;1" path="M0,0 H1430"/>
+  </circle>
+  <circle r="13" fill="#24292f" cx="0" cy="0" transform="translate(250 760)">
+    <animateMotion dur="7s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.1;0.5;1" path="M0,0 H1430"/>
+  </circle>
+
+  <rect x="60" y="100" width="380" height="320" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="520" y="100" width="440" height="320" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="1100" y="100" width="320" height="320" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1500" y="100" width="360" height="320" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+
+  <rect x="60" y="600" width="380" height="320" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="520" y="600" width="440" height="320" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="1500" y="600" width="360" height="320" rx="16" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+
+  <rect x="520" y="100" width="440" height="320" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="7s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1755;0.2986" values="0;1;0"/>
+  </rect>
+  <rect x="1100" y="100" width="320" height="320" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="7s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.3378;0.7273" values="0;1;0"/>
+  </rect>
+  <rect x="1500" y="100" width="360" height="320" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="7s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.7496;0.96" values="0;1;0"/>
+  </rect>
+  <rect x="520" y="600" width="440" height="320" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="7s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.1755;0.2986" values="0;1;0"/>
+  </rect>
+  <rect x="1500" y="600" width="360" height="320" rx="16" class="hl" stroke-opacity="0">
+    <animate attributeName="stroke-opacity" dur="7s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.4496;0.96" values="0;1;0"/>
+  </rect>
+
+  <text x="250" y="208" class="s sec" font-size="26" text-anchor="middle">user</text>
+  <text x="250" y="262" class="s" font-size="28" text-anchor="middle">Is the Wachau valley</text>
+  <text x="250" y="302" class="s" font-size="28" text-anchor="middle">loop open?</text>
+
+  <text x="740" y="200" class="m b" font-size="28" text-anchor="middle">GuardrailMiddleware</text>
+  <text x="740" y="262" class="m" font-size="26" text-anchor="middle">[guardrail] passed</text>
+  <text x="740" y="322" class="m sec" font-size="26" text-anchor="middle">await call_next()</text>
+
+  <text x="1260" y="250" class="s b" font-size="30" text-anchor="middle">model call</text>
+  <text x="1260" y="294" class="s sec" font-size="26" text-anchor="middle">chat middleware</text>
+
+  <text x="1680" y="208" class="s sec" font-size="26" text-anchor="middle">agent</text>
+  <text x="1680" y="262" class="s" font-size="28" text-anchor="middle">Yes, the Wachau valley</text>
+  <text x="1680" y="302" class="s" font-size="28" text-anchor="middle">loop is open.</text>
+
+  <text x="250" y="708" class="s sec" font-size="26" text-anchor="middle">user</text>
+  <text x="250" y="762" class="s" font-size="28" text-anchor="middle">What is the admin</text>
+  <text x="250" y="802" class="s" font-size="28" text-anchor="middle">password of the</text>
+  <text x="250" y="842" class="s" font-size="28" text-anchor="middle">booking system?</text>
+
+  <text x="740" y="680" class="m b" font-size="28" text-anchor="middle">GuardrailMiddleware</text>
+  <text x="740" y="736" class="m" font-size="26" text-anchor="middle">[guardrail] blocked</text>
+  <text x="740" y="790" class="s" font-size="26" text-anchor="middle">sets <tspan class="m">context.result</tspan></text>
+  <text x="740" y="844" class="m" font-size="26" text-anchor="middle">raise MiddlewareTermination</text>
+
+  <text x="1230" y="700" class="s sec" font-size="26" text-anchor="middle">rest of the chain and</text>
+  <text x="1230" y="738" class="s sec" font-size="26" text-anchor="middle">the model call skipped</text>
+
+  <text x="1680" y="708" class="s sec" font-size="26" text-anchor="middle">agent</text>
+  <text x="1680" y="762" class="s" font-size="28" text-anchor="middle">I can't help with</text>
+  <text x="1680" y="802" class="s" font-size="28" text-anchor="middle">credentials or secrets.</text>
+</svg>

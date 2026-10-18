@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Five requests through the protected MCP server</title>
+  <desc>The curl requests to localhost:47010/mcp pass the stages of mcp-auth-cs: the JWT bearer handler checks signature, issuer, audience and lifetime; RequireAuthorization lets only a valid token through or answers 401; ScopeChallengeMiddleware makes write tools need hr.write; MapMcp runs the tool. No token with tools/list gets 401 with resource_metadata. The ARM token with tools/list gets 401 for another audience. The READ token with tools/call list_employees gets 200 with the employee list. The READ token with tools/call add_employee gets 403 insufficient_scope. The WRITE token after the step-up gets 200, Added Ida Berger. A dot runs each request in turn to the stage that answers it.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="20" markerHeight="20" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g fill="#fff6e5">
+    <rect x="560" y="100" width="260" height="890" rx="16"/>
+    <rect x="836" y="100" width="330" height="890" rx="16"/>
+    <rect x="1182" y="100" width="400" height="890" rx="16"/>
+    <rect x="1598" y="100" width="262" height="890" rx="16"/>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="290" y="160">curl requests</text>
+    <text x="690" y="160">JWT bearer</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="1001" y="160">RequireAuthorization</text>
+    <text x="1382" y="160">ScopeChallengeMiddleware</text>
+    <text x="1729" y="160">MapMcp("/mcp")</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="290" y="202" font-family="Consolas, 'Courier New', monospace">localhost:47010/mcp</text>
+    <text x="690" y="202">signature, issuer,</text>
+    <text x="690" y="238">audience, lifetime</text>
+    <text x="1001" y="202">a valid token</text>
+    <text x="1001" y="238">or 401</text>
+    <text x="1382" y="202">write tools</text>
+    <text x="1382" y="238">need <tspan font-family="Consolas, 'Courier New', monospace">hr.write</tspan></text>
+    <text x="1729" y="202">the tool runs</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#eaf2ff">
+    <rect x="60" y="275" width="460" height="110" rx="14"/>
+    <rect x="60" y="415" width="460" height="110" rx="14"/>
+    <rect x="60" y="555" width="460" height="110" rx="14"/>
+    <rect x="60" y="695" width="460" height="110" rx="14"/>
+    <rect x="60" y="835" width="460" height="110" rx="14"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#24292f">
+    <text x="85" y="320" font-weight="700">no token</text>
+    <text x="85" y="460"><tspan font-family="Consolas, 'Courier New', monospace" font-weight="700">$ARM</tspan> other audience</text>
+    <text x="85" y="600"><tspan font-family="Consolas, 'Courier New', monospace" font-weight="700">$READ</tspan> hr.read</text>
+    <text x="85" y="740"><tspan font-family="Consolas, 'Courier New', monospace" font-weight="700">$READ</tspan> hr.read</text>
+    <text x="85" y="880"><tspan font-family="Consolas, 'Courier New', monospace" font-weight="700">$WRITE</tspan> after the step-up</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a">
+    <text x="85" y="360">tools/list</text>
+    <text x="85" y="500">tools/list</text>
+    <text x="85" y="640">tools/call list_employees</text>
+    <text x="85" y="780">tools/call add_employee</text>
+    <text x="85" y="920">tools/call add_employee</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="520" y1="330" x2="849" y2="330"/>
+    <line x1="520" y1="470" x2="573" y2="470"/>
+    <line x1="520" y1="610" x2="1609" y2="610"/>
+    <line x1="520" y1="750" x2="1195" y2="750"/>
+    <line x1="520" y1="890" x2="1609" y2="890"/>
+  </g>
+
+  <g stroke-width="3">
+    <rect x="851" y="285" width="300" height="90" rx="12" fill="#ffffff" stroke="#e0a534"/>
+    <rect x="575" y="425" width="230" height="90" rx="12" fill="#ffffff" stroke="#e0a534"/>
+    <rect x="1197" y="705" width="370" height="90" rx="12" fill="#ffffff" stroke="#e0a534"/>
+    <rect x="1611" y="565" width="236" height="90" rx="12" fill="#e9f7ef" stroke="#2da44e"/>
+    <rect x="1611" y="845" width="236" height="90" rx="12" fill="#e9f7ef" stroke="#2da44e"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="1001" y="322">401</text>
+    <text x="690" y="462">401</text>
+    <text x="1382" y="742">403</text>
+    <text x="1729" y="602">200</text>
+    <text x="1729" y="882">200</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="1001" y="360" font-family="Consolas, 'Courier New', monospace">resource_metadata</text>
+    <text x="690" y="500">other audience</text>
+    <text x="1382" y="780" font-family="Consolas, 'Courier New', monospace">insufficient_scope</text>
+    <text x="1729" y="640">employee list</text>
+    <text x="1729" y="920">Added Ida Berger</text>
+  </g>
+
+  <g fill="none" stroke-width="7">
+    <rect x="851" y="285" width="300" height="90" rx="12" stroke="#e0a534" opacity="0"><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.125;0.2"/></rect>
+    <rect x="575" y="425" width="230" height="90" rx="12" stroke="#e0a534" opacity="0"><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.3667"/></rect>
+    <rect x="1611" y="565" width="236" height="90" rx="12" stroke="#2da44e" opacity="0"><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.4583;0.5333"/></rect>
+    <rect x="1197" y="705" width="370" height="90" rx="12" stroke="#e0a534" opacity="0"><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.625;0.7"/></rect>
+    <rect x="1611" y="845" width="236" height="90" rx="12" stroke="#2da44e" opacity="0"><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.7917;0.9583"/></rect>
+  </g>
+
+  <g fill="#e0a534">
+    <circle r="11" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" path="M520,330 L849,330" keyPoints="0;0;1;1" keyTimes="0;0.0417;0.125;1" calcMode="linear"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.0417;0.125"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" path="M520,470 L573,470" keyPoints="0;0;1;1" keyTimes="0;0.2083;0.25;1" calcMode="linear"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.2083;0.25"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" path="M520,610 L1609,610" keyPoints="0;0;1;1" keyTimes="0;0.375;0.4583;1" calcMode="linear"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.375;0.4583"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" path="M520,750 L1195,750" keyPoints="0;0;1;1" keyTimes="0;0.5417;0.625;1" calcMode="linear"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5417;0.625"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" path="M520,890 L1609,890" keyPoints="0;0;1;1" keyTimes="0;0.7083;0.7917;1" calcMode="linear"/><animate attributeName="opacity" dur="12s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.7083;0.7917"/></circle>
+  </g>
+</svg>

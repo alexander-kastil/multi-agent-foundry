@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>How a Foundry routine runs, from trigger to run history</title>
+  <desc>A routine has exactly one trigger and one action and is enabled or disabled. Trigger types: timer fires once at a timestamp with an explicit UTC offset; schedule fires on a cron expression at most every five minutes; github_issue fires when an issue is opened or closed and its payload replaces the input. A manual dispatch is a test run, not a trigger, and runs on a disabled routine when it carries a payload. The action invoke_agent_responses_api calls one agent, a prompt agent or a hosted agent such as m6-digest-agent, which runs under the agent identity. The response id lands in the run history, where each run records its source: timer_delivery, schedule_delivery or queued_dispatch, each with phase completed. A dot carries a timer run, then a schedule run, then a dispatch through the routine to the agent and highlights the matching history row.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 12 12" refX="11" refY="6" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8c959f"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="#f6f8fa">
+    <rect x="60" y="80" width="480" height="180" rx="18"/>
+    <rect x="60" y="300" width="480" height="180" rx="18"/>
+    <rect x="60" y="520" width="480" height="180" rx="18"/>
+  </g>
+  <rect x="60" y="770" width="480" height="230" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2" stroke-dasharray="12 8"/>
+  <rect x="640" y="300" width="480" height="460" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="664" y="530" width="432" height="200" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1240" y="80" width="620" height="260" rx="20" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1240" y="430" width="620" height="570" rx="20" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <g fill="#ffffff" stroke="#8c959f" stroke-width="2">
+    <rect x="1270" y="560" width="560" height="120" rx="14"/>
+    <rect x="1270" y="700" width="560" height="120" rx="14"/>
+    <rect x="1270" y="840" width="560" height="120" rx="14"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" marker-end="url(#arr)">
+    <line x1="558" y1="170" x2="636" y2="380"/>
+    <line x1="558" y1="390" x2="636" y2="480"/>
+    <line x1="558" y1="610" x2="636" y2="580"/>
+    <line x1="558" y1="885" x2="636" y2="680"/>
+    <line x1="1122" y1="380" x2="1236" y2="262"/>
+    <line x1="1550" y1="342" x2="1550" y2="426"/>
+  </g>
+  <text x="1572" y="395" font-size="26" fill="#57606a">response id</text>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="700" fill="#24292f">
+    <text x="92" y="140">timer</text>
+    <text x="92" y="360">schedule</text>
+    <text x="92" y="580">github_issue</text>
+    <text x="92" y="830">dispatch</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="92" y="190">fires once at a timestamp with</text>
+    <text x="92" y="228">an explicit UTC offset</text>
+    <text x="92" y="410">fires on a cron expression,</text>
+    <text x="92" y="448">at most every five minutes</text>
+    <text x="92" y="630">an issue opened or closed;</text>
+    <text x="92" y="668">its payload replaces the input</text>
+    <text x="92" y="880">a test run, not a trigger;</text>
+    <text x="92" y="918">runs on a disabled routine</text>
+    <text x="92" y="956">when it carries a payload</text>
+  </g>
+
+  <text x="672" y="368" font-size="34" font-weight="700" fill="#24292f">Routine</text>
+  <g font-size="26" fill="#24292f">
+    <text x="672" y="418">exactly one trigger</text>
+    <text x="672" y="456">exactly one action</text>
+    <text x="672" y="494">enabled or disabled</text>
+    <text x="690" y="580" fill="#57606a">action</text>
+    <text x="690" y="636" font-family="Consolas, 'Courier New', monospace">invoke_agent_responses_api</text>
+    <text x="690" y="690" fill="#57606a">calls one agent</text>
+  </g>
+
+  <text x="1272" y="142" font-size="32" font-weight="700" fill="#24292f">Agent</text>
+  <g font-size="26" fill="#24292f">
+    <text x="1272" y="188">a prompt agent or a hosted agent</text>
+    <text x="1272" y="238" font-family="Consolas, 'Courier New', monospace" font-size="28">m6-digest-agent</text>
+    <text x="1272" y="290">runs under the agent identity</text>
+  </g>
+
+  <text x="1272" y="492" font-size="32" font-weight="700" fill="#24292f">Run history</text>
+  <text x="1272" y="535" font-size="26" fill="#57606a">each run records its source</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="1296" y="610">timer_delivery</text>
+    <text x="1296" y="750">schedule_delivery</text>
+    <text x="1296" y="890">queued_dispatch</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a" text-anchor="end">
+    <text x="1806" y="610">phase=completed</text>
+    <text x="1806" y="750">phase=completed</text>
+    <text x="1806" y="890">phase=completed</text>
+  </g>
+  <g font-size="26" fill="#24292f">
+    <text x="1296" y="654">the timer fired</text>
+    <text x="1296" y="794">the cron schedule fired</text>
+    <text x="1296" y="934">a dispatch queued the run</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="50" y="70" width="500" height="200" rx="24" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.3333" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="50" y="290" width="500" height="200" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.6667" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="50" y="760" width="500" height="250" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.6667" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1262" y="552" width="576" height="136" rx="18" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.25;0.3333" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1262" y="692" width="576" height="136" rx="18" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5833;0.6667" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1262" y="832" width="576" height="136" rx="18" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.9167" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <g fill="#e0a534">
+    <circle r="14" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.0167;0.1" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+      <animateMotion path="M558 170 L636 380" keyPoints="0;0;1;1" keyTimes="0;0.0167;0.1;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.35;0.4333" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+      <animateMotion path="M558 390 L636 480" keyPoints="0;0;1;1" keyTimes="0;0.35;0.4333;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6833;0.7667" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+      <animateMotion path="M558 885 L636 680" keyPoints="0;0;1;1" keyTimes="0;0.6833;0.7667;1" calcMode="linear" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.35;0.55" dur="4s" calcMode="discrete" repeatCount="indefinite"/>
+      <animateMotion path="M1122 380 L1236 262" keyPoints="0;0;1;1" keyTimes="0;0.35;0.55;1" calcMode="linear" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="14" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6;0.75" dur="4s" calcMode="discrete" repeatCount="indefinite"/>
+      <animateMotion path="M1550 342 L1550 426" keyPoints="0;0;1;1" keyTimes="0;0.6;0.75;1" calcMode="linear" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

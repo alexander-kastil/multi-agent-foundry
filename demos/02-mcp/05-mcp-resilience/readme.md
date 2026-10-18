@@ -87,6 +87,8 @@ class CircuitBreaker:
 
 The breaker wraps the retrying function, so it counts one failure per tool call after the retries have been used up. Only transient errors count, so a stream of bad medication codes cannot open it.
 
+![The MCP tool wraps the circuit breaker, which wraps the retry, which wraps the router over drugs-east, drugs-west and drugs-canary; on the right the four results the model receives: ok, invalid_input, retries_exhausted and service_circuit_open](../pptx/images/05-01-resilience-layers.svg)
+
 ## A Fallback the Model Can Reason About
 
 When the breaker is open or the retries are exhausted, the tool returns a normal result with a status instead of raising. The fields give the model a decision, not just an apology.

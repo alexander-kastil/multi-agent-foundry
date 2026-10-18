@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Least privilege between agents</title>
+  <desc>The orders agent identity m8-idn-orders is the assignee of the Foundry Agent Consumer role, which holds one data action, endpoints/interact/action. Assigned at the agent scope .../projects/project/agents/m8-idn-hr, it reaches only the HR agent endpoint. Assigned at the project scope .../projects/project, the same role would reach every agent endpoint in the project.</desc>
+  <style>
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 32px; fill: #24292f; text-anchor: middle; }
+    .hl { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 32px; fill: #24292f; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .br { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; fill: #24292f; text-anchor: end; }
+    .bl { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 28px; fill: #24292f; text-anchor: middle; }
+    .cl { font-family: Consolas, 'Courier New', monospace; font-size: 30px; fill: #24292f; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="90" width="460" height="320" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="h" x="290" y="190">Orders agent identity</text>
+  <text class="c" x="290" y="246">m8-idn-orders</text>
+  <text class="b" x="290" y="302">the assignee,</text>
+  <text class="b" x="290" y="336">by its principal id</text>
+
+  <rect x="640" y="90" width="580" height="320" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="930" y="190">Foundry Agent Consumer</text>
+  <text class="b" x="930" y="246">one data action</text>
+  <text class="c" x="930" y="302">.../endpoints/interact/action</text>
+
+  <rect x="1340" y="90" width="520" height="320" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="1600" y="190">HR agent endpoint</text>
+  <text class="c" x="1600" y="246">m8-idn-hr</text>
+  <text class="b" x="1600" y="302">can interact with it,</text>
+  <text class="b" x="1600" y="336">cannot create or change agents</text>
+
+  <line class="line" x1="522" y1="250" x2="638" y2="250" marker-end="url(#arr)"/>
+  <line class="line" x1="1222" y1="250" x2="1338" y2="250" marker-end="url(#arr)"/>
+
+  <line class="line" x1="930" y1="412" x2="930" y2="528" marker-end="url(#arr)"/>
+  <text class="bl" x="956" y="480">assigned at this scope</text>
+
+  <rect x="60" y="530" width="1800" height="200" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="hl" x="100" y="604">Agent scope</text>
+  <text class="br" x="1820" y="604">reaches only the m8-idn-hr endpoint</text>
+  <text class="cl" x="100" y="672">--scope .../projects/&lt;project&gt;/agents/m8-idn-hr</text>
+
+  <rect x="60" y="780" width="1800" height="200" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="hl" x="100" y="854">Project scope</text>
+  <text class="br" x="1820" y="854">reaches every agent endpoint in the project</text>
+  <text class="cl" x="100" y="922">--scope .../projects/&lt;project&gt;</text>
+</svg>

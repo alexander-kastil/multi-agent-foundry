@@ -241,6 +241,8 @@ final: New: Receipt Scanning is now available in the expense app, so you can sna
 
 `write_draft` was bypassed on the resume: the cached draft is reused and only the reviser calls the model.
 
+![The first run calls write_draft and pauses at ctx.request_info; after the reviewer answers, the resume bypasses write_draft from the cache and only revise_draft calls the model](../pptx/images/07-01-functional-pause-resume.svg)
+
 ## Step 4: Publish a portal-style workflow
 
 The designer is a browser tool, so this step creates the same artifact programmatically. `publish_portal_workflow.py` creates three prompt agents (`m5-classifier`, `m5-billing`, `m5-technical`) and one workflow agent, `m5-support-router`, from `migration/portal-workflow.yaml`. The YAML has the portal shape: `kind: workflow`, a `trigger` of `OnConversationStart` and the actions nested under it.
@@ -298,6 +300,8 @@ File.WriteAllText("migration/exported.workflow.yaml", yaml);
 In C# 3.0.0-beta.3 the workflow definition exposes no YAML property, so the export serializes the definition and reads its `workflow` field. Run `dotnet run -- export` and then `dotnet run -- migrated`; the migrated run builds the exported file with `DeclarativeWorkflowBuilder`, which calls the published `m35h-` agents directly, and the export prints `exported m35h-support-router version 1, 57 lines`.
 
 Run `.venv/Scripts/python export_workflow.py`; pass a version number as the first argument to export a later version. Then run the exported file with `WorkflowFactory`. The YAML names Foundry agents (`m5-classifier` and so on), so `run_migrated.py` registers local agents under those exact names.
+
+![The exported YAML names m5-classifier, m5-billing and m5-technical, which resolve to Foundry prompt agents in one run and to local agents registered under the same names in the other, and both runs route the same three messages the same way](../pptx/images/07-02-exported-workflow-yaml.svg)
 
 ```python
 factory.register_agent("m5-classifier", make_agent("m5-classifier", CLASSIFIER))

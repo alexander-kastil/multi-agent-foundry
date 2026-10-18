@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Two protocol eras on Streamable HTTP</title>
+  <desc>Left, revision 2025-11-25 and earlier: wire.py sends POST initialize, transport-lab answers 200 text/event-stream with an Mcp-Session-Id header, then wire.py sends POST notifications/initialized and POST tools/call add, both with the session id, and receives 200 text/event-stream with result 5. Every later request repeats the session id. Right, revision 2026-07-28: one POST tools/call add with the headers MCP-Protocol-Version 2026-07-28, Mcp-Method tools/call and Mcp-Name add, and _meta carrying protocolVersion and clientCapabilities; the answer is 200 application/json with result 5 and no session. No request depends on an earlier one, so any instance can answer. Dots travel the messages of both eras at the same time.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="20" markerHeight="20" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <line x1="960" y1="80" x2="960" y2="1000" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="32" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="480" y="110">2025-11-25 and earlier</text>
+    <text x="1440" y="110">2026-07-28</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" stroke-dasharray="8 8">
+    <line x1="190" y1="250" x2="190" y2="840"/>
+    <line x1="770" y1="250" x2="770" y2="840"/>
+    <line x1="1130" y1="250" x2="1130" y2="730"/>
+    <line x1="1730" y1="250" x2="1730" y2="730"/>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="60" y="140" width="260" height="110" rx="14" fill="#eaf2ff"/>
+    <rect x="620" y="140" width="300" height="110" rx="14" fill="#fff6e5"/>
+    <rect x="1000" y="140" width="260" height="110" rx="14" fill="#eaf2ff"/>
+    <rect x="1580" y="140" width="300" height="110" rx="14" fill="#fff6e5"/>
+    <rect x="1165" y="345" width="530" height="230" rx="12" fill="#f6f8fa"/>
+  </g>
+  <g fill="#fff6e5" stroke="#e0a534" stroke-width="2">
+    <rect x="270" y="440" width="420" height="38" rx="8"/>
+    <rect x="270" y="555" width="420" height="38" rx="8"/>
+    <rect x="270" y="670" width="420" height="38" rx="8"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="190" y="204" font-size="28" font-weight="700">wire.py</text>
+    <text x="770" y="188">transport-lab</text>
+    <text x="770" y="228" fill="#57606a">127.0.0.1:47004</text>
+    <text x="1130" y="204" font-size="28" font-weight="700">wire.py</text>
+    <text x="1730" y="188">transport-lab</text>
+    <text x="1730" y="228" fill="#57606a">127.0.0.1:47004</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="196" y1="320" x2="762" y2="320"/>
+    <line x1="764" y1="420" x2="198" y2="420"/>
+    <line x1="196" y1="535" x2="762" y2="535"/>
+    <line x1="196" y1="650" x2="762" y2="650"/>
+    <line x1="764" y1="765" x2="198" y2="765"/>
+    <line x1="1136" y1="320" x2="1722" y2="320"/>
+    <line x1="1724" y1="660" x2="1138" y2="660"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="480" y="304">POST initialize</text>
+    <text x="480" y="404">200 text/event-stream</text>
+    <text x="480" y="468">Mcp-Session-Id: 5492e0b6...</text>
+    <text x="480" y="519">POST notifications/initialized</text>
+    <text x="480" y="583">Mcp-Session-Id: 5492e0b6...</text>
+    <text x="480" y="634">POST tools/call add</text>
+    <text x="480" y="698">Mcp-Session-Id: 5492e0b6...</text>
+    <text x="480" y="749">200 text/event-stream</text>
+    <text x="480" y="802" font-weight="700">result 5</text>
+
+    <text x="1430" y="304">POST tools/call add</text>
+    <text x="1430" y="644">200 application/json</text>
+    <text x="1430" y="697"><tspan font-weight="700">result 5</tspan>, session: None</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="1190" y="390">MCP-Protocol-Version: 2026-07-28</text>
+    <text x="1190" y="432">Mcp-Method: tools/call</text>
+    <text x="1190" y="474">Mcp-Name: add</text>
+    <text x="1190" y="516">_meta: protocolVersion</text>
+    <text x="1190" y="558">_meta: clientCapabilities</text>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#24292f" text-anchor="middle">
+    <text x="480" y="910">Every later request repeats</text>
+    <text x="480" y="952">the session id</text>
+    <text x="1440" y="910">No request depends on an earlier one,</text>
+    <text x="1440" y="952">so any instance can answer</text>
+  </g>
+
+  <g fill="#e0a534">
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M196,320 L762,320" keyPoints="0;0;1;1" keyTimes="0;0.05;0.1375;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.05;0.1375"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M764,420 L198,420" keyPoints="0;0;1;1" keyTimes="0;0.1625;0.25;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1625;0.25"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M196,535 L762,535" keyPoints="0;0;1;1" keyTimes="0;0.275;0.3625;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.275;0.3625"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M196,650 L762,650" keyPoints="0;0;1;1" keyTimes="0;0.3875;0.475;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3875;0.475"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M764,765 L198,765" keyPoints="0;0;1;1" keyTimes="0;0.5;0.5875;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.5875"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M1136,320 L1722,320" keyPoints="0;0;1;1" keyTimes="0;0.05;0.1375;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.05;0.1375"/></circle>
+    <circle r="11" opacity="0"><animateMotion dur="8s" repeatCount="indefinite" path="M1724,660 L1138,660" keyPoints="0;0;1;1" keyTimes="0;0.1625;0.25;1" calcMode="linear"/><animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.1625;0.25"/></circle>
+  </g>
+</svg>

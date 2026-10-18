@@ -50,6 +50,8 @@ no session   : You haven't mentioned a river in this conversation. If you tell m
 
 Each run of `session_file.py` is a separate Python process. It loads `sessions/session.json` when the file exists, otherwise it creates a session, and it writes the session back after the answer.
 
+![Process 1 writes session.to_dict() to session.json, process 2 rebuilds it with AgentSession.from_dict, and another worker rebuilds the session from the service_session_id alone](../pptx/images/02-02-save-resume-session.svg)
+
 ```python
 if SESSION_FILE.exists():
     session = AgentSession.from_dict(json.loads(SESSION_FILE.read_text()))
@@ -109,6 +111,8 @@ Alex, you're planning a kayak trip on the Danube.
 ## Step 4: Keep the history inside the session
 
 Some deployments cannot or must not keep conversations on the service. Passing `options={"store": False}` makes Agent Framework keep the transcript locally, in the session state, through `InMemoryHistoryProvider`.
+
+![Service-managed history keeps the four messages in the Foundry conversation and only a resp_ ID in session.json, while local history keeps all four messages under state in local-session.json](../pptx/images/02-01-where-history-lives.svg)
 
 ```python
 OPTIONS = {"store": False}

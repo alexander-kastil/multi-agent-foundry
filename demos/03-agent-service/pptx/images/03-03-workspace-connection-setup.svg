@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Playwright workspace and connections</title>
+  <desc>What provision.azcli creates. Inside the Foundry project pro-code-agents in Sweden Central, the Python agent attaches BrowserAutomationTool with BROWSER_CONNECTION_ID, which names the connection m3-browser-mcp of kind PlaywrightWorkspace. The C# agent attaches an McpTool with PLAYWRIGHT_MCP_CONNECTION, which names the connection m3-playwright-mcp of kind remote-tool. Both connections use project-managed-identity and reach the Playwright workspace m3-playwright in West Europe, a remote MCP server. The project managed identity holds the Playwright Workspace Contributor role on the workspace, so no access token is stored.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="80" width="1000" height="920" rx="20" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="90" y="135" class="b" font-size="30">Foundry project</text>
+  <text x="340" y="135" class="mono">pro-code-agents</text>
+  <text x="1030" y="135" text-anchor="end" class="sec">Sweden Central</text>
+
+  <rect x="100" y="190" width="420" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="245" class="b" font-size="28">Python agent</text>
+  <text x="130" y="300" class="mono">BrowserAutomationTool</text>
+  <text x="130" y="345" class="mono sec">BROWSER_CONNECTION_ID</text>
+
+  <rect x="600" y="190" width="420" height="230" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="630" y="245" class="mono b" font-size="28">m3-browser-mcp</text>
+  <text x="630" y="300" class="sec">kind <tspan class="mono">PlaywrightWorkspace</tspan></text>
+  <text x="630" y="345" class="mono sec">project-managed-identity</text>
+
+  <rect x="100" y="470" width="420" height="230" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="525" class="b" font-size="28">C# agent</text>
+  <text x="130" y="580" class="mono">McpTool</text>
+  <text x="130" y="625" class="mono sec">PLAYWRIGHT_MCP_CONNECTION</text>
+
+  <rect x="600" y="470" width="420" height="230" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="630" y="525" class="mono b" font-size="28">m3-playwright-mcp</text>
+  <text x="630" y="580" class="sec">kind <tspan class="mono">remote-tool</tspan></text>
+  <text x="630" y="625" class="mono sec">project-managed-identity</text>
+
+  <rect x="100" y="760" width="920" height="190" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="130" y="822" class="b" font-size="28">Project managed identity</text>
+  <text x="130" y="872" class="sec">calls the workspace, no access token stored</text>
+
+  <rect x="1340" y="250" width="520" height="330" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1370" y="312" class="b" font-size="30">Playwright workspace</text>
+  <text x="1370" y="362" class="mono">m3-playwright</text>
+  <text x="1370" y="420" class="sec">West Europe</text>
+  <text x="1370" y="470" class="sec">remote MCP server</text>
+  <text x="1370" y="520" class="sec">managed browser sessions</text>
+
+  <line x1="520" y1="305" x2="598" y2="305" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="520" y1="585" x2="598" y2="585" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1020" y1="305" x2="1338" y2="400" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1020" y1="585" x2="1338" y2="520" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M1020,855 H1600 V582" fill="none" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1090" y="828" class="sec">role: Playwright Workspace Contributor</text>
+</svg>

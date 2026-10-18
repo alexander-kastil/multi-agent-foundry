@@ -74,6 +74,8 @@ microsoft.foundry          Microsoft Foundry (Beta)               Up to date    
 
 The server lives at `https://mcp.ai.azure.com` and expects an Entra token issued for that audience. `foundry_mcp.py` builds an MCP client that sends your `DefaultAzureCredential` token as a bearer header.
 
+![Python, C# and Copilot Agent Mode send a bearer token over streamable HTTP to the Foundry MCP server, which calls the project with your Reader or Contributor role](../pptx/images/05-01-foundry-mcp-server.svg)
+
 ```python
 MCP_URL = "https://mcp.ai.azure.com"
 
@@ -306,6 +308,8 @@ The three items show that the agent called its tool before it answered. The firs
 ## Step 6: Inspect the agent with Agent Inspector
 
 Leave the agent running, Python or C#, and start the inspector in a third terminal.
+
+![Terminal 1 runs the local agent on port 8088, terminal 2 posts a question to /responses, terminal 3 serves Agent Inspector on port 8087](../pptx/images/05-02-agent-inspector.svg)
 
 ```bash
 azd ai inspector launch

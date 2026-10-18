@@ -33,6 +33,8 @@ When you need a reusable, versioned definition, you create a prompt agent and re
 
 A model call is stateless. To make the second turn aware of the first, you choose where the history lives.
 
+![Three rows comparing previous_response_id, a conversation and client-side history with store=False: what turn 2 sends and where the history lives](../pptx/images/04-01-carry-history.svg)
+
 | Approach | Where state lives | Request shape |
 | --- | --- | --- |
 | `previous_response_id` | Service, stored per response | `input` plus the id of the last response |
@@ -78,6 +80,8 @@ for item in openai.conversations.items.list(conversation.id, order="asc"):
 
 When you pass a conversation to a response, the service prepends its items to the input, and after the response completes it appends the new input and output items to the conversation. If the history grows beyond the model's context size, the model truncates what it reads, but the conversation itself is not truncated. You can add up to 20 items per `items.create` call, and `openai.conversations.delete(conversation.id)` removes the whole object.
 
+![A conversation with six items beside one turn: the service prepends the stored items, the model answers, and the new input and output are appended](../pptx/images/04-02-conversation-items.svg)
+
 ## Streaming
 
 With `stream=True` the call returns server-sent events instead of a finished response. You react to the event types you care about and ignore the rest.
@@ -93,6 +97,8 @@ for event in stream:
 ```
 
 A text response emits a fixed sequence of events: `response.created`, `response.in_progress`, `response.output_item.added`, `response.content_part.added`, a run of `response.output_text.delta`, then the matching `done` events and `response.completed`. Streaming improves perceived latency because the first token arrives long before the last. It combines with conversations, so a streamed answer is still appended to the conversation when it completes.
+
+![The nine streaming event types in order with their .NET update classes, and a bar with the first token at 1.75 s and completion at 2.63 s](../pptx/images/04-03-streaming-events.svg)
 
 Long-running work can also use background mode, where the response runs asynchronously and you poll for it. That mode matters for agents with slow tools and is covered where those agents appear.
 

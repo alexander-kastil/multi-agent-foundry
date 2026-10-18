@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Agent card discovery, then a message over JSON-RPC</title>
+  <desc>client.py fetches the agent card of the title server at http://localhost:9101 from /.well-known/agent-card.json with A2ACardResolver. The card names m6h2-title-agent, the skill generate_title and the JSON-RPC interface url. A2AAgent then sends a message to that url; the JSON-RPC route hands it to A2AExecutor, which runs the Agent Framework agent m6h2-title-agent, and the reply carries the title Hosted Agents Without the Plumbing: Build Smarter, Ship Faster. The agent's instructions, tools and model stay on the server. A dot travels the four calls in order.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#24292f">
+
+    <rect x="50" y="120" width="420" height="820" rx="18" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+    <text x="260" y="176" font-size="28" font-weight="600" text-anchor="middle" font-family="Consolas, Courier New, monospace">client.py</text>
+    <rect x="80" y="230" width="360" height="160" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="260" y="300" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">A2ACardResolver</text>
+    <text x="260" y="345" font-size="26" text-anchor="middle" fill="#57606a">reads the card</text>
+    <rect x="80" y="530" width="360" height="180" rx="12" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="260" y="590" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">A2AAgent</text>
+    <text x="260" y="635" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">agent.run(...)</text>
+    <text x="260" y="680" font-size="26" text-anchor="middle" fill="#57606a">like a local agent</text>
+    <rect x="80" y="760" width="360" height="160" rx="12" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+    <text x="260" y="800" font-size="26" text-anchor="middle" fill="#57606a">title</text>
+    <text x="260" y="836" font-size="26" text-anchor="middle">Hosted Agents Without</text>
+    <text x="260" y="870" font-size="26" text-anchor="middle">the Plumbing: Build</text>
+    <text x="260" y="904" font-size="26" text-anchor="middle">Smarter, Ship Faster</text>
+
+    <rect x="760" y="90" width="1120" height="850" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+    <text x="790" y="142" font-size="28" font-weight="600">A2A server <tspan font-weight="400" font-family="Consolas, Courier New, monospace" fill="#57606a">http://localhost:9101</tspan></text>
+
+    <rect x="790" y="190" width="400" height="220" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="990" y="248" font-size="28" font-weight="600" text-anchor="middle">Card route</text>
+    <text x="990" y="293" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">/.well-known/</text>
+    <text x="990" y="331" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">agent-card.json</text>
+
+    <path d="M1250,170 H1810 L1850,210 V430 H1250 Z" fill="#ffffff" stroke="#e0a534" stroke-width="2"/>
+    <path d="M1810,170 V210 H1850" fill="none" stroke="#e0a534" stroke-width="2"/>
+    <text x="1280" y="216" font-size="28" font-weight="600">Agent card</text>
+    <g font-size="26" font-family="Consolas, Courier New, monospace">
+      <text x="1280" y="262">name: m6h2-title-agent</text>
+      <text x="1280" y="302">skills: generate_title</text>
+      <text x="1280" y="342">url: http://localhost:9101/</text>
+      <text x="1280" y="382">protocolBinding: JSONRPC</text>
+    </g>
+
+    <rect x="790" y="530" width="400" height="200" rx="14" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+    <text x="990" y="588" font-size="28" font-weight="600" text-anchor="middle">JSON-RPC route</text>
+    <text x="990" y="632" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">POST /</text>
+    <text x="990" y="676" font-size="26" text-anchor="middle" fill="#57606a">reply: message or task</text>
+
+    <rect x="1232" y="512" width="634" height="236" rx="16" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 7"/>
+    <rect x="1250" y="530" width="270" height="200" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="1385" y="612" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-weight="600">A2AExecutor</text>
+    <text x="1385" y="656" font-size="26" text-anchor="middle" fill="#57606a">adapts the agent</text>
+    <rect x="1580" y="530" width="270" height="200" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+    <text x="1715" y="588" font-size="28" font-weight="600" text-anchor="middle">Agent</text>
+    <text x="1715" y="632" font-size="26" text-anchor="middle" font-family="Consolas, Courier New, monospace">m6h2-title-agent</text>
+    <text x="1715" y="676" font-size="26" text-anchor="middle" fill="#57606a">instructions, model</text>
+    <text x="1549" y="812" font-size="26" text-anchor="middle" fill="#57606a">stays on the server:</text>
+    <text x="1549" y="850" font-size="26" text-anchor="middle" fill="#57606a">instructions, tools and model</text>
+
+    <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#ah)">
+      <line x1="470" y1="280" x2="788" y2="280"/>
+      <line x1="790" y1="350" x2="472" y2="350"/>
+      <line x1="470" y1="590" x2="788" y2="590"/>
+      <line x1="790" y1="670" x2="472" y2="670"/>
+      <line x1="1190" y1="630" x2="1248" y2="630"/>
+      <line x1="1520" y1="630" x2="1578" y2="630"/>
+    </g>
+    <line x1="1190" y1="300" x2="1248" y2="300" stroke="#e0a534" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ah)"/>
+    <g font-size="26" text-anchor="middle">
+      <text x="630" y="254">1 fetch the card</text>
+      <text x="630" y="392">2 agent card</text>
+      <text x="630" y="564">3 send a message</text>
+      <text x="630" y="712">4 reply</text>
+    </g>
+
+    <g fill="none" stroke="#e0a534" stroke-width="8" stroke-opacity="0">
+      <path d="M1250,170 H1810 L1850,210 V430 H1250 Z">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.1333;0.2667" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </path>
+      <rect x="1250" y="530" width="270" height="200" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.4333;0.5111" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="1580" y="530" width="270" height="200" rx="14">
+        <animate attributeName="stroke-opacity" values="0;1;0" keyTimes="0;0.5111;0.6444" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="80" y="760" width="360" height="160" rx="12">
+        <animate attributeName="stroke-opacity" values="0;1" keyTimes="0;0.7778" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g fill="#e0a534" stroke="#24292f" stroke-width="2" opacity="1">
+      <circle cx="470" cy="280" r="13" opacity="0">
+        <animate attributeName="cx" values="470;790;790" keyTimes="0;0.1333;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0" keyTimes="0;0.1333" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="790" cy="350" r="13" opacity="0">
+        <animate attributeName="cx" values="790;790;470;470" keyTimes="0;0.1333;0.2667;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.1333;0.2667" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="470" cy="590" r="13" opacity="0">
+        <animate attributeName="cx" values="470;470;790;790" keyTimes="0;0.3;0.4333;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3;0.4333" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="790" cy="670" r="13" opacity="0">
+        <animate attributeName="cx" values="790;790;470;470" keyTimes="0;0.6444;0.7778;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6444;0.7778" calcMode="discrete" dur="9s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Plan, reflect and fork on one response chain</title>
+  <desc>Plan then act: plan_response returns a JSON plan of research steps, the recorded run printed Plan has 6 steps. Your code reads it with json.loads, the place for validation, human approval or cost limits, and the response acted executes the plan with a buy, hold or sell recommendation, chained by previous_response_id. Act then reflect: cycles 1, 2 and 3 critique and revise, with confidence 6, 5 and 4 in the recorded run. The stop rule is confidence 8 or more, or after 3 cycles, and the cap ended this run. The last response is reflected. Fork into scenarios: both branches start from reflected. Your code sets background=True and polls each job until it leaves queued and in_progress. The bull branch assumes 20 percent annual growth and the bear branch 5 percent annual decline; both quote the 35.2 P/E with no new tool call. A highlight steps through the stages in order.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; font-size: 26px; }
+    .cap { fill: #57606a; font-size: 28px; font-weight: 600; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+    .box { stroke: #8c959f; stroke-width: 2; }
+    .hl { fill: none; stroke: #e0a534; stroke-width: 8; }
+    .arrow { fill: none; stroke: #8c959f; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 16 16" refX="14" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L16,8 L0,16 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text class="cap" x="80" y="82">Plan then act</text>
+
+  <rect class="box" x="80" y="105" width="480" height="220" rx="24" fill="#f3edff"/>
+  <text class="mono b c" x="320" y="162" font-size="30">plan_response</text>
+  <text class="c" x="320" y="218">a JSON plan of research steps</text>
+  <text class="mono sec c" x="320" y="270">Plan has 6 steps</text>
+
+  <rect class="box" x="700" y="105" width="480" height="220" rx="24" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="sec c" x="940" y="155">Your code</text>
+  <text class="c" x="940" y="205"><tspan class="mono b">json.loads</tspan> the plan</text>
+  <text class="c" x="940" y="255" font-size="26">validation, human approval</text>
+  <text class="c" x="940" y="292" font-size="26">or cost limits</text>
+
+  <rect class="box" x="1320" y="105" width="520" height="220" rx="24" fill="#f3edff"/>
+  <text class="mono b c" x="1580" y="162" font-size="30">acted</text>
+  <text class="c" x="1580" y="218">executes the plan</text>
+  <text class="sec c" x="1580" y="270">buy, hold or sell</text>
+
+  <line class="arrow" x1="560" y1="215" x2="700" y2="215"/>
+  <line class="arrow" x1="1180" y1="215" x2="1320" y2="215"/>
+
+  <path class="arrow" d="M1580,325 L1580,365 L400,365 L400,445"/>
+  <text class="mono" x="1040" y="408" font-size="26" text-anchor="middle">previous_response_id</text>
+
+  <text class="cap" x="80" y="425">Act then reflect</text>
+
+  <rect class="box" x="80" y="445" width="390" height="200" rx="24" fill="#f3edff"/>
+  <text class="b c" x="275" y="500" font-size="30">Cycle 1</text>
+  <text class="c" x="275" y="552">confidence 6</text>
+  <text class="sec c" x="275" y="600">critique and revise</text>
+
+  <rect class="box" x="550" y="445" width="390" height="200" rx="24" fill="#f3edff"/>
+  <text class="b c" x="745" y="500" font-size="30">Cycle 2</text>
+  <text class="c" x="745" y="552">confidence 5</text>
+  <text class="sec c" x="745" y="600">critique and revise</text>
+
+  <rect class="box" x="1020" y="445" width="390" height="200" rx="24" fill="#f3edff"/>
+  <text class="b c" x="1215" y="500" font-size="30">Cycle 3</text>
+  <text class="c" x="1215" y="552">confidence 4</text>
+  <text class="mono sec c" x="1215" y="600">reflected</text>
+
+  <rect class="box" x="1490" y="445" width="350" height="200" rx="24" fill="#fff6e5" stroke="#e0a534"/>
+  <text class="b c" x="1665" y="497" font-size="30">Stop rule</text>
+  <text class="c" x="1665" y="543" font-size="26">confidence 8 or more,</text>
+  <text class="c" x="1665" y="580" font-size="26">or after 3 cycles</text>
+  <text class="sec c" x="1665" y="622">the cap ended this run</text>
+
+  <line class="arrow" x1="470" y1="545" x2="550" y2="545"/>
+  <line class="arrow" x1="940" y1="545" x2="1020" y2="545"/>
+  <line class="arrow" x1="1410" y1="545" x2="1490" y2="545"/>
+
+  <path d="M1215,645 L1215,700 M870,700 L1560,700" fill="none" stroke="#8c959f" stroke-width="2"/>
+  <line class="arrow" x1="870" y1="699" x2="870" y2="765"/>
+  <line class="arrow" x1="1560" y1="699" x2="1560" y2="765"/>
+  <text class="sec c" x="1215" y="748">both start from <tspan class="mono">reflected</tspan></text>
+
+  <text class="cap" x="80" y="742">Fork into scenarios</text>
+
+  <rect class="box" x="80" y="765" width="460" height="235" rx="24" fill="#eaf2ff"/>
+  <text class="sec c" x="310" y="815">Your code</text>
+  <text class="mono b c" x="310" y="862">background=True</text>
+  <text class="c" x="310" y="910" font-size="26">polls each job until it leaves</text>
+  <text class="c" x="310" y="950" font-size="26"><tspan class="mono">queued</tspan> and <tspan class="mono">in_progress</tspan></text>
+
+  <rect class="box" x="620" y="765" width="500" height="235" rx="24" fill="#e9f7ef"/>
+  <text class="b c" x="870" y="815" font-size="30">bull</text>
+  <text class="c" x="870" y="865">20 percent annual growth</text>
+  <text class="c" x="870" y="910" font-size="26">quotes the 35.2 P/E</text>
+  <text class="sec c" x="870" y="952">no new tool call</text>
+
+  <rect class="box" x="1310" y="765" width="500" height="235" rx="24" fill="#e9f7ef"/>
+  <text class="b c" x="1560" y="815" font-size="30">bear</text>
+  <text class="c" x="1560" y="865">5 percent annual decline</text>
+  <text class="c" x="1560" y="910" font-size="26">quotes the 35.2 P/E</text>
+  <text class="sec c" x="1560" y="952">no new tool call</text>
+
+  <g>
+    <rect class="hl" x="80" y="105" width="480" height="220" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.125"/>
+    </rect>
+    <rect class="hl" x="700" y="105" width="480" height="220" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.125;0.25"/>
+    </rect>
+    <rect class="hl" x="1320" y="105" width="520" height="220" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.25;0.375"/>
+    </rect>
+    <rect class="hl" x="80" y="445" width="390" height="200" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.375;0.5"/>
+    </rect>
+    <rect class="hl" x="550" y="445" width="390" height="200" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.5;0.625"/>
+    </rect>
+    <rect class="hl" x="1020" y="445" width="390" height="200" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.625;0.75"/>
+    </rect>
+    <rect class="hl" x="1490" y="445" width="350" height="200" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.75;0.875"/>
+    </rect>
+    <rect class="hl" x="80" y="765" width="460" height="235" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.875"/>
+    </rect>
+    <rect class="hl" x="620" y="765" width="500" height="235" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.875"/>
+    </rect>
+    <rect class="hl" x="1310" y="765" width="500" height="235" rx="24" opacity="0">
+      <animate attributeName="opacity" dur="16s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.875"/>
+    </rect>
+  </g>
+</svg>

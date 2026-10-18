@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Three ways to carry history in the Responses API</title>
+  <desc>Three rows compare what your code sends on the second turn and where the history lives. With previous_response_id the request carries only the new question and the id of the first response, and the service stores every response. With a conversation the request carries the conversation id and the new input, and the service keeps one conversation object that collects the items of every response. With client-side history the request carries the full list of earlier messages plus the new question with store=False, and the Foundry project keeps nothing.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="60" y="72" class="s b" font-size="26">Approach</text>
+  <text x="470" y="72" class="s b" font-size="26">Your code sends on turn 2</text>
+  <text x="1200" y="72" class="s b" font-size="26">Where the history lives</text>
+
+  <rect x="60" y="100" width="360" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="245" text-anchor="middle" class="m b" font-size="28">previous_response_id</text>
+
+  <rect x="470" y="100" width="640" height="270" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="500" y="150" class="m s" font-size="26">input</text>
+  <rect x="500" y="164" width="580" height="52" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="199" font-size="26">Which city did I say was my favourite?</text>
+  <text x="500" y="262" class="m s" font-size="26">previous_response_id</text>
+  <rect x="500" y="276" width="580" height="52" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="311" class="m" font-size="26">first.id</text>
+
+  <path d="M1110,235 H1192" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="1200" y="100" width="660" height="270" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1230" y="150" class="b" font-size="30">Service: one stored response per turn</text>
+  <rect x="1240" y="196" width="170" height="60" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1325" y="236" text-anchor="middle" class="m" font-size="28">first</text>
+  <rect x="1650" y="196" width="170" height="60" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1735" y="236" text-anchor="middle" class="m" font-size="28">second</text>
+  <path d="M1650,226 H1418" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="1530" y="212" text-anchor="middle" class="s" font-size="26">points at</text>
+  <text x="1230" y="325" class="s" font-size="26">Stored by default, so turn 2 sends only the id</text>
+
+  <rect x="60" y="395" width="360" height="270" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="541" text-anchor="middle" class="b" font-size="32">Conversation</text>
+
+  <rect x="470" y="395" width="640" height="270" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="500" y="445" class="m s" font-size="26">conversation</text>
+  <rect x="500" y="459" width="580" height="52" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="494" class="m" font-size="26">conversation.id</text>
+  <text x="500" y="557" class="m s" font-size="26">input</text>
+  <rect x="500" y="571" width="580" height="52" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="606" font-size="26">Which country is my departure city in?</text>
+
+  <path d="M1110,530 H1192" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="1200" y="395" width="660" height="270" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1230" y="445" class="b" font-size="30">Service: one conversation object</text>
+  <rect x="1240" y="471" width="580" height="52" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1260" y="506" font-size="26">I am planning a trip from Vienna.</text>
+  <text x="1240" y="568" class="s" font-size="26">+ the input and output of every response</text>
+  <text x="1230" y="625" class="s" font-size="26">Reusable across sessions and responses</text>
+
+  <rect x="60" y="690" width="360" height="330" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="240" y="845" text-anchor="middle" class="b" font-size="32">Client-side</text>
+  <text x="240" y="890" text-anchor="middle" class="m" font-size="28">store=False</text>
+
+  <rect x="470" y="690" width="640" height="330" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="500" y="738" class="m s" font-size="26">input</text>
+  <rect x="500" y="752" width="580" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="786" font-size="26">My favourite city is Graz. Remember that.</text>
+  <rect x="500" y="812" width="580" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="846" class="m" font-size="26">stateless_first.output_text</text>
+  <rect x="500" y="872" width="580" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="906" font-size="26">Which city did I say was my favourite?</text>
+  <rect x="500" y="944" width="580" height="50" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="520" y="978" class="m" font-size="26">store=False</text>
+
+  <path d="M1110,855 H1192" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="1200" y="690" width="660" height="330" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1230" y="740" class="b" font-size="30">Your code: the full list</text>
+  <text x="1230" y="786" class="s" font-size="26">You resend every earlier message in input</text>
+  <rect x="1240" y="830" width="580" height="140" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="1530" y="890" text-anchor="middle" class="b" font-size="28">Foundry project</text>
+  <text x="1530" y="932" text-anchor="middle" class="s" font-size="26">keeps nothing (zero retention)</text>
+</svg>

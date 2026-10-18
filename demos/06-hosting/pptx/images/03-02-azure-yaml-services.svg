@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>The two services in azure.yaml and what they become in Foundry</title>
+  <desc>The azure.yaml that azd ai agent init writes holds two services. The agent service m6-azd-agent has host azure.ai.agent, kind hosted, uses pro-code-agents, maps AZURE_AI_MODEL_DEPLOYMENT_NAME through env, and has a codeConfiguration with runtime python_3_13, entryPoint main.py and dependencyResolution remote_build, plus the responses protocol 2.0.0. The project service pro-code-agents has host azure.ai.project and holds the project endpoint. azd deploy turns the agent service into the hosted agent m6-azd-agent: version 1 as a code deploy, a ZIP built with remote_build, and deploying again under the same name creates version 2. In its session sandbox AZURE_AI_MODEL_DEPLOYMENT_NAME comes from env in azure.yaml and FOUNDRY_PROJECT_ENDPOINT carries the project endpoint. The project service points at the existing Foundry project pro-code-agents, chosen with --project-id, which reuses the gpt-5.4 deployment.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 12 12" refX="11" refY="6" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8c959f"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="60" width="840" height="960" rx="20" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1080" y="140" width="780" height="500" rx="20" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="1080" y="760" width="780" height="260" rx="20" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+
+  <text x="92" y="122" font-family="Consolas, 'Courier New', monospace" font-size="32" font-weight="700" fill="#24292f">azure.yaml</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="92" y="196" font-weight="700" font-size="28">m6-azd-agent:</text>
+    <text x="124" y="240">host: azure.ai.agent</text>
+    <text x="124" y="280">kind: hosted</text>
+    <text x="124" y="320">uses: pro-code-agents</text>
+    <text x="124" y="360">env: AZURE_AI_MODEL_DEPLOYMENT_NAME</text>
+    <text x="124" y="400">codeConfiguration:</text>
+    <text x="156" y="440">runtime: python_3_13</text>
+    <text x="156" y="480">entryPoint: main.py</text>
+    <text x="156" y="520">dependencyResolution: remote_build</text>
+    <text x="124" y="560">protocols: responses 2.0.0</text>
+    <text x="92" y="836" font-weight="700" font-size="28">pro-code-agents:</text>
+    <text x="124" y="880">host: azure.ai.project</text>
+    <text x="124" y="920">endpoint: https://pro-code-agents-foundry...</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M460 311 H820 V827 H400"/>
+    <line x1="902" y1="390" x2="1076" y2="390"/>
+    <line x1="902" y1="890" x2="1076" y2="890"/>
+    <line x1="1470" y1="758" x2="1470" y2="644"/>
+  </g>
+  <text x="989" y="372" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a" text-anchor="middle">azd deploy</text>
+
+  <g fill="#24292f">
+    <text x="1112" y="202" font-size="32" font-weight="700">Hosted agent</text>
+    <text x="1112" y="252" font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="700">m6-azd-agent</text>
+    <text x="1112" y="300" font-size="26">version 1; deploying again under this name</text>
+    <text x="1112" y="338" font-size="26">creates version 2</text>
+    <text x="1112" y="386" font-size="26">code deploy: a ZIP built with <tspan font-family="Consolas, 'Courier New', monospace">remote_build</tspan></text>
+    <text x="1112" y="452" font-size="26" fill="#57606a">In the session sandbox</text>
+    <text x="1112" y="496" font-family="Consolas, 'Courier New', monospace" font-size="26">AZURE_AI_MODEL_DEPLOYMENT_NAME</text>
+    <text x="1144" y="532" font-size="26" fill="#57606a">from <tspan font-family="Consolas, 'Courier New', monospace">env</tspan> in <tspan font-family="Consolas, 'Courier New', monospace">azure.yaml</tspan></text>
+    <text x="1112" y="580" font-family="Consolas, 'Courier New', monospace" font-size="26">FOUNDRY_PROJECT_ENDPOINT</text>
+    <text x="1144" y="616" font-size="26" fill="#57606a">the project endpoint</text>
+
+    <text x="1112" y="822" font-size="32" font-weight="700">Foundry project</text>
+    <text x="1112" y="870" font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="700">pro-code-agents</text>
+    <text x="1112" y="918" font-size="26">an existing project, chosen with <tspan font-family="Consolas, 'Courier New', monospace">--project-id</tspan></text>
+    <text x="1112" y="958" font-size="26">reuses the <tspan font-family="Consolas, 'Courier New', monospace">gpt-5.4</tspan> deployment</text>
+  </g>
+</svg>

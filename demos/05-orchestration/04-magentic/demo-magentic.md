@@ -145,6 +145,8 @@ Agent orchestrator picks the speaker
 
 Two turns instead of four, and the final output is the approved slogan rather than a termination notice. The termination condition is still the safety net.
 
+![Round robin selection runs four turns until the termination condition, while the orchestrator agent ends the chat after two turns with the approved slogan](../pptx/images/04-01-speaker-selection.svg)
+
 ## Step 4: Build a Magentic team with a manager and a tool
 
 Magentic needs a manager agent and participants with clear descriptions, because the manager reads those descriptions when it picks speakers. The analyst owns a `sum_costs` tool so that the arithmetic is not left to the model. The loop limits are set explicitly.
@@ -271,6 +273,8 @@ Here's a practical one-day team offsite plan in Vienna for 12 people that stays 
 ```
 
 In this run the first plan already mentioned the 400 EUR limit, so the planner wording is model output and the flags vary between runs. Read it in order. `PLAN_CREATED` is the initial task ledger, and your feedback produced `REPLANNED`, whose new plan text mentions the 400 EUR limit that the first one did not. Each `PROGRESS_LEDGER_UPDATED` is one round: the manager says who speaks next, and `satisfied=True` ends the loop before the final report.
+
+![Magentic manager loop: the task ledger emits PLAN_CREATED, plan review approves or revises, each round fills a progress ledger and picks Researcher or Analyst, stalls reset and replan, and satisfied=True ends with the final answer](../pptx/images/04-02-manager-loop.svg)
 
 ## Step 6: Confirm why Magentic needs the Chat Completions client
 

@@ -94,6 +94,8 @@ The second question only makes sense with the first answer, which the session ca
 
 A browser sees the same stream that `events.py` prints. It posts one request and groups the `data:` lines by event type.
 
+![One POST request followed by the Server-Sent Events of one run: RUN_STARTED, the lookup_ticket tool call events, the assistant message deltas and RUN_FINISHED, next to a chat window that draws them](../pptx/images/08-01-event-stream.svg)
+
 ```python
 body = {"threadId": "t1", "runId": "r1", "messages": [{"id": "1", "role": "user", "content": sys.argv[2]}]}
 ```
@@ -131,6 +133,8 @@ Both servers answer the same question with the same vocabulary. The Python serve
 ## Step 3: Pause for an approval and resume
 
 `close_ticket` is marked as needing approval, so the run does not close anything. It finishes with an interrupt that carries the tool call, and nothing happens until the client answers.
+
+![Two runs on thread approval-1: run-1 ends with an interrupt before close_ticket runs, the client answers with the interrupt id and a decision, and run-2 returns the tool result](../pptx/images/08-02-approval-interrupt.svg)
 
 ```bash
 .venv/Scripts/python events.py chat "Close ticket T-1001 as resolved"
@@ -176,6 +180,8 @@ The C# server pauses the same way: `events.py chat "Close ticket T-1001 as resol
 ## Step 4: Expose a workflow and watch its steps
 
 A workflow of two executors, triage and reply, is registered on a second path. The client now receives step events, which is what a progress indicator needs.
+
+![Step events of the ticket workflow: superstep 1 wraps triage and superstep 2 wraps reply, each opened by STEP_STARTED and closed by STEP_FINISHED, above a two-segment progress indicator](../pptx/images/08-03-workflow-steps.svg)
 
 ```python
 add_agent_framework_fastapi_endpoint(

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Routing questions to knowledge sources</title>
+  <desc>A router asks the model for the probability that each of three sources (drug_formulary, clinical_guidelines, lab_references) is needed, searches every source above 0.7, widens to sources above 0.4 when none qualifies, and searches all sources when still none qualifies. "What TSH level indicates hypothyroidism?" scores 0.0, 0.44 and 0.96, so only lab_references is searched. "How do I manage a patient with diabetic ketoacidosis who is hypokalaemic?" scores 0.34, 0.97 and 0.82, so clinical_guidelines and lab_references are searched. "Tell me about the Northwind cafeteria opening hours." scores 0.0 for every source, so the router searches all three.</desc>
+  <style>
+    svg { font-size: 26px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+    .sec { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="60" y="80" class="b sec" font-size="28">Question</text>
+  <text x="870" y="80" text-anchor="end" class="b sec" font-size="28">Source</text>
+  <text x="900" y="80" class="b sec" font-size="28">Router confidence</text>
+  <text x="1760" y="80" text-anchor="middle" class="b sec" font-size="28">Searched</text>
+
+  <text x="900" y="128" text-anchor="middle" class="sec">0</text>
+  <text x="1140" y="128" text-anchor="middle" class="sec">0.4 widen</text>
+  <text x="1320" y="128" text-anchor="middle" class="sec">0.7 search</text>
+  <text x="1500" y="128" text-anchor="middle" class="sec">1.0</text>
+
+  <line x1="60" y1="432" x2="1860" y2="432" stroke="#8c959f" stroke-width="2"/>
+  <line x1="60" y1="722" x2="1860" y2="722" stroke="#8c959f" stroke-width="2"/>
+
+  <line x1="1140" y1="145" x2="1140" y2="1010" stroke="#e0a534" stroke-width="3" stroke-dasharray="12 8"/>
+  <line x1="1320" y1="145" x2="1320" y2="1010" stroke="#e0a534" stroke-width="3" stroke-dasharray="12 8"/>
+  <line x1="900" y1="145" x2="900" y2="1010" stroke="#8c959f" stroke-width="2"/>
+
+  <text x="60" y="222" font-size="28">What TSH level indicates</text>
+  <text x="60" y="260" font-size="28">hypothyroidism?</text>
+  <text x="60" y="330" class="sec">one source above 0.7</text>
+
+  <text x="870" y="239" text-anchor="end" class="mono">drug_formulary</text>
+  <rect x="900" y="205" width="4" height="50" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="239" class="mono sec">0.0</text>
+
+  <text x="870" y="309" text-anchor="end" class="mono">clinical_guidelines</text>
+  <rect x="900" y="275" width="264" height="50" fill="#ffffff" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="1530" y="309" class="mono sec">0.44</text>
+
+  <text x="870" y="379" text-anchor="end" class="mono">lab_references</text>
+  <rect x="900" y="345" width="576" height="50" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="379" class="mono b">0.96</text>
+  <rect x="1660" y="347" width="200" height="46" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1760" y="379" text-anchor="middle" class="b">searched</text>
+
+  <text x="60" y="512" font-size="28">How do I manage a patient</text>
+  <text x="60" y="550" font-size="28">with diabetic ketoacidosis</text>
+  <text x="60" y="588" font-size="28">who is hypokalaemic?</text>
+  <text x="60" y="650" class="sec">two sources above 0.7</text>
+
+  <text x="870" y="529" text-anchor="end" class="mono">drug_formulary</text>
+  <rect x="900" y="495" width="204" height="50" fill="#ffffff" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="1530" y="529" class="mono sec">0.34</text>
+
+  <text x="870" y="599" text-anchor="end" class="mono">clinical_guidelines</text>
+  <rect x="900" y="565" width="582" height="50" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="599" class="mono b">0.97</text>
+  <rect x="1660" y="567" width="200" height="46" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1760" y="599" text-anchor="middle" class="b">searched</text>
+
+  <text x="870" y="669" text-anchor="end" class="mono">lab_references</text>
+  <rect x="900" y="635" width="492" height="50" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="669" class="mono b">0.82</text>
+  <rect x="1660" y="637" width="200" height="46" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1760" y="669" text-anchor="middle" class="b">searched</text>
+
+  <text x="60" y="802" font-size="28">Tell me about the Northwind</text>
+  <text x="60" y="840" font-size="28">cafeteria opening hours.</text>
+  <text x="60" y="910" class="sec">none above 0.4, so all three</text>
+
+  <text x="870" y="819" text-anchor="end" class="mono">drug_formulary</text>
+  <rect x="900" y="785" width="4" height="50" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="819" class="mono b">0.0</text>
+  <rect x="1660" y="787" width="200" height="46" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1760" y="819" text-anchor="middle" class="b">searched</text>
+
+  <text x="870" y="889" text-anchor="end" class="mono">clinical_guidelines</text>
+  <rect x="900" y="855" width="4" height="50" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="889" class="mono b">0.0</text>
+  <rect x="1660" y="857" width="200" height="46" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1760" y="889" text-anchor="middle" class="b">searched</text>
+
+  <text x="870" y="959" text-anchor="end" class="mono">lab_references</text>
+  <rect x="900" y="925" width="4" height="50" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1530" y="959" class="mono b">0.0</text>
+  <rect x="1660" y="927" width="200" height="46" rx="10" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1760" y="959" text-anchor="middle" class="b">searched</text>
+</svg>

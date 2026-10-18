@@ -99,6 +99,8 @@ Expected output (trimmed):
 
 The output shows the tool call and its result next to the final message, and the `temperature` value never reached the model call.
 
+![One request through the Python Responses route: responses_to_run converts the body, your allowlist keeps only max_tokens, get_or_create_session loads the session from the SessionStore, target.run runs the support-desk agent with lookup_ticket against the Foundry model, set_session saves it and responses_from_run builds the reply](../pptx/images/05-01-responses-route.svg)
+
 ## Step 3: Call it with the OpenAI SDK
 
 `call_server.py` points the standard OpenAI client at your server. The second call passes `previous_response_id`, so the server loads the session saved after the first answer.
@@ -169,6 +171,8 @@ The C# project ships no request-option allowlist; authentication, authorization 
 ## Step 5: Continue a conversation by id
 
 A conversation id stays stable across turns, unlike a response id. Create one, then send both turns against it.
+
+![Two ways to continue: in Step 3 previous_response_id gives every turn a new id and session key; in Step 5 a conversation id created by POST /v1/conversations stays the same for both turns and one session](../pptx/images/05-02-conversation-ids.svg)
 
 ```bash
 curl -s -X POST http://localhost:8001/v1/conversations -H "Content-Type: application/json" -d '{}'

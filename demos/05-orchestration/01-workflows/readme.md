@@ -80,11 +80,15 @@ print(result.get_outputs())
 
 The runtime follows a bulk synchronous model. In each superstep every pending message is routed, all target executors run concurrently, and the workflow waits at a barrier until all of them finish before the next superstep starts. This is why a fan-out of three one-second checks costs one second, and why the fan-in handler runs in the superstep after the last check.
 
+![Supersteps 1 to 3 of the fan-out run: parse_invoice, then the three checks side by side, then aggregate after the barrier, 1.0s in total](../pptx/images/01-01-supersteps-fan-out.svg)
+
 The barrier also means a slow branch holds back a fast, longer branch that runs alongside it. If two paths must progress independently, fold each path's steps into a single executor. Checkpoints are written at superstep boundaries, which is the foundation of the next topic.
 
 ## Agents Are Nodes Too
 
 Pass an agent straight to `add_edge` and the framework wraps it in an agent executor. The upstream executor then sends an `AgentExecutorRequest`, and the downstream executor receives an `AgentExecutorResponse` with the agent's reply in `response.agent_response.text`.
+
+![A code pipeline and a graph with the invoice_reviewer agent side by side, each edge labelled with the message type it carries](../pptx/images/01-02-executors-agent-nodes.svg)
 
 ```python
 await ctx.send_message(AgentExecutorRequest(messages=[Message("user", [text])], should_respond=True))

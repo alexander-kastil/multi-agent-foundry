@@ -61,6 +61,8 @@ az cognitiveservices account project show \
 
 The endpoint is the only configuration value that identifies your project in code. The class projects keep it in `PROJECT_ENDPOINT` inside a `.env` file next to the script.
 
+![The project endpoint split into the Foundry resource name and the project name, with the base_url and Responses API URL derived from it and the Foundry tools that start from it](../pptx/images/01-01-project-endpoint.svg)
+
 ## Foundry (new) and Foundry (classic)
 
 Microsoft Foundry has two documentation sets and two project types. The current platform is Foundry (new), documented under `/azure/foundry/`, and it uses Foundry projects with the single project endpoint. Foundry (classic) is documented under `/azure/foundry-classic/` and covers hub-based projects, which are not visible in the new portal.
@@ -70,6 +72,8 @@ This class teaches only Foundry (new). If a search result lands on a `foundry-cl
 ## Access control with the renamed Foundry roles
 
 Azure RBAC separates control plane actions (create deployments and projects) from data plane actions (build agents, run evaluations, upload files). The Foundry roles were renamed from the Azure AI names, and the role definition IDs did not change.
+
+![Foundry User, Foundry Project Manager, Foundry Account Owner, Foundry Owner and Foundry Agent Consumer with their role definition IDs, each shown against the control plane, the data plane or both](../pptx/images/01-02-planes-and-roles.svg)
 
 | Current name | Former name | Role definition ID | What it is for |
 | --- | --- | --- | --- |
@@ -93,6 +97,8 @@ A principal that only calls agents can use the narrower Foundry Agent Consumer r
 ## Authenticate with Microsoft Entra ID
 
 All samples in this class use `DefaultAzureCredential`, which picks up your `az login` session locally and a managed identity in Azure. The access token it requests has the audience `https://ai.azure.com`, and the role assignments above decide what it may do. Keys also work on some endpoints, but they bypass RBAC, so the class does not use them.
+
+![DefaultAzureCredential turns an az login session or a managed identity into a token for https://ai.azure.com, which reaches the project where a Foundry User assignment from an outer scope lets the first call return ready](../pptx/images/01-03-token-to-call.svg)
 
 ## Hands-On Demo
 

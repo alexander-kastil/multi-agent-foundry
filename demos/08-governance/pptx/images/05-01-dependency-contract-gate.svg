@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Deployment waves from the dependency manifest and the contract gate result</title>
+  <desc>The seven agents of agent-dependencies.yml in five deployment waves. Wave 1: ingestion. Wave 2: syntax-analyzer, style-checker and security-scanner, each depending on ingestion. Wave 3: performance-profiler, depending on syntax-analyzer. Wave 4: orchestrator, depending on syntax-analyzer, style-checker, security-scanner and performance-profiler. Wave 5: reporting, depending on orchestrator. A highlight steps through the waves in deployment order. style-checker carries a breaking change: optional parameter style_guide became required, and the gate lists its affected dependents orchestrator and reporting. The security-scanner change, a new optional parameter and a new response field, is not breaking. The gate prints Gate result: FAIL, breaking changes block deployment, and exits with code 1, so a required status check blocks the merge.</desc>
+  <style>
+    .wave { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 600; fill: #57606a; }
+    .node { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; fill: #24292f; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .grey { fill: #f6f8fa; stroke: #8c959f; stroke-width: 2; }
+    .brk { fill: #fff6e5; stroke: #e0a534; stroke-width: 3; }
+    .dep { fill: #fff6e5; stroke: #e0a534; stroke-width: 2; stroke-dasharray: 10 6; }
+    .blue { fill: #eaf2ff; stroke: #8c959f; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="w-ah" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="40" y="45" width="1310" height="140" rx="18" fill="#eaf2ff">
+    <animate attributeName="y" values="45;245;445;645;845" keyTimes="0;0.2;0.4;0.6;0.8" calcMode="discrete" dur="10s" repeatCount="indefinite"/>
+  </rect>
+
+  <text class="wave" x="60" y="124">wave 1</text>
+  <text class="wave" x="60" y="324">wave 2</text>
+  <text class="wave" x="60" y="524">wave 3</text>
+  <text class="wave" x="60" y="724">wave 4</text>
+  <text class="wave" x="60" y="924">wave 5</text>
+
+  <path class="line" d="M775 170 V215"/>
+  <path class="line" d="M385 215 H1165"/>
+  <path class="line" d="M385 215 V258" marker-end="url(#w-ah)"/>
+  <path class="line" d="M775 215 V258" marker-end="url(#w-ah)"/>
+  <path class="line" d="M1165 215 V258" marker-end="url(#w-ah)"/>
+  <path class="line" d="M385 370 V458" marker-end="url(#w-ah)"/>
+  <path class="line" d="M550 330 H580 V690 H608" marker-end="url(#w-ah)"/>
+  <path class="line" d="M385 570 V740 H608" marker-end="url(#w-ah)"/>
+  <path class="line" d="M775 370 V658" marker-end="url(#w-ah)"/>
+  <path class="line" d="M1165 370 V715 H942" marker-end="url(#w-ah)"/>
+  <path class="line" d="M775 770 V858" marker-end="url(#w-ah)"/>
+
+  <rect class="grey" x="610" y="60" width="330" height="110" rx="16"/>
+  <text class="node" x="775" y="124">ingestion</text>
+
+  <rect class="grey" x="220" y="260" width="330" height="110" rx="16"/>
+  <text class="node" x="385" y="324">syntax-analyzer</text>
+  <rect class="brk" x="610" y="260" width="330" height="110" rx="16"/>
+  <text class="node" x="775" y="324">style-checker</text>
+  <rect class="grey" x="1000" y="260" width="330" height="110" rx="16"/>
+  <text class="node" x="1165" y="324">security-scanner</text>
+
+  <rect class="grey" x="220" y="460" width="330" height="110" rx="16"/>
+  <text class="node" x="385" y="524">performance-profiler</text>
+
+  <rect class="dep" x="610" y="660" width="330" height="110" rx="16"/>
+  <text class="node" x="775" y="724">orchestrator</text>
+
+  <rect class="dep" x="610" y="860" width="330" height="110" rx="16"/>
+  <text class="node" x="775" y="924">reporting</text>
+
+  <rect class="brk" x="1400" y="60" width="460" height="410" rx="18"/>
+  <text class="h" x="1430" y="112">Breaking change</text>
+  <text class="c" x="1430" y="162">BREAKING style-checker:</text>
+  <text class="c" x="1430" y="200">optional parameter</text>
+  <text class="c" x="1430" y="238">'style_guide' became</text>
+  <text class="c" x="1430" y="276">required</text>
+  <text class="c" x="1430" y="334">affected dependents:</text>
+  <text class="c" x="1430" y="372">orchestrator, reporting</text>
+  <text class="b" x="1430" y="430">found by walking the graph</text>
+
+  <rect class="grey" x="1400" y="500" width="460" height="210" rx="18"/>
+  <text class="h" x="1430" y="552">Not breaking</text>
+  <text class="c" x="1430" y="598">security-scanner:</text>
+  <text class="b" x="1430" y="640">new optional parameter and</text>
+  <text class="b" x="1430" y="678">new response field</text>
+
+  <rect class="blue" x="1400" y="740" width="460" height="280" rx="18"/>
+  <text class="h" x="1430" y="790">Exit code 1</text>
+  <text class="c" x="1430" y="834">Gate result: FAIL,</text>
+  <text class="c" x="1430" y="872">breaking changes block</text>
+  <text class="c" x="1430" y="910">deployment</text>
+  <text class="b" x="1430" y="956">a required status check</text>
+  <text class="b" x="1430" y="992">blocks the merge</text>
+</svg>

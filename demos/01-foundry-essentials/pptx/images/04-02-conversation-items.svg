@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>How a response reads from and writes to a conversation</title>
+  <desc>On the left, the conversation object from conversation.py with its six items in order: the opening user message I am planning a trip from Vienna, two question and answer pairs appended by the two responses, and the user message Add Linz as a second stop appended with items.create. On the right, one turn: your code calls responses.create with the conversation id and the input Which country is my departure city in. Step 1, the service prepends the stored items, so the model reads the opening message before the new input. Step 2, the model answers Vienna is in Austria. Step 3, after the response completes, the service appends the new input and output to the conversation. A dot travels the prepend path, then the answer, then the append path.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="90" width="660" height="930" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="90" y="142" class="b" font-size="30">Conversation object</text>
+
+  <rect x="90" y="170" width="600" height="112" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="212" font-size="26"><tspan class="b">1</tspan><tspan class="s">  user</tspan></text>
+  <text x="666" y="212" text-anchor="end" class="s" font-size="26">created with the conversation</text>
+  <text x="114" y="256" font-size="26">I am planning a trip from Vienna.</text>
+
+  <rect x="90" y="310" width="600" height="112" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="352" font-size="26"><tspan class="b">2</tspan><tspan class="s">  user</tspan></text>
+  <text x="666" y="352" text-anchor="end" class="s" font-size="26">appended by question 1</text>
+  <text x="114" y="396" font-size="26">Which country is my departure city in?</text>
+
+  <rect x="90" y="450" width="600" height="112" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="492" font-size="26"><tspan class="b">3</tspan><tspan class="s">  assistant</tspan></text>
+  <text x="666" y="492" text-anchor="end" class="s" font-size="26">appended by question 1</text>
+  <text x="114" y="536" font-size="26">Vienna is in Austria.</text>
+
+  <rect x="90" y="590" width="600" height="112" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="632" font-size="26"><tspan class="b">4</tspan><tspan class="s">  user</tspan></text>
+  <text x="666" y="632" text-anchor="end" class="s" font-size="26">appended by question 2</text>
+  <text x="114" y="676" font-size="26">And which river runs through it?</text>
+
+  <rect x="90" y="730" width="600" height="112" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="772" font-size="26"><tspan class="b">5</tspan><tspan class="s">  assistant</tspan></text>
+  <text x="666" y="772" text-anchor="end" class="s" font-size="26">appended by question 2</text>
+  <text x="114" y="816" font-size="26">The Danube runs through Vienna.</text>
+
+  <rect x="90" y="870" width="600" height="112" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="114" y="912" font-size="26"><tspan class="b">6</tspan><tspan class="s">  user</tspan></text>
+  <text x="666" y="912" text-anchor="end" class="s" font-size="26">appended with <tspan class="m">items.create</tspan></text>
+  <text x="114" y="956" font-size="26">Add Linz as a second stop.</text>
+
+  <rect x="90" y="170" width="600" height="112" rx="10" fill="none" stroke="#e0a534" stroke-width="5">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="1;0" keyTimes="0;0.3125" calcMode="discrete"/>
+  </rect>
+  <rect x="84" y="304" width="612" height="264" rx="14" fill="none" stroke="#e0a534" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1" keyTimes="0;0.75" calcMode="discrete"/>
+  </rect>
+
+  <rect x="980" y="90" width="880" height="240" rx="14" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1010" y="140" class="b" font-size="30">Your code</text>
+  <text x="1010" y="194" class="m" font-size="26">responses.create(</text>
+  <text x="1067" y="236" class="m" font-size="26">conversation=conversation.id,</text>
+  <text x="1067" y="278" class="m" font-size="26">input="Which country is my departure city in?")</text>
+
+  <path d="M1420,330 V412" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="980" y="420" width="880" height="270" rx="14" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1010" y="470" class="b" font-size="30">What the model reads</text>
+  <rect x="1010" y="494" width="820" height="72" rx="10" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1034" y="540" font-size="26">I am planning a trip from Vienna.</text>
+  <text x="1806" y="540" text-anchor="end" class="s" font-size="26">prepended</text>
+  <rect x="1010" y="584" width="820" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1034" y="630" font-size="26">Which country is my departure city in?</text>
+  <text x="1806" y="630" text-anchor="end" class="s" font-size="26">new input</text>
+
+  <path d="M1420,690 V782" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="1444" y="746" class="b" font-size="28">2  <tspan class="s" font-weight="400">the model answers</tspan></text>
+
+  <rect x="980" y="790" width="880" height="200" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1010" y="840" class="b" font-size="30">Model output</text>
+  <rect x="1010" y="866" width="820" height="72" rx="10" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1034" y="912" font-size="26">Vienna is in Austria.</text>
+
+  <path d="M720,226 H850 V530 H972" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="744" y="208" class="b" font-size="28">1  <tspan class="s" font-weight="400">prepend</tspan></text>
+
+  <path d="M980,902 H728" stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="744" y="884" class="b" font-size="28">3  <tspan class="s" font-weight="400">append</tspan></text>
+
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M720,226 H850 V530 H972" keyPoints="0;0;1;1" keyTimes="0;0.0625;0.3125;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.0625;0.3125" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M1420,690 V782" keyPoints="0;0;1;1" keyTimes="0;0.3125;0.4375;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.3125;0.4375" calcMode="discrete"/>
+  </circle>
+  <circle r="12" fill="#e0a534" opacity="0">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M980,902 H728" keyPoints="0;0;1;1" keyTimes="0;0.5;0.75;1" calcMode="linear"/>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5;0.75" calcMode="discrete"/>
+  </circle>
+</svg>

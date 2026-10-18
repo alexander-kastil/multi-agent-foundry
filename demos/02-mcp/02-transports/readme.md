@@ -16,6 +16,8 @@ The current MCP specification (revision 2026-07-28) defines two standard transpo
 
 The specification states that new implementations should not adopt HTTP+SSE and should migrate to Streamable HTTP. Treat any tutorial that starts a server with `sse` as outdated.
 
+![Every stdio_client.py run starts its own server process over stdin and stdout, while two http_client.py runs share one server on port 47004](../pptx/images/02-01-server-processes.svg)
+
 ## stdio
 
 The client starts the server process and talks over its standard streams. Each message is one line of JSON, and messages must not contain embedded newlines.
@@ -56,6 +58,8 @@ A server should also authenticate every connection, which the next topic covers.
 ## Two Protocol Eras on One Transport
 
 Streamable HTTP changed shape between revisions. Revision 2025-11-25 and earlier use a connection session: the client sends `initialize`, the server returns an `Mcp-Session-Id` header, and every later request repeats that header. Revision 2026-07-28 removed the handshake and the session.
+
+![The 2025-11-25 era needs initialize and repeats the session id on every later request, while the 2026-07-28 era sends one self-contained tools/call and gets JSON back](../pptx/images/02-02-protocol-eras.svg)
 
 ```http
 POST /mcp HTTP/1.1

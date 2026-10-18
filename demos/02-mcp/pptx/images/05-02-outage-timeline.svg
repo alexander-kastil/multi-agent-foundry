@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Outage and recovery in probe.py: retries, the open circuit and the trial calls</title>
+  <desc>Timeline of the outage section of probe.py. With the outage on, calls 1 to 3 each make 3 attempts against the failing backend; the first failing call took 0.9 s. Each failed tool call counts once: failure 1, failure 2, failure 3, and the circuit goes from closed to open. Calls 1 to 3 return status unavailable, reason retries_exhausted, fallback consult_pharmacist. Call 4 is answered in 0.00 s by the open circuit with status unavailable, reason service_circuit_open, fallback consult_pharmacist and retry_after_seconds 9.8. With the outage off, the probe waits for the recovery timeout of 10 s. Call 5 is a trial call in half_open, success 1; call 6 is success 2 and the circuit is closed again. Calls 5 and 6 return status ok. The calls light up in order.</desc>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none">
+    <path d="M100,165 L100,150 L910,150 L910,165"/>
+    <path d="M940,165 L940,150 L1660,150 L1660,165"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#57606a" text-anchor="middle">
+    <text x="505" y="128">Outage on: four calls</text>
+    <text x="1300" y="128">Outage off: wait, then two calls</text>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="205" y="218">call 1</text>
+    <text x="445" y="218">call 2</text>
+    <text x="685" y="218">call 3</text>
+    <text x="865" y="218">call 4</text>
+    <text x="1100" y="218">wait</text>
+    <text x="1375" y="218">call 5</text>
+    <text x="1575" y="218">call 6</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="100" y="235" width="210" height="90" rx="12" fill="#f6f8fa"/>
+    <rect x="340" y="235" width="210" height="90" rx="12" fill="#f6f8fa"/>
+    <rect x="580" y="235" width="210" height="90" rx="12" fill="#f6f8fa"/>
+    <rect x="820" y="235" width="90" height="90" rx="12" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="940" y="235" width="320" height="90" rx="12" fill="#ffffff" stroke-dasharray="8 6"/>
+    <rect x="1290" y="235" width="170" height="90" rx="12" fill="#f6f8fa"/>
+    <rect x="1490" y="235" width="170" height="90" rx="12" fill="#f6f8fa"/>
+  </g>
+  <g fill="#fdecec" stroke="#c24141" stroke-width="2">
+    <rect x="121" y="255" width="40" height="50" rx="6"/>
+    <rect x="177" y="255" width="40" height="50" rx="6"/>
+    <rect x="249" y="255" width="40" height="50" rx="6"/>
+    <rect x="361" y="255" width="40" height="50" rx="6"/>
+    <rect x="417" y="255" width="40" height="50" rx="6"/>
+    <rect x="489" y="255" width="40" height="50" rx="6"/>
+    <rect x="601" y="255" width="40" height="50" rx="6"/>
+    <rect x="657" y="255" width="40" height="50" rx="6"/>
+    <rect x="729" y="255" width="40" height="50" rx="6"/>
+  </g>
+  <g fill="#e9f7ef" stroke="#8c959f" stroke-width="2">
+    <rect x="1355" y="255" width="40" height="50" rx="6"/>
+    <rect x="1555" y="255" width="40" height="50" rx="6"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="1100" y="273">recovery timeout</text>
+    <text x="1100" y="309">10 s</text>
+    <text x="205" y="365">3 attempts</text>
+    <text x="445" y="365">3 attempts</text>
+    <text x="685" y="365">3 attempts</text>
+    <text x="1375" y="365">trial call</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="600" fill="#24292f" text-anchor="middle">
+    <text x="205" y="403">0.9 s</text>
+    <text x="865" y="365">0.00 s</text>
+  </g>
+
+  <text x="100" y="458" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">circuit</text>
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="100" y="475" width="705" height="70" fill="#e9f7ef"/>
+    <rect x="805" y="475" width="470" height="70" fill="#fff6e5"/>
+    <rect x="1275" y="475" width="400" height="70" fill="#f6f8fa"/>
+    <rect x="1675" y="475" width="125" height="70" fill="#e9f7ef"/>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="452" y="519">closed</text>
+    <text x="1040" y="519">open</text>
+    <text x="1475" y="519">half_open</text>
+    <text x="1737" y="519">closed</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="205" y="590">failure 1</text>
+    <text x="445" y="590">failure 2</text>
+    <text x="685" y="590">failure 3</text>
+    <text x="1375" y="590">success 1</text>
+    <text x="1575" y="590">success 2</text>
+  </g>
+
+  <text x="100" y="648" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">tool result</text>
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="100" y="665" width="690" height="230" rx="16" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="820" y="665" width="440" height="230" rx="16" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="1290" y="665" width="370" height="230" rx="16" fill="#e9f7ef"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="600" fill="#24292f">
+    <text x="124" y="707">calls 1 to 3</text>
+    <text x="840" y="707">call 4</text>
+    <text x="1314" y="707">calls 5 and 6</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f">
+    <text x="124" y="749">status: unavailable</text>
+    <text x="124" y="791">reason: retries_exhausted</text>
+    <text x="124" y="833">fallback: consult_pharmacist</text>
+    <text x="840" y="749">status: unavailable</text>
+    <text x="840" y="791">reason: service_circuit_open</text>
+    <text x="840" y="833">fallback: consult_pharmacist</text>
+    <text x="840" y="875">retry_after_seconds: 9.8</text>
+    <text x="1314" y="749">status: ok</text>
+  </g>
+
+  <g fill="none" stroke="#e0a534" stroke-width="5">
+    <rect x="90" y="188" width="230" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.125" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="330" y="188" width="230" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.125;0.25" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="570" y="188" width="230" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.25;0.375" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="810" y="188" width="110" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.375;0.5" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="930" y="188" width="340" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.625" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1280" y="188" width="190" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.625;0.75" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1480" y="188" width="190" height="232" rx="16" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.75;0.875" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="90" y="655" width="710" height="250" rx="22" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.375" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="810" y="655" width="460" height="250" rx="22" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.375;0.5" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1280" y="655" width="390" height="250" rx="22" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.625;0.875" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

@@ -61,6 +61,8 @@ With an Agent Framework client, `await client.configure_azure_monitor()` reads t
 
 A new HTTP request starts a new trace unless the caller sends the W3C `traceparent` header and the callee continues from it. The caller injects the active context into the headers; the callee extracts it and passes it as the parent of its first span.
 
+![One trace crossing the orchestrator, the downstream agent service and the Foundry service: the traceparent header travels with each call and Application Insights holds all ten rows under one operation_Id](../pptx/images/01-01-trace-across-services.svg)
+
 ```python
 from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
 
@@ -83,6 +85,8 @@ A structured log line that carries `trace_id` and `span_id` joins the spans of t
 ## Querying Traces
 
 Application Insights maps client and internal spans to the `dependencies` table and server spans to `requests`. The `customDimensions` bag holds the GenAI attributes, so per agent latency, error rate and token cost are summaries over the same data.
+
+![Client and internal spans, server spans and structured log lines flow through the Azure Monitor distro into the dependencies, requests and traces tables, joined on operation_Id](../pptx/images/01-02-spans-logs-tables.svg)
 
 ```kusto
 dependencies

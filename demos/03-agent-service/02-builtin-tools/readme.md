@@ -2,6 +2,8 @@
 
 Built-in tools let a prompt agent do work the model cannot do alone: run code, read your documents and look up current facts. You attach them to an agent version, and Foundry Agent Service runs them for you. There is no tool server to host and no function loop to write.
 
+![An agent version with Code Interpreter, File Search and Web Search: the sandbox and the vector store stay inside the Azure compliance boundary, while Web Search reaches the public web outside it](../pptx/images/02-02-tool-reach.svg)
+
 Code Interpreter, File Search and Web Search are generally available in the current Agent Service. This topic shows what each one does, how to attach it and how to read its evidence in the response.
 
 ## How built-in tools work
@@ -22,6 +24,8 @@ agent = project.agents.create_version(
 ```
 
 Every item in `response.output` has a `type`. A tool run shows up as `code_interpreter_call`, `file_search_call` or `web_search_call` before the `message` item. Printing the types is the quickest way to prove which tool ran.
+
+![Output items of the four demo steps: tool call items come before the message, and each message carries a container_file_citation, a file_citation, a url_citation or the computed answer](../pptx/images/02-01-tool-output-items.svg)
 
 | Tool | Status | Python class | Evidence in the response |
 | --- | --- | --- | --- |

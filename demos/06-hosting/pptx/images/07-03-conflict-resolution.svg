@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Conflict detection in two tiers, priority resolution and the audit trail</title>
+  <desc>Four stages from left to right: a rule-based tier that is free and exact (increase or buy against decrease or sell, confidence 1.0), a semantic tier where a model judges both analyses as CONSISTENT, INCONSISTENT or COMPLEMENTARY with a confidence, priority ranks (compliance 100, risk 75, market-analysis 50, reporting 25, the higher rank wins and equal ranks escalate), and an audit trail with tenant, conflict type, both agents, confidence, resolution, method, chosen agent and output snapshots. Two cases from the lab run through the stages. Case 1, market-analysis against risk: contradictory actions increase against decrease at confidence 1.0, no model call, risk 75 beats market-analysis 50 and risk-v1-eastus is chosen, audit entry 1 priority-based. Case 2, market-analysis in two regions: no rule hit because they disagree only in prose, the model returns INCONSISTENT at 0.99 on the class run, equal ranks 50 and 50 escalate to orchestrator-synthesis with human review below 0.5, audit entry 2 escalated. The animation highlights the cells each case passes through in order.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <g stroke-width="2">
+    <rect x="330" y="70" width="360" height="400" rx="20" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="720" y="70" width="360" height="400" rx="20" fill="#f3edff" stroke="#8c959f"/>
+    <rect x="1110" y="70" width="360" height="400" rx="20" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="1500" y="70" width="360" height="400" rx="20" fill="#f6f8fa" stroke="#8c959f"/>
+  </g>
+  <g fill="#24292f" font-size="30" font-weight="700">
+    <text x="354" y="125">Rule-based tier</text>
+    <text x="744" y="125">Semantic tier</text>
+    <text x="1134" y="125">Priority ranks</text>
+    <text x="1524" y="125">Audit trail</text>
+  </g>
+  <g fill="#57606a" font-size="26">
+    <text x="354" y="170">free and exact</text>
+    <text x="744" y="170">a model judges</text>
+    <text x="744" y="210">both analyses</text>
+  </g>
+  <g fill="#24292f" font-size="26">
+    <text x="354" y="240"><tspan font-family="Consolas, monospace">increase</tspan> or <tspan font-family="Consolas, monospace">buy</tspan></text>
+    <text x="354" y="285">against</text>
+    <text x="354" y="330"><tspan font-family="Consolas, monospace">decrease</tspan> or <tspan font-family="Consolas, monospace">sell</tspan></text>
+    <text x="354" y="410">confidence 1.0</text>
+    <text x="744" y="420">plus a confidence</text>
+    <text x="1134" y="385">higher rank wins,</text>
+    <text x="1134" y="425">equal ranks escalate</text>
+    <text x="1524" y="185">tenant, conflict type</text>
+    <text x="1524" y="228">both agents</text>
+    <text x="1524" y="271">confidence</text>
+    <text x="1524" y="314">resolution, method</text>
+    <text x="1524" y="357">chosen agent</text>
+    <text x="1524" y="400">output snapshots</text>
+  </g>
+  <g fill="#24292f" font-size="26" font-family="Consolas, monospace">
+    <text x="744" y="270">CONSISTENT</text>
+    <text x="744" y="315">INCONSISTENT</text>
+    <text x="744" y="360">COMPLEMENTARY</text>
+    <text x="1134" y="185">compliance</text>
+    <text x="1134" y="230">risk</text>
+    <text x="1134" y="275">market-analysis</text>
+    <text x="1134" y="320">reporting</text>
+    <g text-anchor="end">
+      <text x="1444" y="185">100</text>
+      <text x="1444" y="230">75</text>
+      <text x="1444" y="275">50</text>
+      <text x="1444" y="320">25</text>
+    </g>
+  </g>
+  <g fill="#f6f8fa" stroke="#8c959f" stroke-width="2">
+    <rect x="50" y="540" width="250" height="220" rx="18"/>
+    <rect x="50" y="800" width="250" height="220" rx="18"/>
+  </g>
+  <g fill="#24292f" font-size="28" font-weight="700">
+    <text x="68" y="600">Case 1</text>
+    <text x="68" y="860">Case 2</text>
+  </g>
+  <g fill="#24292f" font-size="26" font-family="Consolas, monospace">
+    <text x="68" y="650">market-analysis</text>
+    <text x="68" y="910">market-analysis</text>
+  </g>
+  <g fill="#57606a" font-size="26">
+    <text x="68" y="695">against risk</text>
+    <text x="68" y="955">in two regions</text>
+  </g>
+  <rect x="330" y="540" width="360" height="220" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="720" y="540" width="360" height="220" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2" stroke-dasharray="10 8"/>
+  <rect x="1110" y="540" width="360" height="220" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1500" y="540" width="360" height="220" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="330" y="800" width="360" height="220" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <rect x="720" y="800" width="360" height="220" rx="18" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1110" y="800" width="360" height="220" rx="18" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="1500" y="800" width="360" height="220" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <g fill="#24292f" font-size="26" font-weight="700">
+    <text x="354" y="592">contradictory actions</text>
+    <text x="744" y="622">no model call</text>
+    <text x="1134" y="692">resolved:</text>
+    <text x="1524" y="600">entry 1</text>
+    <text x="354" y="860">no rule hit</text>
+    <text x="1126" y="893">escalated to</text>
+    <text x="1524" y="860">entry 2</text>
+  </g>
+  <g fill="#24292f" font-size="26">
+    <text x="354" y="642"><tspan font-family="Consolas, monospace">increase</tspan> against</text>
+    <text x="354" y="682" font-family="Consolas, monospace">decrease</text>
+    <text x="354" y="732">confidence 1.0</text>
+    <text x="744" y="667" fill="#57606a">the rule already</text>
+    <text x="744" y="707" fill="#57606a">caught it</text>
+    <text x="1134" y="592"><tspan font-family="Consolas, monospace">risk</tspan> 75 beats</text>
+    <text x="1134" y="632"><tspan font-family="Consolas, monospace">market-analysis</tspan> 50</text>
+    <text x="1134" y="732" font-family="Consolas, monospace">risk-v1-eastus</text>
+    <text x="1524" y="645" font-family="Consolas, monospace">priority-based</text>
+    <text x="1524" y="690">chosen agent</text>
+    <text x="1524" y="732" font-family="Consolas, monospace">risk-v1-eastus</text>
+    <text x="354" y="905">they disagree</text>
+    <text x="354" y="945">only in prose</text>
+    <text x="744" y="860" font-family="Consolas, monospace">INCONSISTENT</text>
+    <text x="744" y="905">confidence 0.99</text>
+    <text x="744" y="945" fill="#57606a">on the class run</text>
+    <text x="1126" y="850">equal ranks, 50 and 50</text>
+    <text x="1126" y="936" font-family="Consolas, monospace">orchestrator-synthesis</text>
+    <text x="1126" y="985" fill="#57606a">human review below 0.5</text>
+    <text x="1524" y="905" font-family="Consolas, monospace">escalated</text>
+    <text x="1516" y="950" font-family="Consolas, monospace">orchestrator-synthesis</text>
+  </g>
+  <g stroke="#57606a" stroke-width="3" fill="none" marker-end="url(#a)">
+    <line x1="300" y1="650" x2="326" y2="650"/>
+    <path d="M510,540 C510,508 530,505 570,505 L1230,505 C1270,505 1290,508 1290,534"/>
+    <line x1="1470" y1="650" x2="1496" y2="650"/>
+    <line x1="300" y1="910" x2="326" y2="910"/>
+    <line x1="690" y1="910" x2="716" y2="910"/>
+    <line x1="1080" y1="910" x2="1106" y2="910"/>
+    <line x1="1470" y1="910" x2="1496" y2="910"/>
+  </g>
+  <rect x="326" y="536" width="368" height="228" rx="20" fill="none" stroke="#e0a534" stroke-width="7">
+    <animate attributeName="x" dur="10.5s" repeatCount="indefinite" calcMode="discrete" values="326;1106;1496;326;716;1106;1496" keyTimes="0;0.1429;0.2857;0.4286;0.5714;0.7143;0.8571"/>
+    <animate attributeName="y" dur="10.5s" repeatCount="indefinite" calcMode="discrete" values="536;536;536;796;796;796;796" keyTimes="0;0.1429;0.2857;0.4286;0.5714;0.7143;0.8571"/>
+  </rect>
+</svg>

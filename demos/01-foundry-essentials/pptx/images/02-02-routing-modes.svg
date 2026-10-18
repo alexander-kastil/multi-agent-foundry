@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Routing modes and a model subset</title>
+  <desc>The four router deployments of the demo, each plotting the same pool by cost and quality. m1-router-balanced (no routing block, Balanced is the default) considers models within a small quality range of the best one and picks the most cost-effective. m1-router-quality picks the highest-rated model and ignores cost. m1-router-cost accepts a larger quality band and picks the cheapest model in it. m1-router-subset only chooses between gpt-5-mini and gpt-5.4, which also form the fallback set. All four are model-router 2025-11-18, GlobalStandard, capacity 10.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .panel { fill: #ffffff; stroke: #8c959f; stroke-width: 2; }
+    .axis { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .band { fill: #fff6e5; stroke: #e0a534; stroke-width: 2; stroke-dasharray: 8 6; }
+    .dot { fill: #8c959f; }
+    .faded { fill: #f6f8fa; stroke: #8c959f; stroke-width: 2; }
+    .pick { fill: #e0a534; stroke: #24292f; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect class="panel" x="80" y="40" width="860" height="410" rx="16"/>
+  <rect class="band" x="156" y="88" width="370" height="93" rx="8"/>
+  <path class="axis" d="M150,390 V82" marker-end="url(#arr)"/>
+  <path class="axis" d="M150,390 H530" marker-end="url(#arr)"/>
+  <text x="126" y="235" text-anchor="middle" class="s" font-size="26" transform="rotate(-90 126 235)">quality</text>
+  <text x="534" y="428" text-anchor="end" class="s" font-size="26">cost</text>
+  <circle class="dot" cx="206.4" cy="302.5" r="10"/>
+  <circle class="dot" cx="252.6" cy="229.6" r="10"/>
+  <circle class="dot" cx="371.4" cy="202.6" r="10"/>
+  <circle class="dot" cx="411" cy="137.8" r="10"/>
+  <circle class="dot" cx="470.4" cy="108.1" r="10"/>
+  <circle class="dot" cx="328.5" cy="272.8" r="10"/>
+  <circle class="pick" cx="312" cy="154" r="15"/>
+  <text x="570" y="116" class="m b">m1-router-balanced</text>
+  <text x="570" y="156" class="b" font-size="26">Balanced (default)</text>
+  <text x="570" y="194" class="m s" font-size="26">no routing block</text>
+  <text x="570" y="276" font-size="26">Considers models within</text>
+  <text x="570" y="312" font-size="26">a small quality range of</text>
+  <text x="570" y="348" font-size="26">the best one and picks</text>
+  <text x="570" y="384" font-size="26">the most cost-effective</text>
+
+  <rect class="panel" x="980" y="40" width="860" height="410" rx="16"/>
+  <rect class="band" x="1056" y="88" width="370" height="34" rx="8"/>
+  <path class="axis" d="M1050,390 V82" marker-end="url(#arr)"/>
+  <path class="axis" d="M1050,390 H1430" marker-end="url(#arr)"/>
+  <text x="1026" y="235" text-anchor="middle" class="s" font-size="26" transform="rotate(-90 1026 235)">quality</text>
+  <text x="1434" y="428" text-anchor="end" class="s" font-size="26">cost</text>
+  <circle class="dot" cx="1106.4" cy="302.5" r="10"/>
+  <circle class="dot" cx="1152.6" cy="229.6" r="10"/>
+  <circle class="dot" cx="1212" cy="154" r="10"/>
+  <circle class="dot" cx="1271.4" cy="202.6" r="10"/>
+  <circle class="dot" cx="1311" cy="137.8" r="10"/>
+  <circle class="dot" cx="1228.5" cy="272.8" r="10"/>
+  <circle class="pick" cx="1370.4" cy="108.1" r="15"/>
+  <text x="1470" y="116" class="m b">m1-router-quality</text>
+  <text x="1470" y="156" class="b" font-size="26">Quality</text>
+  <text x="1470" y="194" class="m s" font-size="26">"mode": "quality"</text>
+  <text x="1470" y="276" font-size="26">Picks the highest-rated</text>
+  <text x="1470" y="312" font-size="26">model for the prompt</text>
+  <text x="1470" y="348" font-size="26">and ignores cost</text>
+
+  <rect class="panel" x="80" y="490" width="860" height="410" rx="16"/>
+  <rect class="band" x="156" y="538" width="370" height="163" rx="8"/>
+  <path class="axis" d="M150,840 V532" marker-end="url(#arr)"/>
+  <path class="axis" d="M150,840 H530" marker-end="url(#arr)"/>
+  <text x="126" y="685" text-anchor="middle" class="s" font-size="26" transform="rotate(-90 126 685)">quality</text>
+  <text x="534" y="878" text-anchor="end" class="s" font-size="26">cost</text>
+  <circle class="dot" cx="206.4" cy="752.5" r="10"/>
+  <circle class="dot" cx="312" cy="604" r="10"/>
+  <circle class="dot" cx="371.4" cy="652.6" r="10"/>
+  <circle class="dot" cx="411" cy="587.8" r="10"/>
+  <circle class="dot" cx="470.4" cy="558.1" r="10"/>
+  <circle class="dot" cx="328.5" cy="722.8" r="10"/>
+  <circle class="pick" cx="252.6" cy="679.6" r="15"/>
+  <text x="570" y="566" class="m b">m1-router-cost</text>
+  <text x="570" y="606" class="b" font-size="26">Cost</text>
+  <text x="570" y="644" class="m s" font-size="26">"mode": "cost"</text>
+  <text x="570" y="726" font-size="26">Accepts a larger quality</text>
+  <text x="570" y="762" font-size="26">band and picks the</text>
+  <text x="570" y="798" font-size="26">cheapest model in it</text>
+
+  <rect class="panel" x="980" y="490" width="860" height="410" rx="16"/>
+  <rect class="band" x="1056" y="570" width="370" height="54" rx="8"/>
+  <path class="axis" d="M1050,840 V532" marker-end="url(#arr)"/>
+  <path class="axis" d="M1050,840 H1430" marker-end="url(#arr)"/>
+  <text x="1026" y="685" text-anchor="middle" class="s" font-size="26" transform="rotate(-90 1026 685)">quality</text>
+  <text x="1434" y="878" text-anchor="end" class="s" font-size="26">cost</text>
+  <circle class="faded" cx="1106.4" cy="752.5" r="9"/>
+  <circle class="faded" cx="1152.6" cy="679.6" r="9"/>
+  <circle class="faded" cx="1271.4" cy="652.6" r="9"/>
+  <circle class="faded" cx="1370.4" cy="558.1" r="9"/>
+  <circle class="faded" cx="1228.5" cy="722.8" r="9"/>
+  <circle class="dot" cx="1311" cy="587.8" r="11"/>
+  <circle class="pick" cx="1212" cy="604" r="15"/>
+  <text x="1470" y="566" class="m b">m1-router-subset</text>
+  <text x="1470" y="606" class="b" font-size="26">Balanced in a subset</text>
+  <text x="1470" y="644" class="m s" font-size="26">"mode": "balanced"</text>
+  <text x="1470" y="680" class="m s" font-size="26">"models": [...]</text>
+  <text x="1470" y="728" font-size="26">Only the listed models:</text>
+  <circle class="pick" cx="1484" cy="759" r="12"/>
+  <text x="1508" y="768" font-size="26"><tspan class="m">gpt-5-mini</tspan> picked</text>
+  <circle class="dot" cx="1484" cy="799" r="10"/>
+  <text x="1508" y="808" font-size="26"><tspan class="m">gpt-5.4</tspan> failover</text>
+  <text x="1470" y="848" font-size="26">they form the fallback set</text>
+
+  <circle class="pick" cx="98" cy="952" r="13"/>
+  <text x="122" y="961" font-size="26">picked for the prompt</text>
+  <rect class="band" x="420" y="938" width="48" height="28" rx="6"/>
+  <text x="480" y="961" font-size="26">candidates the mode considers</text>
+  <circle class="dot" cx="900" cy="952" r="10"/>
+  <text x="922" y="961" font-size="26">model in the pool</text>
+  <circle class="faded" cx="1196" cy="952" r="9"/>
+  <text x="1216" y="961" font-size="26">outside the subset</text>
+  <text x="80" y="1016" class="s" font-size="26">All four deployments: <tspan class="m" fill="#24292f">model-router 2025-11-18</tspan>, GlobalStandard, capacity=10</text>
+</svg>

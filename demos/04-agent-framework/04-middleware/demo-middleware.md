@@ -2,6 +2,8 @@
 
 A trail-guide agent that answers anything, calls tools unseen and hides its model usage is hard to trust and impossible to bill. In this demo you wrap one agent in four small middleware functions: a timer, a credential guardrail, a tool auditor that rewrites a result, and a model-call meter. You finish with an agent whose behavior you can observe and control without editing its instructions or its tool.
 
+![One agent run that calls one tool: agent middleware surrounds the whole run, chat middleware runs for two model calls, function middleware runs once around get_trail_status](../pptx/images/04-01-interception-points.svg)
+
 What you practice here: wrapping agent, function and chat calls with middleware.
 
 Duration: about 50 minutes.
@@ -55,6 +57,8 @@ The two `[agent]` lines surround the whole run, tool call and model calls includ
 ## Step 2: Block a request with a guardrail
 
 A class-based agent middleware inspects the last user message. When it finds a blocked word it sets `context.result` and raises `MiddlewareTermination`, so the model is never called.
+
+![Two runs through GuardrailMiddleware: the trail question passes on to the model call, the password question sets context.result and raises MiddlewareTermination, so the model call is skipped](../pptx/images/04-03-early-termination.svg)
 
 ```python
 class GuardrailMiddleware(AgentMiddleware):
@@ -153,6 +157,8 @@ One question produced two model calls. Each call shows one message because the R
 ## Step 5: See the order of agent-level and run-level middleware
 
 Agent-level middleware wraps run-level middleware. Four tracers make the wrapping visible.
+
+![Middleware order: A1, A2, R1 and R2 run their code before call_next on the way in, the agent runs, then R2, R1, A2 and A1 run their code after call_next on the way out](../pptx/images/04-02-registration-order.svg)
 
 ```python
 def tracer(name: str):

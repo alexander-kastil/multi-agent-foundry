@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Block signals in the response</title>
+  <desc>Top row: a jailbreak prompt is stopped at the user input intervention point (Prompt) before the model runs, and the call fails with HTTP 400 and code content_filter. Bottom row: a harmless decode request makes the agent call the OpenAPI tool decode_text, whose response carries an injected instruction; the tool response intervention point (PostToolCall) stops it, and the call returns HTTP 200 with status incomplete, incomplete_reason content_filter and post_tool blocked True. Read both signals in your client.</desc>
+  <style>
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 32px; fill: #24292f; text-anchor: middle; }
+    .big { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 48px; fill: #24292f; text-anchor: middle; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .bt { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 30px; fill: #24292f; text-anchor: middle; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 28px; fill: #24292f; text-anchor: middle; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="60" y="130" width="380" height="200" rx="16" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text class="h" x="250" y="215">Jailbreak prompt</text>
+  <text class="b" x="250" y="262">sent as user input</text>
+
+  <rect x="520" y="130" width="340" height="200" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="h" x="690" y="200">User input</text>
+  <text class="c" x="690" y="246">Prompt</text>
+  <text class="b" x="690" y="292">jailbreak control</text>
+
+  <text class="b" x="1080" y="172">stops it before</text>
+  <text class="b" x="1080" y="206">the model runs</text>
+
+  <rect x="1300" y="80" width="560" height="300" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="big" x="1580" y="160">HTTP 400</text>
+  <text class="c" x="1580" y="220">code=content_filter</text>
+  <text class="b" x="1580" y="282">the error body names the</text>
+  <text class="b" x="1580" y="318">intervention point and the risk</text>
+
+  <rect x="60" y="520" width="380" height="200" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text class="h" x="250" y="605">Decode request</text>
+  <text class="b" x="250" y="652">harmless base64 string</text>
+
+  <rect x="520" y="520" width="340" height="200" rx="16" fill="#fdecec" stroke="#c24141" stroke-width="2"/>
+  <text class="h" x="690" y="582">OpenAPI tool</text>
+  <text class="c" x="690" y="626">decode_text</text>
+  <text class="b" x="690" y="666">returns an injected</text>
+  <text class="b" x="690" y="698">instruction</text>
+
+  <rect x="940" y="520" width="300" height="200" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text class="h" x="1090" y="582">Tool response</text>
+  <text class="c" x="1090" y="626">PostToolCall</text>
+  <text class="b" x="1090" y="666">indirect attack</text>
+  <text class="b" x="1090" y="698">control</text>
+
+  <rect x="1300" y="470" width="560" height="300" rx="18" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text class="big" x="1580" y="548">HTTP 200</text>
+  <text class="c" x="1580" y="608">status=incomplete</text>
+  <text class="c" x="1580" y="656">incomplete_reason=content_filter</text>
+  <text class="c" x="1580" y="704">post_tool blocked=True</text>
+
+  <line class="line" x1="442" y1="230" x2="518" y2="230" marker-end="url(#arr)"/>
+  <line class="line" x1="862" y1="230" x2="1298" y2="230" marker-end="url(#arr)"/>
+  <line class="line" x1="442" y1="620" x2="518" y2="620" marker-end="url(#arr)"/>
+  <line class="line" x1="862" y1="620" x2="938" y2="620" marker-end="url(#arr)"/>
+  <line class="line" x1="1242" y1="620" x2="1298" y2="620" marker-end="url(#arr)"/>
+
+  <rect x="60" y="850" width="1800" height="160" rx="18" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text class="bt" x="960" y="918">Read both signals in your client</text>
+  <text class="b" x="960" y="966">A 200 response is not proof that the content passed</text>
+</svg>

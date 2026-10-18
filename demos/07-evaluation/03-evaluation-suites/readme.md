@@ -24,6 +24,8 @@ A useful suite covers combinations, not just happy paths. Generate cases from a 
 
 Two kinds of case are added on purpose. Canaries are the easy cases with no adversarial condition; if they fail, the full suite is not worth running. Historical probes are cases taken from past incidents, appended to every run so a fixed bug stays fixed.
 
+![The 18 cases from 3 interaction categories, 2 personas and 3 adversarial conditions, with the 6 canaries marked, 3 historical probes beside them and the ground truth of case-001](../pptx/images/03-01-suite-from-grid.svg)
+
 ## A Judge Is an Instrument
 
 An LLM judge scores a response against the rubric and the ground truth. Before it gates anything, measure it: label a small set of responses by hand, run the judge on the same set and compute the agreement of the pass and fail decisions with Cohen's kappa. A kappa above 0.7 is a common bar for "reliable for gating".
@@ -53,11 +55,15 @@ The per-type limit matters because an average can hide a regression in one categ
 
 The gate runs in stages: canaries first, then the full suite plus probes, then the comparison. A failed canary stage stops the pipeline before the expensive stage.
 
+![The regression gate in stages: canaries, full suite and baseline comparison, with a BLOCK exit after the canaries and after the comparison and APPROVE DEPLOYMENT at the end](../pptx/images/03-02-staged-regression-gate.svg)
+
 ## Judges Grade Against the Agent's Own Instructions
 
 Built-in agent evaluators such as Task Adherence read the system message the agent ran with. An agent told to approve every refund and that approves every refund adheres to its instructions, so a judge can pass a prompt that violates your policy.
 
 The policy lives in your ground truth or in a deterministic check, not in the prompt under test. Run both kinds of check and read them side by side.
+
+![One v2 run read by two checks: the Task Adherence judge reads the agent's own instructions and passes 3 of 3, the refunds_only_eligible_orders check reads the returns policy and passes 1 of 3](../pptx/images/03-03-judge-and-policy.svg)
 
 ## Agent Framework Evaluation
 

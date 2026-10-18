@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-size="28">
+  <title>The seven topics of Agent Framework: Agents, Tools and Skills</title>
+  <desc>Seven numbered topic cards in path order. First row: 01 Chat Clients, Foundry, OpenAI and Claude, swap where the model runs and keep the agent code; 02 AgentSession, State and Persistence, carry a conversation across runs and restarts; 03 Context Providers and Long-Term Memory, add history, preferences and memory to each request; 04 Middleware, Agent, Function and Chat, wrap every run, tool call and model request. An arrow leads to the second row: 05 Function Tools, MCP and Approvals, functions, MCP servers and hosted tools with a human approval gate; 06 Agent Skills, SKILL.md and Progressive Disclosure, load a company procedure only when the task needs it; 07 Harness Agent, Plan, Execute and Compaction, plan, act under standing approvals and compact the context. A grey band notes that every topic pairs the teaching with a runnable Python and C# demo against a Microsoft Foundry project.</desc>
+  <style>
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <g fill="#eaf2ff" stroke="#8c959f" stroke-width="2">
+    <rect x="60" y="50" width="405" height="350" rx="24"/>
+    <rect x="525" y="50" width="405" height="350" rx="24"/>
+    <rect x="990" y="50" width="405" height="350" rx="24"/>
+    <rect x="1455" y="50" width="405" height="350" rx="24"/>
+    <rect x="60" y="520" width="560" height="350" rx="24"/>
+    <rect x="680" y="520" width="560" height="350" rx="24"/>
+    <rect x="1300" y="520" width="560" height="350" rx="24"/>
+  </g>
+
+  <text x="262" y="112" class="s b c" font-size="40">01</text>
+  <text x="262" y="178" class="b c" font-size="36">Chat Clients</text>
+  <text x="262" y="222" class="c">Foundry, OpenAI &amp; Claude</text>
+  <text x="262" y="302" class="s c" font-size="26">Swap where the model runs,</text>
+  <text x="262" y="340" class="s c" font-size="26">keep the agent code</text>
+
+  <text x="727" y="112" class="s b c" font-size="40">02</text>
+  <text x="727" y="178" class="b c" font-size="36">AgentSession</text>
+  <text x="727" y="222" class="c">State &amp; Persistence</text>
+  <text x="727" y="302" class="s c" font-size="26">Carry a conversation</text>
+  <text x="727" y="340" class="s c" font-size="26">across runs and restarts</text>
+
+  <text x="1192" y="112" class="s b c" font-size="40">03</text>
+  <text x="1192" y="178" class="b c" font-size="36">Context Providers</text>
+  <text x="1192" y="222" class="c">&amp; Long-Term Memory</text>
+  <text x="1192" y="302" class="s c" font-size="26">Add history, preferences</text>
+  <text x="1192" y="340" class="s c" font-size="26">and memory to each request</text>
+
+  <text x="1657" y="112" class="s b c" font-size="40">04</text>
+  <text x="1657" y="178" class="b c" font-size="36">Middleware</text>
+  <text x="1657" y="222" class="c">Agent, Function &amp; Chat</text>
+  <text x="1657" y="302" class="s c" font-size="26">Wrap every run, tool call</text>
+  <text x="1657" y="340" class="s c" font-size="26">and model request</text>
+
+  <text x="340" y="582" class="s b c" font-size="40">05</text>
+  <text x="340" y="648" class="b c" font-size="36">Function Tools,</text>
+  <text x="340" y="692" class="c">MCP &amp; Approvals</text>
+  <text x="340" y="772" class="s c" font-size="26">Functions, MCP servers and hosted</text>
+  <text x="340" y="810" class="s c" font-size="26">tools with a human approval gate</text>
+
+  <text x="960" y="582" class="s b c" font-size="40">06</text>
+  <text x="960" y="648" class="b c" font-size="36">Agent Skills</text>
+  <text x="960" y="692" class="c">SKILL.md &amp; Progressive Disclosure</text>
+  <text x="960" y="772" class="s c" font-size="26">Load a company procedure</text>
+  <text x="960" y="810" class="s c" font-size="26">only when the task needs it</text>
+
+  <text x="1580" y="582" class="s b c" font-size="40">07</text>
+  <text x="1580" y="648" class="b c" font-size="36">Harness Agent</text>
+  <text x="1580" y="692" class="c">Plan, Execute &amp; Compaction</text>
+  <text x="1580" y="772" class="s c" font-size="26">Plan, act under standing approvals</text>
+  <text x="1580" y="810" class="s c" font-size="26">and compact the context</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M465,225 H517"/>
+    <path d="M930,225 H982"/>
+    <path d="M1395,225 H1447"/>
+    <path d="M1657,400 V460 H340 V512"/>
+    <path d="M620,695 H672"/>
+    <path d="M1240,695 H1292"/>
+  </g>
+
+  <rect x="60" y="920" width="1800" height="100" rx="20" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="960" y="980" class="c">Every topic pairs the teaching with a runnable Python and C# demo against a Microsoft Foundry project</text>
+</svg>

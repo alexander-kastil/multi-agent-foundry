@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Three ways to evaluate a live agent's traffic</title>
+  <desc>The prompt agent m7-support-agent version 1 is evaluated three ways. A continuous evaluation rule, m7-continuous-eval-rule, fires on RESPONSE_COMPLETED, reads each response through the azure_ai_source data source and is capped by max_hourly_runs=100; it starts one Violence and Coherence run per response, with scores on the Monitor tab. Stored responses are selected by response ID through azure_ai_responses with the IDs inline as file_content; all 6 passed Violence and Coherence. The invoke_agent spans Foundry wrote to Application Insights are selected through azure_ai_traces with max_traces 20 and lookback_hours 2; Intent Resolution and Task Adherence passed 12 of 12.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="610" y="96" font-size="26" fill="#57606a" text-anchor="middle">What is scored</text>
+  <text x="1100" y="96" font-size="26" fill="#57606a" text-anchor="middle">How the run selects it</text>
+  <text x="1630" y="96" font-size="26" fill="#57606a" text-anchor="middle">Evaluation run</text>
+
+  <rect x="60" y="130" width="280" height="840" rx="16" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="200" y="500" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">Prompt agent</text>
+  <text x="200" y="552" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">m7-support-agent</text>
+  <text x="200" y="598" font-size="26" fill="#57606a" text-anchor="middle">version 1</text>
+
+  <rect x="420" y="130" width="380" height="240" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="610" y="214" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Each completed response</text>
+  <text x="610" y="262" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">RESPONSE_COMPLETED</text>
+  <text x="610" y="308" font-size="26" fill="#57606a" text-anchor="middle">live traffic</text>
+
+  <rect x="420" y="430" width="380" height="240" rx="16" fill="#ffffff" stroke="#8c959f" stroke-width="2"/>
+  <text x="610" y="514" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Stored responses</text>
+  <text x="610" y="562" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">resp_0980baf57eeaf</text>
+  <text x="610" y="608" font-size="26" fill="#57606a" text-anchor="middle">6 saved response IDs</text>
+
+  <rect x="420" y="730" width="380" height="240" rx="16" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="610" y="814" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle"><tspan font-family="Consolas, Menlo, monospace">invoke_agent</tspan> spans</text>
+  <text x="610" y="862" font-size="26" fill="#24292f" text-anchor="middle">in Application Insights</text>
+  <text x="610" y="908" font-size="26" fill="#57606a" text-anchor="middle">written by Foundry</text>
+
+  <rect x="880" y="130" width="440" height="240" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1100" y="192" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Continuous evaluation rule</text>
+  <text x="1100" y="238" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">m7-continuous-eval-rule</text>
+  <text x="1100" y="284" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">azure_ai_source</text>
+  <text x="1100" y="330" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">max_hourly_runs=100</text>
+
+  <rect x="880" y="430" width="440" height="240" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1100" y="530" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">azure_ai_responses</text>
+  <text x="1100" y="580" font-size="26" fill="#24292f" text-anchor="middle">IDs inline as <tspan font-family="Consolas, Menlo, monospace">file_content</tspan></text>
+
+  <rect x="880" y="730" width="440" height="240" rx="16" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1100" y="808" font-size="26" font-weight="700" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">azure_ai_traces</text>
+  <text x="1100" y="856" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">max_traces 20</text>
+  <text x="1100" y="902" font-size="26" font-family="Consolas, Menlo, monospace" fill="#24292f" text-anchor="middle">lookback_hours 2</text>
+
+  <rect x="1400" y="130" width="460" height="240" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1630" y="214" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Violence, Coherence</text>
+  <text x="1630" y="262" font-size="26" fill="#24292f" text-anchor="middle">one run per response</text>
+  <text x="1630" y="308" font-size="26" fill="#57606a" text-anchor="middle">scores on the Monitor tab</text>
+
+  <rect x="1400" y="430" width="460" height="240" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1630" y="530" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Violence, Coherence</text>
+  <text x="1630" y="580" font-size="26" fill="#24292f" text-anchor="middle">6 of 6 passed</text>
+
+  <rect x="1400" y="730" width="460" height="240" rx="16" fill="#f3edff" stroke="#8c959f" stroke-width="2"/>
+  <text x="1630" y="808" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Intent Resolution,</text>
+  <text x="1630" y="848" font-size="26" font-weight="700" fill="#24292f" text-anchor="middle">Task Adherence</text>
+  <text x="1630" y="902" font-size="26" fill="#24292f" text-anchor="middle">12 of 12 passed</text>
+
+  <line x1="340" y1="250" x2="414" y2="250" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="340" y1="550" x2="414" y2="550" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="340" y1="850" x2="414" y2="850" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="800" y1="250" x2="874" y2="250" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="800" y1="550" x2="874" y2="550" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="800" y1="850" x2="874" y2="850" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="250" x2="1394" y2="250" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="550" x2="1394" y2="550" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1320" y1="850" x2="1394" y2="850" stroke="#8c959f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="412" y="122" width="396" height="256" rx="20" fill="none" stroke="#24292f" stroke-width="5" opacity="1">
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" calcMode="discrete" values="1;0" keyTimes="0;0.3333"/>
+  </rect>
+  <rect x="872" y="122" width="456" height="256" rx="20" fill="none" stroke="#24292f" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.3333;0.6667"/>
+  </rect>
+  <rect x="1392" y="122" width="476" height="256" rx="20" fill="none" stroke="#24292f" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" calcMode="discrete" values="0;1" keyTimes="0;0.6667"/>
+  </rect>
+</svg>

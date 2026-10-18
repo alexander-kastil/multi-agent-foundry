@@ -2,6 +2,8 @@
 
 Most multi-agent designs are one of a few shapes: a pipeline where each agent refines the last, a panel where several agents answer the same question in parallel, or a front desk that routes the customer to a specialist. Agent Framework ships each shape as a builder, so you pass in agents and get back a ready workflow instead of wiring executors and edges by hand.
 
+![SequentialBuilder chains writer, reviewer and polisher, ConcurrentBuilder runs finance, security and compliance in parallel into an aggregator, HandoffBuilder links triage_agent with billing_agent and technical_agent](../pptx/images/03-01-orchestration-builders.svg)
+
 The builders live in `agent_framework.orchestrations` (package `agent-framework-orchestrations`) and take their configuration as constructor parameters. What you get back is an ordinary `Workflow`, so everything from the previous topics applies: streaming events, outputs, checkpoints and human requests.
 
 | Pattern | Builder | Control flow | Use it when |
@@ -60,6 +62,8 @@ workflow = (
 Every participant must be created with `require_per_service_call_history_persistence=True`, otherwise `build()` raises a `ValueError` that lists the agents missing the flag. Handoff supports only `Agent` participants and agents that run tools locally.
 
 When an agent answers without handing off, the workflow pauses with a `request_info` event whose data is a `HandoffAgentUserRequest`. Answer with `HandoffAgentUserRequest.create_response(text)` or end the conversation with `HandoffAgentUserRequest.terminate()`. A tool declared with `@tool(approval_mode="always_require")` pauses the same way with a function approval request, which you answer with `request.data.to_function_approval_response(approved=True)`.
+
+![Sequence of the support handoff: triage_agent hands off to billing_agent, issue_refund pauses for a tool approval, and two HandoffAgentUserRequest pauses wait for the user](../pptx/images/03-02-handoff-tool-approval.svg)
 
 ```python
 async for event in workflow.run(responses=responses, stream=True):

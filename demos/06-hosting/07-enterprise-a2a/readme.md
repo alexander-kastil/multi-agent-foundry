@@ -40,6 +40,8 @@ An entry qualifies for a capability query only when three conditions hold at onc
 
 Among the qualifying agents, routing is a policy choice. The demo uses round robin over a sorted candidate list so the result is reproducible; production registries add latency, region affinity or load.
 
+![Three registry entries feed a sector-analysis query that checks the capability, a healthy status, a heartbeat younger than 120 s and a 300 s time to live, next to the four results lab Step 1 prints](../pptx/images/07-01-capability-routing.svg)
+
 The same idea exists as a managed service. [Foundry Control Plane](https://learn.microsoft.com/azure/foundry/control-plane/register-custom-agent) can register an agent that runs outside Agent Service, select A2A as its protocol, and discover its card at `/.well-known/agent-card.json`.
 
 ## Shared state without lost updates
@@ -47,6 +49,8 @@ The same idea exists as a managed service. [Foundry Control Plane](https://learn
 Agents that work on one task need a place to put their partial results. A shared document per task works, as long as two agents writing at the same moment cannot silently overwrite each other.
 
 Optimistic concurrency solves this with a version tag. Every read returns the document and its `_etag`; every write sends that etag back, and the store accepts the write only if the document is still at that version. Azure Cosmos DB implements exactly this: a stale `if-match` header is rejected with HTTP 412 Precondition Failed, and the client re-reads and retries.
+
+![Sequence of two agents writing one shared document: the first write with etag 1 is accepted, the second with the stale etag gets 412 Precondition Failed, reads again and succeeds with etag 2](../pptx/images/07-02-etag-writes.svg)
 
 ```python
 def contribute(self, tenant_id, task_id, agent_id, contribution, max_retries=3):
@@ -79,6 +83,8 @@ The tenant comes from a request-scoped context (`ContextVar` in Python, `AsyncLo
 ## Conflicts between agents
 
 Two agents working on the same question can disagree. The network needs a policy that notices, decides, and leaves evidence.
+
+![Two cases run through the rule-based tier, the semantic tier, the priority ranks and the audit trail: case 1 is resolved for risk-v1-eastus without a model call, case 2 is judged by the model and escalated](../pptx/images/07-03-conflict-resolution.svg)
 
 Detection runs in two tiers. A rule-based tier is free and exact: if one recommendation says `increase` or `buy` and the other says `decrease` or `sell`, the outputs contradict, with confidence 1.0. When the structured fields do not settle it, a semantic tier asks a model to judge the two analyses and return a verdict.
 

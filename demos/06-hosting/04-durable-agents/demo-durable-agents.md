@@ -4,6 +4,8 @@ A release announcement needs a human to approve it before it goes out, and that 
 
 What you build: an Azure Functions app with a durable `AnnouncementWriter` agent, a three-round approval orchestration with a 72 hour timeout, and the same app deployed to Flex Consumption. Duration: about 45 minutes.
 
+![The announcement_approval orchestration: draft with agent.run, request a review, wait for the ApprovalDecision event or a 72 hour timer, then publish on approval or rewrite in the same session for up to three rounds, with both agent calls going to the dafx-AnnouncementWriter entity](../pptx/images/04-01-approval-orchestration.svg)
+
 ## Prerequisites
 
 - Azure CLI signed in (`az login`), Azure Functions Core Tools 4.x, Docker, and a Microsoft Foundry project with a `gpt-5.4` deployment.
@@ -307,6 +309,8 @@ Expected output (Python, trimmed):
 The host log ends with `PUBLISHED: Contoso Portal 2.4 released`. The C# version returns the same fields with capitalised names (`Title`, `Body`).
 
 The model writes different text each run, so your wording will differ. The restart behaviour will not.
+
+![Timeline of Step 4: the function app process stops and starts again while the orchestration record in the Durable Task Scheduler keeps waiting for review, round 2, and the status call returns the same round before and after the restart](../pptx/images/04-02-restart-timeline.svg)
 
 ## Step 5: Deploy to Flex Consumption
 

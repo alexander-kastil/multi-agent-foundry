@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" font-size="28">
+  <title>Todo-driven looping in the harness agent</title>
+  <desc>A loop of three boxes. The agent run in mode execute completes one todo, then stops. loop_should_continue with todos_remaining(looping_modes=["execute"]) checks whether open todos are left. If yes, loop_next_message with todos_remaining_message sends a reminder of the open todos and runs the agent again. If no, or when loop_max_iterations=6 is reached, the run is done. Below, the session todos, one per stage, show Stage 1 to Stage 4, and a note says that recording progress does not re-invoke the agent; the loop does. Two result boxes compare the demo output: without loop, 1 of 4 todos complete; with loop, 4 of 4 todos complete. A highlight steps around the loop four times, one stage todo per agent run, and ends at done.</desc>
+  <style>
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+    .c { text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <rect x="80" y="80" width="440" height="220" rx="22" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <text x="300" y="148" class="b c" font-size="34">Agent run</text>
+  <text x="300" y="194" class="m c" font-size="26">mode: execute</text>
+  <text x="300" y="238" class="s c" font-size="26">completes one todo,</text>
+  <text x="300" y="274" class="s c" font-size="26">then stops</text>
+
+  <rect x="680" y="80" width="480" height="220" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="920" y="138" class="m b c">loop_should_continue</text>
+  <text x="920" y="182" class="m c" font-size="26">todos_remaining(</text>
+  <text x="920" y="218" class="m c" font-size="26">looping_modes=["execute"])</text>
+  <text x="920" y="266" class="s c" font-size="26">open todos left?</text>
+
+  <rect x="1440" y="80" width="400" height="220" rx="22" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1640" y="148" class="b c" font-size="34">Done</text>
+  <text x="1640" y="194" class="s c" font-size="26">no open todos, or</text>
+  <text x="1640" y="236" class="m c" font-size="26">loop_max_iterations=6</text>
+  <text x="1640" y="274" class="s c" font-size="26">is reached</text>
+
+  <rect x="680" y="420" width="480" height="200" rx="22" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="920" y="478" class="m b c">loop_next_message</text>
+  <text x="920" y="520" class="m c" font-size="26">todos_remaining_message</text>
+  <text x="920" y="566" class="s c" font-size="26">reminder of the open todos</text>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M532,190 H664"/>
+    <path d="M1172,190 H1424"/>
+    <path d="M920,312 V404"/>
+    <path d="M668,520 H300 V316"/>
+  </g>
+  <text x="1300" y="172" class="b c" font-size="26">no</text>
+  <text x="944" y="366" class="b" font-size="26">yes</text>
+  <text x="330" y="500" class="s" font-size="26">runs the agent again</text>
+
+  <text x="80" y="718" class="s" font-size="26">session todos, one per stage</text>
+  <g fill="#e9f7ef" stroke="#8c959f" stroke-width="2">
+    <rect x="80" y="740" width="240" height="100" rx="14"/>
+    <rect x="350" y="740" width="240" height="100" rx="14"/>
+    <rect x="620" y="740" width="240" height="100" rx="14"/>
+    <rect x="890" y="740" width="240" height="100" rx="14"/>
+  </g>
+  <g fill="#ffffff" stroke="#57606a" stroke-width="2">
+    <rect x="108" y="776" width="28" height="28" rx="4"/>
+    <rect x="378" y="776" width="28" height="28" rx="4"/>
+    <rect x="648" y="776" width="28" height="28" rx="4"/>
+    <rect x="918" y="776" width="28" height="28" rx="4"/>
+  </g>
+  <g fill="none" stroke="#24292f" stroke-width="3">
+    <path d="M113,790 L120,797 L131,782"/>
+    <path d="M383,790 L390,797 L401,782"/>
+    <path d="M653,790 L660,797 L671,782"/>
+    <path d="M923,790 L930,797 L941,782"/>
+  </g>
+  <text x="152" y="800" class="b">Stage 1</text>
+  <text x="422" y="800" class="b">Stage 2</text>
+  <text x="692" y="800" class="b">Stage 3</text>
+  <text x="962" y="800" class="b">Stage 4</text>
+  <text x="80" y="900" class="s" font-size="26">Recording progress does not re-invoke the agent; the loop does</text>
+
+  <rect x="1240" y="700" width="600" height="100" rx="14" fill="#f6f8fa" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="760" class="m" font-size="26">without loop: 1 of 4 todos complete</text>
+  <rect x="1240" y="830" width="600" height="100" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1270" y="890" class="m" font-size="26" xml:space="preserve">with loop:    4 of 4 todos complete</text>
+
+  <g fill="none" stroke="#e0a534" stroke-width="6">
+    <rect x="72" y="72" width="456" height="236" rx="28" stroke-opacity="1">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="1;0;0;1;0;0;1;0;0;1;0;0" keyTimes="0;0.0833;0.1667;0.25;0.3333;0.4167;0.5;0.5833;0.6667;0.75;0.8333;0.9167" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="672" y="72" width="496" height="236" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;1;0;0;1;0;0;1;0;0;1;0" keyTimes="0;0.0833;0.1667;0.25;0.3333;0.4167;0.5;0.5833;0.6667;0.75;0.8333;0.9167" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="672" y="412" width="496" height="216" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;1;0;0;1;0;0;1;0;0;0" keyTimes="0;0.0833;0.1667;0.25;0.3333;0.4167;0.5;0.5833;0.6667;0.75;0.8333;0.9167" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1432" y="72" width="416" height="236" rx="28" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;0;0;0;0;0;0;0;0;1" keyTimes="0;0.0833;0.1667;0.25;0.3333;0.4167;0.5;0.5833;0.6667;0.75;0.8333;0.9167" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1232" y="822" width="616" height="116" rx="20" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;0;0;0;0;0;0;0;0;1" keyTimes="0;0.0833;0.1667;0.25;0.3333;0.4167;0.5;0.5833;0.6667;0.75;0.8333;0.9167" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="72" y="732" width="256" height="116" rx="20" stroke-opacity="1">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="1;0;0;0" keyTimes="0;0.25;0.5;0.75" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="342" y="732" width="256" height="116" rx="20" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;1;0;0" keyTimes="0;0.25;0.5;0.75" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="612" y="732" width="256" height="116" rx="20" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;1;0" keyTimes="0;0.25;0.5;0.75" dur="12s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="882" y="732" width="256" height="116" rx="20" stroke-opacity="0">
+      <animate attributeName="stroke-opacity" calcMode="discrete" values="0;0;0;1" keyTimes="0;0.25;0.5;0.75" dur="12s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

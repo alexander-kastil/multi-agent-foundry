@@ -48,6 +48,8 @@ class ApiKeyMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 ```
 
+![The MCP tool wraps the circuit breaker, which wraps the retry, which wraps the router over drugs-east, drugs-west and drugs-canary; on the right the four results the model receives: ok, invalid_input, retries_exhausted and service_circuit_open](../pptx/images/05-01-resilience-layers.svg)
+
 ## Step 2: Watch routing and the permanent error
 
 `probe.py` is an MCP client with no model. It calls the tool directly and prints the server's health and metrics after each phase. Run it.
@@ -99,6 +101,8 @@ after recovery: circuit=closed routing={...}
 ```
 
 The breaker moved from open to half-open to closed without a restart, because the first call after ten seconds was a trial, and the second success closed it.
+
+![Timeline of the probe: calls 1 to 3 make three attempts each and return retries_exhausted, the circuit opens after the third, call 4 returns service_circuit_open in 0.00 s, and after the 10 s recovery timeout calls 5 and 6 succeed while the circuit goes half_open and then closed](../pptx/images/05-02-outage-timeline.svg)
 
 ## Step 4: Put an agent on top
 

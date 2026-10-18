@@ -2,6 +2,8 @@
 
 A ticket-triage agent with a one-line prompt answers every ticket with a friendly paragraph, and the routing system downstream wants a short label. Rewriting the prompt by hand is guesswork. In this demo you give the optimizer twenty labeled tickets and an evaluator, let it propose and score new instructions, promote the best candidate to a new agent version and verify the gain with your own evaluation.
 
+![Six steps of an optimizer run: select the baseline, dataset and evaluators, run the optimizer, review the ranked results and apply the winner](../pptx/images/05-01-optimization-loop.svg)
+
 What you practice here: turning a vague goal into a dataset and an evaluator that an optimizer can chase.
 
 Duration: about 50 minutes, not counting the cloud time of the two optimization jobs (about 10 and 15 minutes), which you can overlap.
@@ -201,6 +203,8 @@ optimization  gpt-5.4        8051 tokens
 
 Candidate 1 gains 0.105, which is in the significant band of 0.10 to 0.20, and it also answers faster, but its answers use two and a half times the tokens of the baseline. Candidates 2 and 3 gain less than 0.03, which is noise. The same job is not deterministic: another run on the same agent reached 0.42 from a baseline of 0.016, so repeat a job before you rely on one outcome.
 
+![Candidate improvements over the baseline drawn over the noise, moderate, significant and major bands, next to the tokens per answer of each candidate](../pptx/images/05-02-candidate-scores.svg)
+
 C#: `dotnet run -- show-candidates` prints the same table. Candidates that failed have no evaluation and are skipped.
 
 Expected result:
@@ -271,6 +275,8 @@ Instructions are one target; function tool descriptions are another.
 The agent in `tool_tuning.py` has four function tools with deliberately useless names and descriptions: `op_a1` ("Does a lookup."), `op_a2` ("Does another lookup."), `op_b2` ("Does a search.") and `op_c3` ("Gets some data."). Twelve queries each expect one of them: `op_a1` for order status, `op_a2` for customer account data, `op_b2` for product search and `op_c3` for store hours. The optimizer may rewrite descriptions but not names, types or required fields.
 
 Built-in tool evaluators skip a response that consists only of a function call, because a prompt agent's tools are not executed during optimization. The script registers a code-based custom evaluator, a preview feature that needs the `Evaluations=V1Preview` feature header, which reads the function call itself and scores the tool chosen and its main argument against `ground_truth`.
+
+![Tool tuning loop: queries reach the prompt agent, the code-based evaluator scores its function call and the optimization model rewrites the tool descriptions](../pptx/images/05-03-tool-description-tuning.svg)
 
 ```python
 GRADE_CODE = """def grade(sample: dict, item: dict) -> float:

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>The version selector decides which agent version the stable endpoint serves</title>
+  <desc>The stable endpoint URL https://{account}.services.ai.azure.com/api/projects/{project}/agents/{agent}/endpoint/protocols/openai/responses never changes while versions come and go. Four states from version_selector.py, highlighted one after the other. 1, created v1: selector @latest, the endpoint serves v1; @latest serves a new version the moment it exists. 2, pinned to v1, then created v2: selector 1, the endpoint serves v1 and v2 is not served, while a call that names v2 in its agent_reference tests v2 directly. 3, promoted: selector 2, the endpoint serves v2. 4, rolled back: selector 1, the endpoint serves v1. Promotion and rollback are the same call with a different version number.</desc>
+  <style>
+    .url { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .sub { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .h { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #24292f; }
+    .num { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #24292f; text-anchor: middle; }
+    .ep { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 600; fill: #24292f; text-anchor: middle; }
+    .sel { font-family: Consolas, 'Courier New', monospace; font-size: 28px; fill: #24292f; text-anchor: middle; }
+    .ver { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #24292f; text-anchor: middle; }
+    .vs { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; text-anchor: middle; }
+    .b { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 26px; fill: #57606a; }
+    .c { font-family: Consolas, 'Courier New', monospace; font-size: 26px; fill: #24292f; text-anchor: middle; }
+    .line { stroke: #8c959f; stroke-width: 2; fill: none; }
+    .purple { fill: #f3edff; stroke: #8c959f; stroke-width: 2; }
+    .amber { fill: #fff6e5; stroke: #e0a534; stroke-width: 2; }
+    .green { fill: #e9f7ef; stroke: #8c959f; stroke-width: 2; }
+    .grey { fill: #f6f8fa; stroke: #8c959f; stroke-width: 2; }
+    .blue { fill: #eaf2ff; stroke: #8c959f; stroke-width: 2; }
+    .badge { fill: #ffffff; stroke: #8c959f; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="v-ah" viewBox="0 0 18 18" refX="17" refY="9" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L18,9 L0,18 z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <text class="url" x="960" y="86">https://{account}.services.ai.azure.com/api/projects/{project}/agents/{agent}/endpoint/protocols/openai/responses</text>
+  <text class="sub" x="960" y="132">one stable endpoint: the URL never changes while versions come and go</text>
+
+  <rect x="50" y="178" width="440" height="840" rx="22" fill="#f6f8fa">
+    <animate attributeName="x" values="50;510;970;1430" keyTimes="0;0.25;0.5;0.75" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+  </rect>
+
+  <g>
+    <circle class="badge" cx="92" cy="226" r="26"/>
+    <text class="num" x="92" y="236">1</text>
+    <text class="h" x="132" y="236">created v1</text>
+    <rect class="purple" x="120" y="320" width="300" height="90" rx="16"/>
+    <text class="ep" x="270" y="375">stable endpoint</text>
+    <path class="line" d="M270 410 V478" marker-end="url(#v-ah)"/>
+    <rect class="amber" x="120" y="480" width="300" height="80" rx="40"/>
+    <text class="sel" x="270" y="531">selector: @latest</text>
+    <path class="line" d="M270 560 V610 H170 V668" marker-end="url(#v-ah)"/>
+    <rect class="green" x="85" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="170" y="728">v1</text>
+    <text class="vs" x="170" y="766">served</text>
+    <text class="b" x="80" y="905">@latest serves a new</text>
+    <text class="b" x="80" y="941">version the moment it exists</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="552" cy="226" r="26"/>
+    <text class="num" x="552" y="236">2</text>
+    <text class="h" x="592" y="222">pinned to v1,</text>
+    <text class="h" x="592" y="258">then created v2</text>
+    <rect class="purple" x="580" y="320" width="300" height="90" rx="16"/>
+    <text class="ep" x="730" y="375">stable endpoint</text>
+    <path class="line" d="M730 410 V478" marker-end="url(#v-ah)"/>
+    <rect class="amber" x="580" y="480" width="300" height="80" rx="40"/>
+    <text class="sel" x="730" y="531">selector: 1</text>
+    <path class="line" d="M730 560 V610 H630 V668" marker-end="url(#v-ah)"/>
+    <rect class="green" x="545" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="630" y="728">v1</text>
+    <text class="vs" x="630" y="766">served</text>
+    <rect class="grey" x="745" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="830" y="728">v2</text>
+    <text class="vs" x="830" y="766">not served</text>
+    <path class="line" d="M830 880 V792" marker-end="url(#v-ah)"/>
+    <rect class="blue" x="680" y="880" width="300" height="110" rx="16"/>
+    <text class="c" x="830" y="925">agent_reference</text>
+    <text class="vs" x="830" y="964">names v2 directly</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="1012" cy="226" r="26"/>
+    <text class="num" x="1012" y="236">3</text>
+    <text class="h" x="1052" y="236">promoted</text>
+    <rect class="purple" x="1040" y="320" width="300" height="90" rx="16"/>
+    <text class="ep" x="1190" y="375">stable endpoint</text>
+    <path class="line" d="M1190 410 V478" marker-end="url(#v-ah)"/>
+    <rect class="amber" x="1040" y="480" width="300" height="80" rx="40"/>
+    <text class="sel" x="1190" y="531">selector: 2</text>
+    <path class="line" d="M1190 560 V610 H1290 V668" marker-end="url(#v-ah)"/>
+    <rect class="grey" x="1005" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="1090" y="728">v1</text>
+    <text class="vs" x="1090" y="766">not served</text>
+    <rect class="green" x="1205" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="1290" y="728">v2</text>
+    <text class="vs" x="1290" y="766">served</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="1472" cy="226" r="26"/>
+    <text class="num" x="1472" y="236">4</text>
+    <text class="h" x="1512" y="236">rolled back</text>
+    <rect class="purple" x="1500" y="320" width="300" height="90" rx="16"/>
+    <text class="ep" x="1650" y="375">stable endpoint</text>
+    <path class="line" d="M1650 410 V478" marker-end="url(#v-ah)"/>
+    <rect class="amber" x="1500" y="480" width="300" height="80" rx="40"/>
+    <text class="sel" x="1650" y="531">selector: 1</text>
+    <path class="line" d="M1650 560 V610 H1550 V668" marker-end="url(#v-ah)"/>
+    <rect class="green" x="1465" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="1550" y="728">v1</text>
+    <text class="vs" x="1550" y="766">served</text>
+    <rect class="grey" x="1665" y="670" width="170" height="120" rx="16"/>
+    <text class="ver" x="1750" y="728">v2</text>
+    <text class="vs" x="1750" y="766">not served</text>
+  </g>
+
+  <text class="sub" x="1420" y="905">promote and roll back with the same call</text>
+  <text class="sub" x="1420" y="941">and a different version number</text>
+</svg>

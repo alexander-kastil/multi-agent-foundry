@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Server-side compaction during an agent loop</title>
+  <desc>Input tokens per request in server_compaction.py, which sends context_management with a compact_threshold of 6,000 tokens on every request and store=False. Day 9: 5,076 input tokens, window 36 items. Day 10: 5,642, 40 items. Day 11: 7,024, above the threshold, so the output holds a compaction item and a message and the window drops to 2 items. Day 12: 1,847, 6 items. Day 13: 2,418, 10 items. Day 14: 3,007, 15 items. After each response the loop appends the output items and drops everything before the latest compaction item. On day 14 the model still answers with booking reference ZX-4417 and the sister Marta. A highlight steps through the days.</desc>
+  <style>
+    svg { font-size: 28px; }
+    text { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; fill: #24292f; }
+    .m { font-family: Consolas, 'Courier New', monospace; }
+    .s { fill: #57606a; }
+    .b { font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff"/>
+
+  <text x="230" y="108" class="s" font-size="26">input tokens per request</text>
+  <text x="214" y="869" text-anchor="end" class="s" font-size="26">0</text>
+  <path d="M230,680 H1450" stroke="#eaeef2" stroke-width="2" fill="none"/>
+  <text x="214" y="689" text-anchor="end" class="s" font-size="26">2,000</text>
+  <path d="M230,500 H1450" stroke="#eaeef2" stroke-width="2" fill="none"/>
+  <text x="214" y="509" text-anchor="end" class="s" font-size="26">4,000</text>
+  <path d="M230,320 H1450" stroke="#eaeef2" stroke-width="2" fill="none"/>
+  <text x="214" y="329" text-anchor="end" class="s" font-size="26">6,000</text>
+  <path d="M230,140 H1450" stroke="#eaeef2" stroke-width="2" fill="none"/>
+  <text x="214" y="149" text-anchor="end" class="s" font-size="26">8,000</text>
+  <path d="M230,320 H1450" stroke="#e0a534" stroke-width="3" stroke-dasharray="14 10" fill="none"/>
+  <path d="M230,860 H1450" stroke="#8c959f" stroke-width="2" fill="none"/>
+  <rect x="276" y="403" width="112" height="457" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="284" y="359" width="96" height="36" fill="#ffffff"/>
+  <text x="332" y="389" text-anchor="middle" class="b" font-size="28">5,076</text>
+  <text x="332" y="904" text-anchor="middle" font-size="28">day 9</text>
+  <text x="332" y="946" text-anchor="middle" class="s" font-size="26">36 items</text>
+  <rect x="479" y="352" width="112" height="508" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="487" y="308" width="96" height="36" fill="#ffffff"/>
+  <text x="535" y="338" text-anchor="middle" class="b" font-size="28">5,642</text>
+  <text x="535" y="904" text-anchor="middle" font-size="28">day 10</text>
+  <text x="535" y="946" text-anchor="middle" class="s" font-size="26">40 items</text>
+  <rect x="682" y="228" width="112" height="632" rx="6" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <rect x="690" y="184" width="96" height="36" fill="#ffffff"/>
+  <text x="738" y="214" text-anchor="middle" class="b" font-size="28">7,024</text>
+  <text x="738" y="904" text-anchor="middle" font-size="28">day 11</text>
+  <text x="738" y="946" text-anchor="middle" class="s" font-size="26">2 items</text>
+  <rect x="886" y="694" width="112" height="166" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="894" y="650" width="96" height="36" fill="#ffffff"/>
+  <text x="942" y="680" text-anchor="middle" class="b" font-size="28">1,847</text>
+  <text x="942" y="904" text-anchor="middle" font-size="28">day 12</text>
+  <text x="942" y="946" text-anchor="middle" class="s" font-size="26">6 items</text>
+  <rect x="1089" y="642" width="112" height="218" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1097" y="598" width="96" height="36" fill="#ffffff"/>
+  <text x="1145" y="628" text-anchor="middle" class="b" font-size="28">2,418</text>
+  <text x="1145" y="904" text-anchor="middle" font-size="28">day 13</text>
+  <text x="1145" y="946" text-anchor="middle" class="s" font-size="26">10 items</text>
+  <rect x="1292" y="589" width="112" height="271" rx="6" fill="#eaf2ff" stroke="#8c959f" stroke-width="2"/>
+  <rect x="1300" y="545" width="96" height="36" fill="#ffffff"/>
+  <text x="1348" y="575" text-anchor="middle" class="b" font-size="28">3,007</text>
+  <text x="1348" y="904" text-anchor="middle" font-size="28">day 14</text>
+  <text x="1348" y="946" text-anchor="middle" class="s" font-size="26">15 items</text>
+  <rect x="643" y="116" width="190" height="54" rx="8" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="738" y="152" text-anchor="middle" class="m b" font-size="26">compaction</text>
+  <text x="1450" y="306" text-anchor="end" class="s" font-size="26"><tspan class="m">compact_threshold</tspan> 6,000</text>
+  <text x="214" y="946" text-anchor="end" class="s" font-size="26">window</text>
+  <rect x="268" y="395" width="128" height="465" rx="8" fill="none" stroke="#24292f" stroke-width="4" opacity="1">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="1;0" keyTimes="0;0.1667" calcMode="discrete"/>
+  </rect>
+  <rect x="471" y="344" width="128" height="516" rx="8" fill="none" stroke="#24292f" stroke-width="4" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.1667;0.3333" calcMode="discrete"/>
+  </rect>
+  <rect x="674" y="220" width="128" height="640" rx="8" fill="none" stroke="#24292f" stroke-width="4" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.3333;0.5000" calcMode="discrete"/>
+  </rect>
+  <rect x="878" y="686" width="128" height="174" rx="8" fill="none" stroke="#24292f" stroke-width="4" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.5000;0.6667" calcMode="discrete"/>
+  </rect>
+  <rect x="1081" y="634" width="128" height="226" rx="8" fill="none" stroke="#24292f" stroke-width="4" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1;0" keyTimes="0;0.6667;0.8333" calcMode="discrete"/>
+  </rect>
+  <rect x="1284" y="581" width="128" height="279" rx="8" fill="none" stroke="#24292f" stroke-width="4" opacity="0">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" values="0;1" keyTimes="0;0.8333" calcMode="discrete"/>
+  </rect>
+
+  <rect x="1530" y="140" width="330" height="430" rx="14" fill="#fff6e5" stroke="#e0a534" stroke-width="2"/>
+  <text x="1556" y="190" class="b" font-size="28">After each response</text>
+  <text x="1556" y="240" font-size="26">append the output</text>
+  <text x="1556" y="276" font-size="26">items, then drop</text>
+  <text x="1556" y="312" font-size="26">everything before</text>
+  <text x="1556" y="348" font-size="26">the latest</text>
+  <text x="1556" y="384" font-size="26"><tspan class="m">compaction</tspan> item</text>
+  <text x="1556" y="452" class="m s" font-size="26">store=False</text>
+  <text x="1556" y="490" class="s" font-size="26">the item travels in</text>
+  <text x="1556" y="526" class="s" font-size="26">your own input array</text>
+
+  <rect x="1530" y="600" width="330" height="320" rx="14" fill="#e9f7ef" stroke="#8c959f" stroke-width="2"/>
+  <text x="1556" y="650" class="b" font-size="28">Answer on day 14</text>
+  <text x="1556" y="700" font-size="26">Your booking reference</text>
+  <text x="1556" y="736" font-size="26">is ZX-4417, and you&#8217;re</text>
+  <text x="1556" y="772" font-size="26">travelling with your</text>
+  <text x="1556" y="808" font-size="26">sister Marta.</text>
+</svg>

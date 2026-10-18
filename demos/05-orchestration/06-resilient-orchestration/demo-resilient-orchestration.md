@@ -40,6 +40,8 @@ On macOS and Linux use `.venv/bin/python`. Set `PROJECT_ENDPOINT` and `MODEL_DEP
 
 Four specialist agents exist as plain agents: market analysis, risk assessment, compliance check and ESG evaluation. `invoke_spoke` is the single door to them. It applies a timeout, takes a slot from a semaphore that allows two concurrent spoke calls, consults the circuit breaker and always returns a dictionary, never an exception.
 
+![The hub calls every spoke through invoke_spoke: a circuit check, a semaphore for two calls and a timeout each end in a status, and every status returns to the hub in one JSON envelope](../pptx/images/06-01-spoke-envelope.svg)
+
 ```python
 async def invoke_spoke(spoke_name: str, request: str, timeout: float = SPOKE_TIMEOUT) -> dict:
     if circuit_open(spoke_name):
@@ -198,6 +200,8 @@ The C# run prints the same three shapes as compact JSON. The first case took lon
 
 One missing optional spoke still returns a usable result and names what is missing. Two missing spokes drop below the quorum, and the function refuses to answer from a single opinion.
 
+![Three quorum cases with required=2: three successes and two successes give success, one success gives insufficient_quorum](../pptx/images/06-03-quorum-parallel-spokes.svg)
+
 ## Step 4: Trip the circuit breaker
 
 Repeated failures should stop traffic to a spoke. The `circuit` stage calls the compliance spoke four times with a 10 millisecond timeout so that every call times out. After the third failure the circuit opens.
@@ -222,6 +226,8 @@ Call 4: circuit_open, failures=3
 ```
 
 The fourth call never reached the model: the breaker answered `circuit_open` immediately, and the failure count stays at 3. It stays open for 60 seconds, then the next call is allowed through.
+
+![Four calls to compliance_check: three pass a closed breaker and time out with failures 1 to 3, and the fourth gets circuit_open at once without reaching the model](../pptx/images/06-02-circuit-breaker.svg)
 
 ## Step 5: Watch the hub degrade gracefully
 

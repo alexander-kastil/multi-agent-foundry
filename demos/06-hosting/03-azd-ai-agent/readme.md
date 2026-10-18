@@ -2,6 +2,8 @@
 
 The Azure Developer CLI (`azd`) has a family of `ai` extensions that take an agent from a source folder to a running hosted agent and then help you operate it. One command scaffolds the project, one runs it locally, one deploys it, and others invoke, monitor and diagnose it. The point is a single, repeatable loop that works the same on a laptop and in CI.
 
+![The azd ai agent loop: init, run and invoke --local on your machine, then azd deploy, invoke and monitor against the Foundry project, with doctor checking both](../pptx/images/03-01-azd-agent-loop.svg)
+
 ## Install the extensions
 
 You need `azd` 1.25.2 or later and Python 3.10 or later, or .NET 8 or later, depending on the framework. The `microsoft.foundry` extension is a meta-package that installs all the others.
@@ -87,6 +89,8 @@ infra:
 ```
 
 The agent name is the Foundry agent identity. Foundry agents are unique by name within a project, so deploying under an existing name creates a new version of that agent instead of a second agent. `azd` searches parent folders for `azure.yaml`, so a folder inside a repository that already has one at its root cannot be initialized in place.
+
+![The agent service in azure.yaml becomes hosted agent m6-azd-agent on azd deploy and uses the project service, which points at the existing pro-code-agents project](../pptx/images/03-02-azure-yaml-services.svg)
 
 ## Code deploy or container deploy
 

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>From the Entra app registration to the token checks in the server</title>
+  <desc>Three columns. The app registration m2-mcp-hr-api sets identifierUris api://&lt;api-client-id&gt; and requestedAccessTokenVersion 2, which give the access token aud &lt;api-client-id&gt; and iss https://login.microsoftonline.com/&lt;tenant-id&gt;/v2.0; mcp-auth-cs checks them with ValidAudience = entra.ClientId and ValidIssuer = entra.Authority, and a token for another API gets 401. The registration also defines the scopes hr.read and hr.write and pre-authorizes the Azure CLI for hr.read only, which gives the token scp hr.read and azp 04b07795 for the Azure CLI; the server keeps the claim named scp with MapInboundClaims = false, and ScopeChallengeMiddleware makes write tools need hr.write.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="20" markerHeight="20" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+  <g transform="translate(0,40)">
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="340" y="120">App registration</text>
+    <text x="970" y="120">Access token</text>
+    <text x="1590" y="120">Server checks</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="340" y="162">m2-mcp-hr-api</text>
+    <text x="970" y="162">$READ</text>
+    <text x="1590" y="162">mcp-auth-cs</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="60" y="200" width="560" height="350" rx="14" fill="#f3edff"/>
+    <rect x="60" y="590" width="560" height="320" rx="14" fill="#f3edff"/>
+    <rect x="690" y="200" width="560" height="160" rx="14" fill="#eaf2ff"/>
+    <rect x="690" y="390" width="560" height="160" rx="14" fill="#eaf2ff"/>
+    <rect x="690" y="590" width="560" height="320" rx="14" fill="#eaf2ff"/>
+    <rect x="1320" y="200" width="540" height="160" rx="14" fill="#fff6e5"/>
+    <rect x="1320" y="390" width="540" height="160" rx="14" fill="#fff6e5"/>
+    <rect x="1320" y="590" width="540" height="320" rx="14" fill="#fff6e5"/>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26">
+    <g fill="#57606a">
+      <text x="90" y="290">identifierUris</text>
+      <text x="90" y="430">api</text>
+      <text x="720" y="260">aud</text>
+      <text x="720" y="445">iss</text>
+      <text x="90" y="650">oauth2PermissionScopes</text>
+      <text x="720" y="660">scp</text>
+      <text x="720" y="790">azp</text>
+    </g>
+    <g fill="#24292f">
+      <text x="90" y="330">api://&lt;api-client-id&gt;</text>
+      <text x="90" y="470">requestedAccessTokenVersion: 2</text>
+      <text x="720" y="300" font-weight="700">&lt;api-client-id&gt;</text>
+      <text x="720" y="485">https://login.microsoftonline.com/</text>
+      <text x="720" y="522">&lt;tenant-id&gt;/v2.0</text>
+      <text x="90" y="690">hr.read, hr.write</text>
+      <text x="720" y="700" font-weight="700">hr.read</text>
+      <text x="720" y="830">04b07795-...</text>
+      <text x="1350" y="270">ValidAudience = entra.ClientId</text>
+      <text x="1350" y="460">ValidIssuer = entra.Authority</text>
+      <text x="1350" y="660">MapInboundClaims = false</text>
+      <text x="1350" y="790">ScopeChallengeMiddleware</text>
+    </g>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">
+    <text x="720" y="340">the API's client ID</text>
+    <text x="1350" y="315">a token for another API gets 401</text>
+    <text x="1350" y="505">the v2.0 issuer of the tenant</text>
+    <text x="90" y="780" fill="#24292f">Azure CLI pre-authorized</text>
+    <text x="90" y="820" fill="#24292f">for <tspan font-family="Consolas, 'Courier New', monospace">hr.read</tspan> only</text>
+    <text x="900" y="830">the Azure CLI</text>
+    <text x="1350" y="700">keeps the claim named <tspan font-family="Consolas, 'Courier New', monospace">scp</tspan></text>
+    <text x="1350" y="830">write tools need <tspan font-family="Consolas, 'Courier New', monospace">hr.write</tspan></text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="626" y1="280" x2="682" y2="280"/>
+    <line x1="626" y1="470" x2="682" y2="470"/>
+    <line x1="626" y1="750" x2="682" y2="750"/>
+    <line x1="1256" y1="280" x2="1312" y2="280"/>
+    <line x1="1256" y1="470" x2="1312" y2="470"/>
+    <line x1="1256" y1="750" x2="1312" y2="750"/>
+  </g>
+  </g>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>How a Foundry agent calls the function app with a key from a project connection</title>
+  <desc>agent.py creates the prompt agent m2-functions-mcp-agent whose MCPTool names the connection m2-func-mcp-key. Foundry Agent Service reads the project connection m2-func-mcp-key (category RemoteTool, authType CustomKeys, key x-functions-key) and attaches the x-functions-key header on every call. The Flex Consumption function app serves /runtime/webhooks/mcp and checks the system key mcp_extension; a request without the key gets 401. The tools save and read snippets/fizz.json in blob storage. agent.py prints mcp_call save_snippet and mcp_call get_snippet. The stages light up in order.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#8c959f"/>
+    </marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g stroke="#8c959f" stroke-width="2">
+    <rect x="80" y="190" width="320" height="330" rx="18" fill="#eaf2ff"/>
+    <rect x="460" y="190" width="380" height="330" rx="18" fill="#f3edff"/>
+    <rect x="1090" y="190" width="400" height="330" rx="18" fill="#f3edff"/>
+    <rect x="1540" y="190" width="300" height="330" rx="18" fill="#f6f8fa"/>
+    <rect x="80" y="620" width="340" height="200" rx="18" fill="#e9f7ef"/>
+    <rect x="470" y="620" width="430" height="260" rx="18" fill="#fff6e5" stroke="#e0a534"/>
+    <rect x="1090" y="620" width="400" height="160" rx="18" fill="#f6f8fa"/>
+  </g>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f" text-anchor="middle">
+    <text x="240" y="250" font-family="Consolas, 'Courier New', monospace">agent.py</text>
+    <text x="650" y="250">Foundry Agent Service</text>
+    <text x="1290" y="250">Function app</text>
+    <text x="1690" y="320">Blob storage</text>
+    <text x="250" y="675">agent.py output</text>
+    <text x="685" y="675">Project connection</text>
+    <text x="1290" y="680">Request without the key</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a" text-anchor="middle">
+    <text x="240" y="300">prompt agent with</text>
+    <text x="240" y="390">names the connection</text>
+    <text x="650" y="300">prompt agent</text>
+    <text x="650" y="390">attaches the key</text>
+    <text x="650" y="430">on every call</text>
+    <text x="1290" y="295">Flex Consumption</text>
+    <text x="1290" y="385">checks the system key</text>
+    <text x="1290" y="728">host answers <tspan font-weight="700" fill="#24292f">401</tspan></text>
+    <text x="965" y="285">header</text>
+  </g>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="26" fill="#24292f" text-anchor="middle">
+    <text x="240" y="340">MCPTool</text>
+    <text x="240" y="430">m2-func-mcp-key</text>
+    <text x="650" y="340">m2-functions-mcp-agent</text>
+    <text x="1290" y="340">/runtime/webhooks/mcp</text>
+    <text x="1290" y="427">mcp_extension</text>
+    <text x="1690" y="370">snippets/fizz.json</text>
+    <text x="965" y="322">x-functions-key</text>
+    <text x="250" y="725">mcp_call save_snippet</text>
+    <text x="250" y="770">mcp_call get_snippet</text>
+    <text x="685" y="722">m2-func-mcp-key</text>
+    <text x="685" y="766">category: RemoteTool</text>
+    <text x="685" y="806">authType: CustomKeys</text>
+    <text x="685" y="846">key: x-functions-key</text>
+  </g>
+
+  <g stroke="#8c959f" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="406" y1="355" x2="454" y2="355"/>
+    <line x1="846" y1="355" x2="1084" y2="355"/>
+    <line x1="1496" y1="355" x2="1534" y2="355"/>
+    <line x1="240" y1="526" x2="240" y2="614"/>
+    <line x1="1290" y1="614" x2="1290" y2="526"/>
+    <path d="M906,750 L965,750 L965,364"/>
+  </g>
+
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4;0.6" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M906,750 L965,750 L965,366" keyPoints="0;0;1;1" keyTimes="0;0.4;0.6;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="11" fill="#e0a534" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6;0.8" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    <animateMotion path="M965,355 L1080,355" keyPoints="0;0;1;1" keyTimes="0;0.6;0.7;1" calcMode="linear" dur="6s" repeatCount="indefinite"/>
+  </circle>
+
+  <g fill="none" stroke="#e0a534" stroke-width="5">
+    <rect x="70" y="180" width="340" height="350" rx="24" opacity="0">
+      <animate attributeName="opacity" values="1;0" keyTimes="0;0.2" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="450" y="180" width="400" height="350" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.2;0.4" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="460" y="610" width="450" height="280" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4;0.6" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1080" y="180" width="420" height="350" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.6;0.8" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1530" y="180" width="320" height="350" rx="24" opacity="0">
+      <animate attributeName="opacity" values="0;1" keyTimes="0;0.8" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+{
+  "topics": [
+    {
+      "title": "Tracing: OpenTelemetry & Application Insights",
+      "subtitle": "Spans, Azure Monitor export and KQL"
+    },
+    {
+      "title": "Agent Evaluators: Task Adherence & Tools",
+      "subtitle": "Task and tool evaluators, local and in the cloud"
+    },
+    {
+      "title": "Evaluation Suites: Judges & Baselines",
+      "subtitle": "Calibrated judges and baseline gates"
+    },
+    {
+      "title": "Continuous Evaluation & AI Red Teaming",
+      "subtitle": "Live scoring and cloud red teaming"
+    },
+    {
+      "title": "Agent Optimizer: Instructions & Tool Tuning",
+      "subtitle": "Dataset-driven instruction and tool tuning"
+    },
+    {
+      "title": "Performance & Cost: Routing & Caching",
+      "subtitle": "Tier routing, caches and token budgets"
+    },
+    {
+      "title": "Incident Response: Replay & Postmortem",
+      "subtitle": "Severity, replay, bisection and postmortem"
+    }
+  ]
+}

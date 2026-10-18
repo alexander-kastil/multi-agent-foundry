@@ -78,9 +78,13 @@ The output then contains a `compaction` item next to the message, and it works w
 
 With stateless input-array chaining you append every output item as usual and may drop the items that came before the most recent compaction item. With `previous_response_id` chaining you send only the new user message and must not prune by hand.
 
+![Input tokens for days 9 to 14 with the 6,000-token compact_threshold: day 11 emits a compaction item and the window drops from 40 items to 2](../pptx/images/06-02-server-compaction.svg)
+
 ### What compaction keeps
 
 Observed on the `gpt-5.4` deployment of this class: user and assistant messages stay in the window verbatim, and the `function_call` and `function_call_output` items collapse into the single `compaction` item. A 20-turn weather conversation of 11,300 input tokens became a window of about 1,300 tokens, and the model still answered a question about the first turn.
+
+![The 20-turn history sent whole at 11,322 tokens, trimmed to 4 turns at 2,287 tokens that forget the booking reference, and compacted to 1,259 tokens that still know it](../pptx/images/06-01-trim-compact.svg)
 
 The size of the item varies from run to run, and a history with nothing to drop, such as plain chat messages, does not shrink. Measure `input_tokens` on your own workload before you rely on a ratio.
 
@@ -103,6 +107,8 @@ ClientResult result = await Session.Responses().CompactResponseAsync(
 Prompt caching lets the service reuse the computation for a prompt prefix it has seen. It is on by default for supported models, it does not change the answer, and cache reads are billed at a discount on input tokens.
 
 A request can hit the cache when it is at least 1,024 tokens long and its first 1,024 tokens are identical to an earlier request. A single changed character in that range is a miss and `cached_tokens` is 0. On GPT-5.5 and earlier models, hits beyond the first 1,024 tokens come in 128-token steps.
+
+![Three requests drawn to scale: call 1 writes the cache, calls 2 and 3 read 1,792 cached tokens, and the question-first request reads none](../pptx/images/06-03-stable-prefix.svg)
 
 ```python
 response = openai.responses.create(

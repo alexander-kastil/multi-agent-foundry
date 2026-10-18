@@ -6,6 +6,8 @@ What you practice here: `azd ai agent init`, `run`, `invoke`, `monitor` and `doc
 
 Duration: about 50 minutes.
 
+![The azd ai agent loop: init, run and invoke --local on your machine, then azd deploy, invoke and monitor against the Foundry project, with doctor checking both](../pptx/images/03-01-azd-agent-loop.svg)
+
 ## Prerequisites
 
 - Azure Developer CLI 1.25.2 or later and Azure CLI, both signed in (`az login`, `azd auth login`), and Python 3.10 or later, or the .NET 10 SDK for the C# version.
@@ -127,6 +129,8 @@ OK: .NET runtime validation passed: m6h3-azd-agent.csproj targets net10.0, selec
 In the C# `azure.yaml`, `language` is `csharp`, `codeConfiguration.runtime` is `dotnet_10` and `entryPoint` is `m6h3-azd-agent.dll`; everything else is the same.
 
 Open the new `azure.yaml`. The agent is a service with `host: azure.ai.agent`, `kind: hosted` and a `codeConfiguration` block; it `uses` a second service, `host: azure.ai.project`, that holds the project endpoint. The model deployment name is mapped into the agent through `env: AZURE_AI_MODEL_DEPLOYMENT_NAME`, and the project endpoint reaches the agent as `FOUNDRY_PROJECT_ENDPOINT`.
+
+![The agent service in azure.yaml becomes hosted agent m6-azd-agent on azd deploy and uses the project service, which points at the existing pro-code-agents project](../pptx/images/03-02-azure-yaml-services.svg)
 
 ## Step 2: Run the agent locally
 

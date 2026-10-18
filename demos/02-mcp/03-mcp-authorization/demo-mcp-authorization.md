@@ -49,9 +49,13 @@ dotnet run --urls http://localhost:47010
 
 It also pre-authorizes the Azure CLI (client ID `04b07795-8ddb-461a-bbee-02f9e1bf7b46`) for `hr.read` only, and it creates the service principal. Pre-authorization lets the Azure CLI request the scope without a consent screen, which stands in for an interactive MCP client in this demo. Version 2 tokens make `aud` the API's client ID and `iss` the v2.0 issuer.
 
+![The settings of the app registration m2-mcp-hr-api become the aud, iss, scp and azp claims of the token, which the server checks with ValidAudience, ValidIssuer and the scp claim](../pptx/images/03-02-registration-token-checks.svg)
+
 ## Step 2: Watch the server challenge an unauthenticated client
 
 The server calls `AddMcp` to publish metadata and to answer `401` with a pointer to it. Send a request without a token.
+
+![Five curl requests pass the JWT bearer handler, RequireAuthorization, ScopeChallengeMiddleware and MapMcp, and each stops at the stage that answers 401, 403 or 200](../pptx/images/03-01-protected-requests.svg)
 
 ```bash
 curl -i -X POST http://localhost:47010/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'

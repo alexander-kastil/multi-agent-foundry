@@ -32,6 +32,8 @@ Depending on its configuration, a knowledge base uses an LLM to decompose the qu
 
 The reasoning effort controls how much model work a retrieval spends. Higher effort plans more and answers richer questions, and it costs more tokens and time.
 
+![Minimal, low and medium reasoning effort compared: minimal makes no model call and returns extracted content, low and medium let gpt-5.4 plan subqueries and return a cited answer, with the time, searches and tokens of one demo run](../pptx/images/04-01-reasoning-effort.svg)
+
 | Effort | Model involved | Behavior |
 | --- | --- | --- |
 | `minimal` | None | Searches every source with the question as written and returns the extracted content |
@@ -96,6 +98,8 @@ With minimal effort there is no model to plan, so you supply `intents` (a semant
 ## Connect the knowledge base to an agent
 
 The agent calls the knowledge base through its MCP endpoint, and a project connection supplies the credential. The connection is a `RemoteTool` connection that uses the project managed identity with the Azure AI Search audience.
+
+![The agent m3-outdoor-agent and its MCPTool reach the knowledge base m3-outdoor-kb on Azure AI Search through the project connection m3-outdoor-kb-mcp as the project identity with Search Index Data Reader, and the knowledge base calls gpt-5.4 as the search service identity with Cognitive Services User](../pptx/images/04-02-knowledge-base-connection.svg)
 
 ```json
 {

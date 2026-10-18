@@ -4,6 +4,8 @@ Microsoft Agent Framework is the open-source SDK for building agents in Python a
 
 Every topic pairs learning prose with a runnable demo against a Microsoft Foundry project. The Python projects use `agent-framework-core` 1.22.0 with `agent-framework-foundry` 1.15.0, and the C# projects use `Microsoft.Agents.AI` 1.25.0 with `Microsoft.Agents.AI.Foundry` 1.5.0. Each project folder holds the finished code, a pinned `requirements.txt` or `.csproj`, and an `.env.example` that you copy to `.env`.
 
+![The seven topics of the module as numbered cards, from chat clients through sessions, context providers, middleware, tools and skills to the harness agent](./pptx/images/00-02-overview.svg)
+
 | Topic | Description |
 |---|---|
 | [Chat Clients: Foundry, OpenAI & Claude](./01-chat-clients/readme.md) | `FoundryChatClient`, `FoundryAgent`, the two OpenAI clients and `AnthropicClient`, and the rule for choosing between an agent your code owns and one Foundry owns |
