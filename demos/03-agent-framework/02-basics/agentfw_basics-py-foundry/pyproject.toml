@@ -1,0 +1,18 @@
+[project]
+name = "azure-ai-foundry-demos"
+version = "0.1.0"
+description = "Azure AI Foundry SDK demos migrated from Agent Framework"
+requires-python = ">=3.11"
+dependencies = [
+    "azure-identity==1.25.1",
+    "python-dotenv==1.2.1",
+    "azure-ai-projects>=2.0.0b2",
+    "azure-ai-agents==1.2.0b5",
+    "azure-ai-inference>=1.0.0b6",
+    "pdf2image==1.17.0",
+    "pillow==12.0.0",
+    "pymupdf==1.24.14",
+    "pydantic>=2.0.0",
+    "opentelemetry-api",
+    "opentelemetry-sdk",
+]

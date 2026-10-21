@@ -1,0 +1,161 @@
+{
+    "store": {
+        "name": "Billa AG",
+        "address": "AUFELDGASSE 45-49, 3400 KLOSTERNEUBURG",
+        "phone": "059915-03357",
+        "vat_id": "ATU 15255907",
+        "branch_id": "03357",
+        "cash_register": "5",
+        "receipt_number": "4536",
+        "transaction_number": "4782",
+        "trace_number": "120693",
+        "cashier": "BAKAYOKO",
+        "position": "22"
+    },
+    "date": "2025-07-25",
+    "time": "15:35",
+    "payment_time": "15:36:21",
+    "payment_method": {
+        "type": "Contactless DEBIT MASTERCARD",
+        "card_number_masked": "############1993 0000",
+        "vu_number": "020040000180964",
+        "terminal_id": "43502159",
+        "auth_time": "15:36",
+        "auth_process_code": "00 075 00",
+        "capture_ref": "0000"
+    },
+    "items": [
+        {
+            "name": "Billa Bio Zitronen 500g",
+            "vat_group": "B",
+            "price": 2.49
+        },
+        {
+            "name": "Ja! Bio Knoblauch 150g",
+            "vat_group": "B",
+            "price": 2.99
+        },
+        {
+            "name": "Ja!Bio RoggenPurWeck",
+            "vat_group": "B",
+            "price": 1.09
+        },
+        {
+            "name": "Ja!Bio Wachauer",
+            "vat_group": "B",
+            "price": 1.35
+        },
+        {
+            "name": "Ja!Nat.Bio Heumilch",
+            "vat_group": "B",
+            "price": 1.99
+        },
+        {
+            "name": "Ja! Bio Butter",
+            "vat_group": "B",
+            "price": 3.19
+        },
+        {
+            "name": "Clever Poularde",
+            "vat_group": "B",
+            "quantity": 1.598,
+            "unit": "kg",
+            "price_per_kg": 4.99,
+            "price": 7.97
+        },
+        {
+            "name": "FzT Putenleber",
+            "vat_group": "B",
+            "quantity": 0.359,
+            "unit": "kg",
+            "price_per_kg": 10.99,
+            "price": 3.95
+        },
+        {
+            "name": "Ja! H-Filet",
+            "vat_group": "B",
+            "quantity": 0.379,
+            "unit": "kg",
+            "price_per_kg": 31.99,
+            "price": 12.12
+        },
+        {
+            "name": "Ja! Leber Halbiert Kalb",
+            "vat_group": "B",
+            "quantity": 0.604,
+            "unit": "kg",
+            "price_per_kg": 37.99,
+            "price": 22.95
+        },
+        {
+            "name": "Billa Bio Bourbon Vanille",
+            "vat_group": "B",
+            "price": 1.29
+        },
+        {
+            "name": "Ja Nat. Kaffee",
+            "vat_group": "C",
+            "price": 8.99
+        },
+        {
+            "name": "4 D Thunfisch m.Gemü",
+            "vat_group": "B",
+            "quantity": 1,
+            "unit_price": 2.99,
+            "price": 2.99,
+            "promotion": "GRATIS AKTION",
+            "discount": -1.00
+        },
+        {
+            "name": "VDiam.Thunf.scharf",
+            "vat_group": "B",
+            "quantity": 1,
+            "unit_price": 2.99,
+            "price": 2.99,
+            "promotion": "GRATIS AKTION",
+            "discount": -1.00
+        },
+        {
+            "name": "4 D Thunfisch m.Gemü",
+            "vat_group": "B",
+            "quantity": 2,
+            "unit_price": 2.99,
+            "price": 5.98,
+            "promotion": "GRATIS AKTION",
+            "discount": -2.00
+        },
+        {
+            "name": "VDiam.Thunf.scharf",
+            "vat_group": "B",
+            "quantity": 2,
+            "unit_price": 2.99,
+            "price": 5.98,
+            "promotion": "GRATIS AKTION",
+            "discount": -2.00
+        },
+        {
+            "name": "Äpp-only Pickerl",
+            "vat_group": "B",
+            "price": 0.00
+        },
+        {
+            "name": "Billa Groß Papiertasche",
+            "vat_group": "C",
+            "price": 0.50
+        },
+        {
+            "name": "MOWI Rote Bete Lachs",
+            "vat_group": "B",
+            "price": 5.99,
+            "correction": "Preiskorrektur 30%",
+            "discount": -1.80
+        },
+        {
+            "name": "MOWI Rote Bete Lachs",
+            "vat_group": "B",
+            "price": 5.99,
+            "correction": "Preiskorrektur 30%",
+            "discount": -1.80
+        }
+    ]
+}
